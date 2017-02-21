@@ -1,0 +1,3 @@
+class Guest < ApplicationController
+
+end
