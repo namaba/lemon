@@ -6,6 +6,10 @@
       <%= render 'partial/deviseErrorMsg' %>
       <h2>ログイン</h2>
 
+       <!-- facebookログイン -->
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.label :email %><br />
