@@ -28,6 +28,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 # ログイン
 gem 'devise'
+gem 'omniauth-facebook'
 
 
 # toastr(flash)
