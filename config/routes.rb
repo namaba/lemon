@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   scope '/', module: 'guest' do
     get 'pages/index'
+    get 'pages/welcome'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
