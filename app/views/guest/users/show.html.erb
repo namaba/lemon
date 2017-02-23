@@ -1,10 +1,25 @@
 <%= render 'partial/navbar' %>
 
+<!-- 認証チェックマーク -->
+<script type="text/javascript">
+  $(function(){
+    <% if !@user.email.blank? %>
+      $("#ver-email").attr('class','vertification-checked');
+    <% end %>
+    <% if !@user.uid.blank? %>
+      $("#ver-tel").attr('class','vertification-checked');
+    <% end %>
+    <% if @user.provider == "facebook" %>
+      $("#ver-facebook").attr('class','vertification-checked');
+    <% end %>
+  })
+</script>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-3 col-md-4">
       <div class="text-center">
-        <%= image_tag @user.image, class: "img-circle" %>
+        <%= image_tag @user.image, class: "img-circle", size: '200' %>
       </div>
 
       <div class="panel panel-default hidden-xs hidden-sm">
@@ -19,6 +34,7 @@
           <div id="ver-tel">
             電話番号
           </div>
+          <br>
           <div id="ver-facebook">
             facebook
           </div>
@@ -27,7 +43,8 @@
     </div>
 
     <div class="col-lg-9 col-md-8 col-sm-12">
-      <h1>こんにちは</h1>
+      <h1>こんにちは<%= @user.name %>です！</h1>
+      <p>自己紹介</p>
     </div>
   </div>
 </div>
