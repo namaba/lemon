@@ -9,7 +9,7 @@
         <%= render 'partial/deviseErrorMsg' %>
 
         <!-- facebookログイン -->
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook' %>
 
         <div class="form-group">
           <%= f.label :email %><br />

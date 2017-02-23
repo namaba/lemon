@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root :to => 'guest/pages#index'
 
   scope '/', module: 'guest' do
-    get 'pages/index'
     get 'pages/welcome'
+
+    resources :users, only: [:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
