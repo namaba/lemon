@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations' }
 
   root :to => 'guest/pages#index'
@@ -7,7 +9,12 @@ Rails.application.routes.draw do
   scope '/', module: 'guest' do
     get 'pages/welcome'
 
-    resources :users, only: [:show]
+    resources :users, only: [:show, :create, :destroy]
+    resources :searches, only: [:index, :show]
+    resources :likes, only: [:index, :show]
+    resources :messages, only: [:index, :show, :create]
+    resources :communities, only: [:index, :show, :create]
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

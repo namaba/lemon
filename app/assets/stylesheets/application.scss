@@ -1,20 +1,25 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
 
-.profile-0 {
-  width: 28px;
-  height: 28px;
-}
+// .profile-0 {
+//   width: 28px;
+//   height: 28px;
+// }
 
-.vertification-checked:before{
-  content: "\f00c";
-  font-family: FontAwesome;
-  position: relative;
-  z-index: 100;
-  top:2px;
-  font-size: 1.55em;
-  text-align: center;
-  width: 1.25em;
-  color: #00d1c1;
-}
+// .vertification-checked:before{
+//   content: "\f00c";
+//   font-family: FontAwesome;
+//   position: relative;
+//   z-index: 100;
+//   top:2px;
+//   font-size: 1.55em;
+//   text-align: center;
+//   width: 1.25em;
+//   color: #00d1c1;
+// }

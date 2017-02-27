@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # ログイン後のページ
   def after_sign_in_path_for(resource)
-    pages_welcome_path
+    searches_path
   end
 
   protected
