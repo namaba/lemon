@@ -34,6 +34,10 @@ gem 'omniauth-facebook'
 # toastr(flash)
 gem 'toastr-rails'
 
+# 画像アップローダー
+gem 'carrierwave'
+gem 'rmagick'
+
 
 
 
