@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @userprofile = current_user.profile.build
+    @userprofile = UserProfile.new(user_id: current_user.id)
     @userprofile.save
   end
 
