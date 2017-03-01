@@ -15,7 +15,7 @@
               <div class="col-md-12 select">
                 <div class="form-group">
                   <label>属性</label>
-                  <%= f.select :sex, [["L",1], ["G",2], ["B",3], ["T",4], ["S",5]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                  <%= f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
                 </div>
               </div>
             </div>
@@ -24,7 +24,7 @@
               <div class="col-md-12 select">
                 <div class="form-group">
                   <label>タチ・ネコ</label>
-                  <%= f.select :play_style, [["タチ",1], ["ネコ",2], ["リバース",3]], {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                  <%= f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
                 </div>
               </div>
             </div>
@@ -49,11 +49,123 @@
             <div class="row">
               <div class="col-md-12 select">
                 <div class="form-group">
-                    <label>都道府県</label>
-                    <%= f.select :address, [["北海道","北海道"], ["青森","青森"], ["岩手","岩手"]], {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'} %>
+                    <label>居住地</label>
+                    <%= f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"} %>
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>身長</label>
+                  <%= f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>スタイル</label>
+                  <%= f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>職業</label>
+                  <%= f.select :job, UserProfile::JOB, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>年収</label>
+                  <%= f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>趣味</label>
+                  <%= f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>同居人</label>
+                  <%= f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>お酒</label>
+                  <%= f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>タバコ</label>
+                  <%= f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>目的</label>
+                  <%= f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>結婚歴</label>
+                  <%= f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>子供</label>
+                  <%= f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'} %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 select">
+                <div class="form-group">
+                  <label>写真</label>
+                  <%= f.file_field :image1, class: "form-control image-field" %>
+                  <%= f.file_field :image2, class: "form-control image-field" %>
+                  <%= f.file_field :image3, class: "form-control image-field" %>
+                </div>
+              </div>
+            </div>
+
+
 
 
             <div class="actions">
