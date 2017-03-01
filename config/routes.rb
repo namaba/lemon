@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope '/', module: 'guest' do
     get 'pages/welcome'
 
-    resources :users, only: [:show, :create, :destroy]
+    resources :users, only: [:show, :create, :edit, :update, :destroy]
     resources :searches, only: [:index, :show]
     resources :likes, only: [:index, :show]
     resources :messages, only: [:index, :show, :create]
