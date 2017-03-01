@@ -1,21 +1,34 @@
 class Guest::UsersController < Guest
+  before_action :set_user, only: [:edit, :update]
+
 
   def show
     @user = User.find(params[:id])
   end
 
   def edit
-    @user = UserProfile.find_by(user_id: params[:id])
-
+    @user = @user.user_profile
   end
 
   def update
-    @user = User.new(profile_params)
+    if @user = @user.user_profile.update(profile_params)
+      redirect_to :back, notice: "更新できました"
+    else
+      redirect_to :back, notice: "更新できませんでした"
+    end
+    # @user = @user_profile(profile_params)
   end
 
   private
   def profile_params
-    params.require(:user_profile).permit(:user_id, :sex, :play_style, :birthday, :address, :plan, :introduce, :image1, :image2, :image3, :height, :style, :job, :income, :hobby, :housemate, :alcohol, :smake, :purpose, :marriage, :child, :identification, :identification_image, :good_count, :coins_count, :mail_status)
+    params.require(:user_profile).permit(:user_id, :sex, :play_style, :birthday, :address, :plan, :introduce, :image1, :image2, :image3, :height, :style, :job, :income, :hobby, :housemate, :alcohol, :smoke, :purpose, :marriage, :child, :identification, :identification_image, :good_count, :coins_count, :mail_status)
   end
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def set_user_profile
+    @user_profile = UserProfile.find_by(user_id: params[:id])
+  end
 end
