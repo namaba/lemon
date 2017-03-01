@@ -42,6 +42,7 @@
 
     <div class="col-lg-9 col-md-8 col-sm-12">
     <li><%= link_to "プロフィール編集", edit_user_registration_path %></li>
+    <li><%= link_to "プロフィール詳細編集", edit_user_path(@user.id) %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <h1>こんにちは<%= @user.name %>です！</h1>
       <p>自己紹介</p>

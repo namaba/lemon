@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'registrations' }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'users/registrations' }
 
   root :to => 'guest/pages#index'
 
   scope '/', module: 'guest' do
     get 'pages/welcome'
 
-    resources :users, only: [:show, :create, :destroy]
+    resources :users, only: [:show, :create, :edit, :update, :destroy]
     resources :searches, only: [:index, :show]
     resources :likes, only: [:index, :show]
     resources :messages, only: [:index, :show, :create]
