@@ -15,8 +15,9 @@
       <%= yield :header %>
     <% end %>
   </header>
-
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
   <% unless flash.empty? %>
     <!-- flashにメッセージがある時 -->

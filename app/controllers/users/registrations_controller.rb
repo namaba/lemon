@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @userprofile = UserProfile.new(user_id: current_user.id)
     @userprofile.save
+    # current_user.user_profile.update(image1: current_user.image)
   end
 
   # GET /resource/edit
