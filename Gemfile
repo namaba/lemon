@@ -41,6 +41,9 @@ gem 'rmagick'
 # 都道府県
 gem 'jp_prefecture'
 
+# 検索
+gem "ransack"
+
 
 
 
