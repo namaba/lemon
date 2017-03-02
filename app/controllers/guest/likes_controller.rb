@@ -1,5 +1,7 @@
 class Guest::LikesController < Guest
   def index
+    @users = User.like_me(current_user)
+
   end
 
   def show
