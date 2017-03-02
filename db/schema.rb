@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302045211) do
+ActiveRecord::Schema.define(version: 20170302045903) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20170302045211) do
   end
 
   add_index "partnerships", ["user_id"], name: "index_partnerships_on_user_id", using: :btree
+
+  create_table "user_partnerships", force: :cascade do |t|
+    t.integer  "user_id",        limit: 4
+    t.integer  "partnership_id", limit: 4
+    t.integer  "status",         limit: 4, default: 1
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "user_partnerships", ["partnership_id"], name: "index_user_partnerships_on_partnership_id", using: :btree
+  add_index "user_partnerships", ["user_id"], name: "index_user_partnerships_on_user_id", using: :btree
 
   create_table "user_profiles", force: :cascade do |t|
     t.integer  "user_id",              limit: 4
@@ -92,5 +103,7 @@ ActiveRecord::Schema.define(version: 20170302045211) do
 
   add_foreign_key "likes", "users"
   add_foreign_key "partnerships", "users"
+  add_foreign_key "user_partnerships", "partnerships"
+  add_foreign_key "user_partnerships", "users"
   add_foreign_key "user_profiles", "users"
 end
