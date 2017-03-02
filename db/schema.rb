@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301053407) do
+ActiveRecord::Schema.define(version: 20170302043216) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "target_id",  limit: 4,             null: false
+    t.integer  "like",       limit: 4, default: 0
+    t.integer  "is_liked",   limit: 4, default: 0
+    t.integer  "status",     limit: 4, default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "user_profiles", force: :cascade do |t|
     t.integer  "user_id",              limit: 4
@@ -68,5 +80,6 @@ ActiveRecord::Schema.define(version: 20170301053407) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "likes", "users"
   add_foreign_key "user_profiles", "users"
 end
