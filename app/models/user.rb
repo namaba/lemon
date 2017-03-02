@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   #  ** Scope **
   #----------------------------------------
   scope :not_me, -> { where.not(id: current_user) }
+  scope :like_me, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 0))}
 
 
 

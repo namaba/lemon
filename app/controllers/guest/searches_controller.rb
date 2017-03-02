@@ -4,7 +4,8 @@ class Guest::SearchesController < Guest
   def index
     # @users = User.all
     @q = UserProfile.ransack(params[:q])
-    @user_profiles = @q.result
+    @user_profiles = @q.result.not_me(current_user)
+
   end
 
   def show
