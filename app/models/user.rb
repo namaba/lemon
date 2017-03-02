@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_one :user_profile,  class_name: 'UserProfile',  dependent: :destroy, inverse_of: :user
 
+  has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
+  has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
 
 
   #----------------------------------------
