@@ -10,9 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @userprofile = UserProfile.new(user_id: current_user.id)
+    @userprofile = UserProfile.new(user_id: @user.id)
     @userprofile.save
-    # current_user.user_profile.update(image1: current_user.image)
   end
 
   # GET /resource/edit
