@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :user_profile,  class_name: 'UserProfile',  dependent: :destroy, inverse_of: :user
-
+  # like
   has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
   has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
-
+  # partnership
+  has_many :partnerships, through: :user_partnership
+  has_many :target_partnerships, :class_name => "Partnership", :foreign_key => 'target_id'
 
   #----------------------------------------
   #  ** Scope **
