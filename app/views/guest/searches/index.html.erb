@@ -18,9 +18,12 @@
   </div>
 </div>
 
-
 <% @user_profiles.each do |profile| %>
-  <%= profile.user.id %>
-  <%= profile.user.email %>
+<div>
+  <%= link_to search_path(profile.user.id) do %>
+    <%= profile.user.id %>
+    <%= profile.user.email %>
+  <% end %>
+  <%= good(profile.user) %>
+</div>
 <% end %>
-

@@ -1,5 +1,5 @@
 class Guest::SearchesController < Guest
-
+  before_action :set_user, only: [:show]
 
   def index
     # @users = User.all
@@ -8,5 +8,10 @@ class Guest::SearchesController < Guest
   end
 
   def show
+  end
+
+  private
+  def set_user
+    @user = User.find(params[:id])
   end
 end
