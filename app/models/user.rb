@@ -9,19 +9,24 @@ class User < ActiveRecord::Base
   has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
   has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
   # partnership
-  has_many :partnerships, through: :user_partnership
+  has_many :partnerships, through: :user_partnerships
   has_many :target_partnerships, :class_name => "Partnership", :foreign_key => 'target_id'
   # user_partnership
   has_many :user_partnerships, dependent: :destroy
+
+
+
   #----------------------------------------
   #  ** Scope **
   #----------------------------------------
-  scope :not_me, -> { where.not(id: current_user) }
+  scope :not_me, -> (user){ where.not(id: user) }
   scope :like_me, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 0))}
 
 
 
+  def self.matching
 
+  end
 
 
   def self.from_omniauth(auth)

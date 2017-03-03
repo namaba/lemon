@@ -9,6 +9,7 @@ class Guest::SearchesController < Guest
   end
 
   def show
+    render 'guest/module/mypage'
   end
 
   private
