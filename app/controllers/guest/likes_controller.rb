@@ -9,6 +9,7 @@ class Guest::LikesController < Guest
   end
 
   def show
+    render 'guest/module/mypage'
   end
 
   def create
