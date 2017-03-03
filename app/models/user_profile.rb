@@ -33,7 +33,7 @@ class UserProfile < ActiveRecord::Base
   #  ** Scope **
   #----------------------------------------
   scope :not_me, ->(user) { where.not(user_id: user) }
-
+  scope :like_user, ->(user) { where.not(user_id: Like.select('user_id').where(target_id: user))}
 
 
 

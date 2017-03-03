@@ -11,7 +11,11 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :create, :edit, :update, :destroy]
     resources :searches, only: [:index, :show]
-    resources :likes, only: [:index, :show, :create]
+    resources :likes, only: [:index, :show, :create] do
+      member do
+        get 'match',              to: 'likes#match'
+      end
+    end
     resources :messages, only: [:index, :show, :create]
     resources :communities, only: [:index, :show, :create]
 

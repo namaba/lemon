@@ -1,4 +1,9 @@
 index
-<% @users.each do |user| %>
-  <%= user.id %>
+<% @like_users.each do |like_user| %>
+  <%= link_to like_path(like_user) do %>
+    <%= image_tag like_user.user_profile.image1.thumb %>
+    <%= like_user.id %>
+    <%= like_user.email %>
+  <% end %>
+  <%= link_to 'ありがとう', match_like_path(current_user, target: like_user) %>
 <% end %>

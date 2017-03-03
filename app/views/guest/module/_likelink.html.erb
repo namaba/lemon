@@ -1,0 +1,9 @@
+<!-- さがすからの詳細プロフィールのいいね -->
+<%- if controller_name == 'searches' %>
+  <%= good(@user) %>
+<% end -%>
+
+<!-- お相手からの良いねの詳細プロフィールのありがとう -->
+<%- if controller_name == 'likes' %>
+  <%= link_to 'ありがとう', match_like_path(current_user, target: @user) %>
+<% end -%>
