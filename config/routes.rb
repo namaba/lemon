@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
     resources :messages, only: [:index, :show, :create]
-    resources :communities, only: [:index, :show, :create]
+    resources :communities, only: [:index, :show,:new, :create]
 
   end
 

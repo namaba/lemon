@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302045903) do
+ActiveRecord::Schema.define(version: 20170306123625) do
+
+  create_table "communities", force: :cascade do |t|
+    t.string   "name",       limit: 255,               null: false
+    t.integer  "user_id",    limit: 4
+    t.string   "category",   limit: 255
+    t.text     "introduce",  limit: 65535
+    t.string   "image",      limit: 255
+    t.integer  "status",     limit: 4,     default: 1
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "communities", ["user_id"], name: "index_communities_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -101,6 +114,7 @@ ActiveRecord::Schema.define(version: 20170302045903) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "communities", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "partnerships", "users"
   add_foreign_key "user_partnerships", "partnerships"
