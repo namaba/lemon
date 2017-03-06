@@ -9,8 +9,8 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :身長 %>
-        <%= f.select :height_gt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), class: 'form-control', prompt: '問わない' %>~
-        <%= f.select :height_lt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), class: 'form-control', prompt: '問わない' %>
+        <%= f.select :height_gt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}),{ prompt: '問わない'}, class: 'form-control' %>~
+        <%= f.select :height_lt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), { prompt: '問わない' }, class: 'form-control' %>
       </div>
     </div>
   </div>
@@ -81,7 +81,7 @@
     <div class="col-sm-6">
       <div class="form-group">
         <%= f.label :写真 %>
-        <%= f.select :marriage_eq, UserProfile::MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'} %>
+        <%= f.select :image1_start, { 'こだわらない' => nil, '有り' => 'thumb'}, {},{ class: 'form-control'} %>
       </div>
     </div>
   </div>
