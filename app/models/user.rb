@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :target_partnerships, :class_name => "Partnership", :foreign_key => 'target_id'
   # user_partnership
   has_many :user_partnerships, dependent: :destroy
+  # community
+  has_many :communities
 
 
 
