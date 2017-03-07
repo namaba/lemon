@@ -1,5 +1,19 @@
 <h1>show</h1>
+<%= @community.id %>
 <%= @community.name %>
 <%= @community.category %>
 <%= @community.introduce %>
 <%= image_tag @community.image.thumb %>
+
+<%= link_to 'トピック作成', new_topic_path(community_id: @community.id) %>
+
+<% @topics.each do |t| %>
+<div class="commu-container">
+  <%= link_to topic_path(t.id) do %>
+    <%= t.id %>
+    <%= t.title %>
+    <%= t.body %>
+    <%= t.user.name %>
+  <% end%>
+</div>
+<% end %>

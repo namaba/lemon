@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306123625) do
+ActiveRecord::Schema.define(version: 20170307043640) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(version: 20170306123625) do
   end
 
   add_index "partnerships", ["user_id"], name: "index_partnerships_on_user_id", using: :btree
+
+  create_table "topics", force: :cascade do |t|
+    t.integer  "community_id", limit: 4
+    t.integer  "user_id",      limit: 4
+    t.string   "title",        limit: 255,               null: false
+    t.text     "body",         limit: 65535
+    t.integer  "status",       limit: 4,     default: 1
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "topics", ["community_id"], name: "index_topics_on_community_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "user_partnerships", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
@@ -117,6 +130,8 @@ ActiveRecord::Schema.define(version: 20170306123625) do
   add_foreign_key "communities", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "partnerships", "users"
+  add_foreign_key "topics", "communities"
+  add_foreign_key "topics", "users"
   add_foreign_key "user_partnerships", "partnerships"
   add_foreign_key "user_partnerships", "users"
   add_foreign_key "user_profiles", "users"
