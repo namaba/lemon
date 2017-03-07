@@ -3,3 +3,22 @@
 <%= @topic.user.name %>
 <%= @topic.title %>
 <%= @topic.body %>
+
+
+<h2>chat</h2>
+<%= form_for(@topic_chat, url: chat_topic_path(@topic.id) ) do |f| %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+
+  <%= f.hidden_field :community_id, value: .id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit '保存', data: { confirm: 'この内容で保存してもいいですか', disable_with: '処理中...' } %>
+
+<% end %>
+
+<% @chats.each do |chat| %>
+  <%= chat.body %>
+<% end %>
+

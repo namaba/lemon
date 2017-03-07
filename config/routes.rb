@@ -16,7 +16,12 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:index, :show, :create]
     resources :communities, only: [:index, :show,:new, :create]
-    resources :topics
+    resources :topics do
+      member do
+        post 'chat',                to: 'topics#chat'
+      end
+    end
+
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
