@@ -17,9 +17,10 @@ class Guest::TopicsController < Guest
   end
 
   def create
+    raise @community.inspect
     @topic = @community.topics.build(topic_params)
     if @topic.save!
-      redirect_to @community, notice: "作成できました"
+      redirect_to @topic, notice: "作成できました"
     else
       redirect_to :back, notice: "作成できませんでした"
     end
