@@ -5,8 +5,12 @@
     <%= murmur.user.name %>
     <%= murmur.body %>
     <%= image_tag(murmur.image, size: '50') %>
-    <%= link_to '編集', edit_murmur_path(id: murmur) %>
-    <%= link_to '削除', murmur_path(id: murmur), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if current_user == murmur.user %>
+      <%= link_to '編集', edit_murmur_path(id: murmur) %>
+      <%= link_to '削除', murmur_path(id: murmur), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% else %>
+      <%= link_to 'コメントする', new_murmur_comment_path(id: murmur.id) %>
+    <% end %>
   <% end %>
   <%= link_to 'つぶやく', new_murmur_path %>
 </div>
