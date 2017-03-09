@@ -1,0 +1,12 @@
+つぶやき一覧
+
+<div class="container">
+  <% @murmurs.each do |murmur| %>
+    <%= murmur.user.name %>
+    <%= murmur.body %>
+    <%= image_tag(murmur.image, size: '50') %>
+    <%= link_to '編集', edit_murmur_path(id: murmur) %>
+    <%= link_to '削除', murmur_path(id: murmur), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <%= link_to 'つぶやく', new_murmur_path %>
+</div>

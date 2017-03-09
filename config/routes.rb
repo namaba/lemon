@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         post 'chat',                to: 'topics#chat'
       end
     end
+    resources :murmurs
 
   end
 
