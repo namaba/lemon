@@ -1,0 +1,14 @@
+<%= @murmur_comment.inspect %>
+<%= @murmur.inspect %>
+<%= form_for(@murmur_comment) do |f| %>
+  <%= f.label :comment, '投稿' %>
+  <%= f.text_area :comment %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :murmur_id, value: @murmur.id %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
