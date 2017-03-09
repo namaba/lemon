@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307080745) do
+ActiveRecord::Schema.define(version: 20170309072111) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
@@ -37,6 +37,30 @@ ActiveRecord::Schema.define(version: 20170307080745) do
   end
 
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "murmur_comments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "murmur_id",  limit: 4
+    t.string   "comment",    limit: 255
+    t.integer  "status",     limit: 4,   default: 1
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "murmur_comments", ["murmur_id"], name: "index_murmur_comments_on_murmur_id", using: :btree
+  add_index "murmur_comments", ["user_id"], name: "index_murmur_comments_on_user_id", using: :btree
+
+  create_table "murmurs", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.text     "body",          limit: 255
+    t.string   "image",         limit: 255
+    t.boolean  "comment_badge",             default: false
+    t.integer  "status",        limit: 4
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "murmurs", ["user_id"], name: "index_murmurs_on_user_id", using: :btree
 
   create_table "partnerships", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -144,6 +168,9 @@ ActiveRecord::Schema.define(version: 20170307080745) do
 
   add_foreign_key "communities", "users"
   add_foreign_key "likes", "users"
+  add_foreign_key "murmur_comments", "murmurs"
+  add_foreign_key "murmur_comments", "users"
+  add_foreign_key "murmurs", "users"
   add_foreign_key "partnerships", "users"
   add_foreign_key "topic_chats", "communities"
   add_foreign_key "topic_chats", "topics"

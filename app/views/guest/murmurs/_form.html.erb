@@ -1,0 +1,13 @@
+<%= form_for(@murmur) do |f| %>
+  <%= f.label :body, '投稿' %>
+  <%= f.text_area :body %>
+  <%= f.label :image, '画像' %>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

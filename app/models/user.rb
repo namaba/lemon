@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   has_many :user_partnerships, dependent: :destroy
   # community
   has_many :communities
+  # murmur
+  has_many :murmurs
+  # murmur_comment
+  has_many :murmur_comments
 
 
 
