@@ -2,7 +2,7 @@ class Guest::MessagesController < Guest
   before_action :set_user, only: [:show]
 
   def index
-
+    @like_users = User.like_me(current_user)
   end
 
   def show
