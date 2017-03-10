@@ -1,0 +1,10 @@
+h1
+  | コミュニティ
+= link_to 'コミュニティ作成', new_community_path
+- @communities.each do |community|
+  .commu-container
+    = link_to community_path(community.id) do
+      = community.name
+      = image_tag(community.image, size: '50')
+      = community.user.name
+      = community.introduce

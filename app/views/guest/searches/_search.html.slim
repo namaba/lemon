@@ -1,0 +1,59 @@
+= search_form_for(@q, url: searches_path, method: :get) do |f|
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :属性
+        = f.text_field :sex_eq, class: "form-control", placeholder: "部分一致"
+    .col-sm-6
+      .form-group
+        = f.label :身長
+        = f.select :height_gt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}),{ prompt: '問わない'}, class: 'form-control'
+        | ~ 
+        = f.select :height_lt, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), { prompt: '問わない' }, class: 'form-control'
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :居住地
+        = f.collection_select :address_eq, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
+    .col-sm-6
+      .form-group
+        = f.label :職業
+        = f.select :job_eq, UserProfile::JOB, {prompt:"選択してください"}, {class: 'form-control'}
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :年収
+        = f.select :income_gt, UserProfile::INCOME, {prompt:"選択してください"}, { class: 'form-control'}
+    .col-sm-6
+      .form-group
+        = f.label :スタイル
+        = f.select :style_eq, UserProfile::STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :お酒
+        = f.select :alcohol_eq, UserProfile::ALCOHOL, {prompt:"選択してください"}, { class: 'form-control'}
+    .col-sm-6
+      .form-group
+        = f.label :タバコ
+        = f.select :smoke_eq, UserProfile::SMOKE, {prompt:"選択してください"}, { class: 'form-control'}
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :目的
+        = f.select :purpose_eq, UserProfile::PURPOSE, {prompt:"選択してください"}, { class: 'form-control'}
+    .col-sm-6
+      .form-group
+        = f.label :結婚歴
+        = f.select :marriage_eq, UserProfile::MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :子供
+        = f.select :child_eq, UserProfile::CHILD, {prompt:"選択してください"}, { class: 'form-control'}
+    .col-sm-6
+      .form-group
+        = f.label :写真
+        = f.select :image1_start, { 'こだわらない' => nil, '有り' => 'thumb'}, {},{ class: 'form-control'}
+  = f.submit '検索', class: "btn btn-primary"
+  = link_to 'クリア', url_for, class: "btn btn-default"

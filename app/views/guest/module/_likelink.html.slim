@@ -1,0 +1,4 @@
+- if controller_name == 'searches'
+  = good(@user)
+- if controller_name == 'likes'
+  = link_to 'ありがとう', match_like_path(current_user, target: @user)
