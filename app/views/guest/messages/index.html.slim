@@ -1,5 +1,17 @@
-h1
-  | Guest::Messages#index
-- current_user.partnerships.each do |partnership|
-  = partnership.partner(current_user).inspect
-  = link_to 'プロフィール詳細',message_path(partnership.partner(current_user))
+.container
+  .row
+    .col-lg-12.col-md-12
+      h1
+        | Likes
+      - @like_users.each do |like_user|
+        = link_to like_path(like_user) do
+          = image_tag like_user.user_profile.image1.thumb
+          = like_user.id
+          = like_user.email
+        = link_to 'ありがとう', match_like_path(current_user, target: like_user)
+    .col-lg-12.col-md-12
+      h1
+        | messages
+      - current_user.partnerships.each do |partnership|
+        = partnership.partner(current_user).inspect
+        = link_to 'プロフィール詳細',message_path(partnership.partner(current_user))
