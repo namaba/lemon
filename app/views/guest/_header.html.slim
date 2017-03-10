@@ -1,0 +1,14 @@
+nav.global-navi
+  ul
+    li
+      = link_to 'さがす', searches_path
+    li
+      = link_to 'お相手からのいいね', likes_path
+    li
+      = link_to 'メッセージ', messages_path
+    li
+      = link_to 'コミュニティ', communities_path
+    li
+      = link_to 'つぶやき', murmurs_path
+    li
+      = link_to 'マイページ', user_path(current_user)

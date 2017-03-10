@@ -1,0 +1,15 @@
+h1
+  | show
+= @community.id
+= @community.name
+= @community.category
+= @community.introduce
+= image_tag @community.image.thumb
+= link_to 'トピック作成', new_topic_path(community_id: @community.id)
+- @topics.each do |t|
+  .commu-container
+    = link_to topic_path(t.id, community_id: @community.id) do
+      = t.id
+      = t.title
+      = t.body
+      = t.user.name

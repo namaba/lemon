@@ -1,0 +1,3 @@
+- unless resource.errors.empty?
+  script[type="text/javascript"]
+    |  <ruby code=" resource.errors.full_messages.each do |msg| "> toastr.error('<ruby code="= msg"></ruby>'); </ruby> 

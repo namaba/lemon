@@ -1,0 +1,19 @@
+button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sampleModal"]
+  |  検索 
+#sampleModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+        h4.modal-title
+          | 検索
+      .modal-body
+        = render 'search'
+- @user_profiles.each do |profile|
+  div
+    = link_to search_path(profile.user.id) do
+      = profile.user.id
+      = profile.user.email
+    = good(profile.user)

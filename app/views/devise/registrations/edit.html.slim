@@ -1,0 +1,28 @@
+= render 'partial/navbar'
+.container
+  .row
+    .col-md-3.row-space-4
+      = link_to "自分のプロフィールを確認する", user_path(current_user), class: "btn btn-default btn-full"
+    .col-md-9
+      .panel.panel-default
+        .panel-heading
+          | プロフィールを編集
+        .panel-body
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = render 'partial/deviseErrorMsg'
+            .form-group
+              = f.text_field :name, autofocus: true, :placeholder => "名前", :class => 'form-control'
+            .form-group
+              = f.email_field :email, :placeholder => "Email", :class => 'form-control'
+            .form-group
+              = f.label :新しいパスワード
+              i
+                | (変更しない場合は空欄で構いません)
+              br
+              = f.password_field :password, autocomplete: "off", :class => 'form-control'
+            .form-group
+              = f.label :新しいパスワードの確認
+              br
+              = f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control'
+            .actions
+              = f.submit "プロフィールを更新", :class => "btn btn-primary"
