@@ -36,7 +36,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :keep_releases, 5
 
 # rubyのバージョン
-set :rbenv_ruby, '2.3.1p112'
+set :rbenv_ruby, '2.3.1'
 
 namespace :deploy do
   desc 'Restart application'
