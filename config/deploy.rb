@@ -3,6 +3,7 @@ lock "3.7.2"
 
 set :application, "lemon"
 set :repo_url, "git@github.com:namaba/lemon.git"
+set :rbenv_path, '/home/your/.rbenv/'
 
 set :branch, "master"
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
