@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: lemon_production
-  username: lemon
-  password: <%= ENV['LEMON_DATABASE_PASSWORD'] %>
+  username: <%= Settings.database[:user_name] %>
+  password: <%= Settings.database[:password] %>
