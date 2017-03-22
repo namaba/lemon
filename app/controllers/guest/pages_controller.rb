@@ -1,5 +1,5 @@
 class Guest::PagesController < Guest
-
+  layout 'application'
 
   def index
   end
