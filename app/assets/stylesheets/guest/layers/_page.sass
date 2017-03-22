@@ -1,0 +1,40 @@
+.jumbotron
+  position: relative
+  background-image: image-url('top')
+  background-size: cover
+  height: 600px
+  // height: 400px
+.login
+  &-section
+    position: absolute
+    top: 0
+    right: 0
+    width: 250px
+    height: 100%
+    background: rgba( $red, 0.8 )
+    text-align: center
+    // padding-top: 80px
+  &_button
+    +fontsize(24)
+    padding: 15px 10px
+    display: block
+    background: $white
+    width: 80%
+    margin: 0 auto 20px
+    border-radius: 10px
+.logo
+  margin-top: 80px
+  margin-bottom: 50px
+.registration
+  &-box
+    position: absolute
+    top: 250px
+    left: 25%
+    width: 400px
+    height: 300px
+    background: rgba( $red, 0.5 )
+    border-radius: 10px
+  &-title
+    color: $white
+  &-btns
+    margin: 20px 0

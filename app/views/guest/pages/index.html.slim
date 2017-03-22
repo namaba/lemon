@@ -1,3 +1,23 @@
-.jumbotron
-  h1.display-3
-    | Hello, world!
+.container-fluid
+  .jumbotron
+    .login-section
+      = image_tag 'lemon_logo', :size => "200x100", class:'logo'
+      = link_to "Facebookログイン", user_facebook_omniauth_authorize_path, class: 'login_button'
+      = link_to "ログイン", new_user_session_path, class: 'login_button'
+    .row
+      .registration-box.text-center
+        .registration-title
+          h2 無料登録
+          p
+            | 無料登録完了後、コミュニティに参加し気になる人にいいね！を送りましょう♪
+        .gender-badges
+          = image_tag 'l'
+          = image_tag 'g'
+          = image_tag 'b'
+          = image_tag 't'
+          = image_tag 's'
+        .registration-btns
+          = link_to "Facebookログイン", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook'
+          = link_to "メールアドレスで登録", new_user_registration_path, class: 'btn btn-registration'
+
+
