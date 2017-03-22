@@ -54,5 +54,5 @@ staging:
 production:
   <<: *default
   database: lemon_production
-  username: <%= Settings.database[:user_name] %>
-  password: <%= Settings.database[:password] %>
+  # username: <%= Settings.database[:user_name] %>
+  # password: <%= Settings.database[:password] %>
