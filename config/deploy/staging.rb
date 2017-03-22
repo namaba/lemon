@@ -6,6 +6,9 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
+set :rails_env, 'staging'
+set :unicorn_rack_env, 'staging'
+set :log_level, :debug
 
 server '54.178.166.243', user: 'b-team', roles: %w{app} #serverのipとuser名は適宜
 set :ssh_options, keys: '~/.ssh/Lemon_TEST_aws_rsa' #ssh_keyの名前は適宜
