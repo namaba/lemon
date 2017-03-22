@@ -34,6 +34,15 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'omniauth-facebook'
 
+# Capistrano
+group :production, :staging do
+  gem 'unicorn'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
+end
 
 # toastr(flash)
 gem 'toastr-rails'
