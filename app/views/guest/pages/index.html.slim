@@ -5,7 +5,10 @@
   .jumbotron
     .login-section
       = image_tag 'lemon_logo', :size => "200x100", class:'logo'
-      = link_to "Facebookログイン", user_facebook_omniauth_authorize_path, class: 'login_button'
+      = link_to user_facebook_omniauth_authorize_path, class: 'login_button' do
+        i.fa.fa-facebook
+        | Facebookログイン
+      end
       = link_to "ログイン", new_user_session_path, class: 'login_button'
     .row
       .registration-box.text-center
@@ -20,6 +23,10 @@
           = image_tag 't'
           = image_tag 's'
         .registration-btns
-          = link_to "Facebookログイン", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook'
-          = link_to "メールアドレスで登録", new_user_registration_path, class: 'btn btn-registration'
+          = link_to user_facebook_omniauth_authorize_path, class: 'facebook_button' do
+            i.fa.fa-facebook
+            | Facebookログイン
+          small
+            | >facebookには一切投稿されません
+          = link_to "メールアドレスで登録", new_user_registration_path, class: 'registration_button'
 
