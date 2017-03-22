@@ -20,9 +20,6 @@ default: &default
 development:
   <<: *default
   database: lemon_development
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,16 +27,6 @@ development:
 test:
   <<: *default
   database: lemon_test
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-
-staging:
-  <<: *default
-  database: lemon_staging
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -63,8 +50,5 @@ staging:
 production:
   <<: *default
   database: lemon_production
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-  # username: <%= Settings.database[:user_name] %>
-  # password: <%= Settings.database[:password] %>
+  username: lemon
+  password: <%= ENV['LEMON_DATABASE_PASSWORD'] %>

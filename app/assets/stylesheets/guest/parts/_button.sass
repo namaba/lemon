@@ -1,0 +1,77 @@
+// デフォルトのボタンのスタイルをクリア
+button
+  background-color: transparent
+  border: none
+
+// input[type="button"],
+// input[type="submit"],
+// button
+//   -webkit-appearance: none
+
+%button
+  display: inline-block
+  line-height: 1
+  border: none
+  outline: none
+
+  &_large
+    +fontsize(18)
+    border-bottom-width: 4px
+    padding: 10px 20px
+
+  &_small
+    +fontsize($font-small)
+    border-bottom-width: 2px
+    padding: 4px 10px
+
+  &_default
+    color: #666
+    background: lighten($light-gray, 1%)
+    border-color: darken($light-gray, 20%)
+
+  &_primary
+    @extend %button
+    padding: 6px 12px
+    border: 1px solid darken($red, 10%)
+    background: $red
+    +prefix(border-radius, 3px)
+    +fontsize(16)
+    +link_block($white)
+    &:hover
+      cursor: pointer
+      background: lighten($green, 3%)
+
+  &_danger
+    color: $white
+    background: #ed5940
+    border-color: darken(#ed5940, 20%)
+    &:hover
+      color: $white
+      background: lighten(#ed5940, 3%)
+
+  &_black
+    @extend %button
+    background: $black
+    padding: 12px
+    text-align: center
+    +link_block($white)
+    +prefix(border-radius, 5px)
+    +fontsize($font-small)
+
+  &_red
+    @extend %button
+    background: $red
+    padding: 12px
+    text-align: center
+    +link_block($white)
+    +prefix(border-radius, 5px)
+    +fontsize($font-small)
+
+  &_white
+    @extend %button
+    background: $white
+    padding: 5px
+    text-align: center
+    +link_block($light-black)
+    +prefix(border-radius, 5px)
+    +fontsize($font-xsmall)
