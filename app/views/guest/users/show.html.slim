@@ -1,3 +1,4 @@
+= render 'partial/mypage_navbar'
 script[type="text/javascript"]
   |  $(function(){ <ruby code=" if !@user.email.blank? "> $("#ver-email").attr('class','vertification-checked'); </ruby> <ruby code=" if !@user.uid.blank? "> $("#ver-tel").attr('class','vertification-checked'); </ruby> <ruby code=" if @user.provider == "facebook" "> $("#ver-facebook").attr('class','vertification-checked'); </ruby> }) 
 .container
@@ -19,11 +20,11 @@ script[type="text/javascript"]
             |  facebook 
     .col-lg-9.col-md-8.col-sm-12
       li
-        = link_to "プロフィール編集", edit_user_registration_path
+        = button_to "プロフィール編集", edit_user_registration_path
       li
-        = link_to "プロフィール詳細編集", edit_user_path(@user.id)
+        = button_to "プロフィール詳細編集", edit_user_path(@user.id)
       li
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
+        = button_to "ログアウト", destroy_user_session_path, method: :delete
       h1
         | こんにちは
         = @user.name
