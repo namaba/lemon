@@ -1,33 +1,12 @@
-= render 'partial/mypage_navbar'
-script[type="text/javascript"]
-  |  $(function(){ <ruby code=" if !@user.email.blank? "> $("#ver-email").attr('class','vertification-checked'); </ruby> <ruby code=" if !@user.uid.blank? "> $("#ver-tel").attr('class','vertification-checked'); </ruby> <ruby code=" if @user.provider == "facebook" "> $("#ver-facebook").attr('class','vertification-checked'); </ruby> }) 
-.container
-  .row
-    .col-lg-3.col-md-4
-      .text-center
-        = image_tag @user.image, class: "img-circle", size: '200'
-      .panel.panel-default.hidden-xs.hidden-sm
-        .panel-heading
-          |  認証済みID 
-        .panel-body
-          #ver-email
-            |  メールアドレス 
-          br
-          #ver-tel
-            |  電話番号 
-          br
-          #ver-facebook
-            |  facebook 
-    .col-lg-9.col-md-8.col-sm-12
-      li
-        = button_to "プロフィール編集", edit_user_registration_path
-      li
-        = button_to "プロフィール詳細編集", edit_user_path(@user.id)
-      li
-        = button_to "ログアウト", destroy_user_session_path, method: :delete
-      h1
-        | こんにちは
-        = @user.name
-        | です！
-      p
-        | 自己紹介
+li
+  = button_to "プロフィール編集", edit_user_registration_path
+li
+  = button_to "プロフィール詳細編集", edit_user_path(@user.id)
+li
+  = button_to "ログアウト", destroy_user_session_path, method: :delete
+h1
+  | こんにちは
+  = @user.name
+  | です！
+p
+  | 自己紹介
