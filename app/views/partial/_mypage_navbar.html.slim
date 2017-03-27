@@ -24,7 +24,7 @@ nav.navbar.navbar-default
           li.dropdown
             a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
               - if current_user.provider
-                = image_tag current_user.image, class: "img-circle profile-0"
+                = image_tag current_user.image, class: "img-circle profile-0", size: '50'
                 = current_user.name
               - else
                 = current_user.email

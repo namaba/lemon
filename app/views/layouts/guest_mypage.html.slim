@@ -20,9 +20,17 @@ html
       #layout-alert
         - flash.each do |key, value|
           = content_tag(:div, value, class: "alert_#{key}")
-      // content
-      #layout_content
-        = yield
+      #layout_mypage
+        = image_tag 'premire_baner', size: '1130x160'
+        #layout_mypage_container
+          #layout_sidebar
+            - if yield(:sidebar).blank?
+              = render 'sidebar'
+            - else
+              = yield :sidebar
+          // content
+          #layout_profile_content
+            = yield
 
     // footer
     footer#layout_footer
