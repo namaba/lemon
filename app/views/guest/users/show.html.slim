@@ -1,12 +1,64 @@
-li
-  = button_to "プロフィール編集", edit_user_registration_path
-li
-  = button_to "プロフィール詳細編集", edit_user_path(@user.id)
-li
-  = button_to "ログアウト", destroy_user_session_path, method: :delete
-h1
-  | こんにちは
-  = @user.name
-  | です！
-p
-  | 自己紹介
+
+= image_tag 'premire_baner', size: '1130x160'
+.mypage_container
+  / mypage左サイド
+  = render 'sidebar'
+  / mypage右サイド
+  .mypage_content
+    .mypage_badges
+      = image_tag 'l'
+      = image_tag 'g'
+      = image_tag 'b'
+      = image_tag 't'
+      = image_tag 's'
+      = image_tag 's'
+    .mypage_profile_label
+      .edit_title = '自己紹介編集'
+      .edit_button = link_to '編集する',root_path, class: 'btn btn-default'
+    .mypage_profile_body
+      = @user.user_profile.introduce
+    .mypage_profile_label
+      .edit_title = 'プロフィール編集'
+    .mypage_profile_sub_label
+      .edit_title = '基本プロフィール'
+      .edit_button = link_to '編集する', edit_user_registration_path, class: 'btn btn-default'
+    .mypage_profile_sub_label
+      .edit_title = '詳細プロフィール'
+      .edit_button = link_to '編集する', edit_user_path(@user.id), class: 'btn btn-default'
+    .mypage_profile_label
+      .edit_title = '参加中のコミュニティ'
+    .mypage_profile_body
+      .mypage_user_communities
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+        = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+    .mypage_profile_label
+      .edit_title = '自分の投稿'
+      .edit_button = link_to '投稿する',new_murmur_path, class: 'btn btn-danger'
+    .mypage_profile_body
+      = render @user.murmurs
+    li
+      = button_to "プロフィール編集", edit_user_registration_path
+    li
+      = button_to "プロフィール詳細編集", edit_user_path(@user.id)
+    li
+      = button_to "ログアウト", destroy_user_session_path, method: :delete
+    h1
+      | こんにちは
+      = @user.name
+      | です！
+    p
+      | 自己紹介
