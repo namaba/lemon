@@ -1,0 +1,24 @@
+.userSignature
+  +display_box(center)
+  .user
+    &-image
+      overflow: hidden
+      margin-right: 10px
+      +circle(32px, #fff)
+      img
+        width: 100%
+    &-info
+      +fontsize($font-small)
+    &_name
+      display: inline
+      margin-right: 20px
+      font-weight: bold
+      font-size: $font-xxlarge
+      +responsive(smartphone)
+        font-weight: normal
+      small
+        margin-left: 1em
+        +fontsize($font-xsmall)
+    &_age, &_address
+      display: inline
+      margin-right: 10px

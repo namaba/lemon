@@ -1,26 +1,24 @@
 ul
   padding: 0
 .murmur
-  &_profile_section
+  &_panel
     padding: 10px
-    border: 2px solid $red
-    border-radius: 5px
   &_user
+    position: relative
     margin-top: 20px
     display: flex
-    li
-      list-style: none
-      margin-right: 10px
-      margin-top: 10px
-    &_name
-      font-weight: bold
-      +fontsize(22)
-  &_list
+  &_datetime
+    position: absolute
+    bottom: 15%
+    left: 21%
+  &_body
+    padding-top: 20px
+    width: 90%
+    margin: 0 auto
+  &_image
+    margin-top: 10px
 
-  &_title
-    background: $gray
-    padding: 15px
-    +fontsize(26)
+.user
 
 
 

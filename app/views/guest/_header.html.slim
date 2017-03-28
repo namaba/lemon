@@ -6,6 +6,8 @@
         = link_to root_path
           = image_tag 'lemon_logo', :size => "30"
           small = '性別にとらわれない健全な交流の場'
+      .navbar_logout_button
+        = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger'
 
   .navbar-sub
     .navbar-body
