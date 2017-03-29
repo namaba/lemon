@@ -50,18 +50,9 @@ a
     @media (max-width: $screen-max-tablet)
       width: 100%
       margin: 0 0 10px
-  &_mypage_container
+  &_flex
     display: flex
     padding-top: 30px
-  &_profile_content
-    @media (min-width: $screen-max-tablet)
-      // float: left
-      width: 60%
-      margin: 20px
-    // SP
-    @media (max-width: $screen-max-tablet)
-      width: 100%
-      margin: 0 0 10px
   &_sidebar
     // PC
     @media (min-width: $screen-max-tablet)
@@ -70,7 +61,15 @@ a
     // SP
     @media (max-width: $screen-max-tablet)
       width: 100%
-
+  &_right
+    @media (min-width: $screen-max-tablet)
+      // float: left
+      width: 60%
+      margin-left: 20px
+    // SP
+    @media (max-width: $screen-max-tablet)
+      width: 100%
+      margin: 0 0 10px
   &_footer
     border-top: 1px solid #ccc
     background: darken($light-gray, 4%)

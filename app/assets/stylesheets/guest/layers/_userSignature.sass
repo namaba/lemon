@@ -1,5 +1,6 @@
 .userSignature
   +display_box(center)
+  width: 100%
   .user
     &-image
       overflow: hidden
@@ -7,7 +8,8 @@
       +circle(32px, #fff)
       img
         width: 100%
-    &-info
+    &_info
+      margin-left: 20px
       +fontsize($font-small)
     &_name
       display: inline
@@ -22,3 +24,5 @@
     &_age, &_address
       display: inline
       margin-right: 10px
+      font-size: 14px
+
