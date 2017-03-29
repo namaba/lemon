@@ -1,0 +1,11 @@
+#layout_sidebar
+  .murmur_user
+    .userSignature
+      .user_image
+        = image_tag current_user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+      .user_info
+        .user_name = current_user.name
+        .user_age = "#{current_user.user_profile.age}歳"
+        .user_address = current_user.user_profile.prefecture.name
+    .murmur_user_murmurList
+      = link_to '自分の投稿一覧'
