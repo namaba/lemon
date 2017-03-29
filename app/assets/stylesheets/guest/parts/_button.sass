@@ -39,7 +39,7 @@ button
     +link_block($white)
     &:hover
       cursor: pointer
-      background: lighten($green, 3%)
+      background: lighten($red, 10%)
 
   &_danger
     color: $white
@@ -75,3 +75,6 @@ button
     +link_block($light-black)
     +prefix(border-radius, 5px)
     +fontsize($font-xsmall)
+
+  &_preview
+    @extend %button

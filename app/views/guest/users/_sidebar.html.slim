@@ -1,10 +1,10 @@
 #layout_sidebar
   .sidebar
-    // Facebook
-    h4 プロフィール
-    / TODO ボタン作成
-    = link_to '相手から見た自分のプロフィールを確認'
     section.sidebar_section
+      // Facebook
+      h4.sidebar_title プロフィール
+      / TODO ボタン作成
+      = link_to '相手から見た自分のプロフィールを確認', root_path, class: 'sidebar_preview_button'
       / プロフィール写真
       .sidebar_image
         = image_tag @user.image, class: "img-radius", size: '400' if @user.image?

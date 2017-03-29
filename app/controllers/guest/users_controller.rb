@@ -1,6 +1,5 @@
 class Guest::UsersController < Guest
   before_action :set_user, only: [:edit, :update]
-  # layout 'guest_mypage'
 
   def show
     @user = User.find(params[:id])
