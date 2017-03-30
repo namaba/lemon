@@ -1,58 +1,57 @@
-#layout_sidebar
-  .sidebar
-    section.sidebar_section
-      // Facebook
-      h4.sidebar_title プロフィール
-      / TODO ボタン作成
-      = link_to '相手から見た自分のプロフィールを確認', root_path, class: 'sidebar_preview_button'
-      / プロフィール写真
-      .sidebar_image
-        = image_tag @user.image, class: "img-radius", size: '400' if @user.image?
-        .sidebar_badge
+.sidebar
+  section.sidebar_section
+    // Facebook
+    h4.sidebar_title プロフィール
+    / TODO ボタン作成
+    = link_to '相手から見た自分のプロフィールを確認', user_preview_path(current_user), class: 'sidebar_preview_button'
+    / プロフィール写真
+    .sidebar_image
+      = image_tag @user.image, class: "img-radius", size: '400' if @user.image?
+      .sidebar_badge
+        = image_tag 'l', class: "img-badge"
+        - unless @user.user_profile.play_style.blank?
           = image_tag 'l', class: "img-badge"
-          - unless @user.user_profile.play_style.blank?
-            = image_tag 'l', class: "img-badge"
-      / ユーザー情報
-      ul.sidebar_user
-        li.sidebar_user_name = @user.name if @user.name?
-        li.sidebar_user_age = "#{@user.user_profile.age}歳" if @user.user_profile.birthday?
-        li.sidebar_user_address = @user.user_profile.prefecture.name if @user.user_profile.address?
+    / ユーザー情報
+    ul.sidebar_user
+      li.sidebar_user_name = @user.name if @user.name?
+      li.sidebar_user_age = "#{@user.user_profile.age}歳" if @user.user_profile.birthday?
+      li.sidebar_user_address = @user.user_profile.prefecture.name if @user.user_profile.address?
 
-      / サブ写真
-      .sidebar_sub_image
-        .sidebar_sub_title
-          = image_tag 'l', class: 'img-label'
-          h5 サブ写真追加
-        .sidebar_sub_images
-          = image_tag @user.user_profile.image1, class: "img-radius", size: '80'
-          = image_tag @user.user_profile.image2, class: "img-radius", size: '80'
-          = image_tag @user.user_profile.image3, class: "img-radius", size: '80'
-          = image_tag 'add_badge', size: '80'
-      / ユーザーステータス
-      .sidebar_status
-        .sidebar_status_section
-          .status_title_plan = '会員ステータス'
-          .status_body_plan
-            = '無料会員'
-            br
-            = '(年齢未確認)'
-            .status_button
-              = link_to 'プラン変更'
-        .sidebar_status_section
-          .status_title_goods = '残いいね数'
-          .status_body_plan
-            - if @user.user_profile.good_count
-                = @user.user_profile.good_count
-            - else
-                = '0'
-            .status_button
-              = link_to 'プラン変更'
-        .sidebar_status_section
-          .status_title_coins = '残ポイント数'
-          .status_body_plan
-            - if @user.user_profile.coins_count
-                = @user.user_profile.coins_count
-            - else
-                = '0'
-            .status_button
-              = link_to 'プラン変更'
+    / サブ写真
+    .sidebar_sub_image
+      .sidebar_sub_title
+        = image_tag 'l', class: 'img-label'
+        h5 サブ写真追加
+      .sidebar_sub_images
+        = image_tag @user.user_profile.image1, class: "img-radius", size: '80'
+        = image_tag @user.user_profile.image2, class: "img-radius", size: '80'
+        = image_tag @user.user_profile.image3, class: "img-radius", size: '80'
+        = image_tag 'add_badge', size: '80'
+    / ユーザーステータス
+    .sidebar_status
+      .sidebar_status_section
+        .status_title_plan = '会員ステータス'
+        .status_body_plan
+          = '無料会員'
+          br
+          = '(年齢未確認)'
+          .status_button
+            = link_to 'プラン変更'
+      .sidebar_status_section
+        .status_title_goods = '残いいね数'
+        .status_body_plan
+          - if @user.user_profile.good_count
+              = @user.user_profile.good_count
+          - else
+              = '0'
+          .status_button
+            = link_to 'プラン変更'
+      .sidebar_status_section
+        .status_title_coins = '残ポイント数'
+        .status_body_plan
+          - if @user.user_profile.coins_count
+              = @user.user_profile.coins_count
+          - else
+              = '0'
+          .status_button
+            = link_to 'プラン変更'
