@@ -1,0 +1,35 @@
+.preview_user
+  .main, .main li
+    margin: 0
+    padding: 0
+    list-style: none
+  .main
+    margin-bottom: 5px
+  .main li
+    width: 400px
+    height: 400px
+    overflow: hidden
+  .main li.item2, .main li.item3, .main li.item4
+    display: none
+  .main li:hover img
+    opacity: 0.8
+    filter: alpha(opacity=80)
+    -ms-filter: "alpha(opacity=80)"
+  .thumb, .thumb li
+    width: 100%
+    height: auto
+  .thumb
+    display: flex
+    justify-content: space-between
+  .thumb li
+    width: 22%
+    height: auto
+    overflow: hidden
+    cursor: pointer
+    vertical-align: top
+    margin-bottom: 4px
+  .thumb li img
+    width: 100%
+    opacity: 0.8
+    filter: alpha(opacity=80)
+    -ms-filter: "alpha(opacity=80)"

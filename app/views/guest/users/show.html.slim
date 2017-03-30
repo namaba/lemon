@@ -1,17 +1,15 @@
-
-= image_tag 'premire_baner', width: '100%', class: 'baner-image'
+.banner-layout
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
 #layout_flex
   / mypage左サイド
-  = render 'sidebar'
+  #layout_sidebar
+    = render 'sidebar'
   / mypage右サイド
   #layout_right
     .mypage_badges
-      = image_tag 'l'
-      = image_tag 'g'
-      = image_tag 'b'
-      = image_tag 't'
-      = image_tag 's'
-      = image_tag 's'
+      - @badges.each do |b|
+        = image_tag "sex_badge_#{b}"
+
     / TODO: ゲージ作成
     .mypage_gage
 

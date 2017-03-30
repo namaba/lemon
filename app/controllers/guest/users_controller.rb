@@ -3,6 +3,7 @@ class Guest::UsersController < Guest
 
   def show
     @user = User.find(params[:id])
+    @badges = [ "l", "g", "b", "t", "s", "o" ]
   end
 
   def edit
