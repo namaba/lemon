@@ -1,0 +1,51 @@
+.mypage
+  &_badges
+    text-align: right
+    margin-bottom: 24px
+    img
+      margin-left: 5px
+  &_gage_panel
+    display: flex
+    justify-content: space-between
+    width: 100%
+    margin-bottom: 30px
+    border: 2px solid $red
+    border-radius: 5px
+    padding: 16px
+  &_gage_bar
+    width: 65%
+    .progressbar
+      background-color: $red
+      // border-radius: 5px
+  &_profile_label
+    background-color: $light-gray
+    padding: 10px 30px 10px 30px
+    overflow: hidden
+    .edit_title
+      float: left
+      margin-top: 10px
+    .edit_button
+      float: right
+  &_profile_sub_label
+    @extend .mypage_profile_label
+    background-color: $white
+    border-bottom: 1px solid $light-gray
+    .edit_title
+      float: left
+      margin-top: 10px
+    .edit_button
+      float: right
+  &_profile_body
+    padding: 10px
+  &_user_communities
+    .img-radius
+      border: 2px solid $red
+      border-radius: 5px
+      -webkit-border-radius: 5px
+      -moz-border-radius: 5px
+    img
+      margin: 5px 8px
+
+
+
+

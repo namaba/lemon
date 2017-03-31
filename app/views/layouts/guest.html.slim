@@ -5,16 +5,41 @@ html
       | Lemon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"]
+    = stylesheet_link_tag "http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css"
+    = stylesheet_link_tag 'https://www.w3schools.com/w3css/4/w3.css'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    header
-      - if yield(:header).empty?
-        = render 'header'
+    // container
+
+    #layout_container
+      // header
+      header#layout_header
+        - if yield(:header).blank?
+          = render 'header'
+        - else
+          = yield :header
+      #layout-alert
+        - flash.each do |key, value|
+          = content_tag(:div, value, class: "alert_#{key}")
+      // content
+      #layout_content
+        = yield
+
+    // footer
+    footer#layout_footer
+      // footer
+      - if yield(:footer).blank?
+        / = render 'footer'
       - else
-        = yield :header
-    .container
-      = yield
-    - unless flash.empty?
-      script[type="text/javascript"]
-        |  <ruby code=" flash.each do |f| "> <ruby code=" type = f[0].to_s.gsub('alert','error').gsub('notice','info')"></ruby> toastr['<ruby code="= type"></ruby>']('<ruby code="= f[1]"></ruby>'); </ruby>
+        = yield :footer
+
+
+    #fb-root
+
+
+
+  = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.2.6/js/swiper.min.js'
+  = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js'
+  = javascript_include_tag 'guest'
+  = content_for :js

@@ -1,0 +1,95 @@
+.sidebar
+  +fontsize($font-small)
+  &_title
+    margin-left: 30px
+    margin-bottom: 30px
+  &_preview_button
+    @extend %button_small
+    @extend %button_primary
+    font-size: 18px
+    padding: 20px 35px
+    border-radius: 10px
+    margin-bottom: 30px
+  &_image
+    position: relative
+    .img-radius
+      border: 2px solid $red
+      border-radius: 20px
+      -webkit-border-radius: 20px
+      -moz-border-radius: 20px
+  &_badge
+    position: absolute
+    bottom: 20px
+    right: 10px
+    .img-badge
+      margin-right: 10px
+  &_user
+    display: flex
+    li
+      list-style: none
+      margin-right: 10px
+      margin-top: 10px
+      font-size: 18px
+    &_name
+      font-weight: bold
+    &_age
+      margin-left: 20px
+  &_sub_image
+    .img-label
+      display: inline-block
+    h5
+      display: inline
+    .sidebar_sub_images
+      display: flex
+      justify-content: space-between
+      padding: 10px
+      .img-radius
+        border: 2px solid $red
+        border-radius: 5px
+        -webkit-border-radius: 5px
+        -moz-border-radius: 5px
+  &_status
+    display: flex
+    justify-content: space-between
+    background-color: $light-gray
+    width: 400px
+    height: 200px
+    padding: 15px
+    &_section
+      position: relative
+      background-color: $white
+      width: 30%
+      height: 140px
+      border-radius: 5px
+      .status_title
+        padding: 5px
+        color: $white
+        border-radius: 5px 5px 0 0
+        font-size: 14px
+        text-align: center
+        &_plan
+          @extend .status_title
+          background-color: $green
+        &_goods
+          @extend .status_title
+          background-color: $pink
+        &_coins
+          @extend .status_title
+          background-color: $yellow
+      .status_body
+        text-align: center
+        padding-top: 20px
+        font-size: 14px
+        &_plan
+          @extend .status_body
+        .status_button
+          position: absolute
+          bottom: 10%
+          left: 8%
+          background-color: $light-gray
+          width: 85%
+          border-radius: 5px
+          padding: 3px 10px
+
+
+

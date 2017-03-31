@@ -1,0 +1,27 @@
+section.murmur_panel
+  .murmur_contributor
+    .userSignature
+      .user_image
+        = image_tag murmur.user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+      .user_info
+        .user_name = murmur.user.name
+        .user_age = "#{murmur.user.user_profile.age}歳"
+        .user_address = murmur.user.user_profile.prefecture.name
+    .murmur_datetime
+      = murmur.created_at.strftime('%Y年%m月%d日')
+  .murmur_panel_body
+    = murmur.body
+    - if murmur.image?
+      .murmur_image
+        = image_tag murmur.image, width: '500'
+  .murmur_panel_footer
+    .murmur_smile
+      = image_tag 'smile', width: '50'
+      = 'スマイル'
+    .murmur_items
+      - if current_user == murmur.user
+        = link_to '編集', edit_murmur_path(id: murmur)
+        = link_to '削除', murmur_path(id: murmur), method: :delete, data: { confirm: 'Are you sure?' }
+      - else
+        = link_to 'コメントする', new_murmur_comment_path(id: murmur.id)
+hr

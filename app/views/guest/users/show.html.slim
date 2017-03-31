@@ -1,32 +1,64 @@
-script[type="text/javascript"]
-  |  $(function(){ <ruby code=" if !@user.email.blank? "> $("#ver-email").attr('class','vertification-checked'); </ruby> <ruby code=" if !@user.uid.blank? "> $("#ver-tel").attr('class','vertification-checked'); </ruby> <ruby code=" if @user.provider == "facebook" "> $("#ver-facebook").attr('class','vertification-checked'); </ruby> }) 
-.container
-  .row
-    .col-lg-3.col-md-4
-      .text-center
-        = image_tag @user.image, class: "img-circle", size: '200'
-      .panel.panel-default.hidden-xs.hidden-sm
-        .panel-heading
-          |  認証済みID 
-        .panel-body
-          #ver-email
-            |  メールアドレス 
-          br
-          #ver-tel
-            |  電話番号 
-          br
-          #ver-facebook
-            |  facebook 
-    .col-lg-9.col-md-8.col-sm-12
-      li
-        = link_to "プロフィール編集", edit_user_registration_path
-      li
-        = link_to "プロフィール詳細編集", edit_user_path(@user.id)
-      li
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-      h1
-        | こんにちは
-        = @user.name
-        | です！
-      p
-        | 自己紹介
+.banner-layout
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+#layout_flex
+  / mypage左サイド
+  #layout_sidebar
+    = render 'sidebar'
+  / mypage右サイド
+  #layout_right
+    .mypage_badges
+      - @badges.each do |b|
+        = image_tag "sex_badge_#{b}"
+
+    / TODO: ゲージ作成
+    .mypage_gage_panel
+      .mypage_gage_title = 'プロフィール入力率'
+      .mypage_gage_bar.w3-border.w3-round-large
+        .progressbar.w3-round-large style="height:18px; width:#{@percent}%"
+      .mypage_gage_percent = "#{@percent}%"
+
+
+    .mypage_profile_section
+      .mypage_profile_label
+        .edit_title = '自己紹介編集'
+        .edit_button = link_to '編集する',root_path, class: 'btn btn-default'
+      .mypage_profile_body
+        = @user.user_profile.introduce
+    .mypage_profile_section
+      .mypage_profile_label
+        .edit_title = 'プロフィール編集'
+      .mypage_profile_sub_label
+        .edit_title = '基本プロフィール'
+        .edit_button = link_to '編集する', edit_user_registration_path, class: 'btn btn-default'
+      .mypage_profile_sub_label
+        .edit_title = '詳細プロフィール'
+        .edit_button = link_to '編集する', edit_user_path(@user.id), class: 'btn btn-default'
+    .mypage_profile_section
+      .mypage_profile_label
+        .edit_title = '参加中のコミュニティ'
+      .mypage_profile_body
+        .mypage_user_communities
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+    .mypage_profile_section
+      .mypage_profile_label
+        .edit_title = '自分の投稿'
+        .edit_button = link_to '投稿する',new_murmur_path, class: 'btn btn-danger'
+      .mypage_profile_body
+        = render @user.murmurs
+
+

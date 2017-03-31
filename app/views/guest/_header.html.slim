@@ -1,13 +1,23 @@
-nav.guest_header
-  ul
-    li
-      = link_to 'さがす', searches_path
-    li
-      = link_to 'メッセージ', messages_path
-    li
-      = link_to 'コミュニティ', communities_path
-    li
-      = link_to 'つぶやき', murmurs_path
-    li
-      = link_to 'マイページ', user_path(current_user)
+
+.navbar style="margin-bottom:0"
+  .navbar-main
+    .navbar-body
+      .navbar_site_title
+        = link_to root_path
+          = image_tag 'lemon_logo', :size => "30"
+          small = '性別にとらわれない健全な交流の場'
+      .navbar_logout_button
+        = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+
+  .navbar-sub
+    .navbar-body
+      ul.navbar-content
+        li = link_to "さがす", searches_path
+        li = link_to "いいね", likes_path
+        li = link_to 'コミュニティ', communities_path
+        li = link_to 'つぶやき', murmurs_path
+        li = link_to "マイページ", user_path(current_user)
+
+  / #sidemenu-button = fa_icon 'bars'
+
 
