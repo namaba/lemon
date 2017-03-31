@@ -8,9 +8,10 @@
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 .navbar
+  @media (min-width: $screen-max-tablet)
+    margin-bottom: 0
   +responsive(smartphone)
     position: relative
-    margin-bottom: 0
   &-main
     padding: 10px 0
     border-bottom: 1px solid $gray
