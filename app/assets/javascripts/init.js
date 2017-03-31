@@ -6,3 +6,13 @@ $(function(){
       $('.item' + num).fadeIn(); //クリックしたサムネイルに対応するメイン画像を表示
   });
 });
+
+
+$(function() {
+  // 2プログレスバーを生成
+  $('#progress').progressbar({
+    value: 37,
+    max: 150
+  });
+});
+

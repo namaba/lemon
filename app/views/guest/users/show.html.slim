@@ -11,7 +11,12 @@
         = image_tag "sex_badge_#{b}"
 
     / TODO: ゲージ作成
-    .mypage_gage
+    .mypage_gage_panel
+      .mypage_gage_title = 'プロフィール入力率'
+      .mypage_gage_bar.w3-border.w3-round-large
+        .progressbar.w3-round-large style="height:18px; width:50%"
+      .mypage_gage_percent = '50%'
+
 
     .mypage_profile_section
       .mypage_profile_label
@@ -55,4 +60,13 @@
         .edit_button = link_to '投稿する',new_murmur_path, class: 'btn btn-danger'
       .mypage_profile_body
         = render @user.murmurs
+
+javascript:
+  $(function() {
+  // 2プログレスバーを生成
+  $('#progress').progressbar({
+    value: 37,
+    max: 150
+    });
+  });
 
