@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    title
+      | Lemon
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"]
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    // container
+
+    #layout_container
+      // header
+      header#layout_header
+        - if yield(:header).blank?
+          = render 'header'
+        - else
+          = yield :header
+      #layout-alert
+        - flash.each do |key, value|
+          = content_tag(:div, value, class: "alert_#{key}")
+      #layout_mypage
+        = image_tag 'premire_baner', size: '1130x160'
+        #layout_mypage_container
+          #layout_sidebar
+            - if yield(:sidebar).blank?
+              = render 'sidebar'
+            - else
+              = yield :sidebar
+          // content
+          #layout_profile_content
+            = yield
+
+    // footer
+    footer#layout_footer
+      // footer
+      - if yield(:footer).blank?
+        / = render 'footer'
+      - else
+        = yield :footer
+
+
+    #fb-root
+
+
+
+  = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.2.6/js/swiper.min.js'
+  = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js'
+  = javascript_include_tag 'guest'
+  = content_for :js
