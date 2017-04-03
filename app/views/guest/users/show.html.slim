@@ -14,8 +14,8 @@
     .mypage_gage_panel
       .mypage_gage_title = 'プロフィール入力率'
       .mypage_gage_bar.w3-border.w3-round-large
-        .progressbar.w3-round-large style="height:18px; width:50%"
-      .mypage_gage_percent = '50%'
+        .progressbar.w3-round-large style="height:18px; width:#{@percent}%"
+      .mypage_gage_percent = "#{@percent}%"
 
 
     .mypage_profile_section
@@ -61,12 +61,4 @@
       .mypage_profile_body
         = render @user.murmurs
 
-javascript:
-  $(function() {
-  // 2プログレスバーを生成
-  $('#progress').progressbar({
-    value: 37,
-    max: 150
-    });
-  });
 
