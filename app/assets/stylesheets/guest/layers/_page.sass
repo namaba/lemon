@@ -28,7 +28,7 @@
 .registration
   &-box
     position: absolute
-    top: 250px
+    top: 220px
     left: 25%
     width: 400px
     height: 350px
@@ -50,6 +50,10 @@
     background: #FC8487
     border: 2px solid $white
     border-radius: 10px
+    &:hover
+      color: $white
+      background: lighten(#FC8487, 10%)
+      text-decoration: none
 .facebook_button
   +fontsize(24)
   margin: 0 auto
@@ -60,6 +64,10 @@
   background: #354E90
   border: 2px solid $white
   border-radius: 10px
+  &:hover
+    color: $white
+    background: lighten(#354E90, 10%)
+    text-decoration: none
 .thanks_button
   +fontsize(24)
   margin: 0 auto

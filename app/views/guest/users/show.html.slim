@@ -17,11 +17,10 @@
         .progressbar.w3-round-large style="height:18px; width:#{@percent}%"
       .mypage_gage_percent = "#{@percent}%"
 
-
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自己紹介編集'
-        .edit_button = link_to '編集する',root_path, class: 'btn btn-default'
+        .edit_button.btn.btn-default.btns data-tgt="wd1"  編集する
       .mypage_profile_body
         = @user.user_profile.introduce
     .mypage_profile_section
@@ -29,10 +28,12 @@
         .edit_title = 'プロフィール編集'
       .mypage_profile_sub_label
         .edit_title = '基本プロフィール'
-        .edit_button = link_to '編集する', edit_user_registration_path, class: 'btn btn-default'
+        .edit_button.btn.btn-default.btns data-tgt="wd2"  編集する
       .mypage_profile_sub_label
         .edit_title = '詳細プロフィール'
-        .edit_button = link_to '編集する', edit_user_path(@user.id), class: 'btn btn-default'
+        .edit_button.btn.btn-default.btns data-tgt="wd3"  編集する
+        = render 'modal'
+
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '参加中のコミュニティ'
