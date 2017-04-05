@@ -7,8 +7,9 @@
   &_body
     padding: 10px
     &_title
-      color: #B4479B
+      color: $pink
       padding: 20px 0
+      font-weight: bold
   &_sub_body
     table
       width: 100%
@@ -17,3 +18,9 @@
       border-bottom: 1px solid $light-gray
     th, td
       padding: 10px 0
+      +fontsize($font-large)
+    th
+      font-weight: inherit
+      color: #6E6E6E
+    td
+      color: $pink
