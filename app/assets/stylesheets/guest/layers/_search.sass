@@ -1,51 +1,28 @@
+// module読み込まれたら_card.sassに移す
 .card
-  margin: 30px auto
-  width: 250px
-  background: #fff
-  border-radius: 10px
-  border-color: #b30a2e
-  box-shadow: 0 2px 5px #ccc
-
-.card-img
-  border-radius: 5px 5px 0 0
-  max-width: 100%
-  height: auto
-
-.card-content
-  padding: 0px
-
-.card-title
-  font-size: 17px
-  margin-bottom: 20px
-  text-align: left
-  color: #43002f
-  background: #ececec
-
-.card-text
-  color: #777
-  font-size: 14px
-  line-height: 1.5
-
-.card-link
-  text-align: center
-  border-top: 1px solid #eee
-  padding: 20px
-
-.card-link a
-  text-decoration: none
-  color: #0bd
-  margin: 0 10px
-
-.card-link a:hover
-  color: #0090aa
-
-.like_button
-  +fontsize(24)
-  margin: 20px auto
-  padding: 13px 10px
-  display: block
-  width: 91%
-  color: $white
-  background: #b30a2e
-  border: 2px solid $white
-  border-radius: 10px
+  &_content
+    float: left
+    width: 240px
+    margin: 20px 8px
+    border: 2px solid $red
+    border-radius: 10px
+  &_image
+    .img-radius
+      border-radius: 10px 10px 0 0
+  &_body
+    +display_box(center)
+    width: 100%
+    padding: 4px 10px
+    background-color: $light-gray
+  &_sex, &_age, &_address, &_name
+    margin-right: 5px
+  &_footer
+    padding: 10px 0
+  &_good
+    @extend %button
+    @extend %button_red
+    @extend %button_large
+    display: block
+    font-size: 18px
+    width: 75%
+    margin: 0 auto

@@ -1,29 +1,29 @@
-.container
-  button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sampleModal"]
-    |  検索
-  #sampleModal.modal.fade[tabindex="-1"]
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close[type="button" data-dismiss="modal"]
-            span
-              | ×
-          h3.modal-title
-            | 検索
-        .modal-body
-          = render 'search'
-  - @user_profiles.each do |profile|
-    div
-      = link_to search_path(profile.user.id) do
-        = profile.user.id
-        = profile.user.email
-      = good(profile.user)
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+/ button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sampleModal"]
+/   |  検索
+/ #sampleModal.modal.fade[tabindex="-1"]
+/   .modal-dialog
+/     .modal-content
+/       .modal-header
+/         button.close[type="button" data-dismiss="modal"]
+/           span
+/             | ×
+/         h3.modal-title
+/           | 検索
+/       .modal-body
+/         = render 'search'
 
-.container-sub
-  .row
-    .card
-      img.card-img alt="" src="images/bear.jpg" /
-      .card-content
-        h1.card-title 属性　ユーザ名　年齢
-        = button_to "", class: 'thanks_button'
-          | いいね
+
+.panelList_section
+  - @user_profiles.each do |user|
+    .card_content
+      .card_image
+        = image_tag user.image1, size: '236', class: 'img-radius'
+      .card_body
+        .card_sex = image_tag "sex_badge_#{user.sex}"
+        .card_age = "#{user.age}歳"
+        .card_address = user.prefecture.name
+        .card_name = user.user.name
+      .card_footer
+        .card_good = good(user.user)
