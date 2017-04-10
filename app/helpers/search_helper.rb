@@ -7,4 +7,12 @@ module SearchHelper
       'イイね済み'
     end
   end
+
+  def user_image(image)
+    if image.present?
+      image_tag image, class: "img-radius"
+    else
+      image_tag 'default', class: "img-radius"
+    end
+  end
 end

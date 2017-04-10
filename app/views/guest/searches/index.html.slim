@@ -17,13 +17,14 @@
 
 .panelList_section
   - @user_profiles.each do |user|
-    .card_content
-      .card_image
-        = image_tag user.image1, size: '236', class: 'img-radius'
-      .card_body
-        .card_sex = image_tag "sex_badge_#{user.sex}"
-        .card_age = "#{user.age}歳"
-        .card_address = user.prefecture.name
-        .card_name = user.user.name
-      .card_footer
-        .card_good = good(user.user)
+    = link_to user_preview_path(user) do
+      .card_content
+        .card_image
+          = image_tag user.image1, size: '236', class: 'img-radius'
+        .card_body
+          .card_sex = image_tag "sex_badge_#{user.sex}"
+          .card_age = "#{user.age}歳"
+          .card_address = user.prefecture.name
+          .card_name = user.user.name
+        .card_footer
+          .card_good = good(user.user)

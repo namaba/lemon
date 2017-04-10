@@ -3,49 +3,44 @@
   #layout_sidebar
     .preview_user
       ul.main
-        li.item1
-          = image_tag current_user.image
+        / TODO: あとでimageとimage1の順番変更
+        li.item1.sidebar_image
+          = image_tag @user.user_profile.image1, class: "img-radius", size: '400'
         li.item2
-          = image_tag current_user.user_profile.image1
+          = image_tag @user.image, class: "img-radius", size: '400'
         li.item3
-          = image_tag current_user.user_profile.image2
+          = image_tag @user.user_profile.image2, class: "img-radius", size: '400'
         li.item4
-          = image_tag current_user.user_profile.image3
+          = image_tag @user.user_profile.image3, class: "img-radius", size: '400'
       ul.thumb
-        - unless image_tag current_user.image
-          li.thumb1
-            = image_tag 'smile'
-        -else
-          li.thumb1
-            = image_tag current_user.image
-        - unless image_tag current_user.user_profile.image1.nil?
-          li.thumb2
-            = image_tag current_user.user_profile.image1
-        - unless image_tag current_user.user_profile.image2.nil?
-          li.thumb3
-            = image_tag current_user.user_profile.image2
-        - unless image_tag current_user.user_profile.image3.nil?
-          li.thumb4
-            = image_tag current_user.user_profile.image3
+        li.thumb1
+          = user_image(@user.image)
+        li.thumb2
+          = user_image(@user.user_profile.image1)
+        li.thumb3
+          = user_image(@user.user_profile.image2)
+        li.thumb4
+          = user_image(@user.user_profile.image3)
 
+    = render 'button_link'
 
   / mypage右サイド
   #layout_right
     .profile_content
       .userSignature
         .user_info
-          .user_name = current_user.name
-          .user_age = "#{current_user.user_profile.age}歳"
-          .user_address = current_user.user_profile.prefecture.name
+          .user_name = @user.name
+          .user_age = "#{@user.user_profile.age}歳"
+          .user_address = @user.user_profile.prefecture.name
         .user_badge
-          = image_tag "sex_badge_#{current_user.user_profile.sex}"
+          = image_tag "sex_badge_#{@user.user_profile.sex}"
 
 
       .profile_section
         .profile_label
           .profile_label_title = '自己紹介'
         .profile_body
-          = current_user.user_profile.introduce
+          = @user.user_profile.introduce
       .profile_section
         .profile_label
           .profile_label_title = 'プロフィール'
@@ -55,43 +50,43 @@
             table
               tr
                 th ニックネーム
-                td = current_user.name
+                td = @user.name
               tr
                 th 年齢
-                td = current_user.user_profile.age
+                td = @user.user_profile.age
               tr
                 th 身長
-                td = current_user.user_profile.height
+                td = @user.user_profile.height
               tr
                 th 居住地
-                td = current_user.user_profile.prefecture.name
+                td = @user.user_profile.prefecture.name
               tr
                 th 同居人
-                td = current_user.user_profile.housemate
+                td = @user.user_profile.housemate
               tr
                 th 体型
-                td = current_user.user_profile.style
+                td = @user.user_profile.style
               tr
                 th 趣味
-                td = current_user.user_profile.hobby
+                td = @user.user_profile.hobby
               tr
                 th 目的
-                td = current_user.user_profile.purpose
+                td = @user.user_profile.purpose
               tr
                 th お酒
-                td = current_user.user_profile.alcohol
+                td = @user.user_profile.alcohol
               tr
                 th タバコ
-                td = current_user.user_profile.smoke
+                td = @user.user_profile.smoke
           .profile_body_title = '学歴・職歴'
           .profile_sub_body
             table
               tr
                 th 職業
-                td = current_user.user_profile.job
+                td = @user.user_profile.job
               tr
                 th 年齢
-                td = current_user.user_profile.income
+                td = @user.user_profile.income
 
 
           .profile_body_title = '学歴・職歴'
@@ -99,9 +94,9 @@
             table
               tr
                 th 結婚歴
-                td = current_user.user_profile.marriage
+                td = @user.user_profile.marriage
               tr
                 th 年齢
-                td = current_user.user_profile.child
+                td = @user.user_profile.child
 
 
