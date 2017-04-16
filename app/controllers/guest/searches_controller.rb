@@ -10,8 +10,10 @@ class Guest::SearchesController < Guest
   end
 
   def show
-    render 'guest/module/mypage'
+    @user = User.find(params[:id])
+    render 'guest/users/preview'
   end
+
 
   private
   def set_user
