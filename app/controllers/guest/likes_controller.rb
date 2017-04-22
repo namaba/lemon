@@ -4,12 +4,13 @@ class Guest::LikesController < Guest
 
 
   def index
-    @like_users = User.like_me(current_user)
-
+    # @like_users = User.like_me(current_user)
+     @users = User.page(params[:page]).per(4)
   end
 
   def show
-    render 'guest/module/mypage'
+    @user = User.find(params[:id])
+    render 'guest/users/preview'
   end
 
   def create
@@ -22,16 +23,18 @@ class Guest::LikesController < Guest
   end
 
 
-
   # 後々リファクタ
   def match
-    @like = Like.find_by(user: @target, target: @user)
-    @like.be_liked!
-    @like.matched!
-    partnership = Partnership.create(user: @target, target: @user)
-    UserPartnership.create(user: @target, partnership: partnership)
-    UserPartnership.create(user: @user, partnership: partnership)
-    redirect_to :back
+    ActiveRecord::Base.transaction do
+      if @like = Like.find_by(user: @target, target: @user)
+        @like.be_liked!
+        @like.matched!
+        partnership = Partnership.create(user: @target, target: @user)
+        UserPartnership.create(user: @target, partnership: partnership)
+        UserPartnership.create(user: @user, partnership: partnership)
+        redirect_to :back
+      end
+    end
   rescue => _error
     render template: "guest/error"
   end
