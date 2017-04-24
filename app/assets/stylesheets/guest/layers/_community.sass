@@ -1,19 +1,22 @@
 // module読み込まれたら_card.sassに移す
-.card
+.community
+  &_ranking, &_list
+    overflow: hidden
+  &_ranking
+    margin-bottom: 40px
+  &_list
+    clear: both
   &_content
     float: left
-    width: 224px
-    margin: 20px 8px
-    border: 2px solid $red
+    width: 180px
+    margin: 0px 8px
     border-radius: 10px
   &_image
     .img-radius
-      border-radius: 10px 10px 0 0
+      border-radius: 10px
   &_body
-    +display_box(center)
     width: 100%
     padding: 4px 10px
-    background-color: $light-gray
   &_sex, &_age, &_address, &_name
     margin-right: 5px
   &_footer
