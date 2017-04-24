@@ -4,15 +4,16 @@ button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sa
   |  検索
 #sampleModal.modal.fade[tabindex="-1"]
   .modal-dialog
-    .modal-content
-      .modal-header
-        button.close[type="button" data-dismiss="modal"]
-          span
-            | ×
-        h3.modal-title
-          | 検索
-      .modal-body
-        = render 'search'
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+          h3.modal-title
+            | 検索
+        .modal-body
+          = render 'search'
 
 = paginate @user_profiles
 .panelList_section
