@@ -1,18 +1,18 @@
 #layout_banner
   = image_tag 'premire_baner', width: '100%', class: 'baner-image'
-/ button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sampleModal"]
-/   |  検索
-/ #sampleModal.modal.fade[tabindex="-1"]
-/   .modal-dialog
-/     .modal-content
-/       .modal-header
-/         button.close[type="button" data-dismiss="modal"]
-/           span
-/             | ×
-/         h3.modal-title
-/           | 検索
-/       .modal-body
-/         = render 'search'
+button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sampleModal"]
+  |  検索
+#sampleModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          span
+            | ×
+        h3.modal-title
+          | 検索
+      .modal-body
+        = render 'search'
 
 = paginate @user_profiles
 .panelList_section
@@ -20,7 +20,7 @@
     = link_to search_path(user) do
       .card_content
         .card_image
-          = image_tag user.image1, size: '236', class: 'img-radius'
+          = image_tag user.image1, size: '220', class: 'img-radius'
         .card_body
           .card_sex = image_tag "sex_badge_#{user.sex}"
           .card_age = "#{user.age}歳"
