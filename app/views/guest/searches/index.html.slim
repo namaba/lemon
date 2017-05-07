@@ -15,17 +15,18 @@ button.btn.btn-primary.btn-lg[type="button" data-toggle="modal" data-target="#sa
         .modal-body
           = render 'search'
 
-= paginate @user_profiles
+/ = paginate @user_profiles
 .panelList_section
   - @user_profiles.each do |user|
     = link_to search_path(user) do
       .card_content
         .card_image
           = image_tag user.image1, size: '220', class: 'img-radius'
+          .card_info
+            .card_age = "#{user.age}歳"
+            .card_address = user.prefecture.name
+            .card_sex = image_tag "sex_badge_#{user.sex}"
         .card_body
-          .card_sex = image_tag "sex_badge_#{user.sex}"
-          .card_age = "#{user.age}歳"
-          .card_address = user.prefecture.name
           .card_name = user.user.name
         .card_footer
           .card_good = good(user.user)
