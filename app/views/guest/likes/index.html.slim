@@ -7,8 +7,8 @@
 
 .tab_content
   .like_panellist
-    .pagenate = paginate @users
-    - @users.each do |user|
+    .pagenate = paginate @like_users
+    - @like_users.each do |user|
       .like_panel
         = link_to like_path(user) do
           .panel_container
@@ -23,15 +23,16 @@
               = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
         .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
 
-    .pagenate  = paginate @users
+    .pagenate  = paginate @like_users
 
 
 
 .tab_content.tab_message
   #layout_flex
     #layout_message
-      .pagenate = paginate @users
-      - @users.each do |user|
+      / .pagenate = paginate @partners
+      - @partnerships.each do |partnership|
+        - user = partnership.user == current_user ? partnership.target : partnership.user
         .message_panel
           = link_to like_path(user) do
             .panel_container
@@ -44,92 +45,21 @@
                 .panel_day = '2017年4月26日'
               .panel_body
                 = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
-          .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
-      .pagenate  = paginate @users
+          .panel_bottun = link_to 'チャットする', message_path(id: partnership), method: :get
+      / .pagenate  = paginate @partners
 
+    - partnership = @partnerships.first
+    - sender = partnership.user == current_user ? partnership.target : partnership.user
     #layout_message
       .message_container
+        - @messages.each do |m|
+          = m.body
+        = form_for @message do |f|
+          = f.text_field :body
+          = f.hidden_field :partnership_id, value: @partnerships.first.id
+          = f.hidden_field :sender_id, value: sender.id
+          = f.submit "送信", :class => "btn btn-primary"
 
 
-
-
-/ ul.nav.nav-tabs
-/   li.active
-/     a data-toggle="tab" href="#home"  相手からのいいね
-/   li
-/     a data-toggle="tab" href="#menu1"  マッチした相手
-
-/ .tab-content
-/   #home.tab-pane.fade.in.active
-/     li.list-group-item
-/       .col-xs-12.col-sm-3
-/         img.img-responsive.img-circle alt=("Scott Stevens") src="http://api.randomuser.me/portraits/men/49.jpg" /
-/       .col-xs-12.col-sm-9
-/         span.name Scott Stevens
-/         span.age　23歳
-/         span.address 　東京
-/       .col-xs-12.col-sm-3.pull-right
-/         = button_to "", class: 'thanks_button'
-/           | ありがとう
-/         br/
-/         br/
-/       .clearfix
-/     li.list-group-item
-/       .col-xs-12.col-sm-3
-/         img.img-responsive.img-circle alt=("Seth Frazier") src="http://api.randomuser.me/portraits/men/97.jpg" /
-/       .col-xs-12.col-sm-9
-/         span.name Seth Frazier
-/         span.age　23歳
-/         span.address 　東京
-/       .col-xs-12.col-sm-3.pull-right
-/         = button_to "", class: 'thanks_button'
-/           | ありがとう
-/         br/
-/         br/
-/       .clearfix
-/     li.list-group-item
-/       .col-xs-12.col-sm-3
-/         img.img-responsive.img-circle alt=("Jean Myers") src="http://api.randomuser.me/portraits/women/90.jpg" /
-/       .col-xs-12.col-sm-9
-/         span.name Jean Myers
-/         span.age　23歳
-/         span.address 　東京
-/       .col-xs-12.col-sm-3.pull-right
-/         = button_to "", class: 'thanks_button'
-/           | ありがとう
-/         br/
-/         br/
-/       .clearfix
-
-/       .clearfix
-/   #menu1.tab-pane.fade
-/     li.list-group-item
-/       .col-xs-12.col-sm-3
-/         img.img-responsive.img-circle alt=("Todd Shelton") src="http://api.randomuser.me/portraits/men/24.jpg" /
-/       .col-xs-12.col-sm-9
-/         span.name Todd Shelton
-/         span.age　23歳
-/         span.address 　東京
-/       .col-xs-12.col-sm-3.pull-right
-/         = button_to "", class: 'thanks_button'
-/           | チャットする
-/         br/
-/         br/
-/       .clearfix
-/     li.list-group-item
-/       .col-xs-12.col-sm-3
-/         img.img-responsive.img-circle alt=("Rosemary Porter") src="http://api.randomuser.me/portraits/women/34.jpg" /
-/       .col-xs-12.col-sm-9
-/         span.name Rosemary Porter
-/         span.age　23歳
-/         span.address 　東京
-/       .col-xs-12.col-sm-3.pull-right
-/         = button_to "", class: 'thanks_button'
-/           | チャットする
-/         br/
-/         br/
-/       .clearfix
-
-/       .clearfix
 
 

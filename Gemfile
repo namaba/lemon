@@ -36,6 +36,9 @@ gem 'kaminari'
 gem 'devise'
 gem 'omniauth-facebook'
 
+# 倫理削除
+gem 'paranoia'
+
 # Capistrano
 group :production, :staging do
   gem 'unicorn'
