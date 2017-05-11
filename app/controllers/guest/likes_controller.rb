@@ -4,8 +4,19 @@ class Guest::LikesController < Guest
 
 
   def index
-    # @like_users = User.like_me(current_user)
-     @users = User.page(params[:page]).per(4)
+    # raise @messages.inspect
+    @like_users = User.like_me(current_user).page(params[:page]).per(4)
+    @match_users = User.match(current_user).page(params[:page]).per(4)
+    @message = Message.new
+    @partnerships = Partnership.joins(:user).where("user_id = ? or target_id = ?", current_user, current_user)
+    # @partners = []
+    # @partnerships.each do |partnership|
+    #   partner = partnership.user == current_user ? partnership.target : partnership.user
+    #   @partners.push(partner)
+    # end
+    if @messages.nil?
+      @messages = Message.where(partnership_id: @partnerships.first)
+    end
   end
 
   def show
