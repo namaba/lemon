@@ -4,7 +4,6 @@ class Guest::LikesController < Guest
 
 
   def index
-    # raise @messages.inspect
     @like_users = User.like_me(current_user).page(params[:page]).per(4)
     @match_users = User.match(current_user).page(params[:page]).per(4)
     @message = Message.new

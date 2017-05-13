@@ -49,12 +49,17 @@
       / .pagenate  = paginate @partners
 
     - partnership = @partnerships.first
-    - sender = partnership.user == current_user ? partnership.target : partnership.user
+    - sender = partnership.user == current_user ? partnership.user : partnership.target
     #layout_message
       .message_container
         - @messages.each do |m|
-          = m.body
-        = form_for @message do |f|
+          = m.sender_id
+          = current_user.id
+          - if m.sender_id == current_user.id
+            .text-right =  m.body
+          - else
+            .text-left = m.body
+        = form_for @message, remote: true do |f|
           = f.text_field :body
           = f.hidden_field :partnership_id, value: @partnerships.first.id
           = f.hidden_field :sender_id, value: sender.id

@@ -7,7 +7,7 @@ class Guest::MessagesController < Guest
 
   def show
     @messages = Message.where(partnership_id: params[:id])
-    @messages = Message.find(5) if @messages.blank?
+    # @messages = Message.find(5) if @messages.blank?
     redirect_to likes_path
   end
 
