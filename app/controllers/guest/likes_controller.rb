@@ -4,12 +4,23 @@ class Guest::LikesController < Guest
 
 
   def index
-    @like_users = User.like_me(current_user)
-
+    @like_users = User.like_me(current_user).page(params[:page]).per(4)
+    @match_users = User.match(current_user).page(params[:page]).per(4)
+    @message = Message.new
+    @partnerships = Partnership.joins(:user).where("user_id = ? or target_id = ?", current_user, current_user)
+    # @partners = []
+    # @partnerships.each do |partnership|
+    #   partner = partnership.user == current_user ? partnership.target : partnership.user
+    #   @partners.push(partner)
+    # end
+    if @messages.nil?
+      @messages = Message.where(partnership_id: @partnerships.first)
+    end
   end
 
   def show
-    render 'guest/module/mypage'
+    @user = User.find(params[:id])
+    render 'guest/users/preview'
   end
 
   def create
@@ -22,16 +33,18 @@ class Guest::LikesController < Guest
   end
 
 
-
   # 後々リファクタ
   def match
-    @like = Like.find_by(user: @target, target: @user)
-    @like.be_liked!
-    @like.matched!
-    partnership = Partnership.create(user: @target, target: @user)
-    UserPartnership.create(user: @target, partnership: partnership)
-    UserPartnership.create(user: @user, partnership: partnership)
-    redirect_to :back
+    ActiveRecord::Base.transaction do
+      if @like = Like.find_by(user: @target, target: @user)
+        @like.be_liked!
+        @like.matched!
+        partnership = Partnership.create(user: @target, target: @user)
+        UserPartnership.create(user: @target, partnership: partnership)
+        UserPartnership.create(user: @user, partnership: partnership)
+        redirect_to :back
+      end
+    end
   rescue => _error
     render template: "guest/error"
   end

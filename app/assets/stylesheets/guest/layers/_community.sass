@@ -1,0 +1,31 @@
+// module読み込まれたら_card.sassに移す
+.community
+  &_ranking, &_list
+    overflow: hidden
+  &_ranking
+    margin-bottom: 40px
+  &_list
+    clear: both
+  &_content
+    float: left
+    width: 180px
+    margin: 0px 8px
+    border-radius: 10px
+  &_image
+    .img-radius
+      border-radius: 10px
+  &_body
+    width: 100%
+    padding: 4px 10px
+  &_sex, &_age, &_address, &_name
+    margin-right: 5px
+  &_footer
+    padding: 10px 0
+  &_good
+    @extend %button
+    @extend %button_red
+    @extend %button_large
+    display: block
+    font-size: 18px
+    width: 75%
+    margin: 0 auto

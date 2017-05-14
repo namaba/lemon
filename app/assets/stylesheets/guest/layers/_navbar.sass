@@ -1,0 +1,82 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+  _navbar.sass (:partial)
+
+  [概要]
+    グローバルナビゲーションバーエリアのデザインを記述するファイル
+
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+.navbar
+  @media (min-width: $screen-max-tablet)
+    margin-bottom: 0
+  +responsive(smartphone)
+    position: relative
+  &-main
+    padding: 10px 0
+    border-bottom: 1px solid $gray
+    // +responsive(smartphone)
+    //   padding-left: 50px
+  &-sub
+    background: rgba($white, 0.85)
+
+  &-body
+    position: relative
+    @extend %container
+    // PC
+    @media (min-width: $screen-max-tablet)
+      margin: 0 auto
+    // SP
+    @media (max-width: $screen-max-tablet)
+      padding: 0 10px
+  &-content
+    display: flex
+    justify-content: space-between
+    li
+      width: 20%
+      padding: 3px
+      text-align: center
+      background-color: $wine-red
+    a
+      color: $white
+      font-size: $font-large
+  &_mypage
+    color: $text-color
+    &:hover
+      color: $black
+      text-decoration: none
+    &:before
+      margin-right: 5px
+      +fontawesome('\f044')
+  &_site_title
+    float: left
+    a
+      +link_block(#888)
+    img
+      width: 200px
+      // SP
+      @media (max-width: $screen-max-tablet)
+        width: 160px
+    small
+      font-weight: normal
+      +fontsize($font-xsmall)
+      +responsive(pc)
+        margin-left: 1em
+      +responsive(smartphone)
+        display: block
+  &_logout_button
+    float: right
+  &_site_search
+    float: left
+    margin: 15px 0 0 30px
+    &_button
+      @extend %button_white
+      border: solid 1px $dark-gray
+    .form_control
+      display: inline
+      width: 185px
+      height: 24px
+      margin-right: 5px
+      +fontsize($font-small)
+
+

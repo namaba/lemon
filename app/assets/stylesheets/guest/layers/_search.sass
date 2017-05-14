@@ -1,0 +1,37 @@
+// module読み込まれたら_card.sassに移す
+.card
+  &_content
+    float: left
+    // width: 224px
+    margin: 20px 10px
+    // border: 2px solid $red
+    // box-shadow: 5px 5px 0px 0px $light-gray
+    // border-radius: 10px
+  &_image
+    position: relative
+    .img-radius
+      // border-radius: 10px 10px 0 0
+  &_info
+    position: absolute
+    +display_box(center)
+    bottom: 0
+    right: 0
+  &_body
+    width: 100%
+    padding: 4px 10px
+  &_sex, &_age, &_address
+    margin-right: 5px
+    color: white
+  &_name
+    text-align: center
+    font-size: 18px
+  &_footer
+    padding-bottom: 10px
+  &_good
+    @extend %button
+    @extend %button_red
+    @extend %button_large
+    display: block
+    font-size: 18px
+    width: 75%
+    margin: 0 auto
