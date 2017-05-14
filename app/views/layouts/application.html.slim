@@ -10,7 +10,7 @@ html
   body
     header
       - if yield(:header).empty?
-        = render 'header'
+        /*= render 'header'*/
       - else
         = yield :header
     = yield

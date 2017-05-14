@@ -34,7 +34,11 @@ class UserProfile < ActiveRecord::Base
   #----------------------------------------
   scope :not_me, ->(user) { where.not(user_id: user) }
   scope :like_user, ->(user) { where.not(user_id: Like.select('user_id').where(target_id: user))}
-
+  scope :valid, -> { where.not(plan: 0)}
+  scope :men, -> { where(sex: 1)}
+  scope :women, -> { where(sex: 2)}
+  scope :paying_users, -> { where.not(plan: 1)}
+  scope :premium, -> { where(plan: 30)}
 
 
 
