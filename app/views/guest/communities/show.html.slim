@@ -1,15 +1,37 @@
-h1
-  | show
-= @community.id
-= @community.name
-= @community.category
-= @community.introduce
-= image_tag @community.image.thumb
-= link_to 'トピック作成', new_topic_path(community_id: @community.id)
-- @topics.each do |t|
-  .commu-container
-    = link_to topic_path(t.id, community_id: @community.id) do
-      = t.id
-      = t.title
-      = t.body
-      = t.user.name
+#layout_flex
+  #layout_message
+
+      .message_panel
+        .panel_container
+          .panel_header
+            .panel_image  = image_tag @community.image, class: 'img-circle', size: '100'
+            .panel_info
+              .panel_name = @community.name
+              .panel_age = '123人'
+              .panel_address = @community.user.name
+            .panel_day = '2017年4月26日'
+          .panel_body
+            = truncate(@community.introduce, omission: '・・・', length: 50)
+      / .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
+
+  #layout_message
+    .message_container
+
+
+
+
+    h1
+      | show
+    = @community.id
+    = @community.name
+    = @community.category
+    = @community.introduce
+    = image_tag @community.image.thumb
+    = link_to 'トピック作成', new_topic_path(community_id: @community.id)
+    - @topics.each do |t|
+      .commu-container
+        = link_to topic_path(t.id, community_id: @community.id) do
+          = t.id
+          = t.title
+          = t.body
+          = t.user.name

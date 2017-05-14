@@ -1,0 +1,87 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+  _style.sass (:partial)
+
+  [概要]
+    aタグやpタグなどのエレメントのデフォルト設定や
+    ページ全体のstyleを記述するファイル
+
+  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+body
+  +fontsize(16)
+  color: $text-color
+  font-family: $font-sans-serif
+  background: darken($light-gray, 4%)
+  word-break : break-all
+
+// 標準のリンクタグ
+a
+  color: $link-color
+  text-decoration: none
+  &:hover
+    color: $link-hover-color
+    text-decoration: underline
+
+.hide
+  display: none
+
+#layout
+  &_container
+    @extend %container
+    position: relative
+    margin: 0 auto
+  &_header
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    +responsive(pc)
+      position: fixed
+      background: $white
+      z-index: 9999
+  &_content
+    // PC
+    @media (min-width: $screen-max-tablet)
+      // float: left
+      width: 100%
+      margin-right: 20px
+      padding-top: 95px
+    // SP
+    @media (max-width: $screen-max-tablet)
+      width: 100%
+      margin: 0 0 10px
+  &_flex
+    display: flex
+    padding-top: 30px
+  &_sidebar
+    // PC
+    @media (min-width: $screen-max-tablet)
+      float: left
+      width: 40%
+    // SP
+    @media (max-width: $screen-max-tablet)
+      width: 100%
+  &_right
+    @media (min-width: $screen-max-tablet)
+      // float: left
+      width: 60%
+      margin-left: 20px
+    // SP
+    @media (max-width: $screen-max-tablet)
+      width: 100%
+      margin: 0 0 10px
+  &_message
+    @media (min-width: $screen-max-tablet)
+      // float: left
+      width: 50%
+      // margin-left: 20px
+    // SP
+    @media (max-width: $screen-max-tablet)
+      width: 100%
+      margin: 0 0 10px
+  &_banner
+    img
+      margin: 0
+  &_footer
+    border-top: 1px solid #ccc
+    background: darken($light-gray, 4%)
