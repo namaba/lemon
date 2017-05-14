@@ -1,91 +1,70 @@
-doctype html
-html lang="en" 
-  head
-    title Bootstrap Case
-    meta charset="utf-8" /
-    meta content="width=device-width, initial-scale=1" name="viewport" /
-    link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /
-    script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" 
-    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-  body
-    .container
-      ul.nav.nav-tabs
-        li.active
-          a data-toggle="tab" href="#home"  相手からのいいね
-        li
-          a data-toggle="tab" href="#menu1"  マッチした相手
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+.tab_header
+  .tab_bottun.select お相手からのイイね
+  .tab_bottun マッチングメール
 
-      .tab-content
-        #home.tab-pane.fade.in.active
-          li.list-group-item
-            .col-xs-12.col-sm-3
-              img.img-responsive.img-circle alt=("Scott Stevens") src="http://api.randomuser.me/portraits/men/49.jpg" /
-            .col-xs-12.col-sm-9
-              span.name Scott Stevens
-              span.age　23歳
-              span.address 　東京
-            .col-xs-12.col-sm-3.pull-right
-              = button_to "", class: 'thanks_button'
-                | ありがとう
-              br/
-              br/
-            .clearfix
-          li.list-group-item
-            .col-xs-12.col-sm-3
-              img.img-responsive.img-circle alt=("Seth Frazier") src="http://api.randomuser.me/portraits/men/97.jpg" /
-            .col-xs-12.col-sm-9
-              span.name Seth Frazier
-              span.age　23歳
-              span.address 　東京
-            .col-xs-12.col-sm-3.pull-right
-              = button_to "", class: 'thanks_button'
-                | ありがとう
-              br/
-              br/
-            .clearfix
-          li.list-group-item
-            .col-xs-12.col-sm-3
-              img.img-responsive.img-circle alt=("Jean Myers") src="http://api.randomuser.me/portraits/women/90.jpg" /
-            .col-xs-12.col-sm-9
-              span.name Jean Myers
-              span.age　23歳
-              span.address 　東京
-            .col-xs-12.col-sm-3.pull-right
-              = button_to "", class: 'thanks_button'
-                | ありがとう
-              br/
-              br/
-            .clearfix
 
-            .clearfix
-        #menu1.tab-pane.fade
-          li.list-group-item
-            .col-xs-12.col-sm-3
-              img.img-responsive.img-circle alt=("Todd Shelton") src="http://api.randomuser.me/portraits/men/24.jpg" /
-            .col-xs-12.col-sm-9
-              span.name Todd Shelton
-              span.age　23歳
-              span.address 　東京
-            .col-xs-12.col-sm-3.pull-right
-              = button_to "", class: 'thanks_button'
-                | チャットする
-              br/
-              br/
-            .clearfix
-          li.list-group-item
-            .col-xs-12.col-sm-3
-              img.img-responsive.img-circle alt=("Rosemary Porter") src="http://api.randomuser.me/portraits/women/34.jpg" /
-            .col-xs-12.col-sm-9
-              span.name Rosemary Porter
-              span.age　23歳
-              span.address 　東京
-            .col-xs-12.col-sm-3.pull-right
-              = button_to "", class: 'thanks_button'
-                | チャットする
-              br/
-              br/
-            .clearfix
-            .clearfix
+.tab_content
+  .like_panellist
+    .pagenate = paginate @like_users
+    - @like_users.each do |user|
+      .like_panel
+        = link_to like_path(user) do
+          .panel_container
+            .panel_header
+              .panel_image  = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+              .panel_info
+                .panel_name = user.name
+                .panel_age = "#{user.user_profile.age}歳"
+                .panel_address = user.user_profile.prefecture.name
+              .panel_day = '2017年4月26日'
+            .panel_body
+              = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
+        .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
+
+    .pagenate  = paginate @like_users
+
+
+
+.tab_content.tab_message
+  #layout_flex
+    #layout_message
+      / .pagenate = paginate @partners
+      - @partnerships.each do |partnership|
+        - user = partnership.user == current_user ? partnership.target : partnership.user
+        .message_panel
+          = link_to like_path(user) do
+            .panel_container
+              .panel_header
+                .panel_image  = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+                .panel_info
+                  .panel_name = user.name
+                  .panel_age = "#{user.user_profile.age}歳"
+                  .panel_address = user.user_profile.prefecture.name
+                .panel_day = '2017年4月26日'
+              .panel_body
+                = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
+          .panel_bottun = link_to 'チャットする', message_path(id: partnership), method: :get
+      / .pagenate  = paginate @partners
+
+    - partnership = @partnerships.first
+    - sender = partnership.user == current_user ? partnership.user : partnership.target
+    #layout_message
+      .message_container
+        - @messages.each do |m|
+          = m.sender_id
+          = current_user.id
+          - if m.sender_id == current_user.id
+            .text-right =  m.body
+          - else
+            .text-left = m.body
+        = form_for @message, remote: true do |f|
+          = f.text_field :body
+          = f.hidden_field :partnership_id, value: @partnerships.first.id
+          = f.hidden_field :sender_id, value: sender.id
+          = f.submit "送信", :class => "btn btn-primary"
+
 
 
 

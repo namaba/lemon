@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170309072111) do
+
+ActiveRecord::Schema.define(version: 20170514040244) do
+
+  create_table "announcements", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "user_profile_id", limit: 4
+    t.text     "body",            limit: 65535
+    t.integer  "status",          limit: 4,     default: 1
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
+  add_index "announcements", ["user_profile_id"], name: "index_announcements_on_user_profile_id", using: :btree
+
+ActiveRecord::Schema.define(version: 20170507101635) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
@@ -37,6 +52,17 @@ ActiveRecord::Schema.define(version: 20170309072111) do
   end
 
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "partnership_id", limit: 4,                 null: false
+    t.integer  "sender_id",      limit: 4,                 null: false
+    t.text     "body",           limit: 65535
+    t.string   "image",          limit: 255
+    t.integer  "read",           limit: 4,     default: 1, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.datetime "deleted_at"
+  end
 
   create_table "murmur_comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -166,6 +192,8 @@ ActiveRecord::Schema.define(version: 20170309072111) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "announcements", "user_profiles"
+  add_foreign_key "announcements", "users"
   add_foreign_key "communities", "users"
   add_foreign_key "likes", "users"
   add_foreign_key "murmur_comments", "murmurs"

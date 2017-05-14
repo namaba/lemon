@@ -2,22 +2,31 @@
 .card
   &_content
     float: left
-    width: 240px
-    margin: 20px 8px
-    border: 2px solid $red
-    border-radius: 10px
+    // width: 224px
+    margin: 20px 10px
+    // border: 2px solid $red
+    // box-shadow: 5px 5px 0px 0px $light-gray
+    // border-radius: 10px
   &_image
+    position: relative
     .img-radius
-      border-radius: 10px 10px 0 0
-  &_body
+      // border-radius: 10px 10px 0 0
+  &_info
+    position: absolute
     +display_box(center)
+    bottom: 0
+    right: 0
+  &_body
     width: 100%
     padding: 4px 10px
-    background-color: $light-gray
-  &_sex, &_age, &_address, &_name
+  &_sex, &_age, &_address
     margin-right: 5px
+    color: white
+  &_name
+    text-align: center
+    font-size: 18px
   &_footer
-    padding: 10px 0
+    padding-bottom: 10px
   &_good
     @extend %button
     @extend %button_red

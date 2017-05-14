@@ -3,6 +3,7 @@ class Guest::CommunitiesController < Guest
 
   def index
     @communities = Community.all
+    @community = Community.new
   end
 
   def show

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partnership_id: 1
+  sender_id: 1
+  body: MyText
+  image: MyString
+  read: 1
+
+two:
+  partnership_id: 1
+  sender_id: 1
+  body: MyText
+  image: MyString
+  read: 1

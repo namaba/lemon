@@ -1,10 +1,22 @@
 = form_for(@community) do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :category
-  = f.text_area :category
-  = f.label :introduce
-  = f.text_area :introduce
-  = f.label :image
-  = f.file_field :image
-  = f.submit '保存', data: { confirm: 'この内容で保存してもいいですか', disable_with: '処理中...' }
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :コミュニティ名
+        = f.text_field :name, class: "form-control",  placeholder: "コミュニティ名"
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :category
+        = f.select :category, class: "form-control",  placeholder: "コミュニティ名"
+  .row
+    .col-sm-12
+      .form-group
+        = f.label :introduce
+        = f.text_area :introduce, class: "form-control",  placeholder: "コミュニティ説明文"
+  .row
+    .col-sm-6
+      .form-group
+        = f.label :image
+        = f.file_field :image
+  = f.submit '保存', class: "btn btn-primary", data: { confirm: 'この内容で保存してもいいですか', disable_with: '処理中...' }
