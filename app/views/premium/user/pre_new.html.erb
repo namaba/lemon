@@ -1,0 +1,87 @@
+<% provide(:title, 'create pre') %>
+<h1>create pre</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offse">
+      <%= form_for @user, :url => {:action => 'pre_new'}  do |f| %>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname %>
+        <%= f.label :"性別" %>
+        <span><%= select(:user, :sex, User::SEX, :prompt => "選択してください") %></span>
+
+        <%= f.label :birthday %>
+        <%== sprintf( f.date_select(
+        :birthday,
+        use_month_numbers: true,
+        start_year: 1930,
+        end_year:   (Time.now.year - 18),
+        default:    Date.new(1980, 1, 1),
+        date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日' %>
+
+        <%= f.label :mail %>
+        <%= f.email_field :mail, value:SecureRandom.hex(3)+"@pre.com" %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, value:"preprepre" %>
+
+        <%= f.label :password_confirmation, "Confirmatio" %>
+        <%= f.password_field :password_confirmation, value:"preprepre" %>
+
+        <%= f.label :height, '身長' %>
+        <%= f.number_field :height, min:140, max:185, step:5 %>
+
+        <%= f.label :style, 'スタイル' %>
+        <%= select(:user, :style, User::STYLE, :prompt => "選択してください") %>
+
+        <%= f.label :address, '住所' %>
+        <%= f.text_field :address %>
+
+        <%= f.label :job, '仕事' %>
+        <%= f.text_field :job %>
+
+        <%= f.label :income, '収入' %>
+        <%= f.text_field :income %>
+
+        <%= f.label :purpose, '目的' %>
+        <%= f.text_field :purpose %>
+
+        <%= f.label :hobby, '趣味' %>
+        <%= f.text_field :hobby %>
+
+      <div class="field_image">
+        <%= f.label :image1 %>
+        <%= f.file_field :image1, class: "form-control image-field" %>
+
+        <%= f.label :image2 %>
+        <%= f.file_field :image2, class: "form-control image-field" %>
+
+        <%= f.label :image3 %>
+        <%= f.file_field :image3, class: "form-control image-field" %>
+      </div>
+
+        <%= f.label :同居人 %>
+        <%= f.text_field :housemate%>
+
+        <%= f.label :alcohol, 'お酒' %>
+        <%= f.number_field :alcohol, min:140, max:185, step:5 %>
+
+        <%= f.label :smoke, 'タバコ' %>
+        <%= f.text_field :smoke %>
+
+        <%= f.label :marriage, '婚歴' %>
+        <%= f.text_field :marriage %>
+
+        <%= f.label :child, '子供' %>
+        <%= f.text_field :child %>
+
+        <%= f.text_field :plan, value: "premium" %>
+
+        <br>
+        <%= f.label :自己紹介 %>
+        <%= f.text_field :introduce%>
+
+        <br>
+        <br>
+        <%= f.submit '保存', data: {confirm: '保存してもいいですか?', disable_with: '処理中...'}%>
+        
+      <% end %>

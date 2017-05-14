@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">管理画面</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'ユーザー一覧', admin_path %></li>
+        <li><%= link_to '有料会員', premium_admin_user_index_path %></li>
+        <li><%= link_to '退会者', canceled_admin_user_index_path %></li>
+        <li><%= link_to 'Premium', premium_path %></li>
+        <li><%= link_to 'TOP', root_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

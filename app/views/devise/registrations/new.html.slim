@@ -25,5 +25,14 @@
           br
           = f.password_field :password_confirmation, :class => 'form-control',:placeholder => 'password', autocomplete: "off"
         .actions
-          = f.submit "Sign up",class: 'btn btn-success'
+          = f.submit "Sign up",class: 'btn btn-success', onclick: "DisableButton(this)" 
       = render "devise/shared/links"
+
+javascript:
+  function DisableButton(b)
+  {
+    b.disabled = true;
+    b.value = '登録処理中・・・';
+    b.form.submit();
+  }
+

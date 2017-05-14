@@ -1,0 +1,51 @@
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= form_for(@announcement, url: admin_announcement_index_path) do |f| %>
+    <%= link_to '男', men_admin_user_index_path, class: 'btn btn-default' %>
+    <%= link_to '女', women_admin_user_index_path, class: 'btn btn-default' %>
+    <%= link_to '有料会員', paying_admin_user_index_path, class: 'btn btn-default' %>
+    <%= link_to '無料会員', normal_admin_user_index_path, class: 'btn btn-default' %>
+    <%= link_to 'マッチングなし', no_match_admin_user_index_path, class: 'btn btn-default' %>
+      <%= f.text_field :body, :placeholder => "お知らせ" %>
+      <%= f.submit '保存', data: {confirm: '保存してもいいですか?', disable_with: '処理中...'}%>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>写真</th>
+          <th>名前</th>
+          <th>mail</th>
+          <th>プラン</th>
+          <th>コイン数</th>
+          <th>お知らせ</th>
+          <th>ログイン日</th>
+          <!-- <th>最新アクション日</th> -->
+          <th>メッセージ</th>
+          <th>いいね数</th>
+          <th>ありがとう数</th>
+          <th>通報数</th>
+          <th>被通報数</th>
+          <th>身分確認</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <% @users.zip(@profile).each do |user, profile| %>
+        <tr>
+          <td><%= profile.user_id %></td>
+          <th><%= image_tag profile.image1, :size => '50' %></th>
+          <td><%= user.name %></td>
+          <td><%= mail_to user.email, 'mail' %></td>
+          <td><%= profile.plan %></td>
+          <td>100</td>
+          <td>
+
+        <% end %>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
