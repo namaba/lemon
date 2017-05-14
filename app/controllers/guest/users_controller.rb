@@ -1,9 +1,13 @@
 class Guest::UsersController < Guest
   before_action :set_user, only: [:edit, :update]
 
-
   def show
     @user = User.find(params[:id])
+    @badges = [ "l", "g", "b", "t", "s", "o" ]
+    # ゲージパーセント
+    @hash = @user.user_profile.attributes.compact
+    @filterd_hash = @hash.except(:id, :user_id, :plan, :identification,:identification_image, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
+    @percent = @filterd_hash.count / 20 * 100
   end
 
   def edit
@@ -17,6 +21,10 @@ class Guest::UsersController < Guest
       redirect_to :back, notice: "更新できませんでした"
     end
     # @user = @user_profile(profile_params)
+  end
+
+  def preview
+    @user = User.find(params[:user_id])
   end
 
   private

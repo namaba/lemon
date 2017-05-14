@@ -16,11 +16,11 @@
     // padding-top: 80px
   &_button
     +fontsize(24)
+    margin: 0 auto 20px
     padding: 15px 10px
     display: block
-    background: $white
     width: 80%
-    margin: 0 auto 20px
+    background: $white
     border-radius: 10px
 .logo
   margin-top: 80px
@@ -28,13 +28,60 @@
 .registration
   &-box
     position: absolute
-    top: 250px
+    top: 220px
     left: 25%
     width: 400px
-    height: 300px
+    height: 350px
     background: rgba( $red, 0.5 )
     border-radius: 10px
   &-title
     color: $white
   &-btns
     margin: 20px 0
+    small
+      color: $white
+  &_button
+    +fontsize(24)
+    margin: 10px auto 0
+    padding: 15px 10px
+    display: block
+    width: 80%
+    color: $white
+    background: #FC8487
+    border: 2px solid $white
+    border-radius: 10px
+    &:hover
+      color: $white
+      background: lighten(#FC8487, 10%)
+      text-decoration: none
+.facebook_button
+  +fontsize(24)
+  margin: 0 auto
+  padding: 15px 10px
+  display: block
+  width: 80%
+  color: $white
+  background: #354E90
+  border: 2px solid $white
+  border-radius: 10px
+  &:hover
+    color: $white
+    background: lighten(#354E90, 10%)
+    text-decoration: none
+.thanks_button
+  +fontsize(24)
+  margin: 0 auto
+  padding: 15px 10px
+  display: block
+  width: 80%
+  color: $white
+  background: #b30a2e
+  border: 2px solid $white
+  border-radius: 10px
+.nav.nav-tabs
+  +fontsize(32)
+  li
+    padding: 0px 0px 0px 250px
+
+
+

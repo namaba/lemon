@@ -22,11 +22,13 @@ class User < ActiveRecord::Base
 
 
 
+
   #----------------------------------------
   #  ** Scope **
   #----------------------------------------
   scope :not_me, -> (user){ where.not(id: user) }
   scope :like_me, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 0))}
+  scope :match, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 1))}
 
 
 
