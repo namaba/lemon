@@ -11,13 +11,11 @@
         </tr>
       </thead>
       <tbody class="text-left">
-        <% @user.each do |user| %>
+        <% @users.each do |user| %>
         <tr>
           <td><%= link_to "#{user.id}", "/users/#{user.id}/mypage" %></td>
           <th><%= image_tag user.image1, :size => '50' %></th>
-          <td><%= user.nickname %></td>
-          <td><%= user.to_like_users.count %></td>
-          <td><%= user.from_like_users.count %></td>
+          <td><%= user.user.name %></td>
         </tr>
         <% end %>
       </tbody>

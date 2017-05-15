@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170514040244) do
 
   create_table "announcements", force: :cascade do |t|
@@ -25,8 +24,6 @@ ActiveRecord::Schema.define(version: 20170514040244) do
 
   add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
   add_index "announcements", ["user_profile_id"], name: "index_announcements_on_user_profile_id", using: :btree
-
-ActiveRecord::Schema.define(version: 20170507101635) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false

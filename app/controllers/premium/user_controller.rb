@@ -2,7 +2,7 @@ class Premium::UserController < Premium
 
 
   def index
-    @user = UserProfile.premium
+    @users = UserProfile.premium
 
     # 属性ごとにソートかけたい・・・
   end
