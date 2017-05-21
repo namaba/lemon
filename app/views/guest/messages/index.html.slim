@@ -1,17 +1,37 @@
-.container
-  .row
-    .col-lg-12.col-md-12
-      h1
-        | Likes
-      - @like_users.each do |like_user|
-        = link_to like_path(like_user) do
-          = image_tag like_user.user_profile.image1.thumb
-          = like_user.id
-          = like_user.email
-        = link_to 'ありがとう', match_like_path(current_user, target: like_user)
-    .col-lg-12.col-md-12
-      h1
-        | messages
-      - current_user.partnerships.each do |partnership|
-        = partnership.partner(current_user).inspect
-        = link_to 'プロフィール詳細',message_path(partnership.partner(current_user))
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+
+.tab_content
+  #layout_flex
+    #layout_message
+      - @partnerships.each do |partnership|
+        - user = partnership.user == current_user ? partnership.target : partnership.user
+        .message_panel
+          = link_to message_path(user) do
+            .panel_container
+              .panel_header
+                .panel_image  = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+                .panel_info
+                  .panel_name = user.name
+                  .panel_age = "#{user.user_profile.age}歳"
+                  .panel_address = user.user_profile.prefecture.name
+                .panel_day = '2017年4月26日'
+              .panel_body
+                = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
+          .panel_bottun = link_to 'チャットする', message_path(id: partnership), method: :get
+      / .pagenate  = paginate @partners
+
+    - partnership = @partnerships.first
+    - sender = partnership.user == current_user ? partnership.user : partnership.target
+    #layout_message
+      .message_container
+        - @messages.each do |m|
+          - if m.sender_id == current_user.id
+            .text-right =  m.body
+          - else
+            .text-left = m.body
+        = form_for @message, remote: true do |f|
+          = f.text_field :body
+          = f.hidden_field :partnership_id, value: @partnerships.first.id
+          = f.hidden_field :sender_id, value: sender.id
+          = f.submit "送信", :class => "btn btn-primary"
