@@ -3,6 +3,9 @@
 
 - if controller_name == 'likes'
   = link_to 'ありがとう', match_like_path(id: @user, target: current_user), method: :post
+
+- if controller_name == 'messages'
+  = link_to 'メッセージを送る', messages_path(id: @user, target: current_user), method: :post
   /  = link_to 'イイね', likes_path(id: @user.id, target: current_user), method: :post
   / - else
   /  = 'イイね済み'
