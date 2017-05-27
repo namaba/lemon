@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   has_many :topics, :class_name => 'Topic',:foreign_key => 'user_id'
 
+  has_many :user_chats, :class_name => 'TopicChat', :foreign_key => 'user_id'
+
 
   #----------------------------------------
   #  ** Scope **

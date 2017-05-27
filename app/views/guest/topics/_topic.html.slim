@@ -22,5 +22,24 @@ section.murmur_panel
       - if current_user == topic.writer
         = link_to '編集', edit_murmur_path(id: topic)
         = link_to '削除', murmur_path(id: topic), method: :delete, data: { confirm: 'Are you sure?' }
-      - else
-        = link_to 'コメントする', new_murmur_comment_path(id: topic.id)
+      button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#ChatModal"]
+        |  コメントするのか
+      #ChatModal.modal.fade[tabindex="-1"]
+        .modal-dialog
+          .modal-margin
+            .modal-content
+              .modal-header
+                button.close[type="button" data-dismiss="modal"]
+                  span
+                    | ×
+                h3.modal-title
+                  | コメント
+              .modal-body
+                = render 'guest/topics/chat_form', topic: topic
+  .murmur_comments
+    - topic.chats.limit(2).each do |chat|
+      = image_tag chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+      = chat.user.name
+      br
+      = chat.body
+      hr

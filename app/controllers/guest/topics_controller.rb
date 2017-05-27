@@ -1,7 +1,8 @@
 class Guest::TopicsController < Guest
    before_action :set_community, only: [:new]
-   before_action :set_topic_community, only: [:create]
    before_action :set_topic, only: [:show, :chat]
+   before_action :set_topic_community, only: [:create]
+   before_action :set_topic_chat_community, only: [:chat]
 
 
   def index
@@ -38,7 +39,7 @@ class Guest::TopicsController < Guest
   def chat
     @chat = @topic.chats.build(chat_params)
     if @chat.save!
-      redirect_to @topic, notice: "作成できました"
+      redirect_to community_path(@community), notice: "作成できました"
     else
       redirect_to :back, notice: "作成できませんでした"
     end
@@ -75,6 +76,10 @@ class Guest::TopicsController < Guest
 
   def set_topic_community
     @community = Community.find(params[:topic][:community_id])
+  end
+
+  def set_topic_chat_community
+    @community = Community.find(params[:topic_chat][:community_id])
   end
 
 end

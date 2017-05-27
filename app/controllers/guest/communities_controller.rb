@@ -11,6 +11,7 @@ class Guest::CommunitiesController < Guest
     @users = User.all
     @topics = @community.topics
     @topic = Topic.new
+    @topic_chat = TopicChat.new
   end
 
   def new
@@ -42,6 +43,9 @@ class Guest::CommunitiesController < Guest
     end
   end
 
+  def comment_new
+
+  end
 
 
   private

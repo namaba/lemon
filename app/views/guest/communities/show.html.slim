@@ -1,45 +1,6 @@
 #layout_banner
   = image_tag 'premire_baner', width: '100%', class: 'baner-image'
 
-
-
-/ .tab_header
-/   = link_to 'コミュニティ検索', communities_path, class: 'tab_bottun'
-/   .tab_bottun.select マイコミュニティ
-
-/ .tab_content.tab_message
-/   コミュ
-/   .panelList_section
-/     .community_detail
-/       .community_detail_image
-/         = image_tag @community.image, size: '200', class: 'img-radius'
-/       .community_detail_body
-/         .community_detail_name
-/           = @community.name
-/         .community_detail_explain
-/           = @community.introduce
-
-/     hr
-/     .community_list
-/       h5 = '参加者一覧'
-/       - @users.limit(5).each do |user|
-/         = link_to search_path(user) do
-/           .community_content
-/             .community_image
-/               = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
-/             .community_body
-/               .community_name = 'コミュニティ名'
-/               .community_num = '( 123 名)'
-/             .community_footer
-
-/     .community_futter
-/       - if current_user.join_communities.find_by(community: @community)
-/         = link_to '参加済み', root_path,class: 'community_join_button'
-/       - else
-/         = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
-
-
-
 #layout_flex
   #layout_sidebar
     .community_detail
@@ -91,4 +52,4 @@
     - @topics.each do |topic|
       .mypage_profile_body
         = render 'guest/topics/topic', topic: topic
-        hr
+
