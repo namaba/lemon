@@ -1,37 +1,93 @@
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+
+
+
+/ .tab_header
+/   = link_to 'コミュニティ検索', communities_path, class: 'tab_bottun'
+/   .tab_bottun.select マイコミュニティ
+
+/ .tab_content.tab_message
+/   コミュ
+/   .panelList_section
+/     .community_detail
+/       .community_detail_image
+/         = image_tag @community.image, size: '200', class: 'img-radius'
+/       .community_detail_body
+/         .community_detail_name
+/           = @community.name
+/         .community_detail_explain
+/           = @community.introduce
+
+/     hr
+/     .community_list
+/       h5 = '参加者一覧'
+/       - @users.limit(5).each do |user|
+/         = link_to search_path(user) do
+/           .community_content
+/             .community_image
+/               = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
+/             .community_body
+/               .community_name = 'コミュニティ名'
+/               .community_num = '( 123 名)'
+/             .community_footer
+
+/     .community_futter
+/       - if current_user.join_communities.find_by(community: @community)
+/         = link_to '参加済み', root_path,class: 'community_join_button'
+/       - else
+/         = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
+
+
+
 #layout_flex
-  #layout_message
+  #layout_sidebar
+    .community_detail
+      .community_detail_image
+        = image_tag @community.image, size: '200', class: 'img-radius'
+      .community_detail_body
+        .community_detail_name
+          = @community.name
+        .community_detail_explain
+          = @community.introduce
 
-      .message_panel
-        .panel_container
-          .panel_header
-            .panel_image  = image_tag @community.image, class: 'img-circle', size: '100'
-            .panel_info
-              .panel_name = @community.name
-              .panel_age = '123人'
-              .panel_address = @community.user.name
-            .panel_day = '2017年4月26日'
-          .panel_body
-            = truncate(@community.introduce, omission: '・・・', length: 50)
-      / .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
+    hr
+    .community_list
+      h5 = '参加者一覧'
+      - @users.limit(5).each do |user|
+        = link_to search_path(user) do
+          .community_content
+            .community_image
+              / = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
+            .community_body
+              .community_name = 'コミュニティ名'
+              .community_num = '( 123 名)'
+            .community_footer
 
-  #layout_message
-    .message_container
-
-
-
-
-    h1
-      | show
-    = @community.id
-    = @community.name
-    = @community.category
-    = @community.introduce
-    = image_tag @community.image.thumb
-    = link_to 'トピック作成', new_topic_path(community_id: @community.id)
-    - @topics.each do |t|
-      .commu-container
-        = link_to topic_path(t.id, community_id: @community.id) do
-          = t.id
-          = t.title
-          = t.body
-          = t.user.name
+    .community_futter
+      - if current_user.join_communities.find_by(community: @community)
+        = link_to '参加済み', root_path,class: 'community_join_button'
+      - else
+        = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
+  #layout_right
+    .mypage_profile_section
+    .mypage_profile_label
+      .edit_title = 'みんなの投稿'
+      / .edit_button = link_to '投稿する', new_topic_path(community_id: @community.id), class: 'btn btn-danger'
+      button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+        |  投稿
+      #sampleModal.modal.fade[tabindex="-1"]
+        .modal-dialog
+          .modal-margin
+            .modal-content
+              .modal-header
+                button.close[type="button" data-dismiss="modal"]
+                  span
+                    | ×
+                h3.modal-title
+                  | 検索
+              .modal-body
+                = render 'guest/topics/form'
+    - @topics.each do |topic|
+      .mypage_profile_body
+        = render 'guest/topics/topic', topic: topic
