@@ -1,4 +1,4 @@
-class Guest::MurmurCommentsController < ApplicationController
+class Guest::MurmurCommentsController < Guest
   before_action :comment_params, only: [:create, :update]
   before_action :set_murmur, only: [:new]
 
