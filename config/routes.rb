@@ -17,7 +17,12 @@ Rails.application.routes.draw do
       end
     end
     resources :messages, only: [:index, :show, :create]
-    resources :communities, only: [:index, :show,:new, :create]
+    resources :communities do
+      member do
+        get 'detail',              to: 'communities#detail'
+        get 'join',              to: 'communities#join'
+      end
+    end
     resources :topics do
       member do
         post 'chat',                to: 'topics#chat'

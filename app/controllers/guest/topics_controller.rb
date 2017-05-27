@@ -13,15 +13,18 @@ class Guest::TopicsController < Guest
   end
 
   def new
-    @topic = Topic.new
+    @topic = @community.topics.new
   end
 
   def create
-    raise @community.inspect
-    @topic = @community.topics.build(topic_params)
-    if @topic.save!
-      redirect_to @topic, notice: "作成できました"
-    else
+    begin
+      ActiveRecord::Base.transaction do
+        @topic = @community.topics.build(topic_params)
+        if @topic.save!
+          redirect_to community_path(@community), notice: "作成できました"
+        end
+      end
+    rescue => e
       redirect_to :back, notice: "作成できませんでした"
     end
   end

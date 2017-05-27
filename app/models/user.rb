@@ -19,8 +19,10 @@ class User < ActiveRecord::Base
   has_many :murmurs
   # murmur_comment
   has_many :murmur_comments
+  # user_community
+  has_many :join_communities, :class_name => 'UserCommunity',:foreign_key => 'user_id'
 
-
+  has_many :topics, :class_name => 'Topic',:foreign_key => 'user_id'
 
 
   #----------------------------------------
