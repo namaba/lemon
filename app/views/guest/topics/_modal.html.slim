@@ -1,0 +1,14 @@
+button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="##{topic_type}"]
+  = topic_type
+.modal.fade[tabindex="-1"][id="topic_type #{topic_type}"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+          h3.modal-title
+            | コメント
+        .modal-body
+          = render 'guest/topics/chat_form', topic: topic

@@ -1,6 +1,6 @@
 class Guest::TopicsController < Guest
    before_action :set_community, only: [:new]
-   before_action :set_topic, only: [:show, :chat]
+   before_action :set_topic, only: [:show, :chat, :update]
    before_action :set_topic_community, only: [:create]
    before_action :set_topic_chat_community, only: [:chat]
 
@@ -31,8 +31,16 @@ class Guest::TopicsController < Guest
   end
 
   def edit
+    @topic = Topic.find(params[:id])
   end
 
+  def update
+    if @topic = @topic.update(topic_params)
+      redirect_to :back, notice: "更新できました"
+    else
+      redirect_to :back, notice: "更新できませんでした"
+    end
+  end
   def destroy
   end
 
