@@ -17,24 +17,15 @@
       h5 = '参加者一覧'
       - @users.limit(5).each do |user|
         = link_to search_path(user) do
-          .community_content
+          .community_content_detail
             .community_image
-              / = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
-            .community_body
-              .community_name = 'コミュニティ名'
-              .community_num = '( 123 名)'
-            .community_footer
+              = image_tag user.user_profile.image1, size: '70', class: 'img-radius'
 
-    .community_futter
-      - if current_user.join_communities.find_by(community: @community)
-        = link_to '参加済み', root_path,class: 'community_join_button'
-      - else
-        = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
+
   #layout_right
     .mypage_profile_section
     .mypage_profile_label
       .edit_title = 'みんなの投稿'
-      / .edit_button = link_to '投稿する', new_topic_path(community_id: @community.id), class: 'btn btn-danger'
       button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
         |  投稿
       #sampleModal.modal.fade[tabindex="-1"]

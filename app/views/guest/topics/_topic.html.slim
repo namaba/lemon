@@ -20,8 +20,22 @@ section.murmur_panel
       = 'スマイル'
     .murmur_items
       - if current_user == topic.writer
-        = link_to '編集', edit_murmur_path(id: topic)
-        = link_to '削除', murmur_path(id: topic), method: :delete, data: { confirm: 'Are you sure?' }
+        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal"]
+          |  編集
+        #EditModal.modal.fade[tabindex="-1"]
+          .modal-dialog
+            .modal-margin
+              .modal-content
+                .modal-header
+                  button.close[type="button" data-dismiss="modal"]
+                    span
+                      | ×
+                  h3.modal-title
+                    | コメント
+                .modal-body
+                  = render 'guest/topics/edit', topic: topic
+        / = link_to '編集', edit_topic_path(id: topic)
+        = link_to '削除', topic_path(id: topic), method: :delete, data: { confirm: 'Are you sure?' }
       button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#ChatModal"]
         |  コメントするのか
       #ChatModal.modal.fade[tabindex="-1"]
