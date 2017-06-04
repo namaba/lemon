@@ -48,12 +48,13 @@
               .community_name = 'コミュニティ名'
               .community_num = '( 123 名)'
             .community_footer
+    = paginate @communities
 
 .tab_content.tab_message
   .panelList_section
     .community_list
       h5 = link_to 'マイコミュニティ', new_community_path
-      - @communities.limit(5).each do |community|
+      - @my_communities.limit(5).each do |community|
         = link_to community_path(community) do
           .community_content
             .community_image
@@ -62,3 +63,4 @@
               .community_name = 'コミュニティ名'
               .community_num = '( 123 名)'
             .community_footer
+  = paginate @my_communities

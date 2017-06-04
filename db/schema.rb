@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521124658) do
+ActiveRecord::Schema.define(version: 20170530151352) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
@@ -165,6 +165,17 @@ ActiveRecord::Schema.define(version: 20170521124658) do
 
   add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
+  create_table "user_statuses", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "good_count", limit: 4, default: 0, null: false
+    t.integer  "free_coin",  limit: 4, default: 0, null: false
+    t.integer  "pay_coin",   limit: 4, default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "user_statuses", ["user_id"], name: "index_user_statuses_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -203,4 +214,5 @@ ActiveRecord::Schema.define(version: 20170521124658) do
   add_foreign_key "user_partnerships", "partnerships"
   add_foreign_key "user_partnerships", "users"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "user_statuses", "users"
 end
