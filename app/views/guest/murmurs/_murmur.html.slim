@@ -22,6 +22,14 @@ section.murmur_panel
       - if current_user == murmur.user
         = link_to '編集', edit_murmur_path(id: murmur)
         = link_to '削除', murmur_path(id: murmur), method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'コメントする', new_murmur_comment_path(id: murmur.id)
       - else
         = link_to 'コメントする', new_murmur_comment_path(id: murmur.id)
+  .murmur_comments
+    - murmur.comments.each do |comment|
+      = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+      = comment.user.name
+      br
+      = comment.comment
+      hr
 hr

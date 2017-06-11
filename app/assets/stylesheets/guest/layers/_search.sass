@@ -2,15 +2,18 @@
 .card
   &_content
     float: left
+    width: 244px
+    margin-right: 16px
     // width: 224px
-    margin: 20px 10px
-    // border: 2px solid $red
-    // box-shadow: 5px 5px 0px 0px $light-gray
-    // border-radius: 10px
+    // margin: 20px 10px
+    border: 2px solid $red
+    border-radius: 10px
+    &:nth-child(5)
+      margin-right: 0
   &_image
     position: relative
     .img-radius
-      // border-radius: 10px 10px 0 0
+      border-radius: 10px 10px 0 0
   &_info
     position: absolute
     +display_box(center)
@@ -18,7 +21,7 @@
     right: 0
   &_body
     width: 100%
-    padding: 4px 10px
+    background: $light-gray
   &_sex, &_age, &_address
     margin-right: 5px
     color: white

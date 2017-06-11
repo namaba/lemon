@@ -11,22 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20170530151352) do
 
-ActiveRecord::Schema.define(version: 20170514040244) do
-
-  create_table "announcements", force: :cascade do |t|
-    t.integer  "user_id",         limit: 4
-    t.integer  "user_profile_id", limit: 4
-    t.text     "body",            limit: 65535
-    t.integer  "status",          limit: 4,     default: 1
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-  end
-
-  add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
-  add_index "announcements", ["user_profile_id"], name: "index_announcements_on_user_profile_id", using: :btree
-
-ActiveRecord::Schema.define(version: 20170507101635) do
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
@@ -126,6 +112,16 @@ ActiveRecord::Schema.define(version: 20170507101635) do
   add_index "topics", ["community_id"], name: "index_topics_on_community_id", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
+  create_table "user_communities", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "community_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "user_communities", ["community_id"], name: "index_user_communities_on_community_id", using: :btree
+  add_index "user_communities", ["user_id"], name: "index_user_communities_on_user_id", using: :btree
+
   create_table "user_partnerships", force: :cascade do |t|
     t.integer  "user_id",        limit: 4
     t.integer  "partnership_id", limit: 4
@@ -170,6 +166,17 @@ ActiveRecord::Schema.define(version: 20170507101635) do
 
   add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
+  create_table "user_statuses", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "good_count", limit: 4, default: 0, null: false
+    t.integer  "free_coin",  limit: 4, default: 0, null: false
+    t.integer  "pay_coin",   limit: 4, default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "user_statuses", ["user_id"], name: "index_user_statuses_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -205,7 +212,10 @@ ActiveRecord::Schema.define(version: 20170507101635) do
   add_foreign_key "topic_chats", "users"
   add_foreign_key "topics", "communities"
   add_foreign_key "topics", "users"
+  add_foreign_key "user_communities", "communities"
+  add_foreign_key "user_communities", "users"
   add_foreign_key "user_partnerships", "partnerships"
   add_foreign_key "user_partnerships", "users"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "user_statuses", "users"
 end

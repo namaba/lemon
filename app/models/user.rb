@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :user_profile,  class_name: 'UserProfile',  dependent: :destroy, inverse_of: :user
+  has_one :status,  class_name: 'UserStatus',  dependent: :destroy, inverse_of: :user, :foreign_key => 'user_id'
+
   # like
   has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
   has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
@@ -19,8 +21,13 @@ class User < ActiveRecord::Base
   has_many :murmurs
   # murmur_comment
   has_many :murmur_comments
+  # user_community
+  has_many :join_communities, :class_name => 'UserCommunity',:foreign_key => 'user_id'
+  has_many :my_community, through: :join_communities
 
+  has_many :topics, :class_name => 'Topic',:foreign_key => 'user_id'
 
+  has_many :user_chats, :class_name => 'TopicChat', :foreign_key => 'user_id'
 
 
   #----------------------------------------

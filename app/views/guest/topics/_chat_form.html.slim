@@ -1,7 +1,5 @@
-= form_for(@topic, url: topics_path ) do |f|
-  = f.label :title
-  = f.text_field :title
-  = f.label :body
+= form_for(@topic_chat, url: chat_topic_path(topic) ) do |f|
+  = f.label :コメント
   = f.text_area :body
   = f.hidden_field :community_id, value: @community.id
   = f.hidden_field :user_id, value: current_user.id

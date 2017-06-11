@@ -1,37 +1,46 @@
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+
 #layout_flex
-  #layout_message
+  #layout_sidebar
+    .community_detail
+      .community_detail_image
+        = image_tag @community.image, size: '200', class: 'img-radius'
+      .community_detail_body
+        .community_detail_name
+          = @community.name
+        .community_detail_explain
+          = @community.introduce
 
-      .message_panel
-        .panel_container
-          .panel_header
-            .panel_image  = image_tag @community.image, class: 'img-circle', size: '100'
-            .panel_info
-              .panel_name = @community.name
-              .panel_age = '123人'
-              .panel_address = @community.user.name
-            .panel_day = '2017年4月26日'
-          .panel_body
-            = truncate(@community.introduce, omission: '・・・', length: 50)
-      / .panel_bottun = link_to 'ありがとう', match_like_path(id: user, target: current_user), method: :post
-
-  #layout_message
-    .message_container
+    hr
+    .community_list
+      h5 = '参加者一覧'
+      - @users.limit(5).each do |user|
+        = link_to search_path(user) do
+          .community_content_detail
+            .community_image
+              = image_tag user.user_profile.image1, size: '70', class: 'img-radius'
 
 
+  #layout_right
+    .mypage_profile_section
+    .mypage_profile_label
+      .edit_title = 'みんなの投稿'
+      button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+        |  投稿
+      #sampleModal.modal.fade[tabindex="-1"]
+        .modal-dialog
+          .modal-margin
+            .modal-content
+              .modal-header
+                button.close[type="button" data-dismiss="modal"]
+                  span
+                    | ×
+                h3.modal-title
+                  | 検索
+              .modal-body
+                = render 'guest/topics/form'
+    - @topics.each do |topic|
+      .mypage_profile_body
+        = render 'guest/topics/topic', topic: topic
 
-
-    h1
-      | show
-    = @community.id
-    = @community.name
-    = @community.category
-    = @community.introduce
-    = image_tag @community.image.thumb
-    = link_to 'トピック作成', new_topic_path(community_id: @community.id)
-    - @topics.each do |t|
-      .commu-container
-        = link_to topic_path(t.id, community_id: @community.id) do
-          = t.id
-          = t.title
-          = t.body
-          = t.user.name
