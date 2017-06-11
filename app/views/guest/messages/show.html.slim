@@ -1,3 +1,36 @@
-h1
-  | Guest::Messages#show
-= render 'guest/module/profile'
+#layout_banner
+  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
+
+.panelList_section
+  .tab_header
+    = link_to 'お相手からのイイね', likes_path, class: 'tab_bottun'
+    = link_to 'マッチング一覧', messages_path, class: 'tab_select_button'
+  #layout_flex
+    #layout_message
+      .message_panel
+        = link_to search_path(@partner) do
+          .panel_container
+            .panel_header
+              .panel_image  = image_tag @partner.user_profile.image1.thumb, class: 'img-circle', size: '100'
+              .panel_info
+                .panel_name = @partner.name
+                .panel_age = "#{@partner.user_profile.age}歳"
+                .panel_address = @partner.user_profile.prefecture.name
+              .panel_day = '2017年4月26日'
+            .panel_body
+              = truncate(@partner.user_profile.introduce, omission: '・・・', length: 50)
+      / .pagenate  = paginate @partners
+
+
+    #layout_message
+      .message_container
+        - @messages.each do |m|
+          - if m.sender_id == current_user.id
+            .text-right =  m.body
+          - else
+            .text-left = m.body
+        = form_for @message, remote: true do |f|
+          = f.text_field :body
+          = f.hidden_field :partnership_id, value: @partnership.id
+          = f.hidden_field :sender_id, value: @partner.id
+          = f.submit "送信", :class => "btn btn-primary", data: { disable_with: "送信中..." }

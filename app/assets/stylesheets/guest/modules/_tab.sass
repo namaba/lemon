@@ -1,6 +1,6 @@
 .tab
   &_header
-    padding: 20px
+    padding: 20px 0
     display: flex
     justify-content: space-between
     .select
@@ -13,6 +13,16 @@
     font-size: 22px
     padding: 15px
     border-radius: 10px
+    &:hover
+      text-decoration: none
+      background: $red
+      color: $white
+  &_select_button
+    @extend .tab_bottun
+    background: $red
+    &:hover
+      text-decoration: none
+      color: $white
   &_message
     display: none
   &_content
