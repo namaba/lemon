@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   scope :match, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 1))}
 
 
-
   def self.matching
 
   end

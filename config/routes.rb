@@ -33,58 +33,45 @@ Rails.application.routes.draw do
 
   end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  #----------------------------------------
+  #  Admin
+  #----------------------------------------
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get '/admin', to: 'admin/user#index', as: :admin
+  scope '/admin', module: 'admin', as: :admin do
+    resources :user do
+      collection do
+        get   'premium_users',             to: 'user#premium_users', as: :premium
+        get   'canceled_users',            to: 'user#canceled_users', as: :canceled
+        get   'men',                       to: 'user#men'
+        get   'women',                     to: 'user#women'
+        get   'paying_users',              to: 'user#paying_users', as: :paying
+        get   'normal_users',              to: 'user#normal_users', as: :normal
+        get   'no_match',                  to: 'user#no_match'
+      end
+    end
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    resources :searchs, only: [:index]
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+    resources :announcement do
+      member do
+        delete 'all_destroy',                 to: 'announcement#all_destroy'
+      end
+    end
+  end  
+  #----------------------------------------
+  #  Admin/Premium
+  #----------------------------------------
+  get '/premium', to: 'premium/user#index', as: :premium
+  scope '/premium', module: 'premium', as: :premium do
+    resources :user do
+      collection do
+        # match 'pre_new',                       to: 'user#pre_new',  via: 'get'
+        get   'pre_new',                       to: 'user#pre_new' 
+        post   'pre_new',                       to: 'user#pre_create' 
+        get   'pre_notice',                    to: 'user#pre_notice'
+      end
+    end
+  end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
