@@ -21,10 +21,10 @@
                 .panel_day = '2017年4月26日'
               .panel_body
                 = truncate(partner.user_profile.introduce, omission: '・・・', length: 50)
-          = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner), method: :get, class: 'panel_bottun'
+          = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner.id), method: :get, class: 'panel_bottun'
+      / = paginate @partnerships
 
-    - partnership = @partnerships.first
-    - sender = partnership.user == current_user ? partnership.user : partnership.target
+
     #layout_message
       .message_container
         - @messages.each do |m|
@@ -32,8 +32,10 @@
             .text-right =  m.body
           - else
             .text-left = m.body
-        = form_for @message, remote: true do |f|
+        = @message.inspect
+        = form_for @message, url: messages_path(@message), method: :post, remote: true do |f|
           = f.text_field :body
           = f.hidden_field :partnership_id, value: @partnerships.first.id
-          = f.hidden_field :sender_id, value: sender.id
-          = f.submit "送信", :class => "btn btn-primary"
+          = f.hidden_field :sender_id, value: current_user.id
+          = f.submit "送信", :class => "btn btn-primary", data: { disable_with: "送信中..." }
+
