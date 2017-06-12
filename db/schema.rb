@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20170530151352) do
 
+  create_table "announcements", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "user_profile_id", limit: 4
+    t.text     "body",            limit: 65535
+    t.integer  "status",          limit: 4,     default: 1
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
+  add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
+  add_index "announcements", ["user_profile_id"], name: "index_announcements_on_user_profile_id", using: :btree
 
   create_table "communities", force: :cascade do |t|
     t.string   "name",       limit: 255,               null: false
