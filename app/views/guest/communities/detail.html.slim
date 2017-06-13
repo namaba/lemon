@@ -18,8 +18,8 @@
             = render 'form'
 
 .tab_header
-  = link_to 'コミュニティ検索', communities_path, class: 'tab_bottun select'
-  .tab_bottun マイコミュニティ
+  = link_to 'コミュニティ検索', communities_path, class: 'tab_select_button'
+  = link_to 'マイコミュニティ', my_communities_community_path(current_user), class: 'tab_bottun'
 
 .tab_content
   .panelList_section
@@ -48,19 +48,6 @@
     .community_futter
       =
       - if current_user.my_community.include?(@community)
-        = link_to '参加済み', root_path,class: 'community_join_button'
+        = link_to '参加済み', community_path(@community),class: 'community_join_button'
       - else
         = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
-.tab_content.tab_message
-  .panelList_section
-    .community_list
-      h5 = link_to 'コミュニティ', new_community_path
-      - @communities.limit(5).each do |community|
-        = link_to community_path(community) do
-          .community_content
-            .community_image
-              = image_tag community.image, size: '180', class: 'img-radius'
-            .community_body
-              .community_name = 'コミュニティ名'
-              .community_num = '( 123 名)'
-            .community_footer
