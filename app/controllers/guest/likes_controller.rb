@@ -24,14 +24,18 @@ class Guest::LikesController < Guest
   end
 
   def create
-    # if current_user.status.reduce_coin
-    if Like.create(user: @user, target: @target, like: 1)
-      redirect_to :back, notice: "イイねしました!"
-    else
-      redirect_to :back, notice: "イイねできませんでした"
+    ActiveRecord::Base.transaction do
+      if @user.reduce_good
+        if Like.create(user: @user, target: @target, like: 1)
+          redirect_to :back, notice: "イイねしました!"
+        else
+          redirect_to :back, notice: "イイねできませんでした"
+        end
+      end
     end
-    # end
-    # redirect_to user_search_path(id: params[:id], user_id: params[:target])
+    rescue => _error
+      # render template: "guest/error"
+      raise "[warning] #{_error}"
   end
 
 

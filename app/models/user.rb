@@ -38,8 +38,25 @@ class User < ActiveRecord::Base
   scope :match, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 1))}
 
 
-  def self.matching
+  def hoge
+    puts "hoge"
+  end
 
+  # TODO: リファクタ
+  def reduce_good
+    if self.status.good_count > 0
+      self.status.good_count -= 1
+      self.status.save
+    elsif self.status.free_coin > 0
+      self.status.free_coin -= 1
+      self.status.save
+    elsif self.status.pay_coin > 0
+      self.status.pay_coin -= 1
+      self.status.save
+    else
+      false
+      @message = 'コインが不足しています。'
+    end
   end
 
 
@@ -56,4 +73,5 @@ class User < ActiveRecord::Base
       # user.skip_confirmation!
     end
   end
+
 end
