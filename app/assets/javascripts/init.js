@@ -22,6 +22,7 @@ $(function(){
 });
 
 
+// コミュニティぺーじのタブ
 // $(function() {
 //   //クリックしたときのファンクションをまとめて指定
 //   $('.tab_header .tab_bottun').click(function() {

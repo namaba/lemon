@@ -28,6 +28,11 @@ class Guest::CommunitiesController < Guest
     end
   end
 
+  def my_communities
+    @my_communities = current_user.my_community.page(params[:page]).per(20)
+    @community = Community.new
+  end
+
   def detail
     @community = Community.find(params[:id])
     @communities = Community.all

@@ -19,29 +19,15 @@
               = render 'form'
 
   .tab_header
-    .tab_select_button コミュニティ検索
-    = link_to 'マイコミュニティ', my_communities_community_path(current_user), class: 'tab_bottun'
+    = link_to 'コミュニティ検索', communities_path, class: 'tab_bottun'
+    .tab_select_button マイコミュニティ
 
   .tab_content
     .panelList_section
-      .community_ranking
-        h5 人気コミュニティ
-        - @pickup_communities.each do |community|
-          = link_to detail_community_path(community) do
-            .community_content
-              .community_image
-                = image_tag community.image, size: '180', class: 'img-radius'
-              .community_body
-                .community_name = 'コミュニティ名'
-                .community_num = '( 123 名)'
-              .community_footer
-
-
-      hr
       .community_list
-        h5 = 'コミュニティ一覧'
-        - @communities.each do |community|
-          = link_to detail_community_path(community) do
+        h5 = link_to 'マイコミュニティ', new_community_path
+        - @my_communities.limit(5).each do |community|
+          = link_to community_path(community) do
             .community_content
               .community_image
                 = image_tag community.image, size: '180', class: 'img-radius'
@@ -49,5 +35,4 @@
                 .community_name = 'コミュニティ名'
                 .community_num = '( 123 名)'
               .community_footer
-      = paginate @communities
-
+    = paginate @my_communities
