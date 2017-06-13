@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :show, :create]
     resources :communities do
       member do
-        get 'detail',              to: 'communities#detail'
+        get 'my_communities',     to: 'communities#my_communities'
+        get 'detail',            to: 'communities#detail'
         get 'join',              to: 'communities#join'
       end
     end
@@ -58,7 +59,7 @@ Rails.application.routes.draw do
         delete 'all_destroy',                 to: 'announcement#all_destroy'
       end
     end
-  end  
+  end
   #----------------------------------------
   #  Admin/Premium
   #----------------------------------------
@@ -67,8 +68,8 @@ Rails.application.routes.draw do
     resources :user do
       collection do
         # match 'pre_new',                       to: 'user#pre_new',  via: 'get'
-        get   'pre_new',                       to: 'user#pre_new' 
-        post   'pre_new',                       to: 'user#pre_create' 
+        get   'pre_new',                       to: 'user#pre_new'
+        post   'pre_new',                       to: 'user#pre_create'
         get   'pre_notice',                    to: 'user#pre_notice'
       end
     end

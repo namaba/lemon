@@ -46,7 +46,8 @@
             .community_footer
 
     .community_futter
-      - if current_user.join_communities.find_by(community: @community)
+      =
+      - if current_user.my_community.include?(@community)
         = link_to '参加済み', root_path,class: 'community_join_button'
       - else
         = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
