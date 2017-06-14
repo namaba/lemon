@@ -4,11 +4,12 @@
     float: left
     width: 244px
     margin-right: 16px
+    margin-bottom: 20px
     // width: 224px
     // margin: 20px 10px
     border: 2px solid $red
     border-radius: 10px
-    &:nth-child(5)
+    &:nth-child(4n)
       margin-right: 0
   &_image
     position: relative
@@ -29,8 +30,8 @@
     text-align: center
     font-size: 18px
   &_footer
-    padding-bottom: 10px
-  &_good
+    padding: 10px 0
+  &_like_button
     @extend %button
     @extend %button_red
     @extend %button_large
@@ -38,3 +39,7 @@
     font-size: 18px
     width: 75%
     margin: 0 auto
+  &_liked_button
+    @extend .card_like_button
+    color: $red
+    background-color: $white
