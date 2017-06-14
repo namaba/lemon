@@ -42,6 +42,10 @@ class Guest::TopicsController < Guest
     end
   end
   def destroy
+    topic = Topic.find(params[:id])
+    if topic.draft!
+      redirect_to :back
+    end
   end
 
   def chat
