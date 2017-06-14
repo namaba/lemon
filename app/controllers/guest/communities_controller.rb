@@ -10,7 +10,7 @@ class Guest::CommunitiesController < Guest
 
   def show
     @users = User.all
-    @topics = @community.topics
+    @topics = @community.topics.published
     @topic = Topic.new
     @topic_chat = TopicChat.new
   end
