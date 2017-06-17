@@ -25,7 +25,7 @@
   .panelList_section
     .community_detail
       .community_detail_image
-        = image_tag @community.image, size: '200', class: 'img-radius'
+        = image_tag @community.image, class: 'img-radius'
       .community_detail_body
         .community_detail_name
           = @community.name
@@ -50,4 +50,4 @@
       - if current_user.my_community.include?(@community)
         = link_to '参加済み', community_path(@community),class: 'community_join_button'
       - else
-        = link_to '参加する', join_community_path(community_id: @community),class: 'community_join_button '
+        = link_to '参加する', join_community_path(id: @community),class: 'community_join_button '
