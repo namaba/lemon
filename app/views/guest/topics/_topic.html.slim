@@ -30,8 +30,6 @@ section.murmur_panel
                   button.close[type="button" data-dismiss="modal"]
                     span
                       | ×
-                  h3.modal-title
-                    | コメント
                 .modal-body
                   = render 'guest/topics/edit', topic: topic
         / = link_to '編集', edit_topic_path(id: topic)
@@ -46,8 +44,6 @@ section.murmur_panel
                 button.close[type="button" data-dismiss="modal"]
                   span
                     | ×
-                h3.modal-title
-                  | コメント
               .modal-body
                 = render 'guest/topics/chat_form', topic: topic
   .murmur_comments

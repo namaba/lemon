@@ -20,18 +20,23 @@
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自己紹介編集'
-        .edit_button.btn.btn-default.btns data-tgt="wd1"  編集する
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal1"]
+          |  編集する
       .mypage_profile_body
         = @user.user_profile.introduce
+
+
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = 'プロフィール編集'
       .mypage_profile_sub_label
         .edit_title = '基本プロフィール'
-        .edit_button.btn.btn-default.btns data-tgt="wd2"  編集する
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal2"]
+          |  編集する
       .mypage_profile_sub_label
         .edit_title = '詳細プロフィール'
-        .edit_button.btn.btn-default.btns data-tgt="wd3"  編集する
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal3"]
+          |  編集する
         = render 'modal'
 
     .mypage_profile_section
@@ -39,22 +44,9 @@
         .edit_title = '参加中のコミュニティ'
       .mypage_profile_body
         .mypage_user_communities
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
-          = image_tag @user.user_profile.image1, class: 'img-radius', size: '100'
+          - @user.my_community.each do |community|
+            = image_tag community.image, class: 'img-radius', size: '100'
+
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自分の投稿'
