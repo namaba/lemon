@@ -40,12 +40,11 @@ class Guest::CommunitiesController < Guest
   end
 
   def join
-    begin
-      ActiveRecord::Base.transaction do
-        current_user.join_communities.create(community: @community)
-        redirect_to @community
-      end
-    rescue => e
+    user_community = current_user.join_communities.new(community_id: @community.id)
+    if user_community.save
+      redirect_to @community, notice: "参加しました"
+    else
+      redirect_to :back, notice: "参加できませんでした"
     end
   end
 
