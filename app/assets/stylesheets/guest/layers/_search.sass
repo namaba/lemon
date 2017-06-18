@@ -4,42 +4,56 @@
     float: left
     width: 244px
     margin-right: 16px
-    margin-bottom: 20px
-    // width: 224px
-    // margin: 20px 10px
-    border: 2px solid $red
-    border-radius: 10px
+    margin-bottom: 40px
+    // border: 2px solid $red
+    // border-radius: 10px
     &:nth-child(4n)
       margin-right: 0
   &_image
     position: relative
     .img-radius
-      border-radius: 10px 10px 0 0
+      // border-radius: 10px 10px 0 0
+      border-radius: 10px
   &_info
     position: absolute
     +display_box(center)
     bottom: 0
     right: 0
-  &_body
-    width: 100%
-    background: $light-gray
   &_sex, &_age, &_address
     margin-right: 5px
     color: white
+  &_body
+    width: 100%
+    // background: $light-gray
   &_name
     text-align: center
     font-size: 18px
   &_footer
-    padding: 10px 0
+    padding-bottom: 10px
   &_like_button
     @extend %button
     @extend %button_red
     @extend %button_large
     display: block
     font-size: 18px
-    width: 75%
-    margin: 0 auto
+    padding: 0
+    width: 100%
+    // width: 75%
+    // margin: 0 auto
+    &:hover
+      background-color: $label-red
+    a
+      display: block
+      padding: 8px
+      width: 100%
+      text-decoration: none
+      &:hover
+        color: $white
+        text-decoration: none
+
   &_liked_button
     @extend .card_like_button
     color: $red
+    padding: 8px
     background-color: $white
+    border: solid 1px $red
