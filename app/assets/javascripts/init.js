@@ -22,6 +22,19 @@ $(function(){
 });
 
 
+// ヘッダー
+$(function(){
+  var url = $(location).attr('href');
+  $('#menu').find('a').each(function(){
+    var link = $(this).attr('href');
+    if(link == url){
+      $(this).addClass('on');
+    }
+  });
+});
+
+
+
 // コミュニティぺーじのタブ
 // $(function() {
 //   //クリックしたときのファンクションをまとめて指定
