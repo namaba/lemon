@@ -17,44 +17,25 @@ section.murmur_panel
   .murmur_panel_footer
     .murmur_smile
       = image_tag 'smile', width: '50'
-      = 'スマイル'
+      = '超スマイル'
     .murmur_items
       - if current_user == topic.writer
-        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal"]
+        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal#{topic.id}"]
           |  編集
-        #EditModal.modal.fade[tabindex="-1"]
-          .modal-dialog
-            .modal-margin
-              .modal-content
-                .modal-header
-                  button.close[type="button" data-dismiss="modal"]
-                    span
-                      | ×
-                .modal-body
-                  = render 'guest/topics/edit', topic: topic
         / = link_to '編集', edit_topic_path(id: topic)
         = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
-      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal"]
+      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal#{topic.id}"]
         |  コメントする
-      #ChatModal.modal.fade[tabindex="-1"]
-        .modal-dialog
-          .modal-margin
-            .modal-content
-              .modal-header
-                button.close[type="button" data-dismiss="modal"]
-                  span
-                    | ×
-              .modal-body
-                = render 'guest/topics/chat_form', topic: topic
+      = render 'guest/topics/modal', topic: topic
   / TODO: 数はリファクタ
-  - if topic.chats.size > 1
+  - if topic.chats.size >= 1
     .text-right
       button.btn.btn-default data-target="##{topic.id}" data-toggle="collapse" type="button" = "コメント#{topic.chats.size}件"
-    .collapse id="#{topic.id}"
 
-      - topic.chats.offset(3).each do |chat|
-        = image_tag chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
-        = chat.user.name
-        br
-        = chat.body
-        hr
+.collapse id="#{topic.id}"
+  - topic.chats.each do |chat|
+    = image_tag chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+    = chat.user.name
+    br
+    = chat.body
+    hr

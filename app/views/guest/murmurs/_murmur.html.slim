@@ -27,7 +27,7 @@ section.murmur_panel
         |  コメント
       = render 'modal', murmur: murmur
 
-      - if murmur.comments.size > 1
+      - if murmur.comments.size >= 1
         .text-right
           button.btn.btn-default data-target="##{murmur.id}" data-toggle="collapse" type="button" = "コメント#{murmur.comments.size}件"
 
