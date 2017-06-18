@@ -80,3 +80,30 @@
       +fontsize($font-small)
 
 
+  #menu
+    @extend %container
+    ul
+      margin: 0
+      padding: 0
+      list-style: none
+    li
+      display: inline
+      width: 20%
+      padding: 0
+      margin: 0
+      float: left
+      // border-left: solid 1px white
+      a
+        display: block
+        background-color: $wine-red
+        color: $white
+        padding: 10px
+        text-decoration: none
+        width: 100%
+        text-align: center
+        font-size: 14px
+        &:hover
+          background-color: $white
+          color: $red
+
+
