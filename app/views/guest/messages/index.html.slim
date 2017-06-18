@@ -29,13 +29,14 @@
       .message_container
         - @messages.each do |m|
           - if m.sender_id == current_user.id
-            .text-right =  m.body
+            .message_card_right =  m.body
           - else
-            .text-left = m.body
-        = @message.inspect
-        = form_for @message, url: messages_path(@message), method: :post, remote: true do |f|
-          = f.text_field :body
-          = f.hidden_field :partnership_id, value: @partnerships.first.id
-          = f.hidden_field :sender_id, value: current_user.id
-          = f.submit "送信", :class => "btn btn-primary", data: { disable_with: "送信中..." }
+            .message_card_left = m.body
+        .message_form
+          = form_for @message, url: messages_path(@message), method: :post, remote: true do |f|
+            = f.text_field :body, class: 'message_text'
+            = f.hidden_field :partnership_id, value: @partnerships.first.id
+            = f.hidden_field :sender_id, value: current_user.id
+            = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
+      = paginate @messages
 
