@@ -2,7 +2,7 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = image_tag murmur.user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+        = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(murmur.user)
       .user_info
         .user_name = murmur.user.name
         .user_age = "#{murmur.user.user_profile.age}歳"
@@ -33,7 +33,7 @@ section.murmur_panel
 
   .murmur_comments.collapse id="#{murmur.id}"
     - murmur.comments.each do |comment|
-      = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+      = link_to image_tag(comment.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(comment.user)
       = comment.user.name
       br
       = comment.comment

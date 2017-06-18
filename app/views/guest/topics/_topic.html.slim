@@ -2,7 +2,7 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = image_tag topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'
+        = link_to image_tag(topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(topic.writer)
       .user_info
         .user_name
           = topic.writer.name
@@ -34,7 +34,7 @@ section.murmur_panel
 
 .collapse id="#{topic.id}"
   - topic.chats.each do |chat|
-    = image_tag chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+    = link_to image_tag(chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(chat.user)
     = chat.user.name
     br
     = chat.body
