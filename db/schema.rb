@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530151352) do
+ActiveRecord::Schema.define(version: 20170621130200) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",          limit: 4,     default: 1
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "announcements", ["deleted_at"], name: "index_announcements_on_deleted_at", using: :btree
   add_index "announcements", ["user_id"], name: "index_announcements_on_user_id", using: :btree
   add_index "announcements", ["user_profile_id"], name: "index_announcements_on_user_profile_id", using: :btree
 
@@ -34,8 +36,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",     limit: 4,     default: 1
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "communities", ["deleted_at"], name: "index_communities_on_deleted_at", using: :btree
   add_index "communities", ["user_id"], name: "index_communities_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
@@ -46,8 +50,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",     limit: 4, default: 0
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "likes", ["deleted_at"], name: "index_likes_on_deleted_at", using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
@@ -68,8 +74,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",     limit: 4,   default: 1
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "murmur_comments", ["deleted_at"], name: "index_murmur_comments_on_deleted_at", using: :btree
   add_index "murmur_comments", ["murmur_id"], name: "index_murmur_comments_on_murmur_id", using: :btree
   add_index "murmur_comments", ["user_id"], name: "index_murmur_comments_on_user_id", using: :btree
 
@@ -81,8 +89,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",        limit: 4
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "murmurs", ["deleted_at"], name: "index_murmurs_on_deleted_at", using: :btree
   add_index "murmurs", ["user_id"], name: "index_murmurs_on_user_id", using: :btree
 
   create_table "partnerships", force: :cascade do |t|
@@ -91,8 +101,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",     limit: 4, default: 1
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "partnerships", ["deleted_at"], name: "index_partnerships_on_deleted_at", using: :btree
   add_index "partnerships", ["user_id"], name: "index_partnerships_on_user_id", using: :btree
 
   create_table "topic_chats", force: :cascade do |t|
@@ -104,9 +116,11 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",       limit: 4,   default: 1
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.datetime "deleted_at"
   end
 
   add_index "topic_chats", ["community_id"], name: "index_topic_chats_on_community_id", using: :btree
+  add_index "topic_chats", ["deleted_at"], name: "index_topic_chats_on_deleted_at", using: :btree
   add_index "topic_chats", ["topic_id"], name: "index_topic_chats_on_topic_id", using: :btree
   add_index "topic_chats", ["user_id"], name: "index_topic_chats_on_user_id", using: :btree
 
@@ -118,9 +132,11 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",       limit: 4,     default: 1
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.datetime "deleted_at"
   end
 
   add_index "topics", ["community_id"], name: "index_topics_on_community_id", using: :btree
+  add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "user_communities", force: :cascade do |t|
@@ -128,9 +144,11 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "community_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "deleted_at"
   end
 
   add_index "user_communities", ["community_id"], name: "index_user_communities_on_community_id", using: :btree
+  add_index "user_communities", ["deleted_at"], name: "index_user_communities_on_deleted_at", using: :btree
   add_index "user_communities", ["user_id"], name: "index_user_communities_on_user_id", using: :btree
 
   create_table "user_partnerships", force: :cascade do |t|
@@ -139,8 +157,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.integer  "status",         limit: 4, default: 1
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "user_partnerships", ["deleted_at"], name: "index_user_partnerships_on_deleted_at", using: :btree
   add_index "user_partnerships", ["partnership_id"], name: "index_user_partnerships_on_partnership_id", using: :btree
   add_index "user_partnerships", ["user_id"], name: "index_user_partnerships_on_user_id", using: :btree
 
@@ -205,8 +225,10 @@ ActiveRecord::Schema.define(version: 20170530151352) do
     t.string   "uid",                    limit: 255
     t.string   "image",                  limit: 255
     t.string   "name",                   limit: 255
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
