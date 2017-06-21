@@ -26,7 +26,8 @@
         = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
         = link_to image_tag(@user.user_profile.image2, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
         = link_to image_tag(@user.user_profile.image3, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
-        = image_tag 'add_badge', size: '80'
+        = link_to image_tag("add_badge", class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        / = image_tag '', size: '80'
     / ユーザーステータス
     .sidebar_status
       .sidebar_status_section
