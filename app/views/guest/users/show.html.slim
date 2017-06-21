@@ -17,7 +17,7 @@
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '参加中のコミュニティ'
-        - if @user.my_community.size > 1
+        - if @user.my_community.size > 10
           .text-right
             button.btn.btn-default data-target="#Mycommunities" data-toggle="collapse" type="button" = "もっとみる"
       .mypage_profile_body
