@@ -16,6 +16,21 @@
 
     .mypage_profile_section
       .mypage_profile_label
+        .edit_title = '参加中のコミュニティ'
+        - if @user.my_community.size > 1
+          .text-right
+            button.btn.btn-default data-target="#Mycommunities" data-toggle="collapse" type="button" = "もっとみる"
+      .mypage_profile_body
+        .mypage_user_communities
+          - @user.my_community.limit(10).each do |community|
+            = image_tag community.image, class: 'img-radius', size: '100'
+
+        .collapse id="Mycommunities"
+          .mypage_user_communities
+            - @user.my_community.offset(10).each do |community|
+              = image_tag community.image, class: 'img-radius', size: '100'
+    .mypage_profile_section
+      .mypage_profile_label
         .edit_title = '自己紹介編集'
         button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal1"]
           |  編集する
@@ -36,13 +51,6 @@
           |  編集する
         = render 'modal'
 
-    .mypage_profile_section
-      .mypage_profile_label
-        .edit_title = '参加中のコミュニティ'
-      .mypage_profile_body
-        .mypage_user_communities
-          - @user.my_community.each do |community|
-            = image_tag community.image, class: 'img-radius', size: '100'
 
     .mypage_profile_section
       .mypage_profile_label
