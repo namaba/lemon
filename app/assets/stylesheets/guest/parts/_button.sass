@@ -77,4 +77,49 @@ button
     +fontsize($font-xsmall)
   &_preview
     @extend %button
+  &_like
+    display: block
+    font-size: 18px
+    padding: 0
+    width: 100%
+    &:hover
+      background-color: $label-red
+    a
+      display: block
+      padding: 8px
+      width: 100%
+      text-decoration: none
+      &:hover
+        color: $white
+        text-decoration: none
+
+.like_button
+  @extend %button
+  @extend %button_red
+  @extend %button_large
+  display: block
+  font-size: 18px
+  padding: 0
+  width: 100%
+  // width: 75%
+  // margin: 0 auto
+  &:hover
+    background-color: $label-red
+  a
+    display: block
+    padding: 8px
+    width: 100%
+    text-decoration: none
+    &:hover
+      color: $white
+      text-decoration: none
+.liked_button
+  @extend .like_button
+  color: $red
+  padding: 8px
+  background-color: $white
+  border: solid 1px $red
+  &:hover
+    background-color: $white
+    color: $red
 
