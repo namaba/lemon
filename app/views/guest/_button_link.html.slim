@@ -1,8 +1,8 @@
 - if controller_name == 'searches'
   - if good(@user)
-    = 'イイね済'
+    .liked_button = 'イイね済'
   - else
-    = link_to 'イイね', likes_path(id: current_user, target: @user), method: :post
+    .like_button = link_to 'イイね', likes_path(id: current_user, target: @user), method: :post
 
 - if controller_name == 'likes'
   = link_to 'ありがとう', match_like_path(id: @user, target: current_user)
