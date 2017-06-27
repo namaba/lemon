@@ -2,13 +2,20 @@
 .card
   &_content
     float: left
-    width: 244px
-    margin-right: 16px
-    margin-bottom: 40px
-    // border: 2px solid $red
-    // border-radius: 10px
+    +responsive(pc)
+      width: 244px
+      margin-right: 16px
+      margin-bottom: 40px
+    +responsive(smartphone)
+      width: 47%
+      margin-right: 6%
+      margin-bottom: 10px
     &:nth-child(4n)
-      margin-right: 0
+      +responsive(pc)
+        margin-right: 0
+    &:nth-child(2n)
+      +responsive(smartphone)
+        margin-right: 0
   &_image
     position: relative
     .img-radius
