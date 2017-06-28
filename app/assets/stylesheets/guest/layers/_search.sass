@@ -1,5 +1,7 @@
 // module読み込まれたら_card.sassに移す
 .card
+  &_list
+    overflow: hidden
   &_content
     float: left
     +responsive(pc)
@@ -17,6 +19,7 @@
       +responsive(smartphone)
         margin-right: 0
   &_image
+    z-index: -1
     position: relative
     .img-radius
       // border-radius: 10px 10px 0 0
