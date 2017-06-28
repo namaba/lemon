@@ -9,13 +9,25 @@
       .navbar_logout_button
         = button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-danger'
 
-  #menu
+  #menu_pc
     ul
       li = link_to "さがす", searches_path
       li = link_to "いいね", likes_path
       li = link_to 'コミュニティ', communities_path
       li = link_to 'つぶやき', murmurs_path
       li = link_to "マイページ", user_path(current_user)
+
+
+  / スマホ
+  #menu_sp
+    button
+      = image_tag 'lemon_logo', :size => "30"
+    .navbar_sp
+      = link_to "さがす", searches_path
+      = link_to "いいね", likes_path
+      = link_to 'コミュニティ', communities_path
+      = link_to 'つぶやき', murmurs_path
+      = link_to "マイページ", user_path(current_user)
 
 
 

@@ -80,7 +80,7 @@
       +fontsize($font-small)
 
 
-  #menu
+  #menu_pc
     @extend %container
     ul
       margin: 0
@@ -108,6 +108,23 @@
         &:hover
           background-color: $white
           color: $red
-      // .on
-      //   background-color: $white
-
+        // .on
+        //   background-color: $white
+      +responsive(smartphone)
+        display: none
+  // スマホ版メニューバー
+  #menu_sp
+    +responsive(pc)
+      display: none
+    // @extend %container
+    .navbar_sp
+      display: none
+      z-index: 9999 !important
+      a
+        display: block
+        width: 100%
+        color: $white
+        padding: 10px
+        text-decoration: none
+        background-color: $red
+        border-bottom: 1px solid $white
