@@ -32,7 +32,7 @@ html
     footer#layout_footer
       // footer
       - if yield(:footer).blank?
-        / = render 'footer'
+        = render 'footer'
       - else
         = yield :footer
 
