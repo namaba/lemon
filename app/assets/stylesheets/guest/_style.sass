@@ -38,7 +38,6 @@ a
     +responsive(pc)
       position: fixed
       background: $white
-      z-index: 9999
   &_content
     // PC
     @media (min-width: $screen-max-tablet)
@@ -85,6 +84,12 @@ a
     margin-bottom: 20px
     img
       margin: 0
+    // SP
+    @media (max-width: $screen-max-tablet)
+      margin-bottom: 10px
+
   &_footer
     border-top: 1px solid #ccc
     background: darken($light-gray, 4%)
+.paddingTop
+  padding-top: 290px !important

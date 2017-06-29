@@ -20,16 +20,16 @@ class User < ActiveRecord::Base
   # community
   has_many :communities
   # murmur
-  has_many :murmurs
+  has_many :murmurs, dependent: :destroy
   # murmur_comment
-  has_many :murmur_comments
+  has_many :murmur_comments, dependent: :destroy
   # user_community
   has_many :join_communities, :class_name => 'UserCommunity',:foreign_key => 'user_id'
-  has_many :my_community, through: :join_communities
+  has_many :my_community, through: :join_communities, dependent: :destroy
 
   has_many :topics, :class_name => 'Topic',:foreign_key => 'user_id'
 
-  has_many :user_chats, :class_name => 'TopicChat', :foreign_key => 'user_id'
+  has_many :topic_chats, :class_name => 'TopicChat', :foreign_key => 'user_id', dependent: :destroy
 
 
   #----------------------------------------

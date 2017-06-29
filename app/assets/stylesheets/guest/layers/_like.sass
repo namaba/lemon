@@ -15,6 +15,8 @@
     border: 2px solid $red
     border-radius: 10px
     padding: 20px
+    +responsive(smartphone)
+      padding: 10px
   &_header
     overflow: hidden
   &_image,&_info
@@ -22,20 +24,35 @@
   &_image
     width: 30%
     height: 100px
+    +responsive(smartphone)
+      height: 80px
+    img
+      width: 100px
+      +responsive(smartphone)
+        width: 75px
+        height: 75px
   &_info
     width: 70%
     margin-top: 10px
     vertical-align: bottom
+    +responsive(smartphone)
+      margin-top: 0px
   &_name,&_age,&_address
     display: inline-block
   &_name
     font-size: 22px
     margin-right: 20px
+    +responsive(smartphone)
+      font-size: 16px
   &_age,&_address
     font-size: 18px
     margin-right: 10px
+    +responsive(smartphone)
+      font-size: 14px
   &_day
     float: left
+    +responsive(smartphone)
+      display: none
   &_bottun
     display: block
   &_body

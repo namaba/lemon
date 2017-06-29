@@ -69,6 +69,7 @@ $(function(){
 // スマホ版ナブバー
 $("#menu_sp").click(function () {
   $(".navbar_sp").slideToggle();
+  $("#layout_content").toggleClass('paddingTop');
 });
 
 
