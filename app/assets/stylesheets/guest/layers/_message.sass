@@ -3,6 +3,9 @@
     position: relative
     width: 92%
     margin: 10px 20px
+    +responsive(smartphone)
+      width: 100%
+      margin: 0
     &:nth-child(1)
       background-color: $light-red
   &_container
@@ -11,6 +14,8 @@
     margin: 10px 20px
     padding: 10px 20px
     overflow: hidden
+    +responsive(smartphone)
+      display: none
   &_card
     width: 55%
     border: 2px solid $red
