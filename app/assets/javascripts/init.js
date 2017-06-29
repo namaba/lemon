@@ -68,7 +68,8 @@ $(function(){
 
 // スマホ版ナブバー
 $("#menu_sp").click(function () {
-  $(".navbar_sp").slideToggle();
+  $(".navbar_sp").toggle();
+  // $(".navbar_sp").toggleClass('display','block');
   $("#layout_content").toggleClass('paddingTop');
 });
 

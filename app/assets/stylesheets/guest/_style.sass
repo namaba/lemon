@@ -38,6 +38,7 @@ a
     +responsive(pc)
       position: fixed
       background: $white
+      z-index: 9999
   &_content
     // PC
     @media (min-width: $screen-max-tablet)
@@ -48,7 +49,7 @@ a
     @media (max-width: $screen-max-tablet)
       width: 100%
       padding-top: 80px
-      margin: 0 0 10px
+      // margin: 0 0 10px
   &_flex
     @media (min-width: $screen-max-tablet)
       display: flex

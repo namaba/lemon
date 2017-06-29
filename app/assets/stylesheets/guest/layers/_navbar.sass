@@ -15,11 +15,8 @@
   &-main
     padding: 10px 0
     border-bottom: 1px solid $gray
-    // +responsive(smartphone)
-    //   padding-left: 50px
   &-sub
     background: rgba($white, 0.85)
-
   &-body
     position: relative
     @extend %container
@@ -78,8 +75,6 @@
       height: 24px
       margin-right: 5px
       +fontsize($font-small)
-
-
   #menu_pc
     @extend %container
     ul
@@ -92,7 +87,6 @@
       padding: 0
       margin: 0
       float: left
-      // border-left: solid 1px white
       a
         display: block
         background-color: $wine-red
@@ -102,14 +96,9 @@
         width: 100%
         text-align: center
         font-size: 14px
-        // &:visited
-        //   background-color: $white
-        //   color: $red
         &:hover
           background-color: $white
           color: $red
-        // .on
-        //   background-color: $white
       +responsive(smartphone)
         display: none
   // スマホ版メニューバー
@@ -127,3 +116,6 @@
         text-decoration: none
         background-color: $red
         border-bottom: 1px solid $white
+.on
+  background-color: $white
+  color: $red

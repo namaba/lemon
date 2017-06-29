@@ -12,6 +12,7 @@ section.murmur_panel
   .murmur_panel_body
     = murmur.body
     - if murmur.image?
+      / TODO namba 画像サイズ決定後width:100%に修正
       .murmur_image
         = image_tag murmur.image, width: '500'
   .murmur_panel_footer
