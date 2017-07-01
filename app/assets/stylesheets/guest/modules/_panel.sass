@@ -7,6 +7,12 @@
     img
       margin: 0
       width: 100%
+    a
+      color: $link-color
+      text-decoration: none
+      &:hover
+        color: $link-hover-color
+        text-decoration: underline
   &_like_section
     @extend .panelList_section
     +responsive(smartphone)
