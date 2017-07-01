@@ -3,8 +3,8 @@ class Guest::MessagesController < Guest
 
   def index
     @partnerships = Partnership.joins(:user).where("user_id = ? or target_id = ?", current_user, current_user).page(params[:page]).per(4)
-    @message = Message.new(partnership_id: @partnerships.first.id)
-    @messages = Message.where(partnership_id: @partnerships.first).page(params[:page]).per(20)
+    @message  = Message.new(partnership_id: @partnerships.first.id) if @partnerships.first
+    @messages = Message.where(partnership_id: @partnerships.first).page(params[:page]).per(20) if @partnerships.first
   end
 
   def show
