@@ -1,10 +1,18 @@
 .tab
   &_header
-    padding: 20px
+    padding: 20px 0
     display: flex
     justify-content: space-between
+    +responsive(smartphone)
+      padding: 10px 0
     .select
       background: $red
+    a
+      color: $white
+      text-decoration: none
+      &:hover
+        color: $white
+        text-decoration: none
   &_bottun
     width: 48%
     text-align: center
@@ -13,6 +21,20 @@
     font-size: 22px
     padding: 15px
     border-radius: 10px
+    +responsive(smartphone)
+      font-size: 16px
+      padding: 5px
+      border-radius: 5px
+    &:hover
+      text-decoration: none
+      background: $red
+      color: $white
+  &_select_button
+    @extend .tab_bottun
+    background: $red
+    &:hover
+      text-decoration: none
+      color: $white
   &_message
     display: none
   &_content

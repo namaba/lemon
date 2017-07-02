@@ -1,7 +1,5 @@
 .sidebar
   section.sidebar_section
-    // Facebook
-    h4.sidebar_title プロフィール
     / TODO ボタン作成
     = link_to '相手から見た自分のプロフィールを確認', user_preview_path(current_user), class: 'sidebar_preview_button'
     / プロフィール写真
@@ -25,10 +23,11 @@
         = image_tag 'sex_badge_l', class: 'img-label'
         h5 サブ写真追加
       .sidebar_sub_images
-        = image_tag @user.user_profile.image1, class: "img-radius", size: '80'
-        = image_tag @user.user_profile.image2, class: "img-radius", size: '80'
-        = image_tag @user.user_profile.image3, class: "img-radius", size: '80'
-        = image_tag 'add_badge', size: '80'
+        = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        = link_to image_tag(@user.user_profile.image2, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        = link_to image_tag(@user.user_profile.image3, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        = link_to image_tag("add_badge", class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        / = image_tag '', size: '80'
     / ユーザーステータス
     .sidebar_status
       .sidebar_status_section

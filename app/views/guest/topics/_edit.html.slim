@@ -1,0 +1,19 @@
+.modal id="EditModal#{topic.id}"
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(@topic, url: topic_path(topic), method: :patch) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :トピック編集
+                  = f.text_area :body, class: 'form-control'
+
+                = f.hidden_field :community_id, value: @community.id
+                = f.hidden_field :user_id, value: current_user.id
+                = f.submit '保存', class: "btn btn-info text-center"

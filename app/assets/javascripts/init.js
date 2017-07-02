@@ -22,24 +22,78 @@ $(function(){
 });
 
 
-$(function() {
-  //クリックしたときのファンクションをまとめて指定
-  $('.tab_header .tab_bottun').click(function() {
-
-    //.index()を使いクリックされたタブが何番目かを調べ、
-    //indexという変数に代入します。
-    var index = $('.tab_header .tab_bottun').index(this);
-
-    //コンテンツを一度すべて非表示にし、
-    $('.tab_content').css('display','none');
-
-    //クリックされたタブと同じ順番のコンテンツを表示します。
-    $('.tab_content').eq(index).css('display','block');
-
-    //一度タブについているクラスselectを消し、
-    $('.tab_header .tab_bottun').removeClass('select');
-
-    //クリックされたタブのみにクラスselectをつけます。
-    $(this).addClass('select')
+// ヘッダー
+$(function(){
+  var url = $(location).attr('href');
+  $('#menu_pc').find('a').each(function(){
+    var link = $(this).attr('href');
+    if(link == url){
+      $(this).addClass('on');
+    }
   });
 });
+
+
+$(function(){
+  var setFileInput = $('.imgInput'),
+  setFileImg = $('.imgView');
+
+  setFileInput.each(function(){
+    var selfFile = $(this),
+    selfInput = $(this).find('input[type=file]'),
+    prevElm = selfFile.find(setFileImg),
+    orgPass = prevElm.attr('src');
+
+    selfInput.change(function(){
+      var file = $(this).prop('files')[0],
+      fileRdr = new FileReader();
+
+      if (!this.files.length){
+        prevElm.attr('src', orgPass);
+        return;
+      } else {
+        if (!file.type.match('image.*')){
+          prevElm.attr('src', orgPass);
+          return;
+        } else {
+          fileRdr.onload = function() {
+            prevElm.attr('src', fileRdr.result);
+          }
+          fileRdr.readAsDataURL(file);
+        }
+      }
+    });
+  });
+});
+
+// スマホ版ナブバー
+$("#menu_sp").click(function () {
+  $(".navbar_sp").toggle();
+  // $(".navbar_sp").toggleClass('display','block');
+  $("#layout_content").toggleClass('paddingTop');
+});
+
+
+
+// コミュニティぺーじのタブ
+// $(function() {
+//   //クリックしたときのファンクションをまとめて指定
+//   $('.tab_header .tab_bottun').click(function() {
+
+//     //.index()を使いクリックされたタブが何番目かを調べ、
+//     //indexという変数に代入します。
+//     var index = $('.tab_header .tab_bottun').index(this);
+
+//     //コンテンツを一度すべて非表示にし、
+//     $('.tab_content').css('display','none');
+
+//     //クリックされたタブと同じ順番のコンテンツを表示します。
+//     $('.tab_content').eq(index).css('display','block');
+
+//     //一度タブについているクラスselectを消し、
+//     $('.tab_header .tab_bottun').removeClass('select');
+
+//     //クリックされたタブのみにクラスselectをつけます。
+//     $(this).addClass('select')
+//   });
+// });

@@ -1,7 +1,8 @@
 class Guest::TopicsController < Guest
    before_action :set_community, only: [:new]
+   before_action :set_topic, only: [:show, :chat, :update]
    before_action :set_topic_community, only: [:create]
-   before_action :set_topic, only: [:show, :chat]
+   before_action :set_topic_chat_community, only: [:chat]
 
 
   def index
@@ -13,29 +14,44 @@ class Guest::TopicsController < Guest
   end
 
   def new
-    @topic = Topic.new
+    @topic = @community.topics.new
   end
 
   def create
-    raise @community.inspect
-    @topic = @community.topics.build(topic_params)
-    if @topic.save!
-      redirect_to @topic, notice: "作成できました"
-    else
+    begin
+      ActiveRecord::Base.transaction do
+        @topic = @community.topics.build(topic_params)
+        if @topic.save!
+          redirect_to community_path(@community), notice: "作成できました"
+        end
+      end
+    rescue => e
       redirect_to :back, notice: "作成できませんでした"
     end
   end
 
   def edit
+    @topic = Topic.find(params[:id])
   end
 
+  def update
+    if @topic = @topic.update(topic_params)
+      redirect_to :back, notice: "更新できました"
+    else
+      redirect_to :back, notice: "更新できませんでした"
+    end
+  end
   def destroy
+    topic = Topic.find(params[:id])
+    if topic.draft!
+      redirect_to :back
+    end
   end
 
   def chat
     @chat = @topic.chats.build(chat_params)
     if @chat.save!
-      redirect_to @topic, notice: "作成できました"
+      redirect_to community_path(@community), notice: "作成できました"
     else
       redirect_to :back, notice: "作成できませんでした"
     end
@@ -72,6 +88,10 @@ class Guest::TopicsController < Guest
 
   def set_topic_community
     @community = Community.find(params[:topic][:community_id])
+  end
+
+  def set_topic_chat_community
+    @community = Community.find(params[:topic_chat][:community_id])
   end
 
 end

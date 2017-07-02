@@ -1,0 +1,18 @@
+.modal id="ChatModal#{topic.id}"
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(@topic_chat, url: chat_topic_path(topic) ) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :コメント
+                  = f.text_area :body, class: 'form-control'
+                = f.hidden_field :community_id, value: @community.id
+                = f.hidden_field :user_id, value: current_user.id
+                = f.submit '保存', class: "btn btn-info text-center"

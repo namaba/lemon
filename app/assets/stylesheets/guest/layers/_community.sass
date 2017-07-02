@@ -9,11 +9,16 @@
   &_content
     float: left
     width: 180px
-    margin: 0px 8px
+    margin: 0px 12px
     border-radius: 10px
+    &_detail
+      @extend .community_content
+      width: 70px
+      margin: 0px 4px
   &_image
     .img-radius
       border-radius: 10px
+      margin-bottom: 0
   &_body
     width: 100%
     padding: 4px 10px
@@ -29,3 +34,29 @@
     font-size: 18px
     width: 75%
     margin: 0 auto
+  &_detail
+    display: flex
+    // justify-content: space-between
+    &_image
+      width: 300px
+      height: 300px
+    .img-radius
+      border-radius: 15px
+    &_body
+      margin-left: 20px
+    &_name
+      color: $red
+      font-weight: bold
+  &_futter
+    clear: both
+
+  &_join_button
+    @extend %button
+    @extend %button_red
+    @extend %button_small
+    display: block
+    padding: 16px 50px
+    margin: 30px auto
+    font-size: 18px
+    width: 50%
+

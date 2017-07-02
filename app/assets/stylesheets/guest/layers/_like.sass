@@ -6,6 +6,12 @@
     margin: 10px 20px
     width: 46%
     position: relative
+    a
+      color: $link-color
+      text-decoration: none
+      &:hover
+        color: $link-hover-color
+        text-decoration: underline
 
 
 
@@ -15,6 +21,8 @@
     border: 2px solid $red
     border-radius: 10px
     padding: 20px
+    +responsive(smartphone)
+      padding: 10px
   &_header
     overflow: hidden
   &_image,&_info
@@ -22,20 +30,35 @@
   &_image
     width: 30%
     height: 100px
+    +responsive(smartphone)
+      height: 80px
+    img
+      width: 100px
+      +responsive(smartphone)
+        width: 75px
+        height: 75px
   &_info
     width: 70%
     margin-top: 10px
     vertical-align: bottom
+    +responsive(smartphone)
+      margin-top: 0px
   &_name,&_age,&_address
     display: inline-block
   &_name
     font-size: 22px
     margin-right: 20px
+    +responsive(smartphone)
+      font-size: 16px
   &_age,&_address
     font-size: 18px
     margin-right: 10px
+    +responsive(smartphone)
+      font-size: 14px
   &_day
     float: left
+    +responsive(smartphone)
+      display: none
   &_bottun
     display: block
   &_body
@@ -45,12 +68,25 @@
   &_bottun
     width: 150px
     text-align: center
-    background: $red
-    color: $white
     position: absolute
     top: 80px
     right: 30px
-    font-size: 20px
+    background: $red
+    color: $white
+    font-size: 16px
+    border-radius: 5px
+    &:hover
+      background-color: $label-red
+    a
+      color: $white
+      display: block
+      padding: 8px
+      width: 100%
+      text-decoration: none
+      &:hover
+        color: $white
+        text-decoration: none
+
 
 
 

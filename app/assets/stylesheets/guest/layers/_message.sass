@@ -3,5 +3,35 @@
     position: relative
     width: 92%
     margin: 10px 20px
+    +responsive(smartphone)
+      width: 100%
+      margin: 0
+    &:nth-child(1)
+      background-color: $light-red
   &_container
-    bor
+    border: 2px solid $red
+    border-radius: 5px
+    margin: 10px 20px
+    padding: 10px 20px
+    overflow: hidden
+    +responsive(smartphone)
+      display: none
+  &_card
+    width: 55%
+    border: 2px solid $red
+    border-radius: 5px
+    margin: 20px 0
+    padding: 5px 15px
+    &_right
+      @extend .message_card
+      margin-left: 45%
+      color: $white
+      background-color: $red
+    &_left
+      @extend .message_card
+      color: $red
+  &_text
+    border: 2px solid $red
+    border-radius: 5px
+    height: 70px
+    width: 100%

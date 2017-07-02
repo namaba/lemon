@@ -1,0 +1,95 @@
+/ コミュニティトピック投稿
+#sampleModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+          / h3.modal-title
+          /   | 検索
+        .modal-body
+          = form_for(@topic, url: topics_path ) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :title
+                  = f.text_field :title, class: 'form-control'
+
+                .form-group
+                  = f.label :body
+                  = f.text_area :body, class: 'form-control'
+
+                = f.hidden_field :community_id, value: @community.id
+                = f.hidden_field :user_id, value: current_user.id
+
+                = f.submit '保存', class: "btn btn-info text-center"
+
+
+
+/ 編集
+.modal id="EditModal#{topic.id}"
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(@topic, url: topic_path(topic), method: :patch) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :トピック編集
+                  = f.text_area :body, class: 'form-control'
+
+                = f.hidden_field :community_id, value: @community.id
+                = f.hidden_field :user_id, value: current_user.id
+                = f.submit '保存', class: "btn btn-info text-center"
+
+/ コメント
+.modal id="ChatModal#{topic.id}"
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(@topic_chat, url: chat_topic_path(topic) ) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :コメント
+                  = f.text_area :body, class: 'form-control'
+                = f.hidden_field :community_id, value: @community.id
+                = f.hidden_field :user_id, value: current_user.id
+                = f.submit '保存', class: "btn btn-info text-center"
+
+
+
+
+
+
+
+
+
+
+
+/ button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="##{topic_type}"]
+/   = topic_type
+/ .modal.fade[tabindex="-1"][id="topic_type #{topic_type}"]
+/   .modal-dialog
+/     .modal-margin
+/       .modal-content
+/         .modal-header
+/           button.close[type="button" data-dismiss="modal"]
+/             span
+/               | ×
+/           h3.modal-title
+/             | コメント
+/         .modal-body
+/           = render 'guest/topics/chat_form', topic: topic

@@ -1,5 +1,10 @@
 class Murmur < ActiveRecord::Base
+  acts_as_paranoid
+
+
   belongs_to :user
+  has_many :comments, :class_name => "MurmurComment", :foreign_key => 'murmur_id'
+
 
   mount_uploader :image, ImageUploader
 

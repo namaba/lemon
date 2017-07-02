@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+
+  acts_as_paranoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :user_profile,  class_name: 'UserProfile',  dependent: :destroy, inverse_of: :user
+  has_one :status,  class_name: 'UserStatus',  dependent: :destroy, inverse_of: :user, :foreign_key => 'user_id'
+
   # like
   has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
   has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
@@ -16,11 +20,16 @@ class User < ActiveRecord::Base
   # community
   has_many :communities
   # murmur
-  has_many :murmurs
+  has_many :murmurs, dependent: :destroy
   # murmur_comment
-  has_many :murmur_comments
+  has_many :murmur_comments, dependent: :destroy
+  # user_community
+  has_many :join_communities, :class_name => 'UserCommunity',:foreign_key => 'user_id'
+  has_many :my_community, through: :join_communities, dependent: :destroy
 
+  has_many :topics, :class_name => 'Topic',:foreign_key => 'user_id'
 
+  has_many :topic_chats, :class_name => 'TopicChat', :foreign_key => 'user_id', dependent: :destroy
 
 
   #----------------------------------------
@@ -31,8 +40,25 @@ class User < ActiveRecord::Base
   scope :match, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 1))}
 
 
-  def self.matching
+  def hoge
+    puts "hoge"
+  end
 
+  # TODO: リファクタ
+  def reduce_good
+    if self.status.good_count > 0
+      self.status.good_count -= 1
+      self.status.save
+    elsif self.status.free_coin > 0
+      self.status.free_coin -= 1
+      self.status.save
+    elsif self.status.pay_coin > 0
+      self.status.pay_coin -= 1
+      self.status.save
+    else
+      false
+      @message = 'コインが不足しています。'
+    end
   end
 
 
@@ -49,4 +75,5 @@ class User < ActiveRecord::Base
       # user.skip_confirmation!
     end
   end
+
 end

@@ -1,0 +1,50 @@
+.text-right
+  button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+    |  コミュニティ作成
+  #sampleModal.modal.fade[tabindex="-1"]
+    .modal-dialog
+      .modal-margin
+        .modal-content
+          .modal-header
+            button.close[type="button" data-dismiss="modal"]
+              span
+                | ×
+            / h3.modal-title
+            /   | 検索
+          .modal-body
+            = render 'form'
+
+.tab_header
+  = link_to 'コミュニティ検索', communities_path, class: 'tab_select_button'
+  = link_to 'マイコミュニティ', my_communities_community_path(current_user), class: 'tab_bottun'
+
+.tab_content
+  .panelList_section
+    .community_detail
+      .community_detail_image
+        = image_tag @community.image, class: 'img-radius'
+      .community_detail_body
+        .community_detail_name
+          = @community.name
+        .community_detail_explain
+          = @community.introduce
+
+    hr
+    .community_list
+      h5 = '参加者一覧'
+      - @users.limit(5).each do |user|
+        = link_to search_path(user) do
+          .community_content
+            .community_image
+              = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
+            .community_body
+              .community_name = 'コミュニティ名'
+              .community_num = '( 123 名)'
+            .community_footer
+
+    .community_futter
+      =
+      - if current_user.my_community.include?(@community)
+        = link_to '参加済み', community_path(@community),class: 'community_join_button'
+      - else
+        = link_to '参加する', join_community_path(id: @community),class: 'community_join_button '

@@ -1,240 +1,257 @@
-.modal.wd1
-  .modalBody.panel.panel-default
-    p.close ×close
-    .panel-heading
-      | 自己紹介を編集
-    .panel-body
-      = form_for @user.user_profile, url: user_path(current_user) do |f|
-        .row
-          .col-md-12.select
-            .form-group
-              = f.text_field :introduce, :size => "55"
-  .modalBK
-.modal.wd2
-  .modalBody.panel.panel-default
-    .panel-heading
-      | プロフィールを編集
-    .panel-body
-      = form_for @user.user_profile, url: user_path(current_user) do |f|
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 属性
-              = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | タチ・ネコ
-              = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              / label
-              /   | 生年月日
-              / == sprintf( f.date_select(
-              /   - :birthday,
-              /   - use_month_numbers: true,
-              /   - start_year: 1930,
-              /   - end_year:   (Time.now.year - 18),
-              /   - default:    Date.new(1980, 1, 1),
-              /   - date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
+/ 自己紹介編集
+#EditModal1.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for @user.user_profile, url: user_path(current_user) do |f|
             .row
-          .col-md-12.select
-            .form-group
-              label
-                | 居住地
-              = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 身長
-              = f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | スタイル
-              = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 職業
-              = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 年収
-              = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 趣味
-              = f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control'
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 同居人
-              = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | お酒
-              = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | タバコ
-              = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 目的
-              = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 結婚歴
-              = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 子供
-              = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 写真
-              = f.file_field :image1, class: "form-control image-field"
-              = f.file_field :image2, class: "form-control image-field"
-              = f.file_field :image3, class: "form-control image-field"
-        .actions
-          = f.submit "プロフィールを更新", :class => "btn btn-primary"
+              .col-md-12.text-center
+                .form-group
+                  = f.text_area :introduce, :size => "60x10", class: 'form-control'
+                = f.submit '保存', class: "btn btn-info text-center"
 
-    p.close ×close
-  .modalBK
-.modal.wd3
-  .modalBody.panel.panel-default
-    .panel-heading
-      | 詳細プロフィールを編集
-    .panel-body
-      = form_for @user.user_profile, url: user_path(current_user) do |f|
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 属性
-              = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | タチ・ネコ
-              = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              / label
-              /   | 生年月日
-              / == sprintf( f.date_select(
-              /   - :birthday,
-              /   - use_month_numbers: true,
-              /   - start_year: 1930,
-              /   - end_year:   (Time.now.year - 18),
-              /   - default:    Date.new(1980, 1, 1),
-              /   - date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
+
+/ 基本プロフィール編集
+#EditModal2.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for @user.user_profile, url: user_path(current_user) do |f|
             .row
-          .col-md-12.select
-            .form-group
-              label
-                | 居住地
-              = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 身長
-              = f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | スタイル
-              = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 職業
-              = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 年収
-              = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 趣味
-              = f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control'
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 同居人
-              = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | お酒
-              = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | タバコ
-              = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 目的
-              = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 結婚歴
-              = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 子供
-              = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
-        .row
-          .col-md-12.select
-            .form-group
-              label
-                | 写真
-              = f.file_field :image1, class: "form-control image-field"
-              = f.file_field :image2, class: "form-control image-field"
-              = f.file_field :image3, class: "form-control image-field"
-        .actions
-          = f.submit "プロフィールを更新", :class => "btn btn-primary"
-  .modalBK
+              .col-md-12.text-center
+                .form-group
+                  label
+                    | 属性
+                  = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | タチ・ネコ
+                  = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  / label
+                  /   | 生年月日
+                  / == sprintf( f.date_select(
+                  /   - :birthday,
+                  /   - use_month_numbers: true,
+                  /   - start_year: 1930,
+                  /   - end_year:   (Time.now.year - 18),
+                  /   - default:    Date.new(1980, 1, 1),
+                  /   - date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
+
+              .col-md-12.select
+                .form-group
+                  label
+                    | 居住地
+                  = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 身長
+                  = f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | スタイル
+                  = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 職業
+                  = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 年収
+                  = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 趣味
+                  = f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control'
+              .col-md-12.select
+                .form-group
+                  label
+                    | 同居人
+                  = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | お酒
+                  = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | タバコ
+                  = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 目的
+                  = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 結婚歴
+                  = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 子供
+                  = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.text-center
+                .form-group
+                  label
+                    | 写真
+                  = f.file_field :image1, class: "form-control image-field"
+                  = f.file_field :image2, class: "form-control image-field"
+                  = f.file_field :image3, class: "form-control image-field"
+                = f.submit '保存', class: "btn btn-info text-center"
+
+
+/ 基本プロフィール編集
+#EditModal3.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for @user.user_profile, url: user_path(current_user) do |f|
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 属性
+                  = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {required: 'true', autofocus: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | タチ・ネコ
+                  = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  / label
+                  /   | 生年月日
+                  / == sprintf( f.date_select(
+                  /   - :birthday,
+                  /   - use_month_numbers: true,
+                  /   - start_year: 1930,
+                  /   - end_year:   (Time.now.year - 18),
+                  /   - default:    Date.new(1980, 1, 1),
+                  /   - date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
+              .col-md-12.select
+                .form-group
+                  label
+                    | 居住地
+                  = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 身長
+                  = f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | スタイル
+                  = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 職業
+                  = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 年収
+                  = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 趣味
+                  = f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control'
+              .col-md-12.select
+                .form-group
+                  label
+                    | 同居人
+                  = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | お酒
+                  = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | タバコ
+                  = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 目的
+                  = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 結婚歴
+                  = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 子供
+                  = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.text-center
+                .form-group
+                  label
+                    | 写真
+                  = f.file_field :image1, class: "form-control image-field"
+                  = f.file_field :image2, class: "form-control image-field"
+                  = f.file_field :image3, class: "form-control image-field"
+                = f.submit "プロフィールを更新", :class => "btn btn-info"
+
+
+/ 基本プロフィール編集
+#ImageModal1.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for @user.user_profile, url: user_path(current_user) do |f|
+            .row.text-center
+              .col-md-4.imgInput.form-group
+                = f.file_field :image1, class: "form-control image-field", :style => "display: none;", :id => "user_aaa", :style => "display: none;", :id => "user_aaa"
+                = f.label :image1, id: "aaa" do
+                  = image_tag @user.user_profile.image1, class: "imgView img-radius img-responsive"
+                = f.submit "プロフィールを更新", :class => "btn btn-info"
+
+
+
+
+          / = form_for @user.user_profile, url: user_path(current_user)
+
+          /     .col-md-4.imgInput.form-group
+          /       = image_tag @user.user_profile.image2, class: "imgView img-radius img-responsive"
+          /       = f.file_field :image2, class: "form-control image-field"
+          /     .col-md-4.imgInput.form-group
+          /       = image_tag @user.user_profile.image3, class: "imgView img-radius img-responsive"
+          /       = f.file_field :image3, class: "form-control image-field"
+          /     = f.submit "プロフィールを更新", :class => "btn btn-info"
+
+
