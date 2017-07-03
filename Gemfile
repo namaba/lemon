@@ -39,6 +39,9 @@ gem 'omniauth-facebook'
 # 倫理削除
 gem 'paranoia'
 
+# stripe
+gem 'stripe'
+
 # Capistrano
 group :production, :staging do
   gem 'unicorn'
