@@ -1,4 +1,4 @@
-class Guest::ChargesController < ApplicationController
+class Guest::ChargesController < Guest
 
   def new
   end
@@ -20,6 +20,12 @@ class Guest::ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+
+    # サブスクリプション作成(支払い発生)
+    # subscription = Stripe::Subscription.create(
+    #   :customer => customer.id,
+    #   :plan => @plan
+    # )
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
