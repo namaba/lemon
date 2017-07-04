@@ -42,6 +42,9 @@ gem 'paranoia'
 # stripe
 gem 'stripe'
 
+# 定期実行
+gem 'whenever', :require => false
+
 # Capistrano
 group :production, :staging do
   gem 'unicorn'
