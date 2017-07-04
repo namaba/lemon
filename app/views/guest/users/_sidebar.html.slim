@@ -37,7 +37,7 @@
           br
           = '(年齢未確認)'
           .status_button
-            = link_to 'プラン変更'
+            = link_to 'プラン変更', new_charge_path
       .sidebar_status_section
         .status_title_goods = '残いいね数'
         .status_body_plan
@@ -46,7 +46,7 @@
           - else
               = '0'
           .status_button
-            = link_to 'プラン変更'
+            = link_to 'プラン変更', new_charge_path
       .sidebar_status_section
         .status_title_coins = '残ポイント数'
         .status_body_plan
@@ -55,7 +55,7 @@
           - else
               = '0'
           .status_button
-            = link_to 'プラン変更'
+            = link_to 'プラン変更', new_charge_path
 
   = form_tag charges_path
     article
