@@ -33,7 +33,7 @@ class UserProfile < ActiveRecord::Base
   #  ** Status **
   #----------------------------------------
   enum sex:     { l: 1, g: 2, b: 3, t: 4, s: 5, o: 6 }
-
+  enum plan:    { normal: 0, one_month: 1, three_month: 3, six_month: 6, year: 12, premium: 30 }
 
   #----------------------------------------
   #  ** Scope **
@@ -43,7 +43,7 @@ class UserProfile < ActiveRecord::Base
   scope :valid, -> { where.not(plan: 0)}
   scope :men, -> { where(sex: 1)}
   scope :women, -> { where(sex: 2)}
-  scope :paying_users, -> { where.not(plan: 1)}
+  scope :paying_users, -> { where("plan > ?", 0)}
   scope :premium, -> { where(plan: 30)}
 
 
