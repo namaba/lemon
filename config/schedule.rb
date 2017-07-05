@@ -23,10 +23,7 @@ set :environment, :production
 set :environment, :staging
 set :environment, :development
 
-every 1.day, at: '11:59 pm' do
+every 1.day, at: '4:00 am' do
   runner "Tasks::Batch.premium"
-end
-
-every 1.day, at: '11:59 pm' do
   runner "Tasks::Batch.execute"
 end
