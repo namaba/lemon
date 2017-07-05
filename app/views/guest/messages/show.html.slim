@@ -21,7 +21,7 @@
 
     #layout_message
       .message_container
-        - @messages.each do |m|
+        - @messages.reverse.each do |m|
             - if m.sender_id == current_user.id
               .message_card_right =  m.body
             - else
