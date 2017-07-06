@@ -1,4 +1,4 @@
-.panelList_section
+.panelList_like_section
   .tab_header
     = link_to 'お相手からのイイね', likes_path, class: 'tab_bottun'
     = link_to 'マッチング一覧', messages_path, class: 'tab_select_button'
@@ -20,15 +20,16 @@
 
 
     #layout_message
-      .message_container
-        - @messages.reverse.each do |m|
-            - if m.sender_id == current_user.id
-              .message_card_right =  m.body
-            - else
-              .message_card_left = m.body
+      .message_container_sp
+        .message_list
+          - @messages.reverse.each do |m|
+              - if m.sender_id == current_user.id
+                .message_card_right =  m.body
+              - else
+                .message_card_left = m.body
         .message_form
           = form_for @message, remote: true do |f|
-            = f.text_field :body, class: 'message_text'
+            = f.text_field :body, class: 'message_text', :placeholder => "メッセージを入力してください"
             = f.hidden_field :partnership_id, value: @partnership.id
             = f.hidden_field :sender_id, value: current_user.id
             = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }

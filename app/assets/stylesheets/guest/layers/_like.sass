@@ -2,10 +2,11 @@
   &_panellist
     overflow: hidden
   &_panel
-    float: left
-    margin: 10px 20px
-    width: 46%
     position: relative
+    +responsive(pc)
+      float: left
+      width: 46%
+      margin: 10px 20px
     a
       color: $link-color
       text-decoration: none
@@ -13,16 +14,16 @@
         color: $link-hover-color
         text-decoration: underline
 
-
-
 .panel
   &_container
     display: block
-    border: 2px solid $red
-    border-radius: 10px
     padding: 20px
+    +responsive(pc)
+      border: 2px solid $red
+      border-radius: 10px
     +responsive(smartphone)
       padding: 10px
+      border-top: 1px solid $light-black
   &_header
     overflow: hidden
   &_image,&_info
@@ -61,9 +62,15 @@
       display: none
   &_bottun
     display: block
-  &_body
+  &_body_pc &_body_sp
     padding-top: 10px
     height: 55px
+  &_body_sp
+    +responsive(smartphone)
+      display: none
+  &_body_sp
+    +responsive(pc)
+      display: none
   // 要リファクタ
   &_bottun
     width: 150px
@@ -75,6 +82,9 @@
     color: $white
     font-size: 16px
     border-radius: 5px
+    +responsive(smartphone)
+      top: 40px
+      right: 20px
     &:hover
       background-color: $label-red
     a
