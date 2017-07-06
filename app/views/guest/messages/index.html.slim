@@ -20,7 +20,9 @@
                     .panel_address = partner.user_profile.prefecture.name
                   .panel_day = '2017年4月26日'
                 .panel_body
-                  = truncate(partner.user_profile.introduce, omission: '・・・', length: 50)
+                  / 最新のメッセージを表示させる or まだメッセージはありません
+                  p まだメッセージはありません
+                  / = truncate(partner.user_profile.introduce, omission: '・・・', length: 50)
             .panel_bottun = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner.id), method: :get
         / = paginate @partnerships
 

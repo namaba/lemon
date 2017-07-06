@@ -8,14 +8,23 @@
       margin: 0
     &:nth-child(1)
       background-color: $light-red
-  &_container
+  &_container, &_container_sp
     border: 2px solid $red
     border-radius: 5px
     margin: 10px 20px
     padding: 10px 20px
     overflow: hidden
+  &_container
     +responsive(smartphone)
       display: none
+  &_container_sp
+    +responsive(smartphone)
+      border: none
+      margin: 0
+      padding: 0
+  &_list
+    +responsive(smartphone)
+      padding: 10px 20px
   &_card
     width: 55%
     border: 2px solid $red
@@ -31,7 +40,11 @@
       @extend .message_card
       color: $red
   &_text
-    border: 2px solid $red
-    border-radius: 5px
     height: 70px
     width: 100%
+    +responsive(pc)
+      border: 2px solid $red
+      border-radius: 5px
+    +responsive(smartphone)
+      border: 1px solid $light-black
+      border-radius: 2px
