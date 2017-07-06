@@ -4,19 +4,21 @@
     .preview_user
       ul.main
         / TODO: あとでimageとimage1の順番変更
+        / 画像の大きさは400☓400になるからそのままでok
         li.item1.sidebar_image
-          = image_tag @user.user_profile.image1, class: "img-radius", size: '100%'
+          = user_image(@user.user_profile.image1)
         li.item2
-          = image_tag @user.image, class: "img-radius", size: '400'
+          = user_image(@user.image)
         li.item3
-          = image_tag @user.user_profile.image2, class: "img-radius", size: '400'
+          = user_image(@user.user_profile.image2)
         li.item4
-          = image_tag @user.user_profile.image3, class: "img-radius", size: '400'
+          = user_image(@user.user_profile.image3)
+      / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
-          = user_image(@user.image)
-        li.thumb2
           = user_image(@user.user_profile.image1)
+        li.thumb2
+          = user_image(@user.image)
         li.thumb3
           = user_image(@user.user_profile.image2)
         li.thumb4
