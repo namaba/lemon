@@ -13,7 +13,6 @@ body
   font-family: $font-sans-serif
   background: darken($light-gray, 4%)
   word-break : break-all
-
 // 標準のリンクタグ
 a
   color: $link-color
@@ -48,10 +47,12 @@ a
     // SP
     @media (max-width: $screen-max-tablet)
       width: 100%
-      margin: 0 0 10px
+      padding-top: 80px
+      // margin: 0 0 10px
   &_flex
-    display: flex
-    padding-top: 30px
+    @media (min-width: $screen-max-tablet)
+      display: flex
+      padding-top: 30px
   &_sidebar
     // PC
     @media (min-width: $screen-max-tablet)
@@ -60,6 +61,8 @@ a
     // SP
     @media (max-width: $screen-max-tablet)
       width: 100%
+      margin-bottom: 20px
+      padding: 0 20px
   &_right
     @media (min-width: $screen-max-tablet)
       // float: left
@@ -82,6 +85,12 @@ a
     margin-bottom: 20px
     img
       margin: 0
+    // SP
+    @media (max-width: $screen-max-tablet)
+      margin-bottom: 10px
+
   &_footer
     border-top: 1px solid #ccc
     background: darken($light-gray, 4%)
+.paddingTop
+  padding-top: 290px !important

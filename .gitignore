@@ -11,3 +11,19 @@
 /log/*
 !/log/.keep
 /tmp
+
+.env
+.envrc
+config/database.yml
+config/secrets.yml
+
+/public/uploads
+/public/assets
+/vendor/bundler
+spec/support/uploads
+
+# Brakeman Result
+output_file
+
+.DS_Store
+vender/

@@ -1,5 +1,3 @@
-#layout_banner
-  = image_tag 'premire_baner', width: '100%', class: 'baner-image'
 .panelList_section
   .panelList_search_button.text-right
     button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
@@ -14,7 +12,9 @@
     - @users.each do |user|
       .card_content
         .card_image
-          = link_to image_tag(user.user_profile.image1, width: '100%', height: '240', class: 'img-radius'), search_path(user)
+          / 画像サイズきめた後、size:100%に変更。
+          = link_to image_tag(user.user_profile.image1, width: '100%', height: '240px', class: 'img-radius'), search_path(user), remote: true
+
           .card_info
             .card_age = "#{user.user_profile.age}歳"
             .card_address = user.user_profile.prefecture.name

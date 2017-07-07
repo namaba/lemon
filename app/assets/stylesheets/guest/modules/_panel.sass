@@ -2,9 +2,21 @@
   &_section
     overflow: hidden
     // padding: 20px
+    +responsive(smartphone)
+      padding: 0 5%
     img
       margin: 0
       width: 100%
+    a
+      color: $link-color
+      text-decoration: none
+      &:hover
+        color: $link-hover-color
+        text-decoration: underline
+  &_like_section
+    @extend .panelList_section
+    +responsive(smartphone)
+      padding: 0
   &_search_button
     margin-bottom: 20px
   &_community_section

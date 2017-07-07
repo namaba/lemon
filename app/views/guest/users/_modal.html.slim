@@ -236,14 +236,22 @@
           = form_for @user.user_profile, url: user_path(current_user) do |f|
             .row.text-center
               .col-md-4.imgInput.form-group
-                = image_tag @user.user_profile.image1, class: "imgView img-radius img-responsive"
-                = f.file_field :image1, class: "form-control image-field"
-              .col-md-4.imgInput.form-group
-                = image_tag @user.user_profile.image2, class: "imgView img-radius img-responsive"
-                = f.file_field :image2, class: "form-control image-field"
-              .col-md-4.imgInput.form-group
-                = image_tag @user.user_profile.image3, class: "imgView img-radius img-responsive"
-                = f.file_field :image3, class: "form-control image-field"
-              = f.submit "プロフィールを更新", :class => "btn btn-info"
+                = f.file_field :image1, class: "form-control image-field", :style => "display: none;", :id => "user_aaa", :style => "display: none;", :id => "user_aaa"
+                = f.label :image1, id: "aaa" do
+                  = image_tag @user.user_profile.image1, class: "imgView img-radius img-responsive"
+                = f.submit "プロフィールを更新", :class => "btn btn-info"
+
+
+
+
+          / = form_for @user.user_profile, url: user_path(current_user)
+
+          /     .col-md-4.imgInput.form-group
+          /       = image_tag @user.user_profile.image2, class: "imgView img-radius img-responsive"
+          /       = f.file_field :image2, class: "form-control image-field"
+          /     .col-md-4.imgInput.form-group
+          /       = image_tag @user.user_profile.image3, class: "imgView img-radius img-responsive"
+          /       = f.file_field :image3, class: "form-control image-field"
+          /     = f.submit "プロフィールを更新", :class => "btn btn-info"
 
 

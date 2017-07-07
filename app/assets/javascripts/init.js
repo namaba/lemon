@@ -25,7 +25,7 @@ $(function(){
 // ヘッダー
 $(function(){
   var url = $(location).attr('href');
-  $('#menu').find('a').each(function(){
+  $('#menu_pc').find('a').each(function(){
     var link = $(this).attr('href');
     if(link == url){
       $(this).addClass('on');
@@ -64,6 +64,13 @@ $(function(){
       }
     });
   });
+});
+
+// スマホ版ナブバー
+$("#menu_sp").click(function () {
+  $(".navbar_sp").toggle();
+  // $(".navbar_sp").toggleClass('display','block');
+  $("#layout_content").toggleClass('paddingTop');
 });
 
 

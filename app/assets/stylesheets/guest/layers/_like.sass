@@ -2,19 +2,28 @@
   &_panellist
     overflow: hidden
   &_panel
-    float: left
-    margin: 10px 20px
-    width: 46%
     position: relative
-
-
+    +responsive(pc)
+      float: left
+      width: 46%
+      margin: 10px 20px
+    a
+      color: $link-color
+      text-decoration: none
+      &:hover
+        color: $link-hover-color
+        text-decoration: underline
 
 .panel
   &_container
     display: block
-    border: 2px solid $red
-    border-radius: 10px
     padding: 20px
+    +responsive(pc)
+      border: 2px solid $red
+      border-radius: 10px
+    +responsive(smartphone)
+      padding: 10px
+      border-top: 1px solid $light-black
   &_header
     overflow: hidden
   &_image,&_info
@@ -22,25 +31,46 @@
   &_image
     width: 30%
     height: 100px
+    +responsive(smartphone)
+      height: 80px
+    img
+      width: 100px
+      +responsive(smartphone)
+        width: 75px
+        height: 75px
   &_info
     width: 70%
     margin-top: 10px
     vertical-align: bottom
+    +responsive(smartphone)
+      margin-top: 0px
   &_name,&_age,&_address
     display: inline-block
   &_name
     font-size: 22px
     margin-right: 20px
+    +responsive(smartphone)
+      font-size: 16px
   &_age,&_address
     font-size: 18px
     margin-right: 10px
+    +responsive(smartphone)
+      font-size: 14px
   &_day
     float: left
+    +responsive(smartphone)
+      display: none
   &_bottun
     display: block
-  &_body
+  &_body_pc &_body_sp
     padding-top: 10px
     height: 55px
+  &_body_sp
+    +responsive(smartphone)
+      display: none
+  &_body_sp
+    +responsive(pc)
+      display: none
   // 要リファクタ
   &_bottun
     width: 150px
@@ -52,9 +82,13 @@
     color: $white
     font-size: 16px
     border-radius: 5px
+    +responsive(smartphone)
+      top: 40px
+      right: 20px
     &:hover
       background-color: $label-red
     a
+      color: $white
       display: block
       padding: 8px
       width: 100%
