@@ -2,10 +2,10 @@ class CreateUserProfiles < ActiveRecord::Migration
   def change
     create_table :user_profiles do |t|
       t.references :user, index: true, foreign_key: true
-      t.integer :sex
+      t.integer :sex, default: 0
       t.integer :play_style
-      t.date :birthday
-      t.text :address
+      t.date :birthday, default: 19000101
+      t.integer :address, default: 13
       t.integer :plan
       t.text :introduce
       t.string :image1
