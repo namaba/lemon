@@ -11,6 +11,14 @@
     width: 180px
     margin: 0px 12px
     border-radius: 10px
+    +responsive(smartphone)
+      width: 47%
+      margin: 0
+      margin-right: 6%
+      margin-bottom: 10px
+    &:nth-child(odd)
+      +responsive(smartphone)
+        margin-right: 0
     &_detail
       @extend .community_content
       width: 70px

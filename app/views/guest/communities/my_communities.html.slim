@@ -1,4 +1,4 @@
-.panelList_section
+.panelList_like_section
   .panelList_search_button.text-right
     button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
       |  コミュニティ作成
@@ -24,8 +24,8 @@
       .community_list
         h5 = link_to 'マイコミュニティ', new_community_path
         - @my_communities.limit(5).each do |community|
-          = link_to community_path(community) do
-            .community_content
+          .community_content
+            = link_to community_path(community) do
               .community_image
                 = image_tag community.image, size: '180', class: 'img-radius'
               .community_body
