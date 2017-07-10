@@ -5,15 +5,20 @@
     img
       margin-left: 5px
   &_gage_panel
-    display: flex
-    justify-content: space-between
     width: 100%
     margin-bottom: 30px
     border: 2px solid $red
     border-radius: 5px
     padding: 16px
+    +responsive(pc)
+      display: flex
+      justify-content: space-between
+    +responsive(smartphone)
+      padding: 10px
   &_gage_bar
     width: 65%
+    +responsive(smartphone)
+      width: 100%
     .progressbar
       background-color: $red
       // border-radius: 5px
@@ -38,15 +43,22 @@
   &_profile_body
     padding: 10px
     +responsive(smartphone)
-      padding: 0
+      padding: 5px
   &_user_communities
+    overflow: hidden
+  &_user_community
+    float: left
+    width: 23%
+    margin-right: 2%
+    &:nth-child(4n)
+      margin-right: 0
     .img-radius
       border: 2px solid $red
       border-radius: 5px
       -webkit-border-radius: 5px
       -moz-border-radius: 5px
     img
-      margin: 5px 8px
+      width: 100%
 
 
 

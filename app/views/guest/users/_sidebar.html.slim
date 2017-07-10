@@ -4,7 +4,7 @@
     = link_to '相手から見た自分のプロフィールを確認', user_preview_path(current_user), class: 'sidebar_preview_button'
     / プロフィール写真
     .sidebar_image
-      = image_tag @user.user_profile.image1, class: "img-radius", size: '400'
+      = image_tag @user.user_profile.image1, class: "img-radius"
       .sidebar_badge
         = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
         / Todo:バッジ画像着たら修正
@@ -17,16 +17,16 @@
       li.sidebar_user_address = @user.user_profile.prefecture.name if @user.user_profile.address?
 
     / サブ写真
-    .sidebar_sub_image
+    .sidebar_sub_image_list
       .sidebar_sub_title
-        / Todo:バッジ画像着たら修正
+        / TODO namba バッジ画像着たら修正
         = image_tag 'sex_badge_l', class: 'img-label'
         h5 サブ写真追加
       .sidebar_sub_images
-        = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
-        = link_to image_tag(@user.user_profile.image2, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
-        = link_to image_tag(@user.user_profile.image3, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
-        = link_to image_tag("add_badge", class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        .sidebar_sub_image = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        .sidebar_sub_image = link_to image_tag(@user.user_profile.image2, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        .sidebar_sub_image = link_to image_tag(@user.user_profile.image3, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
+        .sidebar_sub_image = link_to image_tag("add_badge", class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}
         / = image_tag '', size: '80'
     / ユーザーステータス
     .sidebar_status
