@@ -2,10 +2,9 @@
   +display_box(center)
   width: 100%
   .user
-    &-image
-      overflow: hidden
-      margin-right: 10px
-      +circle(32px, #fff)
+    &_image
+      margin: 0 10px
+      width: 20%
       img
         width: 100%
     &_info
@@ -14,9 +13,10 @@
     &_name
       display: inline
       margin-left: 10px
-      font-weight: bold
       font-size: $font-xxlarge
+      font-weight: bold
       +responsive(smartphone)
+        font-size: $font-medium
         font-weight: normal
       small
         margin-left: 1em
