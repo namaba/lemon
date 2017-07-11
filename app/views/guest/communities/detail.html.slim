@@ -29,7 +29,7 @@
         .community_detail_explain
           = @community.introduce
 
-        .community_list
+        .community_detail_list
           h5 = '参加者一覧'
           - @users.limit(5).each do |user|
             .community_detail_content
