@@ -29,18 +29,17 @@
         .community_detail_explain
           = @community.introduce
 
-    hr
-    .community_list
-      h5 = '参加者一覧'
-      - @users.limit(5).each do |user|
-        = link_to search_path(user) do
-          .community_content
-            .community_image
-              = image_tag user.user_profile.image1, size: '160', class: 'img-radius'
-            .community_body
-              .community_name = 'コミュニティ名'
-              .community_num = '( 123 名)'
-            .community_footer
+        .community_list
+          h5 = '参加者一覧'
+          - @users.limit(5).each do |user|
+            .community_detail_content
+              = link_to search_path(user) do
+                .community_image
+                  = image_tag user.user_profile.image1, class: 'img-radius'
+                .community_body
+                  .community_name = 'コミュニティ名'
+                  .community_num = '( 123 名)'
+                .community_footer
 
     .community_futter
       =
