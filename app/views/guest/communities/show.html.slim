@@ -26,6 +26,8 @@
       button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
         |  投稿
 
+      = render 'guest/topics/form_modal'
+
     - @topics.each do |topic|
       .mypage_profile_body
         = render 'guest/topics/topic', topic: topic
