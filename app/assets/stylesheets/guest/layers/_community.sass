@@ -6,6 +6,7 @@
     margin-bottom: 40px
   &_list
     clear: both
+    margin-top: 20px
   &_content
     float: left
     width: 180px
@@ -45,9 +46,24 @@
   &_detail
     display: flex
     // justify-content: space-between
+    &_content
+      @extend .community_content
+      width: 16%
     &_image
-      width: 300px
-      height: 300px
+      width: 30%
+    &_image_sidebar
+      width: 40%
+      img
+        width: 100%
+      +responsive(smartphone)
+        display: none
+    &_body
+      width: 70%
+    &_body_sidebar
+      width: 60%
+      padding-left: 10px
+      +responsive(smartphone)
+        width: 100%
     .img-radius
       border-radius: 15px
     &_body
@@ -55,6 +71,11 @@
     &_name
       color: $red
       font-weight: bold
+    &_list
+      @extend .community_list
+      +responsive(smartphone)
+        display: none
+
   &_futter
     clear: both
 
@@ -67,4 +88,7 @@
     margin: 30px auto
     font-size: 18px
     width: 50%
-
+    +responsive(smartphone)
+      padding: 10px 50px
+      width: 70%
+      font-size: 12px
