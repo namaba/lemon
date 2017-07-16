@@ -5,6 +5,7 @@ class Guest::MurmursController < Guest
   def index
     @murmurs = Murmur.published
     # @murmur = Murmur.find(params[:id])
+    @murmur = Murmur.new
     @murmurcomment = MurmurComment.new
   end
 

@@ -1,16 +1,16 @@
 #layout_flex
   #layout_sidebar
     .community_detail
-      .community_detail_image
+      .community_detail_image_sidebar
         = image_tag @community.image, size: '200', class: 'img-radius'
-      .community_detail_body
+      .community_detail_body_sidebar
         .community_detail_name
           = @community.name
         .community_detail_explain
           = @community.introduce
 
     hr
-    .community_list
+    .community_detail_list
       h5 = '参加者一覧'
       - @users.limit(5).each do |user|
         = link_to search_path(user) do
@@ -25,6 +25,8 @@
       .edit_title = 'みんなの投稿'
       button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
         |  投稿
+
+      = render 'guest/topics/form_modal'
 
     - @topics.each do |topic|
       .mypage_profile_body
