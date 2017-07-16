@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
     resources :murmurs
     resources :murmur_comments
+    resources :charges
 
   end
 

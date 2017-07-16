@@ -1,0 +1,48 @@
+.charge_section
+  .charge_explanation
+    .charge_explanation_title
+      = image_tag 'explanation_title'
+    .charge_explanation_message
+      = image_tag 'paid_service_info_01'
+    .charge_explanation_flex
+      .charge_explanation_side
+        = image_tag 'paid_service_info_02'
+      .charge_explanation_side
+        = image_tag 'paid_service_info_03'
+    .charge_explanation_flex
+      .charge_explanation_side
+        = image_tag 'paid_service_info_04'
+      .charge_explanation_side
+        = image_tag 'paid_service_info_05'
+  .charge_info
+    .charge_info_title
+      = image_tag 'info_title'
+    .charge_info_flex
+      .charge_info_side
+        = image_tag 'paid_service_info_09'
+      .charge_info_side
+        = image_tag 'paid_service_info_08'
+    .charge_info_flex
+      .charge_info_side
+        = image_tag 'paid_service_info_07'
+      .charge_info_side.charge_info_month
+        = image_tag 'paid_service_info_06'
+
+  .charge_coin
+    .charge_coin_title
+      = image_tag 'coin_title'
+    .charge_coin_flex
+      .charge_coin_side
+        = image_tag 'ten_coin'
+      .charge_coin_side
+        = image_tag 'fifty_coin'
+      .charge_coin_side
+        = image_tag 'onehundred_coin'
+  = form_tag charges_path
+    article
+      label.amount
+        span Amount: $5.00
+
+    script.stripe-button data-currency="JPY" data-amount="2000" data-description=("2 widgets") data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" data-name="Stripe.com" data-zip-code="true" src="https://checkout.stripe.com/checkout.js"
+
+    / script.stripe-button data-amount="500" data-description=("A month's subscription") data-key=("#{Rails.configuration.stripe[:publishable_key]}") data-locale="auto" src="https://checkout.stripe.com/checkout.js"

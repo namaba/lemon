@@ -13,7 +13,6 @@ body
   font-family: $font-sans-serif
   background: darken($light-gray, 4%)
   word-break : break-all
-
 // 標準のリンクタグ
 a
   color: $link-color
@@ -30,6 +29,8 @@ a
     @extend %container
     position: relative
     margin: 0 auto
+    +responsive(smartphone)
+      fond-size: 10px
   &_header
     position: absolute
     top: 0
@@ -63,6 +64,7 @@ a
     @media (max-width: $screen-max-tablet)
       width: 100%
       margin-bottom: 20px
+      padding: 0 20px
   &_right
     @media (min-width: $screen-max-tablet)
       // float: left
@@ -72,6 +74,7 @@ a
     @media (max-width: $screen-max-tablet)
       width: 100%
       margin: 0 0 10px
+      font-size: 10px
   &_message
     @media (min-width: $screen-max-tablet)
       // float: left

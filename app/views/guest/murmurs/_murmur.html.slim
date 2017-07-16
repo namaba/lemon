@@ -2,7 +2,7 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(murmur.user)
+        = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle'), search_path(murmur.user)
       .user_info
         .user_name = murmur.user.name
         .user_age = "#{murmur.user.user_profile.age}歳"
@@ -14,17 +14,17 @@ section.murmur_panel
     - if murmur.image?
       / TODO namba 画像サイズ決定後width:100%に修正
       .murmur_image
-        = image_tag murmur.image, width: '500'
+        = image_tag murmur.image
   .murmur_panel_footer
     .murmur_smile
-      = image_tag 'smile', width: '50'
+      = image_tag 'smile'
       = 'スマイル'
     .murmur_items
       / テスト
-      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal#{murmur.id}"]
+      button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal#{murmur.id}"]
         |  編集する
       = link_to '削除', murmur_path(id: murmur), method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
-      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#CommentModal#{murmur.id}"]
+      button.btn.btn-default[type="button" data-toggle="modal" data-target="#CommentModal#{murmur.id}"]
         |  コメント
       = render 'modal', murmur: murmur
 

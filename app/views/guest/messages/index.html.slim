@@ -20,7 +20,9 @@
                     .panel_address = partner.user_profile.prefecture.name
                   .panel_day = '2017年4月26日'
                 .panel_body
-                  = truncate(partner.user_profile.introduce, omission: '・・・', length: 50)
+                  / 最新のメッセージを表示させる or まだメッセージはありません
+                  p まだメッセージはありません
+                  / = truncate(partner.user_profile.introduce, omission: '・・・', length: 50)
             .panel_bottun = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner.id), method: :get
         / = paginate @partnerships
 
@@ -28,7 +30,7 @@
       #layout_message
         .message_container
           - if @messages
-            - @messages.each do |m|
+            - @messages.reverse.each do |m|
               - if m.sender_id == current_user.id
                 .message_card_right =  m.body
               - else
@@ -40,5 +42,5 @@
               = f.hidden_field :partnership_id, value: @partnerships.first.id
               = f.hidden_field :sender_id, value: current_user.id
               = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
-          = paginate @messages if @messages
+          / = paginate @messages if @messages
 
