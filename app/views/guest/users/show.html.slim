@@ -55,7 +55,9 @@
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自分の投稿'
-        .edit_button = link_to '投稿する',new_murmur_path, class: 'btn btn-danger'
+        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+          |  投稿
+        = render 'guest/murmurs/form_modal'
       .mypage_profile_body
         = render @user.murmurs
 

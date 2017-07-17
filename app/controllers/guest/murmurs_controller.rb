@@ -17,7 +17,8 @@ class Guest::MurmursController < Guest
     @murmur = Murmur.new(murmur_params)
     if @murmur.save
       # 遷移先未定
-      redirect_to murmurs_path, notice: 'つぶやきました'
+      # redirect_to murmurs_path, notice: 'つぶやきました'
+      redirect_to :back
     else
       render :new, notice: 'つぶやけませんでした'
     end
