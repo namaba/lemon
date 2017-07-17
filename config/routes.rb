@@ -16,7 +16,11 @@ Rails.application.routes.draw do
         get 'match',              to: 'likes#match'
       end
     end
-    resources :messages, only: [:index, :show, :create]
+    resources :messages, only: [:index, :show, :create] do
+      member do
+        get 'profile',                to: 'messages#profile'
+      end
+    end
     resources :communities do
       member do
         get 'my_communities',     to: 'communities#my_communities'
