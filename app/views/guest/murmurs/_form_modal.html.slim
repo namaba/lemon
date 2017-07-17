@@ -14,8 +14,8 @@
               .col-md-12.text-center
                 .form-group
                   = f.label :body
-                  = f.text_area :body, class: 'form-control'
+                  = f.text_area :body, class: 'form-control', autofocus: true
 
                 = f.hidden_field :user_id, value: current_user.id
 
-                = f.submit '保存しちゃう', class: "btn btn-info text-center"
+                = f.submit '保存', class: "btn btn-info text-center"
