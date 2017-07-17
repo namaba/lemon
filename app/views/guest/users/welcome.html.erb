@@ -1,0 +1,26 @@
+<div class="modal" id="welcome-modal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-margin">
+      <div class="modal-content">
+        <div class="modal-body"> 
+          <h1>ようこそLemonへ</h1>
+
+          <p>宜しくお願いいたします</p>
+          <button id="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ここでscript -->
+<script>
+  window.onload = function () {
+      document.getElementById('button').onclick = function () {
+          document.getElementById('welcome-modal').style.display = "none"
+      };
+  };
+</script>
+
+<!-- window.onload = function(){
+// ページ読み込み時に実行したい処理
+} -->

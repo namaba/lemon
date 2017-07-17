@@ -27,6 +27,15 @@ class Guest::UsersController < Guest
     @user = User.find(params[:user_id])
   end
 
+  def welcome
+    # @users = User.all
+    @q = UserProfile.ransack(params[:q])
+    @user_profiles = @q.result.not_me(current_user).like_user(current_user)
+    @users = User.where(id: @user_profiles.ids).page(params[:page]).per(16)
+
+    # @user_profiles = UserProfile.page(params[:page]).per(4)
+  end
+
   private
   def profile_params
     params.require(:user_profile).permit(:user_id, :sex, :play_style, :birthday, :address, :plan, :introduce, :image1, :image2, :image3, :height, :style, :job, :income, :hobby, :housemate, :alcohol, :smoke, :purpose, :marriage, :child, :identification, :identification_image, :good_count, :coins_count, :mail_status)
