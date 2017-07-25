@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   has_many :topic_chats, :class_name => 'TopicChat', :foreign_key => 'user_id', dependent: :destroy
 
+  has_many :murmur_smiles
+
 
   #----------------------------------------
   #  ** Scope **

@@ -17,8 +17,11 @@ section.murmur_panel
         = image_tag murmur.image
   .murmur_panel_footer
     .murmur_smile
-      = image_tag 'smile'
-      = 'スマイル'
+      - if MurmurSmile.find_by(user: current_user, murmur: murmur)
+        = link_to image_tag('smile'), murmur_smile_path(id: murmur, user: current_user), method: :delete
+      - else
+        = link_to image_tag('smile'), murmur_smiles_path(user: current_user, murmur: murmur), method: :post
+      = murmur.smiles.size
     .murmur_items
       / テスト
       button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal#{murmur.id}"]
