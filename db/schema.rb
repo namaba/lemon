@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621130200) do
+ActiveRecord::Schema.define(version: 20170725122054) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 20170621130200) do
   add_index "murmur_comments", ["deleted_at"], name: "index_murmur_comments_on_deleted_at", using: :btree
   add_index "murmur_comments", ["murmur_id"], name: "index_murmur_comments_on_murmur_id", using: :btree
   add_index "murmur_comments", ["user_id"], name: "index_murmur_comments_on_user_id", using: :btree
+
+  create_table "murmur_smiles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "murmur_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "murmur_smiles", ["murmur_id"], name: "index_murmur_smiles_on_murmur_id", using: :btree
+  add_index "murmur_smiles", ["user_id"], name: "index_murmur_smiles_on_user_id", using: :btree
 
   create_table "murmurs", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
@@ -238,6 +249,8 @@ ActiveRecord::Schema.define(version: 20170621130200) do
   add_foreign_key "likes", "users"
   add_foreign_key "murmur_comments", "murmurs"
   add_foreign_key "murmur_comments", "users"
+  add_foreign_key "murmur_smiles", "murmurs"
+  add_foreign_key "murmur_smiles", "users"
   add_foreign_key "murmurs", "users"
   add_foreign_key "partnerships", "users"
   add_foreign_key "topic_chats", "communities"
