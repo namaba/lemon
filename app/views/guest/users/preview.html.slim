@@ -13,6 +13,8 @@
           = user_image(@user.user_profile.image2)
         li.item4
           = user_image(@user.user_profile.image3)
+        .item_badge
+          = image_tag "sex_badge_#{@user.user_profile.sex}"
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
@@ -35,8 +37,8 @@
           .user_name = @user.name
           .user_age = "#{@user.user_profile.age}歳"
           .user_address = @user.user_profile.prefecture.name
-        .user_badge
-          = image_tag "sex_badge_#{@user.user_profile.sex}"
+        / .user_badge
+        /   = image_tag "sex_badge_#{@user.user_profile.sex}"
 
 
       .profile_section
