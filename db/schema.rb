@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725122054) do
+ActiveRecord::Schema.define(version: 20170726125843) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -135,6 +135,17 @@ ActiveRecord::Schema.define(version: 20170725122054) do
   add_index "topic_chats", ["topic_id"], name: "index_topic_chats_on_topic_id", using: :btree
   add_index "topic_chats", ["user_id"], name: "index_topic_chats_on_user_id", using: :btree
 
+  create_table "topic_smiles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "topic_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.datetime "deleted_at"
+  end
+
+  add_index "topic_smiles", ["topic_id"], name: "index_topic_smiles_on_topic_id", using: :btree
+  add_index "topic_smiles", ["user_id"], name: "index_topic_smiles_on_user_id", using: :btree
+
   create_table "topics", force: :cascade do |t|
     t.integer  "community_id", limit: 4
     t.integer  "user_id",      limit: 4
@@ -256,6 +267,8 @@ ActiveRecord::Schema.define(version: 20170725122054) do
   add_foreign_key "topic_chats", "communities"
   add_foreign_key "topic_chats", "topics"
   add_foreign_key "topic_chats", "users"
+  add_foreign_key "topic_smiles", "topics"
+  add_foreign_key "topic_smiles", "users"
   add_foreign_key "topics", "communities"
   add_foreign_key "topics", "users"
   add_foreign_key "user_communities", "communities"
