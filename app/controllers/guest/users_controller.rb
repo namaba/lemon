@@ -9,6 +9,7 @@ class Guest::UsersController < Guest
     @filterd_hash = @hash.except(:id, :user_id, :plan, :identification,:identification_image, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
     @percent = @filterd_hash.count / 20 * 100
     @murmur = Murmur.new
+    @murmurcomment = MurmurComment.new
   end
 
   def edit

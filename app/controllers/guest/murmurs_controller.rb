@@ -31,7 +31,7 @@ class Guest::MurmursController < Guest
   def update
     if @murmur.update(murmur_params)
       # 遷移先未定
-      redirect_to murmurs_path, notice: '編集しました'
+      redirect_to :back, notice: '編集しました'
     else
       render :edit, notice: '編集できませんでした'
     end
