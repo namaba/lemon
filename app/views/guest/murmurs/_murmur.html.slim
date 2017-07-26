@@ -18,6 +18,7 @@ section.murmur_panel
   .murmur_panel_footer
     .murmur_smile
       - if MurmurSmile.find_by(user: current_user, murmur: murmur)
+        / スマイルの画像をグレーに変える
         = link_to image_tag('smile'), murmur_smile_path(id: murmur, user: current_user), method: :delete
       - else
         = link_to image_tag('smile'), murmur_smiles_path(user: current_user, murmur: murmur), method: :post

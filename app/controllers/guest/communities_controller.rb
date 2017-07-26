@@ -9,6 +9,7 @@ class Guest::CommunitiesController < Guest
   end
 
   def show
+    # TODO namba 参加者だけに変更
     @users = User.all
     @topics = @community.topics.published
     @topic = Topic.new

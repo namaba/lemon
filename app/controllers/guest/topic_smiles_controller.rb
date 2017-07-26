@@ -1,7 +1,8 @@
-class Guest::MurmurSmilesController < Guest
+class Guest::TopicSmilesController < ApplicationController
   before_action :find_smile, only: [:destroy]
+
   def create
-    @smile = MurmurSmile.new(user_id: params[:user].to_i, murmur_id: params[:murmur].to_i)
+    @smile = TopicSmile.new(user_id: params[:user].to_i, topic_id: params[:topic].to_i)
     if @smile.save
       # 遷移先未定
       # redirect_to murmurs_path, notice: 'つぶやきました'
@@ -9,6 +10,7 @@ class Guest::MurmurSmilesController < Guest
     else
       render :new, notice: 'つぶやけませんでした'
     end
+
   end
 
   def destroy
@@ -18,8 +20,9 @@ class Guest::MurmurSmilesController < Guest
 
   private
   def find_smile
-    @smile = MurmurSmile.find_by(user_id: params[:user].to_i, murmur_id: params[:id].to_i)
+    @smile = TopicSmile.find_by(user_id: params[:user].to_i, topic_id: params[:id].to_i)
   end
+
 
 
 end
