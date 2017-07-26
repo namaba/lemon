@@ -1,22 +1,25 @@
-= form_for(@community) do |f|
-  .row
-    .col-sm-6
-      .form-group
-        = f.label :コミュニティ名
-        = f.text_field :name, class: "form-control",  placeholder: "コミュニティ名"
-  .row
-    .col-sm-6
-      .form-group
-        = f.label :category
-        = f.select :category, class: "form-control",  placeholder: "コミュニティ名"
-  .row
-    .col-sm-12
-      .form-group
-        = f.label :introduce
-        = f.text_area :introduce, class: "form-control",  placeholder: "コミュニティ説明文"
-  .row
-    .col-sm-6
-      .form-group
-        = f.label :image
-        = f.file_field :image
-  = f.submit '保存', class: "btn btn-primary", data: { confirm: 'この内容で保存してもいいですか', disable_with: '処理中...' }
+#sampleModal.modal.fade[tabindex="-1"]
+      .modal-dialog
+        .modal-margin
+          .modal-content
+            .modal-header
+              button.close[type="button" data-dismiss="modal"]
+                span
+                  | ×
+              / h3.modal-title
+              /   | 検索
+            .modal-body
+              = form_for(@community) do |f|
+                .row
+                  .col-md-12.text-center
+                    .form-group
+                      = f.label :コミュニティ名
+                      = f.text_field :name, class: "form-control",  placeholder: "コミュニティ名"
+                      / = f.label :category
+                      / = f.select :category, class: "form-control",  placeholder: "コミュニティ名"
+                      = f.label :introduce
+                      = f.text_area :introduce, class: "form-control",  placeholder: "コミュニティ説明文"
+
+                      = f.label :image
+                      = f.file_field :image, class: "form-control image-field"
+                    = f.submit '保存', class: "btn btn-primary", data: { confirm: 'この内容で保存してもいいですか', disable_with: '処理中...' }
