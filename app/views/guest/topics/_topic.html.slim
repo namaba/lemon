@@ -2,7 +2,10 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = link_to image_tag(topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(topic.writer)
+        - if topic.writer.user_profile.image1.blank?
+          = image_tag 'default', class: "img-radius"
+        - else
+          = link_to image_tag(topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(topic.writer)
       .user_info
         .user_name
           = topic.writer.name
