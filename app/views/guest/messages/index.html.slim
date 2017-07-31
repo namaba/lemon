@@ -39,7 +39,7 @@
           .message_form
           -if @message
             = form_for @message, url: messages_path(@message), method: :post, remote: true do |f|
-              = f.text_field :body, class: 'message_text'
+              = f.text_area :body, class: 'message_text'
               = f.hidden_field :partnership_id, value: @partnerships.first.id
               = f.hidden_field :sender_id, value: current_user.id
               = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
