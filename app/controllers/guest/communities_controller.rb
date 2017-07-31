@@ -23,7 +23,7 @@ class Guest::CommunitiesController < Guest
   def create
     @community = current_user.communities.build(community_params)
     if @community.save!
-      redirect_to communities_path, notice: "作成できました"
+      redirect_to :back, notice: "作成できました"
     else
       redirect_to :back, notice: "作成できませんでした"
     end
