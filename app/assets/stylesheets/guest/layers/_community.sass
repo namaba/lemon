@@ -84,11 +84,22 @@
     @extend %button_red
     @extend %button_small
     display: block
-    padding: 16px 50px
+    padding: 0px
     margin: 30px auto
     font-size: 18px
     width: 50%
     +responsive(smartphone)
-      padding: 10px 50px
       width: 70%
       font-size: 12px
+    //   padding: 5px 25px
+    &:hover
+      background-color: $label-red
+    a
+      display: block
+      color: $white
+      padding: 16px 50px
+      +responsive(smartphone)
+        padding: 10px
+      &:hover
+        color: $white
+        text-decoration: none
