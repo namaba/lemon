@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
     resources :murmurs
     resources :murmur_comments
+    resources :murmur_smiles, only: [:create, :destroy]
+    resources :topic_smiles, only: [:create, :destroy]
     resources :charges
 
   end

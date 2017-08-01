@@ -32,7 +32,7 @@
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自己紹介編集'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal1"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal1"]
           |  編集する
       .mypage_profile_body
         = @user.user_profile.introduce
@@ -43,13 +43,13 @@
         .edit_title = 'プロフィール編集'
       .mypage_profile_sub_label
         .edit_title = '基本プロフィール'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal2"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal2"]
           |  編集する
       .mypage_profile_sub_label
         .edit_title = '詳細プロフィール'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal3"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal3"]
           |  編集する
-        = render 'modal'
+        = render 'profile_modal'
 
 
     .mypage_profile_section

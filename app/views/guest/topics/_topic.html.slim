@@ -2,7 +2,10 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = link_to image_tag(topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(topic.writer)
+        - if topic.writer.user_profile.image1.blank?
+          = image_tag 'default', class: "img-radius"
+        - else
+          = link_to image_tag(topic.writer.user_profile.image1.thumb, class: 'img-circle', size: '100'), search_path(topic.writer)
       .user_info
         .user_name
           = topic.writer.name
@@ -16,8 +19,12 @@ section.murmur_panel
     = topic.body
   .murmur_panel_footer
     .murmur_smile
-      = image_tag 'smile', width: '50'
-      = '超スマイル'
+      - if TopicSmile.find_by(user: current_user, topic: topic)
+        / スマイルの画像をグレーに変える
+        = link_to image_tag('smile'), topic_smile_path(id: topic, user: current_user), method: :delete
+      - else
+        = link_to image_tag('smile'), topic_smiles_path(user: current_user, topic: topic), method: :post
+      = topic.smiles.size
     .murmur_items
       - if current_user == topic.writer
         button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal#{topic.id}"]

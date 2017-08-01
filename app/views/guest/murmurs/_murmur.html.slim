@@ -2,7 +2,10 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle'), search_path(murmur.user)
+        - if murmur.user.user_profile.image1.blank?
+          = image_tag 'default', class: "img-radius"
+        - else
+          = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle'), search_path(murmur.user)
       .user_info
         .user_name = murmur.user.name
         .user_age = "#{murmur.user.user_profile.age}歳"
@@ -17,8 +20,12 @@ section.murmur_panel
         = image_tag murmur.image
   .murmur_panel_footer
     .murmur_smile
-      = image_tag 'smile'
-      = 'スマイル'
+      - if MurmurSmile.find_by(user: current_user, murmur: murmur)
+        / スマイルの画像をグレーに変える
+        = link_to image_tag('smile'), murmur_smile_path(id: murmur, user: current_user), method: :delete
+      - else
+        = link_to image_tag('smile'), murmur_smiles_path(user: current_user, murmur: murmur), method: :post
+      = murmur.smiles.size
     .murmur_items
       / テスト
       button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal#{murmur.id}"]

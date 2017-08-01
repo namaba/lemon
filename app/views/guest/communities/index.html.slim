@@ -2,18 +2,7 @@
   .panelList_search_button.text-right
     button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
       |  コミュニティ作成
-    #sampleModal.modal.fade[tabindex="-1"]
-      .modal-dialog
-        .modal-margin
-          .modal-content
-            .modal-header
-              button.close[type="button" data-dismiss="modal"]
-                span
-                  | ×
-              / h3.modal-title
-              /   | 検索
-            .modal-body
-              = render 'form'
+    = render 'form'
 
   .tab_header
     .tab_select_button コミュニティ検索

@@ -9,6 +9,7 @@ class Guest::CommunitiesController < Guest
   end
 
   def show
+    # TODO namba 参加者だけに変更
     @users = User.all
     @topics = @community.topics.published
     @topic = Topic.new
@@ -22,7 +23,7 @@ class Guest::CommunitiesController < Guest
   def create
     @community = current_user.communities.build(community_params)
     if @community.save!
-      redirect_to communities_path, notice: "作成できました"
+      redirect_to :back, notice: "作成できました"
     else
       redirect_to :back, notice: "作成できませんでした"
     end
