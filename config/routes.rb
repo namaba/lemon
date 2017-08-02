@@ -23,7 +23,11 @@ Rails.application.routes.draw do
         get 'match',              to: 'likes#match'
       end
     end
-    resources :messages, only: [:index, :show, :create]
+    resources :messages, only: [:index, :show, :create] do
+      member do
+        get 'profile',                to: 'messages#profile'
+      end
+    end
     resources :communities do
       member do
         get 'my_communities',     to: 'communities#my_communities'
@@ -38,6 +42,8 @@ Rails.application.routes.draw do
     end
     resources :murmurs
     resources :murmur_comments
+    resources :murmur_smiles, only: [:create, :destroy]
+    resources :topic_smiles, only: [:create, :destroy]
     resources :charges
 
   end

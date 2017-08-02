@@ -5,7 +5,7 @@ class CreateMurmurs < ActiveRecord::Migration
       t.text :body,    limit: 200
       t.string :image
       t.boolean :comment_badge, default: false
-      t.integer :status
+      t.integer :status, default: 1
 
       t.timestamps null: false
     end

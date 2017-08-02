@@ -8,7 +8,10 @@
       = link_to like_path(user) do
         .panel_container
           .panel_header
-            .panel_image  = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+            .panel_image
+              - if user.user_profile.image1.blank?
+                = image_tag 'default', class: 'img-circle', size: '100'
+              = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
             .panel_info
               .panel_name = user.name
               .panel_age = "#{user.user_profile.age}歳"

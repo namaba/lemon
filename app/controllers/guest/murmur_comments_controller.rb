@@ -11,7 +11,7 @@ class Guest::MurmurCommentsController < Guest
     @murmur_comment = MurmurComment.create(comment_params)
     if @murmur_comment.save
       # 遷移先未定
-      redirect_to murmurs_path, notice: 'つぶやきました'
+      redirect_to :back, notice: 'つぶやきました'
     else
       render :new, notice: 'つぶやけませんでした'
     end

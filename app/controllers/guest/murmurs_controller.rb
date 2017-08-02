@@ -3,8 +3,9 @@ class Guest::MurmursController < Guest
   before_action :murmur_params, only: [:create, :update]
 
   def index
-    @murmurs = Murmur.published
+    @murmurs = Murmur.includes([:comments, :smiles]).published
     # @murmur = Murmur.find(params[:id])
+    @murmur = Murmur.new
     @murmurcomment = MurmurComment.new
   end
 
@@ -16,7 +17,8 @@ class Guest::MurmursController < Guest
     @murmur = Murmur.new(murmur_params)
     if @murmur.save
       # 遷移先未定
-      redirect_to murmurs_path, notice: 'つぶやきました'
+      # redirect_to murmurs_path, notice: 'つぶやきました'
+      redirect_to :back
     else
       render :new, notice: 'つぶやけませんでした'
     end
@@ -29,7 +31,7 @@ class Guest::MurmursController < Guest
   def update
     if @murmur.update(murmur_params)
       # 遷移先未定
-      redirect_to murmurs_path, notice: '編集しました'
+      redirect_to :back, notice: '編集しました'
     else
       render :edit, notice: '編集できませんでした'
     end

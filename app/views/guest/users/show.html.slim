@@ -7,7 +7,8 @@
 
     / TODO: ゲージ作成
     .mypage_gage_panel
-      .mypage_gage_title = 'プロフィール入力率'
+      .mypage_gage_title = "プロフィール入力率"
+      / .mypage_gage_percent = "#{@percent}%"
       .mypage_gage_bar.w3-border.w3-round-large
         .progressbar.w3-round-large style="height:18px; width:#{@percent}%"
       .mypage_gage_percent = "#{@percent}%"
@@ -21,7 +22,8 @@
       .mypage_profile_body
         .mypage_user_communities
           - @user.my_community.limit(10).each do |community|
-            = image_tag community.image, class: 'img-radius', size: '100'
+            .mypage_user_community
+              = image_tag community.image, class: 'img-radius'
 
         .collapse id="Mycommunities"
           .mypage_user_communities
@@ -30,7 +32,7 @@
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自己紹介編集'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal1"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal1"]
           |  編集する
       .mypage_profile_body
         = @user.user_profile.introduce
@@ -41,19 +43,21 @@
         .edit_title = 'プロフィール編集'
       .mypage_profile_sub_label
         .edit_title = '基本プロフィール'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal2"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal2"]
           |  編集する
       .mypage_profile_sub_label
         .edit_title = '詳細プロフィール'
-        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal3"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ProfileEditModal3"]
           |  編集する
-        = render 'modal'
+        = render 'profile_modal'
 
 
     .mypage_profile_section
       .mypage_profile_label
         .edit_title = '自分の投稿'
-        .edit_button = link_to '投稿する',new_murmur_path, class: 'btn btn-danger'
+        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+          |  投稿
+        = render 'guest/murmurs/form_modal'
       .mypage_profile_body
         = render @user.murmurs
 

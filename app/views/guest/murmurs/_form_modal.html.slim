@@ -1,0 +1,21 @@
+#sampleModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+          / h3.modal-title
+          /   | 検索
+        .modal-body
+          = form_for(@murmur) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.label :body
+                  = f.text_area :body, class: 'form-control', autofocus: true
+
+                = f.hidden_field :user_id, value: current_user.id
+
+                = f.submit '保存', class: "btn btn-info text-center"

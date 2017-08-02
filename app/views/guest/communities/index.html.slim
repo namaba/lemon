@@ -1,19 +1,8 @@
-.panelList_section
+.panelList_like_section
   .panelList_search_button.text-right
     button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
       |  コミュニティ作成
-    #sampleModal.modal.fade[tabindex="-1"]
-      .modal-dialog
-        .modal-margin
-          .modal-content
-            .modal-header
-              button.close[type="button" data-dismiss="modal"]
-                span
-                  | ×
-              / h3.modal-title
-              /   | 検索
-            .modal-body
-              = render 'form'
+    = render 'form'
 
   .tab_header
     .tab_select_button コミュニティ検索
@@ -24,8 +13,8 @@
       .community_ranking
         h5 人気コミュニティ
         - @pickup_communities.each do |community|
-          = link_to detail_community_path(community) do
-            .community_content
+          .community_content
+            = link_to detail_community_path(community) do
               .community_image
                 = image_tag community.image, size: '180', class: 'img-radius'
               .community_body
@@ -38,8 +27,8 @@
       .community_list
         h5 = 'コミュニティ一覧'
         - @communities.each do |community|
-          = link_to detail_community_path(community) do
-            .community_content
+          .community_content
+            = link_to detail_community_path(community) do
               .community_image
                 = image_tag community.image, size: '180', class: 'img-radius'
               .community_body

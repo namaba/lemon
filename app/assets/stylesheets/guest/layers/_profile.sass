@@ -10,6 +10,9 @@
       color: $pink
       padding: 20px 0
       font-weight: bold
+      +responsive(smartphone)
+        padding: 10px 0 5px
+        +fontsize($font-medium)
   &_sub_body
     table
       width: 100%
@@ -19,6 +22,9 @@
     th, td
       padding: 10px 0
       +fontsize($font-large)
+      +responsive(smartphone)
+        +fontsize($font-small)
+        padding: 5px 0
     th
       font-weight: inherit
       color: #6E6E6E
