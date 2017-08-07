@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170726125843) do
     t.text     "body",          limit: 255
     t.string   "image",         limit: 255
     t.boolean  "comment_badge",             default: false
-    t.integer  "status",        limit: 4
+    t.integer  "status",        limit: 4,   default: 1
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.datetime "deleted_at"
