@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20170726125843) do
     t.text     "body",          limit: 255
     t.string   "image",         limit: 255
     t.boolean  "comment_badge",             default: false
-    t.integer  "status",        limit: 4
+    t.integer  "status",        limit: 4,   default: 1
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.datetime "deleted_at"
@@ -198,16 +198,26 @@ ActiveRecord::Schema.define(version: 20170726125843) do
     t.string   "image2",               limit: 255
     t.string   "image3",               limit: 255
     t.integer  "height",               limit: 4
-    t.string   "style",                limit: 255
-    t.string   "job",                  limit: 255
-    t.string   "income",               limit: 255
-    t.string   "hobby",                limit: 255
-    t.string   "housemate",            limit: 255
+    t.integer  "style",                limit: 4
+    t.integer  "job",                  limit: 4
+    t.integer  "income",               limit: 4
+    t.integer  "hobby",                limit: 4
+    t.integer  "housemate",            limit: 4
     t.integer  "alcohol",              limit: 4
     t.integer  "smoke",                limit: 4
     t.integer  "purpose",              limit: 4
     t.integer  "marriage",             limit: 4
     t.integer  "child",                limit: 4
+    t.integer  "personality",          limit: 4
+    t.integer  "charmpoint",           limit: 4
+    t.integer  "sociability",          limit: 4
+    t.integer  "holiday",              limit: 4
+    t.integer  "want_to_marriage",     limit: 4
+    t.integer  "condition",            limit: 4
+    t.integer  "to_meet",              limit: 4
+    t.integer  "blood_type",           limit: 4
+    t.integer  "school",               limit: 4
+    t.integer  "bro_sis",              limit: 4
     t.integer  "identification",       limit: 4,     default: 1
     t.string   "identification_image", limit: 255
     t.integer  "good_count",           limit: 4,     default: 20

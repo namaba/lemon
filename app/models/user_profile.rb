@@ -59,8 +59,8 @@ class UserProfile < ActiveRecord::Base
   #  ** Status **
   #----------------------------------------
 
-  enum sex:     { "": 0, l: 1, g: 2, b: 3, t: 4, s: 5, o: 6 }
-  enum plan:    { normal: 0, one_month: 1, three_month: 3, six_month: 6, year: 12, premium: 30 }
+  # enum sex:     { "": 0, l: 1, g: 2, b: 3, t: 4, s: 5, o: 6 }
+  # enum plan:    { normal: 0, one_month: 1, three_month: 3, six_month: 6, year: 12, premium: 30 }
 
   #----------------------------------------
   #  ** Scope **
