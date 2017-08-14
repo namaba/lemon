@@ -201,19 +201,19 @@ ActiveRecord::Schema.define(version: 20170726125843) do
     t.integer  "style",                limit: 4
     t.integer  "job",                  limit: 4
     t.integer  "income",               limit: 4
-    t.integer  "hobby",                limit: 4
+    t.string   "hobby",                limit: 255
     t.integer  "housemate",            limit: 4
     t.integer  "alcohol",              limit: 4
     t.integer  "smoke",                limit: 4
     t.integer  "purpose",              limit: 4
     t.integer  "marriage",             limit: 4
     t.integer  "child",                limit: 4
-    t.integer  "personality",          limit: 4
-    t.integer  "charmpoint",           limit: 4
-    t.integer  "sociability",          limit: 4
+    t.string   "personality",          limit: 255
+    t.string   "charmpoint",           limit: 255
+    t.string   "sociability",          limit: 255
     t.integer  "holiday",              limit: 4
     t.integer  "want_to_marriage",     limit: 4
-    t.integer  "condition",            limit: 4
+    t.string   "condition",            limit: 255
     t.integer  "to_meet",              limit: 4
     t.integer  "blood_type",           limit: 4
     t.integer  "school",               limit: 4
