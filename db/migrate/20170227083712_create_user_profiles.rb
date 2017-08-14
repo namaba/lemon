@@ -15,19 +15,19 @@ class CreateUserProfiles < ActiveRecord::Migration
       t.integer :style
       t.integer :job
       t.integer :income
-      t.integer :hobby
+      t.string :hobby
       t.integer :housemate
       t.integer :alcohol
       t.integer :smoke
       t.integer :purpose
       t.integer :marriage
       t.integer :child
-      t.integer :personality
-      t.integer :charmpoint
-      t.integer :sociability
+      t.string :personality
+      t.string :charmpoint
+      t.string :sociability
       t.integer :holiday
       t.integer :want_to_marriage
-      t.integer :condition
+      t.string :condition
       t.integer :to_meet
       t.integer :blood_type
       t.integer :school
