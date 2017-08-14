@@ -67,9 +67,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | 趣味
-                  = f.text_field :hobby, placeholder: "例：ドライブ、野球、旅行", :maxlength => "32", class: 'form-control'
-            .row
+                    | 趣味・好きなこと
+                  = f.select :hobby, UserProfile::HOBBY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
               .col-md-12.select
                 .form-group
                   label
@@ -105,6 +104,65 @@
                   label
                     | 子供
                   = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 性格
+                  = f.select :personality, UserProfile::PERSONALITY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | チャームポイント
+                  = f.select :charmpoint, UserProfile::CHARMPOINT, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 社交性
+                  = f.select :sociability, UserProfile::SOCIABILITY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 休日
+                  = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 結婚願望
+                  = f.select :want_to_marriage, UserProfile::WANT_TO_MARRIAGE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 相手への重視項目
+                  = f.select :condition, UserProfile::CONDITION, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 出会うまでの希望
+                  = f.select :to_meet, UserProfile::TO_MEET, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 血液型
+                  = f.select :blood_type, UserProfile::BLOOD_TYPE, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+            .row
+              .col-md-12.select
+                .form-group
+                  label
+                    | 学歴
+                  = f.select :school, UserProfile::SCHOOL, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+              .col-md-12.select
+                .form-group
+                  label
+                    | 兄弟姉妹
+                  = f.select :bro_sis, UserProfile::BRO_SIS, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
             .row
               .col-md-12.select
                 .form-group

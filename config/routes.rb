@@ -9,8 +9,15 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :create, :edit, :update, :destroy] do
       get 'preview',                to: 'users#preview'
+      collection do
+        get 'welcome', to: 'users#welcome'
+      end
     end
-    resources :searches, only: [:index, :show]
+    resources :searches, only: [:index, :show] do
+      collection do
+        get 'welcome',            to: "searches#welcome"
+      end
+    end
     resources :likes, only: [:index, :show, :create] do
       member do
         get 'match',              to: 'likes#match'

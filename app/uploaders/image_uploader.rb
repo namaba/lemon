@@ -4,15 +4,15 @@ class ImageUploader < CarrierWave::Uploader::Base
  # リサイズしたり画像形式を変更するのに必要
   include CarrierWave::RMagick
   process :fix_exif_rotation
- # 画像の上限を700pxにする
-  process :resize_to_limit => [1000, 1000]
+ # 画像の上限を400pxにする
+  process :resize_to_limit => [400, 400]
 
 # 保存形式をJPGにする
   process :convert => 'jpg'
 
 # サムネイルを生成する設定
   version :thumb do
-    process :resize_to_fill => [1000, 1000]
+    process :resize_to_fill => [88, 88]
 
   end
 

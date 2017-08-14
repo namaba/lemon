@@ -1,0 +1,33 @@
+<div class="modal" id="welcome-modal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-margin">
+      <div id="full">
+        <%= image_tag("tutorial_1.png") %>
+        <%= image_tag("tutorial_2.png") %>
+        <%= link_to image_tag("tutorial_3.png"), user_path(current_user) %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ここでscript -->
+<script>
+  window.onload = function () {
+      document.getElementById('button').onclick = function () {
+          document.getElementById('welcome-modal').style.display = "none"
+      };
+  };
+
+  $(function () {
+    $('#full img').click(function() {
+      $(this).fadeOut('fast', function() {
+        $(this).next('img').fadeIn();
+        // 最後尾に移動
+        $('#full').append(this);
+      });
+    });
+  });
+</script>
+
+<!-- window.onload = function(){
+// ページ読み込み時に実行したい処理
+} -->
