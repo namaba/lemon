@@ -73,9 +73,84 @@ class UserProfile < ActiveRecord::Base
   scope :paying_users, -> { where("plan > ?", 0)}
   scope :premium, -> { where(plan: 30)}
 
+#----------------------------------------
+#  ** Array **
+#----------------------------------------
+def hobby=(value)
+  str = ''
+  value.each do |val|
+    str += val.to_s + ','
+  end
 
+  rslt = str.empty? ? nil : (',' + str)
 
+  write_attribute(:hobby, rslt)
+end
 
+def hobby
+  read_attribute(:hobby).to_s.split(';')
+end
+#----------------------------------------
+def personality=(value)
+  str = ''
+  value.each do |val|
+    str += val.to_s + ','
+  end
+
+  rslt = str.empty? ? nil : (',' + str)
+
+  write_attribute(:personality, rslt)
+end
+
+def personality
+  read_attribute(:personality).to_s.split(';')
+end
+#----------------------------------------
+def charmpoint=(value)
+  str = ''
+  value.each do |val|
+    str += val.to_s + ','
+  end
+
+  rslt = str.empty? ? nil : (',' + str)
+
+  write_attribute(:charmpoint, rslt)
+end
+
+def charmpoint
+  read_attribute(:charmpoint).to_s.split(';')
+end
+#----------------------------------------
+def sociability=(value)
+  str = ''
+  value.each do |val|
+    str += val.to_s + ','
+  end
+
+  rslt = str.empty? ? nil : (',' + str)
+
+  write_attribute(:sociability, rslt)
+end
+
+def sociability
+  read_attribute(:sociability).to_s.split(';')
+end
+#----------------------------------------
+def condition=(value)
+  str = ''
+  value.each do |val|
+    str += val.to_s + ','
+  end
+
+  rslt = str.empty? ? nil : (',' + str)
+
+  write_attribute(:condition, rslt)
+end
+
+def condition
+  read_attribute(:condition).to_s.split(';')
+end
+#----------------------------------------
   def age
     date_format = "%Y%m%d"
     (Date.today.strftime(date_format).to_i - birthday.strftime(date_format).to_i) / 10000
