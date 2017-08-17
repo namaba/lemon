@@ -32,9 +32,9 @@ class Guest::LikesController < Guest
         redirect_to :back, notice: "イイねできませんでした"
       end
     end
-  rescue => _error
-    # render template: "guest/error"
-    raise "[warning] #{_error}"
+  # rescue => _error
+  #   # render template: "guest/error"
+  #   raise "[warning] #{_error}"
   end
 
 
