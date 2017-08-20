@@ -75,6 +75,22 @@ $("#menu_sp").click(function () {
 
 
 
+$(function(){
+  var mySwiper = $('.swiper-container').swiper({
+    //オプションをここに:
+    mode:'horizontal',
+    autoplay: 5000,
+    loop: true,
+    autoResize: true,
+    scrollContainer: true,
+    grabCursor: true,
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev'
+    //etc..
+  });
+})
+
+
 // コミュニティぺーじのタブ
 // $(function() {
 //   //クリックしたときのファンクションをまとめて指定
