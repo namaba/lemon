@@ -91,6 +91,24 @@ $(function(){
 })
 
 
+// $(window).load(function(){
+//   $.magnificPopup.open({
+//     items: {src: '#popup'},
+//     type: 'image',
+//     modal: true,
+//   }, 0);
+// });
+
+$(function(){
+  $('.test-popup-link').magnificPopup.open({
+    items: {
+      src: 'http://mama-informationa.up.seesaa.net/image/dare'
+    },
+    type: 'image'
+  });
+});
+
+
 // コミュニティぺーじのタブ
 // $(function() {
 //   //クリックしたときのファンクションをまとめて指定
