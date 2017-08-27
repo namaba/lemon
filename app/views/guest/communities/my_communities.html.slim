@@ -18,7 +18,7 @@
               .community_image
                 = image_tag community.image, size: '180', class: 'img-radius'
               .community_body
-                .community_name = 'コミュニティ名'
-                .community_num = '( 123 名)'
+                .community_name = community.name
+                .community_num = "(#{community.community_members.size}名)"
               .community_footer
     = paginate @my_communities
