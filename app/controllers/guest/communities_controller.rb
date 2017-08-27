@@ -1,5 +1,5 @@
 class Guest::CommunitiesController < Guest
-  before_action :set_community, only: [:show, :join]
+  before_action :set_community, only: [:show, :join, :detail]
 
   def index
     @communities = Community.all.page(params[:page]).per(10)
@@ -9,8 +9,7 @@ class Guest::CommunitiesController < Guest
   end
 
   def show
-    # TODO namba 参加者だけに変更
-    @users = User.all
+    @community_members = @community.community_members
     @topics = @community.topics.published
     @topic = Topic.new
     @topic_chat = TopicChat.new
@@ -35,9 +34,7 @@ class Guest::CommunitiesController < Guest
   end
 
   def detail
-    @community = Community.find(params[:id])
-    @communities = Community.all
-    @users = User.all
+    @community_members = @community.community_members
   end
 
   def join
