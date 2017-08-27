@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title
+      | Lemon
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"]
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = favicon_link_tag '/assets/favicon-32x32.png'
+    = csrf_meta_tags
+  body
+    header
+      - if yield(:header).empty?
+        = render 'header'
+      - else
+        = yield :header
+    = yield
+    - unless flash.empty?
+      script[type="text/javascript"]
+        |  <ruby code=" flash.each do |f| "> <ruby code=" type = f[0].to_s.gsub('alert','error').gsub('notice','info')"></ruby> toastr['<ruby code="= type"></ruby>']('<ruby code="= f[1]"></ruby>'); </ruby>
+favicon-32x32.png
+
+  = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'
