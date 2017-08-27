@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @userprofile = UserProfile.create(user_id: @user.id)
-    @userprofile = UserStatus.create(user_id: @user.id)
+    @userstatus = UserStatus.create(user_id: @user.id)
   end
 
   # GET /resource/edit
