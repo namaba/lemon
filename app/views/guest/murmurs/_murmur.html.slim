@@ -2,10 +2,7 @@ section.murmur_panel
   .murmur_contributor
     .userSignature
       .user_image
-        - if murmur.user.user_profile.image1.blank?
-          = image_tag 'default', class: "img-radius"
-        - else
-          = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle'), search_path(murmur.user)
+        = link_to image_tag(murmur.user.user_profile.image1.thumb, class: 'img-circle'), search_path(murmur.user)
       .user_info
         .user_name = murmur.user.name
         .user_age = "#{murmur.user.user_profile.age}歳"
