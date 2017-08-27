@@ -2,10 +2,7 @@
   .murmur_user
     .userSignature
       .user_image
-        - if current_user.user_profile.image1.blank?
-          = image_tag 'default', class: "img-radius"
-        - else
-          = image_tag current_user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+        = image_tag current_user.user_profile.image1.thumb, class: 'img-circle', size: '100'
       .user_info
         .user_name = current_user.name
         .user_age = "#{current_user.user_profile.age}歳"
