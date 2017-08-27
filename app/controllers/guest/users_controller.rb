@@ -1,9 +1,7 @@
 class Guest::UsersController < Guest
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @user = User.find(params[:id])
-    @badges = [ "l", "g", "b", "t", "s", "o" ]
     # ゲージパーセント
     @hash = @user.user_profile.attributes.compact
     @filterd_hash = @hash.except(:id, :user_id, :plan, :identification,:identification_image, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
