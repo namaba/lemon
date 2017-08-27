@@ -3,7 +3,7 @@ class Guest::MurmursController < Guest
   before_action :murmur_params, only: [:create, :update]
 
   def index
-    @murmurs = Murmur.includes([:comments, :smiles]).published
+    @murmurs = Murmur.includes([:user, :comments, :smiles]).published
     # @murmur = Murmur.find(params[:id])
     @murmur = Murmur.new
     @murmurcomment = MurmurComment.new
