@@ -1,8 +1,5 @@
 .panelList_like_section
-  .panelList_search_button.text-right
-    button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
-      |  コミュニティ作成
-    = render 'form'
+  = render 'form'
 
   .tab_header
     .tab_select_button コミュニティ検索
@@ -14,13 +11,22 @@
         h5 人気コミュニティ
         - @pickup_communities.each do |community|
           .community_content
-            = link_to detail_community_path(community) do
-              .community_image
-                = image_tag community.image, size: '180', class: 'img-radius'
-              .community_body
-                .community_name = community.name
-                .community_num = "(#{community.community_members.size}名)"
-              .community_footer
+            - if @my_community_ids.any?{ |c| c == community.id }
+              = link_to community_path(community) do
+                .community_image
+                  = image_tag community.image, size: '180', class: 'img-radius'
+                .community_body
+                  .community_name = community.name
+                  .community_num = "(#{community.community_members.size}名)"
+                .community_footer
+            - else
+              = link_to detail_community_path(community) do
+                .community_image
+                  = image_tag community.image, size: '180', class: 'img-radius'
+                .community_body
+                  .community_name = community.name
+                  .community_num = "(#{community.community_members.size}名)"
+                .community_footer
 
 
       hr
@@ -28,12 +34,21 @@
         h5 = 'コミュニティ一覧'
         - @communities.each do |community|
           .community_content
-            = link_to detail_community_path(community) do
-              .community_image
-                = image_tag community.image, size: '180', class: 'img-radius'
-              .community_body
-                .community_name = community.name
-                .community_num = "(#{community.community_members.size}名)"
-              .community_footer
+            - if @my_community_ids.any?{ |c| c == community.id }
+              = link_to community_path(community) do
+                .community_image
+                  = image_tag community.image, size: '180', class: 'img-radius'
+                .community_body
+                  .community_name = community.name
+                  .community_num = "(#{community.community_members.size}名)"
+                .community_footer
+            - else
+              = link_to detail_community_path(community) do
+                .community_image
+                  = image_tag community.image, size: '180', class: 'img-radius'
+                .community_body
+                  .community_name = community.name
+                  .community_num = "(#{community.community_members.size}名)"
+                .community_footer
       = paginate @communities
 

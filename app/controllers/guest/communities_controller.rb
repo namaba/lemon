@@ -5,7 +5,7 @@ class Guest::CommunitiesController < Guest
     @communities = Community.all.page(params[:page]).per(10)
     @community = Community.new
     @pickup_communities = Community.where(status: 2).limit(5)
-    @my_communities = current_user.my_community.page(params[:page]).per(20)
+    @my_community_ids = current_user.my_community.ids
   end
 
   def show

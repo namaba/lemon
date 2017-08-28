@@ -1,8 +1,5 @@
 .panelList_like_section
-  .panelList_search_button.text-right
-    button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
-      |  コミュニティ作成
-    = render 'form'
+  = render 'form'
 
   .tab_header
     = link_to 'コミュニティ検索', communities_path, class: 'tab_bottun'
