@@ -11,8 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @userprofile = UserProfile.create(user_id: @user.id)
-    @userstatus = UserStatus.create(user_id: @user.id)
+    if @user.persisted?
+      @userprofile = UserProfile.create(user_id: @user.id)
+      @userstatus = UserStatus.create(user_id: @user.id)
+    end
   end
 
   # GET /resource/edit
