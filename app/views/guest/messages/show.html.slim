@@ -29,7 +29,7 @@
                 .message_card_left = m.body
         .message_form
           = form_for @message do |f|
-            = f.text_field :body, class: 'message_text', :placeholder => "メッセージを入力してください"
+            = f.text_area :body, class: 'message_text', :placeholder => "メッセージを入力してください"
             = f.hidden_field :partnership_id, value: @partnership.id
             = f.hidden_field :sender_id, value: current_user.id
             = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
