@@ -85,7 +85,8 @@ $(function(){
     scrollContainer: true,
     grabCursor: true,
     nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev'
+    prevButton: '.swiper-button-prev',
+    slidesPerView: 1
     //etc..
   });
 })
