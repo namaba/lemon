@@ -4,7 +4,7 @@ class Guest::LikesController < Guest
 
 
   def index
-    @like_users = User.like_me(current_user).page(params[:page]).per(4)
+    @like_users = User.like_me(current_user).page(params[:page]).per(6)
     # @match_users = User.match(current_user).page(params[:page]).per(4)
     # @message = Message.new
     # @partnerships = Partnership.joins(:user).where("user_id = ? or target_id = ?", current_user, current_user)

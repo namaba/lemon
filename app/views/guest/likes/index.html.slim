@@ -2,7 +2,6 @@
   .tab_header
     .tab_select_button お相手からのイイね
     = link_to 'マッチングメール', messages_path, class: 'tab_bottun'
-  .pagenate = paginate @like_users
   - @like_users.each do |user|
     .like_panel
       = link_to like_path(user) do
