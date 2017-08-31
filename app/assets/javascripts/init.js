@@ -74,6 +74,19 @@ $("#menu_sp").click(function () {
 });
 
 
+// アクセス時モーダル
+$(function(){
+  $('#layer_board_area').layerBoard({
+    delayTime: 1000,
+    fadeTime : 1000,
+    alpha : 0.8,
+    limitMin : 5,
+    easing: 'swing',
+    limitCookie : 10
+  });
+});
+
+
 
 $(function(){
   var mySwiper = $('.swiper-container').swiper({

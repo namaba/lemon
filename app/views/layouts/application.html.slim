@@ -6,7 +6,6 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"]
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = favicon_link_tag '/assets/favicon-32x32.png'
     = csrf_meta_tags
   body
@@ -22,3 +21,5 @@ html
 favicon-32x32.png
 
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'
+  = javascript_include_tag 'guest'
+  = content_for :js

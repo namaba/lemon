@@ -1,3 +1,13 @@
+#layer_board_area
+  .layer_board_bg
+  .layer_board
+    p = link_to image_tag('premire_baner'), 'http://www.yahoo.co.jp', :target => "_blank"
+    p.btn_close
+      = link_to image_tag('sex_badge_1', size: '50'), '#'
+    p.layer_board_btn
+      = link_to 'もう一度開く', '#'
+
+
 .panelList_section
   .panelList_search_button.text-right
     button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
