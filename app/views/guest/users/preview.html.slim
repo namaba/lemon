@@ -17,11 +17,11 @@
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
-          = image_tag @user.user_profile.image1, class: "img-radius"
+          = image_tag @user.user_profile.image1.thumb, class: "img-radius"
         li.thumb2
-          = image_tag @user.user_profile.image2, class: "img-radius"
+          = image_tag @user.user_profile.image2.thumb, class: "img-radius"
         li.thumb3
-          = image_tag @user.user_profile.image3, class: "img-radius"
+          = image_tag @user.user_profile.image3.thumb, class: "img-radius"
         li.thumb4
 
 
