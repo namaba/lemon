@@ -82,7 +82,7 @@ $(function(){
     alpha : 0.8,
     limitMin : 5,
     easing: 'swing',
-    limitCookie : 10
+    limitCookie : 1
   });
 });
 
