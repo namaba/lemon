@@ -12,14 +12,11 @@
     hr
     .community_detail_list
       h5 = '参加者一覧'
-      - @users.limit(5).each do |user|
-        = link_to search_path(user) do
+      - @community_members.limit(5).each do |community_member|
+        = link_to search_path(community_member) do
           .community_content_detail
             .community_image
-              - if user.user_profile.image1.blank?
-                = image_tag 'default', size: '70', class: "img-radius"
-              - else
-                = image_tag user.user_profile.image1, size: '70', class: 'img-radius'
+              = image_tag community_member.user_profile.image1, size: '70', class: 'img-radius'
 
 
   #layout_right

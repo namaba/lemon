@@ -6,25 +6,23 @@
         / TODO: あとでimageとimage1の順番変更
         / 画像の大きさは400☓400になるからそのままでok
         li.item1.sidebar_image
-          = user_image(@user.user_profile.image1)
+          = image_tag @user.user_profile.image1, class: "img-radius"
         li.item2
-          = user_image(@user.image)
+          = image_tag @user.user_profile.image2, class: "img-radius"
         li.item3
-          = user_image(@user.user_profile.image2)
+          = image_tag @user.user_profile.image3, class: "img-radius"
         li.item4
-          = user_image(@user.user_profile.image3)
         .item_badge
           = image_tag "sex_badge_#{@user.user_profile.sex}"
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
-          = user_image(@user.user_profile.image1)
+          = image_tag @user.user_profile.image1.thumb, class: "img-radius"
         li.thumb2
-          = user_image(@user.image)
+          = image_tag @user.user_profile.image2.thumb, class: "img-radius"
         li.thumb3
-          = user_image(@user.user_profile.image2)
+          = image_tag @user.user_profile.image3.thumb, class: "img-radius"
         li.thumb4
-          = user_image(@user.user_profile.image3)
 
 
     = render 'button_link'

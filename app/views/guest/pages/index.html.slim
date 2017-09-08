@@ -1,35 +1,83 @@
-.container-fluid
-  .jumbotron
-    .login-section
-      = image_tag 'lemon_logo', :size => "200x100", class:'logo'
-      = link_to user_facebook_omniauth_authorize_path, class: 'login_button' do
+.jumbotron
+  .login-section
+    = image_tag 'lemon_logo', :size => "200x100", class:'logo'
+    = link_to user_facebook_omniauth_authorize_path, class: 'login_button' do
+      i.fa.fa-facebook
+      | Facebookログイン
+    end
+    = link_to "ログイン", new_user_session_path, class: 'login_button'
+
+  .registration-box.text-center
+    .registration-title
+      h2 無料登録
+      p
+        | 無料登録完了後、コミュニティに参加し気になる人にいいね！を送りましょう♪
+    .gender-badges
+      = image_tag 'sex_badge_1'
+      = image_tag 'sex_badge_2'
+      = image_tag 'sex_badge_3'
+      = image_tag 'sex_badge_4'
+      = image_tag 'sex_badge_5'
+      = image_tag 'sex_badge_6'
+    .registration-btns
+      = link_to user_facebook_omniauth_authorize_path, class: 'facebook_button' do
         i.fa.fa-facebook
         | Facebookログイン
-      end
-      = link_to "ログイン", new_user_session_path, class: 'login_button'
-    .row
-      .registration-box.text-center
-        .registration-title
-          h2 無料登録
-          p
-            | 無料登録完了後、コミュニティに参加し気になる人にいいね！を送りましょう♪
-        .gender-badges
-          = image_tag 'sex_badge_l'
-          = image_tag 'sex_badge_g'
-          = image_tag 'sex_badge_b'
-          = image_tag 'sex_badge_t'
-          = image_tag 'sex_badge_s'
-          = image_tag 'sex_badge_o'
-        .registration-btns
-          = link_to user_facebook_omniauth_authorize_path, class: 'facebook_button' do
-            i.fa.fa-facebook
-            | Facebookログイン
-          small
-            | >facebookには一切投稿されません
-          = link_to "メールアドレスで登録", new_user_registration_path, class: 'registration_button'
-  .continer
-    .row
-      h2 簡単使い方説明 - マッチング編
-    .row
-      h2 プレミアム会員料金説明
+      small
+        | >facebookには一切投稿されません
+      = link_to "メールアドレスで登録", new_user_registration_path, class: 'registration_button'
+  .row.registration-box_sp
+    .col-xs-10.col-xs-offset-1
+      .registration-title
+        p
+          | 性別にとらわれず、すべての人に平等で健全な場を
+      .registration-btns
+        = link_to user_facebook_omniauth_authorize_path, class: 'facebook_button_sp' do
+          i.fa.fa-facebook
+          | Facebookログイン
+        small
+          | >facebookには一切投稿されません
+        = link_to "メールアドレスで登録", new_user_registration_path, class: 'registration_button_sp'
+        = link_to "ログイン", new_user_session_path, class: 'login_button_sp'
+
+.top-container
+  .swiper-container
+    h2 簡単使い方説明 - マッチング編
+    .swiper-wrapper
+      .swiper-slide = image_tag 'top_howto_match_pc'
+      .swiper-slide = image_tag 'top_howto_match_pc'
+      .swiper-slide = image_tag 'top_howto_match_pc'
+    .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+    .swiper-scrollbar
+  /*ここ画像作成中*/
+  br
+  br
+  br
+
+  .col-md-12
+    = image_tag 'top_prem_explane_title_pc'
+    = image_tag 'top_price_pc'
+
+.top-container_sp
+  .swiper-container
+    h2 簡単使い方説明 - マッチング編
+    .swiper-wrapper
+      .swiper-slide = image_tag 'top_howto_match_sp1'
+      .swiper-slide = image_tag 'top_howto_match_sp2'
+      .swiper-slide = image_tag 'top_howto_match_sp1'
+      .swiper-slide = image_tag 'top_howto_match_sp2'
+    .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+    .swiper-scrollbar
+  br
+  br
+  br
+  = image_tag 'top_price_sp1', class: 'price_image price_image_one'
+  = image_tag 'top_price_sp2', class: 'price_image'
+  = image_tag 'top_price_sp3', class: 'price_image'
+  = image_tag 'top_price_sp4', class: 'price_image'
+
 

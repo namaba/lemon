@@ -1,4 +1,4 @@
-= render 'partial/navbar'
+/ = render 'partial/navbar'
 .container
   .row
     .col-md-6.col-md-offset-3.text-center
@@ -25,7 +25,7 @@
           br
           = f.password_field :password_confirmation, :class => 'form-control',:placeholder => 'password', autocomplete: "off"
         .actions
-          = f.submit "Sign up",class: 'btn btn-success', onclick: "DisableButton(this)" 
+          = f.submit "Sign up",class: 'btn btn-success', onclick: "DisableButton(this)"
       = render "devise/shared/links"
 
 javascript:

@@ -21,7 +21,7 @@
                   .panel_day = '2017年4月26日'
                 .panel_body
                   - if message = Message.where(partnership_id: partnership.id).last
-                    = message.body
+                    = truncate(message.body, omission: '・・・', length: 50)
                   - else
                     p まだメッセージはありません
             .panel_bottun = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner.id), method: :get

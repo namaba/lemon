@@ -3,17 +3,20 @@
   background-image: image-url('top')
   background-size: cover
   height: 600px
+  +responsive(smartphone)
+    height: 300px
   // height: 400px
 .login
   &-section
-    position: absolute
+    position: fixed
     top: 0
     right: 0
     width: 250px
     height: 100%
     background: rgba( $red, 0.8 )
     text-align: center
-    // padding-top: 80px
+    +responsive(smartphone)
+      display: none
   &_button
     +fontsize(24)
     margin: 0 auto 20px
@@ -34,6 +37,11 @@
     height: 350px
     background: rgba( $red, 0.5 )
     border-radius: 10px
+    +responsive(smartphone)
+      display: none
+  &-box_sp
+    +responsive(pc)
+      display: none
   &-title
     color: $white
   &-btns
@@ -56,18 +64,36 @@
       text-decoration: none
 .facebook_button
   +fontsize(24)
-  margin: 0 auto
-  padding: 15px 10px
   display: block
   width: 80%
   color: $white
   background: #354E90
   border: 2px solid $white
   border-radius: 10px
+  padding: 15px 10px
+  margin: 0 auto
   &:hover
     color: $white
     background: lighten(#354E90, 10%)
     text-decoration: none
+.facebook_button_sp
+  @extend .facebook_button
+  width: 100%
+  border: 1px solid $white
+  border-radius: 5px
+  padding: 5px
+  text-align: center
+.registration_button_sp
+  @extend .facebook_button_sp
+  background: $red
+  &:hover
+    background: $label-red
+.login_button_sp
+  @extend .facebook_button_sp
+  background: $black
+  margin-top: 15px
+  &:hover
+    background: lighten($black, 10%)
 .thanks_button
   +fontsize(24)
   margin: 0 auto
@@ -82,6 +108,23 @@
   +fontsize(32)
   li
     padding: 0px 0px 0px 250px
-
+.top-container
+  width: 1000px
+  margin-left: 35px
+  +responsive(smartphone)
+    display: none
+.top-container_sp
+  width: 100%
+  padding: 0 3%
+  +responsive(pc)
+    display: none
+  .price_image
+    width: 47%
+    margin-right: 5%
+    margin-bottom: 10px
+    &:nth-child(2n)
+      margin-right: 0
+  .price_image_one
+    padding-top: 26px
 
 

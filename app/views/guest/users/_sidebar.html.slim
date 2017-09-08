@@ -4,10 +4,7 @@
     = link_to '相手から見た自分のプロフィールを確認', user_preview_path(current_user), class: 'sidebar_preview_button'
     / プロフィール写真
     .sidebar_image
-      - if @user.user_profile.image1.blank?
-        = image_tag 'default', class: "img-radius"
-      - else
-        = image_tag @user.user_profile.image1, class: "img-radius"
+      = image_tag @user.user_profile.image1, class: "img-radius"
       .sidebar_badge
         = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
         / Todo:バッジ画像着たら修正
@@ -23,7 +20,7 @@
     .sidebar_sub_image_list
       .sidebar_sub_title
         / TODO namba バッジ画像着たら修正
-        = image_tag 'sex_badge_l', class: 'img-label'
+        = image_tag 'sex_badge_1', class: 'img-label'
         h5 サブ写真追加
       .sidebar_sub_images
         .sidebar_sub_image = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}

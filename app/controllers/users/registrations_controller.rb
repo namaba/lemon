@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
@@ -10,8 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @userprofile = UserProfile.create(user_id: @user.id)
-    @userprofile = UserStatus.create(user_id: @user.id)
+    if @user.persisted?
+      @userprofile = UserProfile.create(user_id: @user.id)
+      @userstatus = UserStatus.create(user_id: @user.id)
+    end
   end
 
   # GET /resource/edit
@@ -63,7 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 新規登録後のリダイレクト(マイページ)
   def after_sign_up_path_for(resource)
     # pages_welcome_path
-    user_path(current_user)
+    welcome_users_path
   end
 
 
