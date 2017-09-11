@@ -30,7 +30,6 @@
   margin-bottom: 50px
 .registration
   &-box
-    display: none
     position: absolute
     top: 220px
     left: 25%
@@ -38,12 +37,16 @@
     height: 350px
     background: rgba( $red, 0.5 )
     border-radius: 10px
-    z-index: 9999
     +responsive(smartphone)
       display: none
   &-box_sp
     +responsive(pc)
       display: none
+  &-tutorial-box
+    @extend .registration-box
+    display: none
+    background: none
+    z-index: 9999
   &-title
     color: $white
   &-btns
