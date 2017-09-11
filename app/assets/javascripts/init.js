@@ -96,6 +96,12 @@ $(function(){
     prevButton: '.swiper-button-prev',
     slidesPerView: 1,
   });
+
+
+  // チュートリアル
+  window.addEventListener('DOMContentLoaded', function() {
+    $('.registration-box').fadeIn(3000);
+  })
 });
 
 
