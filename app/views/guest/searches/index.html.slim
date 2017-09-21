@@ -9,9 +9,9 @@
 
 
 .registration-tutorial-box.text-center
-  = image_tag 'tutorial_1.png', class: 'tutorial_img tutorial_active'
-  = image_tag 'tutorial_2.png', class: 'tutorial_img'
-  = image_tag 'tutorial_3.png', class: 'tutorial_img'
+  = image_tag 'tutorial_1.png', class: 'tutorial_img tutorial_active change-btn next-btn'
+  = image_tag 'tutorial_2.png', class: 'tutorial_img change-btn'
+  = link_to image_tag('tutorial_3.png'), user_path(current_user), class: 'tutorial_img change-btn'
 
 
 
