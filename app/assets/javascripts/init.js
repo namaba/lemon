@@ -100,7 +100,10 @@ $(function(){
 
   // チュートリアル
   window.addEventListener('DOMContentLoaded', function() {
+    $('.registration-tutorial-content').fadeIn(3000);
+    $('.registration-tutorial-bg').fadeIn(3000);
     $('.registration-tutorial-box').fadeIn(3000);
+    $('.tutorial_active').fadeIn(3000);
   })
 });
 

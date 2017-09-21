@@ -1,14 +1,17 @@
-#layer_board_area
-  .layer_board_bg
-  .layer_board
-    p = link_to image_tag('premire_baner'), 'http://www.yahoo.co.jp', :target => "_blank"
-    p.btn_close
-      = link_to image_tag('sex_badge_1', size: '50'), '#'
-    p.layer_board_btn
-      = link_to 'もう一度開く', '#'
+/ #layer_board_area
+/   .layer_board_bg
+/   .layer_board
+/     p = link_to image_tag('premire_baner'), 'http://www.yahoo.co.jp', :target => "_blank"
+/     p.btn_close
+/       = link_to image_tag('sex_badge_1', size: '50'), '#'
+/     p.layer_board_btn
+/       = link_to 'もう一度開く', '#'
+
 
 .registration-tutorial-box.text-center
-    = image_tag 'tutorial_1.png'
+  = image_tag 'tutorial_1.png', class: 'tutorial_img tutorial_active'
+  = image_tag 'tutorial_2.png', class: 'tutorial_img'
+  = image_tag 'tutorial_3.png', class: 'tutorial_img'
 
 
 
