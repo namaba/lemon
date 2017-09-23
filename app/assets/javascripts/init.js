@@ -115,8 +115,6 @@ $(function(){
     // ifとelseを用いて、$displaySlideの前もしくは次の要素に
     // activeクラスをつけてください
     $displaySlide.next().addClass('tutorial_active');
-
-
   });
 });
 
