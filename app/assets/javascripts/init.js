@@ -96,6 +96,26 @@ $(function(){
     prevButton: '.swiper-button-prev',
     slidesPerView: 1,
   });
+
+
+  // チュートリアル
+  window.addEventListener('DOMContentLoaded', function() {
+    $('.registration-tutorial-bg').fadeIn(3000);
+    $('.registration-tutorial-box').fadeIn(3000);
+    $('.tutorial_active').fadeIn(3000);
+  });
+
+  $('.change-btn').click(function() {
+    // 変数$displaySlideを定義してください
+    var $displaySlide = $('.tutorial_active');
+
+    // 変数$displaySlideからactiveクラスを取り除いてください
+    $displaySlide.removeClass('tutorial_active');
+
+    // ifとelseを用いて、$displaySlideの前もしくは次の要素に
+    // activeクラスをつけてください
+    $displaySlide.next().addClass('tutorial_active');
+  });
 });
 
 
