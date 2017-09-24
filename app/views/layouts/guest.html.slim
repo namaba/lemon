@@ -15,6 +15,8 @@ html
     // container
     .registration-tutorial-bg
     #layout_container
+      - flash.each do |type, msg|
+        div class="alert alert-#{type}" = msg
       // header
       header#layout_header
         - if yield(:header).blank?

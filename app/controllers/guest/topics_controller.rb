@@ -22,11 +22,12 @@ class Guest::TopicsController < Guest
       ActiveRecord::Base.transaction do
         @topic = @community.topics.build(topic_params)
         if @topic.save!
-          redirect_to community_path(@community), notice: "作成できました"
+          flash[:success] = "作成できました"
+          redirect_to community_path(@community)
         end
       end
     rescue => e
-      redirect_to :back, notice: "作成できませんでした"
+      redirect_to :back, warning: "#{e.message}"
     end
   end
 
@@ -36,9 +37,9 @@ class Guest::TopicsController < Guest
 
   def update
     if @topic = @topic.update(topic_params)
-      redirect_to :back, notice: "更新できました"
+      redirect_to :back, success: "更新できました"
     else
-      redirect_to :back, notice: "更新できませんでした"
+      redirect_to :back, danger: "更新できませんでした"
     end
   end
   def destroy
@@ -51,9 +52,9 @@ class Guest::TopicsController < Guest
   def chat
     @chat = @topic.chats.build(chat_params)
     if @chat.save!
-      redirect_to community_path(@community), notice: "作成できました"
+      redirect_to community_path(@community), success: "作成できました"
     else
-      redirect_to :back, notice: "作成できませんでした"
+      redirect_to :back, danger: "作成できませんでした"
     end
   end
 
