@@ -100,9 +100,11 @@ $(function(){
 
   // チュートリアル
   window.addEventListener('DOMContentLoaded', function() {
-    $('.registration-tutorial-bg').fadeIn(3000);
-    $('.registration-tutorial-box').fadeIn(3000);
-    $('.tutorial_active').fadeIn(3000);
+    if(current_user.tutorial_status == 99){
+      $('.registration-tutorial-bg').fadeIn(3000);
+      $('.registration-tutorial-box').fadeIn(3000);
+      $('.tutorial_active').fadeIn(3000);
+    }
   });
 
   $('.change-btn').click(function() {
@@ -117,27 +119,3 @@ $(function(){
     $displaySlide.next().addClass('tutorial_active');
   });
 });
-
-
-// コミュニティぺーじのタブ
-// $(function() {
-//   //クリックしたときのファンクションをまとめて指定
-//   $('.tab_header .tab_bottun').click(function() {
-
-//     //.index()を使いクリックされたタブが何番目かを調べ、
-//     //indexという変数に代入します。
-//     var index = $('.tab_header .tab_bottun').index(this);
-
-//     //コンテンツを一度すべて非表示にし、
-//     $('.tab_content').css('display','none');
-
-//     //クリックされたタブと同じ順番のコンテンツを表示します。
-//     $('.tab_content').eq(index).css('display','block');
-
-//     //一度タブについているクラスselectを消し、
-//     $('.tab_header .tab_bottun').removeClass('select');
-
-//     //クリックされたタブのみにクラスselectをつけます。
-//     $(this).addClass('select')
-//   });
-// });
