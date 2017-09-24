@@ -12,6 +12,7 @@ class UserProfile < ActiveRecord::Base
   mount_uploader :image3, ImageUploader
   mount_uploader :identification_image, ImageUploader
 
+  enum tutorial_status: { pending:1, completed: 99 }
 
   # --------------------------------------------------
   #  select候補

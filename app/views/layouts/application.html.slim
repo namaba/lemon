@@ -21,6 +21,7 @@ html
         |  <ruby code=" flash.each do |f| "> <ruby code=" type = f[0].to_s.gsub('alert','error').gsub('notice','info')"></ruby> toastr['<ruby code="= type"></ruby>']('<ruby code="= f[1]"></ruby>'); </ruby>
 favicon-32x32.png
 
+  = include_gon
   = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'
   = javascript_include_tag 'guest'
   = content_for :js

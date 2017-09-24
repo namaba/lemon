@@ -45,6 +45,9 @@ gem 'stripe'
 # 定期実行
 gem 'whenever', :require => false
 
+# javasqriptとの連携
+gem 'gon'
+
 # Capistrano
 group :production, :staging do
   gem 'unicorn'
