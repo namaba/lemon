@@ -6,7 +6,8 @@ class Guest::SearchesController < Guest
     @q = UserProfile.ransack(params[:q])
     @target_ids = @q.result.not_me(current_user).like_user(current_user).map(&:user_id)
     @users = User.where(id: @target_ids).page(params[:page]).per(16)
-
+    gon.tutorial_status = current_user.user_profile.tutorial_status
+    @tutorial_status = current_user.user_profile.tutorial_status
     # @user_profiles = UserProfile.page(params[:page]).per(4)
   end
 

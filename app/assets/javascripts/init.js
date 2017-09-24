@@ -100,9 +100,11 @@ $(function(){
 
   // チュートリアル
   window.addEventListener('DOMContentLoaded', function() {
-    $('.registration-tutorial-bg').fadeIn(3000);
-    $('.registration-tutorial-box').fadeIn(3000);
-    $('.tutorial_active').fadeIn(3000);
+    if(gon.tutorial_status == 'pending'){
+      $('.registration-tutorial-bg').fadeIn(3000);
+      $('.registration-tutorial-box').fadeIn(3000);
+      $('.tutorial_active').fadeIn(3000);
+    }
   });
 
   $('.change-btn').click(function() {
