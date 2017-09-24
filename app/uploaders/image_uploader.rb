@@ -10,11 +10,23 @@ class ImageUploader < CarrierWave::Uploader::Base
 # 保存形式をJPGにする
   process :convert => 'jpg'
 
-# サムネイルを生成する設定
+# リサイズ&トリミング
   version :thumb do
     process :resize_to_fill => [88, 88]
-
   end
+
+  version :cover do
+    process resize_to_fill: [400, 400]
+  end
+
+  version :icon do
+    process resize_to_fill: [100, 100]
+  end
+
+  version :pickup do
+    process resize_to_fill: [700, 290]
+  end
+
 
 # jpg,jpeg,gif,pngしか受け付けない
   def extension_white_list
@@ -86,9 +98,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_fit => [300, 400]
-  end
+  # version :thumb do
+  #   process :resize_to_fit => [300, 400]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
