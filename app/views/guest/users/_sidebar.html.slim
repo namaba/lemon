@@ -4,7 +4,7 @@
     = link_to '相手から見た自分のプロフィールを確認', user_preview_path(current_user), class: 'sidebar_preview_button'
     / プロフィール写真
     .sidebar_image
-      = image_tag @user.user_profile.image1, class: "img-radius"
+      = image_tag @user.user_profile.image1.cover, class: "img-radius"
       .sidebar_badge
         = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
         / Todo:バッジ画像着たら修正

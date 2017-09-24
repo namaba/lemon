@@ -8,9 +8,13 @@
         = render 'partial/deviseErrorMsg'
         = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-facebook'
         .form-group
+          = f.label :name
+          br
+          = f.email_field :name, :class => 'form-control',:placeholder => 'name', autofocus: true
+        .form-group
           = f.label :email
           br
-          = f.email_field :email, :class => 'form-control',:placeholder => 'email', autofocus: true
+          = f.email_field :email, :class => 'form-control',:placeholder => 'email'
         .form-group
           = f.label :password
           - if @minimum_password_length
