@@ -15,7 +15,8 @@ class Guest::UsersController < Guest
   end
 
   def update
-    if @user = @user.user_profile.update(profile_params)
+    if @user.user_profile.update(profile_params)
+      @user.user_profile.completed! unless @user.user_profile.completed?
       redirect_to :back, notice: "更新できました"
     else
       redirect_to :back, notice: "更新できませんでした"
