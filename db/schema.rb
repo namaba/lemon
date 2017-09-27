@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921120315) do
+ActiveRecord::Schema.define(version: 20170927120825) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -209,11 +209,7 @@ ActiveRecord::Schema.define(version: 20170921120315) do
     t.integer  "marriage",             limit: 4
     t.integer  "child",                limit: 4
     t.string   "personality",          limit: 255
-    t.string   "charmpoint",           limit: 255
-    t.string   "sociability",          limit: 255
     t.integer  "holiday",              limit: 4
-    t.integer  "want_to_marriage",     limit: 4
-    t.string   "condition",            limit: 255
     t.integer  "to_meet",              limit: 4
     t.integer  "blood_type",           limit: 4
     t.integer  "school",               limit: 4
