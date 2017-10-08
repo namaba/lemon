@@ -127,32 +127,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | チャームポイント
-                  = f.select :charmpoint, UserProfile::CHARMPOINT, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 社交性
-                  = f.select :sociability, UserProfile::SOCIABILITY, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 休日
                   = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 結婚願望
-                  = f.select :want_to_marriage, UserProfile::WANT_TO_MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 相手への重視項目
-                  = f.select :condition, UserProfile::CONDITION, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
             .row
               .col-md-12.select
                 .form-group
@@ -302,32 +278,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | チャームポイント
-                  = f.select :charmpoint, UserProfile::CHARMPOINT, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 社交性
-                  = f.select :sociability, UserProfile::SOCIABILITY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 休日
                   = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 結婚願望
-                  = f.select :want_to_marriage, UserProfile::WANT_TO_MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 相手への重視項目
-                  = f.select :condition, UserProfile::CONDITION, {prompt:"選択してください"}, { class: 'form-control'}
             .row
               .col-md-12.select
                 .form-group
