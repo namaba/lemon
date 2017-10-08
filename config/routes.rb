@@ -91,6 +91,11 @@ Rails.application.routes.draw do
         get   'pre_notice',                    to: 'user#pre_notice'
       end
     end
+    resources :messages, only: [:index, :show, :create] do
+      member do
+        get 'profile',                to: 'messages#profile'
+      end
+    end
   end
 
 end
