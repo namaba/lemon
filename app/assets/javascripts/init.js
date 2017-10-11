@@ -98,14 +98,17 @@ $(function(){
   });
 
 
+
   // チュートリアル
   window.addEventListener('DOMContentLoaded', function() {
     if(gon.tutorial_status == 'pending'){
       $('.registration-tutorial-bg').fadeIn(3000);
       $('.registration-tutorial-box').fadeIn(3000);
+      $('.mypage_profile_registrate_box').fadeIn(3000);
       $('.tutorial_active').fadeIn(3000);
     }
   });
+
 
   $('.change-btn').click(function() {
     // 変数$displaySlideを定義してください

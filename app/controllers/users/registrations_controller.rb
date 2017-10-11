@@ -66,7 +66,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 新規登録後のリダイレクト(マイページ)
   def after_sign_up_path_for(resource)
     # pages_welcome_path
-    welcome_users_path
+    searches_path
   end
 
 
