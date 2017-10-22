@@ -87,7 +87,7 @@ $(function(){
   var swiper = new Swiper('.swiper-container', {
     //オプションをここに:
     mode:'horizontal',
-    // autoplay: 5000,
+    autoplay: 5000,
     loop: true,
     autoResize: true,
     scrollContainer: true,
