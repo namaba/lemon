@@ -87,13 +87,13 @@ $(function(){
   var swiper = new Swiper('.swiper-container', {
     //オプションをここに:
     mode:'horizontal',
-    autoplay: 5000,
+    // autoplay: 5000,
     loop: true,
     autoResize: true,
     scrollContainer: true,
     grabCursor: true,
     nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
+    // prevButton: '.swiper-button-prev',
     slidesPerView: 1,
   });
 
