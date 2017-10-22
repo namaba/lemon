@@ -324,16 +324,15 @@
               | ×
         .modal-body
           = form_for @user.user_profile, url: user_path(current_user) do |f|
-            .row.text-center
-              .col-md-4.imgInput.form-group
-                = f.file_field :image1, class: "form-control image-field", :style => "display: none;", :id => "user_aaa", :style => "display: none;", :id => "user_aaa"
-                = f.label :image1, id: "aaa" do
-                  = image_tag @user.user_profile.image1, class: "imgView img-radius img-responsive"
-                / = f.label :image1, id: "aaa" do
-                /   = image_tag @user.user_profile.image2, class: "imgView img-radius img-responsive"
-                / = f.label :image1, id: "aaa" do
-                /   = image_tag @user.user_profile.image3, class: "imgView img-radius img-responsive"
-              = f.submit "画像変更", :class => "btn btn-info"
+            .row
+              .col-md-12.text-center
+                .form-group
+                  label
+                    | 写真
+                  = f.file_field :image1, class: "form-control image-field"
+                  = f.file_field :image2, class: "form-control image-field"
+                  = f.file_field :image3, class: "form-control image-field"
+                = f.submit '保存', class: "btn btn-info text-center"
 
 
 - if current_user.user_profile.tutorial_status == 'pending'
