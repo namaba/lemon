@@ -64,12 +64,15 @@
   &_profile_registrate_box
     position: fixed
     display: block
-    left: 30%
-    top: 50px
-    width: 400px
-    height: 350px
+    top: 0px
+    left: 0%
     background: none
     z-index: 9999
+    +responsive(pc)
+      left: 30%
+      width: 400px
+      height: 350px
+      top: 50px
   &_registration-tutorial-bg
     position: absolute
     background: rgba( $black, 0.5 )
