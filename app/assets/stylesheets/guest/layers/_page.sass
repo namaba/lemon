@@ -49,8 +49,14 @@
     left: 30%
     background: none
     z-index: 9999
+    +responsive(smartphone)
+      left: 10%
+      width: 80%
     .tutorial_img
       display: none
+      width: 100%
+      img
+        width: 100%
     .tutorial_active
       display: block
   &-tutorial-bg
