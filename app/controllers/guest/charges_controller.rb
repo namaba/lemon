@@ -1,20 +1,21 @@
 class Guest::ChargesController < Guest
 
   before_action :find_plan,   only: [:create]
-  before_action :set_coin_charge,   only: [:coin_charge]
+  before_action :set_coin,   only: [:create]
 
   def new
   end
 
   # プラン変更
   def create
+    raise @plan.inspect
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
       :source  => params[:stripeToken] #めちゃめちゃな文字列です
     )
 
 
-    サブスクリプション作成(支払い発生)
+    # サブスクリプション作成(支払い発生)
     subscription = Stripe::Subscription.create(
       :customer => customer.id,
       :plan => @plan
@@ -60,16 +61,20 @@ class Guest::ChargesController < Guest
         @plan = 'six_months'
       elsif params[:plan] == "one_year"
         @plan = 'one_year'
+      else
+        @plan = nil
       end
     end
 
-    def set_coin_charge
-      if params[:plan] == 'ten'
-        @plan = 'ten'
-      elsif params[:plan] == 'fifty'
-        @plan = 'fifty'
-      elsif params[:plan] == 'one_hundred'
-        @plan = 'one_hundred'
+    def set_coin
+      if params[:coin] == 'ten_coins'
+        @coin = 'ten_coins'
+      elsif params[:coin] == 'fifty_coins'
+        @coin = 'fifty_coins'
+      elsif params[:coiin] == 'one_hundred_coins'
+        @coin = 'one_hundred_coins'
+      else
+        @coin = nil
       end
     end
 end

@@ -121,4 +121,9 @@ $(function(){
     // activeクラスをつけてください
     $displaySlide.next().addClass('tutorial_active');
   });
+
+
+  $(".charge_button").click(function() {
+    $(".stripe-button-el").trigger('click');
+  });
 });

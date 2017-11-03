@@ -25,5 +25,5 @@ spec/support/uploads
 # Brakeman Result
 output_file
 
-.DS_Store
 vender/
+app/.DS_Store
