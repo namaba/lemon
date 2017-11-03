@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   has_many :murmur_smiles
   has_many :topic_smiles
 
-
+  delegate :pay_coin, :free_coin,:good_count, to: :status
   #----------------------------------------
   #  ** Scope **
   #----------------------------------------
