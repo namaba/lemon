@@ -56,8 +56,9 @@
               = '0'
           / .status_button
             / = link_to 'プラン変更', new_charge_path
-          button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#CoinCharge"]
-            |  コイン購入
+          .status_button_modal
+            button.edit_button[type="button" data-toggle="modal" data-target="#CoinCharge"]
+              |  コイン購入
 
 
 
