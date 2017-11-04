@@ -1,0 +1,10 @@
+ja:
+  charge:
+    coin:
+      ten_coins: 10
+      fifty_coins: 50
+      one_hundreds_coins: 100
+    amount:
+      ten_coins: 980
+      fifty_coins: 3980
+      one_hundreds_coins: 6980
