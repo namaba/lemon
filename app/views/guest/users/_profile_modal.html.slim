@@ -334,40 +334,29 @@
                   = f.file_field :image3, class: "form-control image-field"
                 = f.submit '保存', class: "btn btn-info text-center"
 
+#CoinCharge.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_tag charges_path
+            .charge_coin
+              .charge_coin_title
+                = image_tag 'coin_title.png'
+              .charge_coin_flex
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "ten_coins",{},class: 'hide_button'
+                  = label_tag :charge_ten_coins, image_tag('ten_coins.png', :mouseover => image_path('btn_over.png')), class: 'charge_button'
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "fifty_coins",{},class: 'hide_button'
+                  = label_tag :charge_fifty_coins, image_tag('fifty_coins.png'), class: 'charge_button'
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "one_hundred_coins",{},class: 'hide_button'
+                  = label_tag :charge_one_hundred_coins, image_tag('one_hundred_coins.png'), class: 'charge_button'
+                / = submit_tag "プロフィールを更新", :class => "btn btn-info"
 
-- if current_user.user_profile.tutorial_status == 'pending'
-  .mypage_profile_registrate_box
-    .modal-dialog
-      .modal-margin
-        .modal-content
-          .modal-header
-            h5 まずはプロフィールを入力しよう！
-          .modal-body
-            = form_for @user.user_profile, url: user_path(current_user) do |f|
-              .row
-                .col-md-12.select
-                  .form-group
-                    label
-                      | 属性
-                    = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, { autofocus: 'true', class: 'form-control'}
-              .row
-                .col-md-12.select
-                  .form-group
-                    label
-                      | タチ・ネコ
-                    = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, { class: 'form-control'}
 
-              .row
-                .col-md-12.select
-                  .form-group
-                    label
-                      | 生年月日
-                    == sprintf( f.date_select(:birthday, use_month_numbers: true, start_year: 1930, end_year:   (Time.now.year - 18), default:    Date.new(1980, 1, 1), date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
-              .row
-                .col-md-12.select
-                  .form-group
-                    label
-                      | 居住地
-                    = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
-                .text-center
-                  = f.submit '保存', class: "btn btn-info text-center"
