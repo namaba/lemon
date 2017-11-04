@@ -1,16 +1,18 @@
 class Guest::ChargesController < Guest
 
-  before_action :find_plan,   only: [:create]
+  before_action :set_plan,   only: [:create]
   before_action :set_coin,   only: [:create]
+  before_action :set_plan_or_coin,   only: [:create]
 
   class NothingCharge < StandardError; end
+
 
   def new
   end
 
   # プラン変更
   def create
-    raise NothingCharge if @plan.nil && @coin.nil
+    raise NothingCharge if @plan.nil? && @coin.nil?
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
@@ -68,7 +70,8 @@ class Guest::ChargesController < Guest
   # end
 
   private
-  def find_plan
+  # 現在使ってない
+  def set_plan
     case params[:plan]
     when 'one_month'
       @plan = 'one_month'
@@ -83,19 +86,46 @@ class Guest::ChargesController < Guest
     end
   end
 
+  # 現在使ってない
   def set_coin
     case params[:coin]
     when 'ten_coins'
-      @coin = 10
+      @coin   = 10
       @amount = 980
     when 'fifty_coins'
-      @coin = 50
+      @coin   = 50
       @amount = 4980
     when 'one_hundred_coins'
-      @coin = 100
+      @coin   = 100
       @amount = 6980
     else
-      @coin = nil
+      @coin   = nil
+      @amount = nil
+    end
+  end
+
+  def set_plan_or_coin
+    case params[:charge]
+    when 'one_month'
+      @plan   = 'one_month'
+    when 'three_months'
+      @plan   = 'three_months'
+    when 'six_months'
+      @plan   = 'six_months'
+    when 'one_year'
+      @plan   = 'one_year'
+    when 'ten_coins'
+      @coin   = 10
+      @amount = 980
+    when 'fifty_coins'
+      @coin   = 50
+      @amount = 4980
+    when 'one_hundred_coins'
+      @coin   = 100
+      @amount = 6980
+    else
+      @plan   = nil
+      @coin   = nil
       @amount = nil
     end
   end

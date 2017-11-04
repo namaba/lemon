@@ -27,3 +27,5 @@ output_file
 
 vender/
 app/.DS_Store
+app/assets/images/.DS_Store
+dump.rdb
