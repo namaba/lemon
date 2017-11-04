@@ -48,6 +48,5 @@
           = radio_button_tag :charge, "one_hundred_coins",{},class: 'hide_button'
           = label_tag :charge_one_hundred_coins, image_tag('one_hundred_coins.png'), class: 'charge_button'
 
-      / = submit_tag '保存', class: "btn btn-default"
-  .charge_stripe
-    script.stripe-button src="https://checkout.stripe.com/checkout.js"　data-currency="JPY" data-amount="10000" data-description=("Master/Amex/Visaのみ利用可能です") data-image="/assets/sex_badge_0" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" data-name="Lemon" data-zip-code="true" data-panel-label="お支払い"
+    .charge_stripe
+      script.stripe-button src="https://checkout.stripe.com/checkout.js" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-description=("Master/Amex/Visaのみ利用可能です") data-locale="auto" data-name="Lemon" data-currency="JPY" data-image="/assets/sex_badge_0" data-panel-label="お支払い"

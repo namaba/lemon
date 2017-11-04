@@ -54,12 +54,49 @@
               = @user.user_profile.coins_count
           - else
               = '0'
-          .status_button
-            = link_to 'プラン変更', new_charge_path
+          / .status_button
+            / = link_to 'プラン変更', new_charge_path
+          button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#CoinCharge"]
+            |  コイン購入
 
-  = form_tag charges_path
-    article
-      label.amount
-        span Amount: $5.00
 
-    script.stripe-button data-amount="500" data-description=("A month's subscription") data-key=("#{Rails.configuration.stripe[:publishable_key]}") data-locale="auto" src="https://checkout.stripe.com/checkout.js"
+
+- if current_user.user_profile.tutorial_status == 'pending'
+  .mypage_profile_registrate_box
+    .modal-dialog
+      .modal-margin
+        .modal-content
+          .modal-header
+            h5 まずはプロフィールを入力しよう！
+          .modal-body
+            = form_for @user.user_profile, url: user_path(current_user) do |f|
+              .row
+                .col-md-12.select
+                  .form-group
+                    label
+                      | 属性
+                    = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, { autofocus: 'true', class: 'form-control'}
+              .row
+                .col-md-12.select
+                  .form-group
+                    label
+                      | タチ・ネコ
+                    = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+
+              .row
+                .col-md-12.select
+                  .form-group
+                    label
+                      | 生年月日
+                    == sprintf( f.date_select(:birthday, use_month_numbers: true, start_year: 1930, end_year:   (Time.now.year - 18), default:    Date.new(1980, 1, 1), date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
+              .row
+                .col-md-12.select
+                  .form-group
+                    label
+                      | 居住地
+                    = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
+                .text-center
+                  = f.submit '保存', class: "btn btn-info text-center"
+
+.charge_stripe
+  script.stripe-button src="https://checkout.stripe.com/checkout.js" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-description=("Master/Amex/Visaのみ利用可能です") data-locale="auto" data-name="Lemon" data-currency="JPY" data-image="/assets/sex_badge_0" data-panel-label="お支払い"
