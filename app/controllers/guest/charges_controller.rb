@@ -115,14 +115,14 @@ class Guest::ChargesController < Guest
     when 'one_year'
       @plan   = 'one_year'
     when 'ten_coins'
-      @coin   = 10
-      @amount = 980
+      @coin   = t('charge.coin.ten_coins')
+      @amount = t('charge.amount.ten_coins')
     when 'fifty_coins'
-      @coin   = 50
-      @amount = 4980
+      @coin   = t('charge.coin.fifty_coins')
+      @amount = t('charge.amount.fifty_coins')
     when 'one_hundred_coins'
-      @coin   = 100
-      @amount = 6980
+      @coin   = t('charge.coin.one_hundreds_coins')
+      @amount = t('charge.amount.one_hundreds_coins')
     else
       @plan   = nil
       @coin   = nil
