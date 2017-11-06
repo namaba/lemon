@@ -1,12 +1,17 @@
 .charge
   &_section
-    padding: 50px
+    padding: 0 50px
     +responsive(smartphone)
       padding: 10px
     img
       margin-bottom: 0
       +responsive(smartphone)
         width: 100%
+    .hide_button
+      // visibility: hidden
+      display: none
+    label:hover
+      cursor: pointer
   &_explanation
     margin-bottom: 50px
     &_title
@@ -50,3 +55,13 @@
     &_side
       +responsive(smartphone)
         width: 30%
+    &_side_modal
+      width: 30%
+      img
+        width: 100%
+      .hide_button
+        display: none
+      label:hover
+        cursor: pointer
+.charge_stripe
+  display: none

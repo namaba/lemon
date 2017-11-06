@@ -13,10 +13,10 @@ html
     = csrf_meta_tags
   body
     // container
+    - if current_user.user_profile.tutorial_status == 'pending'
+      .mypage_registration-tutorial-bg
     .registration-tutorial-bg
     #layout_container
-      - flash.each do |type, msg|
-        div class="alert alert-#{type}" = msg
       // header
       header#layout_header
         - if yield(:header).blank?
@@ -29,7 +29,7 @@ html
       // content
       #layout_content
         #layout_banner
-          = image_tag 'banner.png', width: '100%', class: 'baner-image'
+          = link_to image_tag('banner.png', width: '100%', class: 'baner-image'), new_charge_path
         = yield
 
     // footer

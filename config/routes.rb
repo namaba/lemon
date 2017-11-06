@@ -14,29 +14,29 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create, :edit, :update, :destroy] do
       get 'preview',                to: 'users#preview'
       collection do
-        get 'welcome', to: 'users#welcome'
+        get 'welcome',              to: 'users#welcome'
       end
     end
     resources :searches, only: [:index, :show] do
       collection do
-        get 'welcome',            to: "searches#welcome"
+        get 'welcome',              to: "searches#welcome"
       end
     end
     resources :likes, only: [:index, :show, :create] do
       member do
-        get 'match',              to: 'likes#match'
+        get 'match',                to: 'likes#match'
       end
     end
     resources :messages, only: [:index, :show, :create] do
       member do
-        get 'profile',                to: 'messages#profile'
+        get 'profile',              to: 'messages#profile'
       end
     end
     resources :communities do
       member do
-        get 'my_communities',     to: 'communities#my_communities'
-        get 'detail',            to: 'communities#detail'
-        get 'join',              to: 'communities#join'
+        get 'my_communities',       to: 'communities#my_communities'
+        get 'detail',               to: 'communities#detail'
+        get 'join',                 to: 'communities#join'
       end
     end
     resources :topics do
@@ -48,7 +48,11 @@ Rails.application.routes.draw do
     resources :murmur_comments
     resources :murmur_smiles, only: [:create, :destroy]
     resources :topic_smiles, only: [:create, :destroy]
-    resources :charges
+    resources :charges do
+      collection do
+        get 'coin_charge',          to: 'charges#coin_charge'
+      end
+    end
 
   end
 
@@ -74,7 +78,7 @@ Rails.application.routes.draw do
 
     resources :announcement do
       member do
-        delete 'all_destroy',                 to: 'announcement#all_destroy'
+        delete 'all_destroy',              to: 'announcement#all_destroy'
       end
     end
   end
@@ -86,9 +90,14 @@ Rails.application.routes.draw do
     resources :user do
       collection do
         # match 'pre_new',                       to: 'user#pre_new',  via: 'get'
-        get   'pre_new',                       to: 'user#pre_new'
-        post   'pre_new',                       to: 'user#pre_create'
-        get   'pre_notice',                    to: 'user#pre_notice'
+        get   'pre_new',                   to: 'user#pre_new'
+        post   'pre_new',                  to: 'user#pre_create'
+        get   'pre_notice',                to: 'user#pre_notice'
+      end
+    end
+    resources :messages, only: [:index, :show, :create] do
+      member do
+        get 'profile',                to: 'messages#profile'
       end
     end
   end

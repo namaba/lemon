@@ -49,8 +49,14 @@
     left: 30%
     background: none
     z-index: 9999
+    +responsive(smartphone)
+      left: 10%
+      width: 80%
     .tutorial_img
       display: none
+      width: 100%
+      img
+        width: 100%
     .tutorial_active
       display: block
   &-tutorial-bg
@@ -127,15 +133,17 @@
   li
     padding: 0px 0px 0px 250px
 .top-container
-  width: 1000px
-  margin-left: 35px
+  width: 800px
+  margin-left: 100px
   +responsive(smartphone)
     display: none
 .top-container_sp
   width: 100%
-  padding: 0 3%
+  padding: 0 8%
   +responsive(pc)
     display: none
+  img
+    width: 100%
   .price_image
     width: 47%
     margin-right: 5%

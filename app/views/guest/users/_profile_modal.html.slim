@@ -127,32 +127,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | チャームポイント
-                  = f.select :charmpoint, UserProfile::CHARMPOINT, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 社交性
-                  = f.select :sociability, UserProfile::SOCIABILITY, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 休日
                   = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 結婚願望
-                  = f.select :want_to_marriage, UserProfile::WANT_TO_MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 相手への重視項目
-                  = f.select :condition, UserProfile::CONDITION, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
             .row
               .col-md-12.select
                 .form-group
@@ -302,32 +278,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | チャームポイント
-                  = f.select :charmpoint, UserProfile::CHARMPOINT, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 社交性
-                  = f.select :sociability, UserProfile::SOCIABILITY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 休日
                   = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 結婚願望
-                  = f.select :want_to_marriage, UserProfile::WANT_TO_MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 相手への重視項目
-                  = f.select :condition, UserProfile::CONDITION, {prompt:"選択してください"}, { class: 'form-control'}
             .row
               .col-md-12.select
                 .form-group
@@ -372,9 +324,39 @@
               | ×
         .modal-body
           = form_for @user.user_profile, url: user_path(current_user) do |f|
-            .row.text-center
-              .col-md-4.imgInput.form-group
-                = f.file_field :image1, class: "form-control image-field", :style => "display: none;", :id => "user_aaa", :style => "display: none;", :id => "user_aaa"
-                = f.label :image1, id: "aaa" do
-                  = image_tag @user.user_profile.image1, class: "imgView img-radius img-responsive"
-                = f.submit "画像変更", :class => "btn btn-info"
+            .row
+              .col-md-12.text-center
+                .form-group
+                  label
+                    | 写真
+                  = f.file_field :image1, class: "form-control image-field"
+                  = f.file_field :image2, class: "form-control image-field"
+                  = f.file_field :image3, class: "form-control image-field"
+                = f.submit '保存', class: "btn btn-info text-center"
+
+#CoinCharge.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_tag charges_path
+            .charge_coin
+              .charge_coin_title
+                = image_tag 'coin_title.png'
+              .charge_coin_flex
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "ten_coins",{},class: 'hide_button'
+                  = label_tag :charge_ten_coins, image_tag('ten_coins.png', :mouseover => image_path('btn_over.png')), class: 'charge_button'
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "fifty_coins",{},class: 'hide_button'
+                  = label_tag :charge_fifty_coins, image_tag('fifty_coins.png'), class: 'charge_button'
+                .charge_coin_side_modal
+                  = radio_button_tag :charge, "one_hundred_coins",{},class: 'hide_button'
+                  = label_tag :charge_one_hundred_coins, image_tag('one_hundred_coins.png'), class: 'charge_button'
+                / = submit_tag "プロフィールを更新", :class => "btn btn-info"
+
+

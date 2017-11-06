@@ -14,7 +14,9 @@
       display: flex
       justify-content: space-between
     +responsive(smartphone)
+      width: 90%
       padding: 10px
+      margin: 0 5% 5%
   &_gage_bar
     width: 65%
     +responsive(smartphone)
@@ -41,7 +43,7 @@
     .edit_button
       float: right
   &_profile_body
-    padding: 10px
+    padding: 10px 10px 0 10px
     +responsive(smartphone)
       padding: 5px
   &_user_communities
@@ -50,6 +52,7 @@
     float: left
     width: 23%
     margin-right: 2%
+    padding-bottom: 10px
     &:nth-child(4n)
       margin-right: 0
     .img-radius
@@ -59,7 +62,24 @@
       -moz-border-radius: 5px
     img
       width: 100%
-
-
-
+      margin: 0
+  &_profile_registrate_box
+    position: fixed
+    display: block
+    top: 0px
+    left: 0%
+    background: none
+    z-index: 9999
+    +responsive(pc)
+      left: 30%
+      width: 400px
+      height: 350px
+      top: 50px
+  &_registration-tutorial-bg
+    position: absolute
+    background: rgba( $black, 0.5 )
+    width: 100%
+    height: 2300px
+    z-index: 1000
+    display: block
 

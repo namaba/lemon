@@ -8,6 +8,7 @@ class Guest::UsersController < Guest
     @percent = @filterd_hash.count / 20 * 100
     @murmur = Murmur.new
     @murmurcomment = MurmurComment.new
+    gon.tutorial_status = current_user.user_profile.tutorial_status
   end
 
   def edit

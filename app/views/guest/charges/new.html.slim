@@ -14,35 +14,39 @@
         = image_tag 'paid_service_info_04.png'
       .charge_explanation_side
         = image_tag 'paid_service_info_05.png'
-  .charge_info
-    .charge_info_title
-      = image_tag 'info_title.png'
-    .charge_info_flex
-      .charge_info_side
-        = image_tag 'paid_service_info_09.png'
-      .charge_info_side
-        = image_tag 'paid_service_info_08.png'
-    .charge_info_flex
-      .charge_info_side
-        = image_tag 'paid_service_info_07.png'
-      .charge_info_side.charge_info_month
-        = image_tag 'paid_service_info_06.png'
 
-  .charge_coin
-    .charge_coin_title
-      = image_tag 'coin_title.png'
-    .charge_coin_flex
-      .charge_coin_side
-        = image_tag 'ten_coin.png'
-      .charge_coin_side
-        = image_tag 'fifty_coin.png'
-      .charge_coin_side
-        = image_tag 'onehundred_coin.png'
   = form_tag charges_path
-    article
-      label.amount
-        span Amount: $5.00
+    .charge_info
+      .charge_info_title
+        = image_tag 'info_title.png'
+      .charge_info_flex
+        .charge_info_side
+          = radio_button_tag :charge, "one_year",{},class: 'hide_button'
+          = label_tag :charge_one_year, image_tag('paid_service_info_09.png'), class: 'charge_button'
+        .charge_info_side
+          = radio_button_tag :charge, "six_months",{},class: 'hide_button'
+          = label_tag :charge_six_months, image_tag('paid_service_info_08.png'), class: 'charge_button'
+      .charge_info_flex
+        .charge_info_side
+          = radio_button_tag :charge, "three_months",{},class: 'hide_button'
+          = label_tag :charge_three_months, image_tag('paid_service_info_07.png'), class: 'charge_button'
+        .charge_info_side.charge_info_month
+          = radio_button_tag :charge, "one_month",{},class: 'hide_button'
+          = label_tag :charge_one_month, image_tag('paid_service_info_06.png'), class: 'charge_button'
 
-    script.stripe-button data-currency="JPY" data-amount="2000" data-description=("2 widgets") data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" data-name="Stripe.com" data-zip-code="true" src="https://checkout.stripe.com/checkout.js"
+    .charge_coin
+      .charge_coin_title
+        = image_tag 'coin_title.png'
+      .charge_coin_flex
+        .charge_coin_side
+          = radio_button_tag :charge, "ten_coins",{},class: 'hide_button'
+          = label_tag :charge_ten_coins, image_tag('ten_coins.png', :mouseover => image_path('btn_over.png')), class: 'charge_button'
+        .charge_coin_side
+          = radio_button_tag :charge, "fifty_coins",{},class: 'hide_button'
+          = label_tag :charge_fifty_coins, image_tag('fifty_coins.png'), class: 'charge_button'
+        .charge_coin_side
+          = radio_button_tag :charge, "one_hundred_coins",{},class: 'hide_button'
+          = label_tag :charge_one_hundred_coins, image_tag('one_hundred_coins.png'), class: 'charge_button'
 
-    / script.stripe-button data-amount="500" data-description=("A month's subscription") data-key=("#{Rails.configuration.stripe[:publishable_key]}") data-locale="auto" src="https://checkout.stripe.com/checkout.js"
+    .charge_stripe
+      script.stripe-button src="https://checkout.stripe.com/checkout.js" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-description=("Master/Amex/Visaのみ利用可能です") data-locale="auto" data-name="Lemon" data-currency="JPY" data-image="/assets/sex_badge_0" data-panel-label="お支払い"
