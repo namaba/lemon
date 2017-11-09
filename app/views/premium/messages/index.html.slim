@@ -24,7 +24,7 @@
                     = truncate(message.body, omission: '・・・', length: 50)
                   - else
                     p まだメッセージはありません
-            .panel_bottun = link_to 'チャットする', message_path(id: partnership.id, partner_id: partner.id), method: :get
+            .panel_bottun = link_to 'チャットする', premium_message_path(id: partnership.id, partner_id: partner.id), method: :get
         / = paginate @partnerships
 
 
