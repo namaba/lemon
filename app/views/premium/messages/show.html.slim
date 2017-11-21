@@ -28,7 +28,7 @@
               - else
                 .message_card_left = m.body
         .message_form
-          = form_for @message do |f|
+          = form_for @message, url: premium_messages_path(@message), method: :post, remote: true do |f|
             = f.text_area :body, class: 'message_text', :placeholder => "メッセージを入力してください"
             = f.hidden_field :partnership_id, value: @partnership.id
             = f.hidden_field :sender_id, value: @pre_id
