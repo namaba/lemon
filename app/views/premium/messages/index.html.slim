@@ -1,0 +1,47 @@
+.panelList_like_section
+  .tab_header
+    = link_to 'お相手からのイイね', likes_path, class: 'tab_bottun'
+    .tab_select_button マッチングメール
+  #layout_flex
+    - if @partnerships.first.nil?
+      p まだマッチしたユーザーがいません.
+    - else
+      #layout_message
+        - @partnerships.each do |partnership|
+          - partner = partnership.user == current_user ? partnership.target : partnership.user
+          .message_panel
+            = link_to profile_message_path(partner, partnership_id: partnership.id) do
+              .panel_container
+                .panel_header
+                  .panel_image  = image_tag partner.user_profile.image1.thumb, class: 'img-circle', size: '100'
+                  .panel_info
+                    .panel_name = partner.name
+                    .panel_age = "#{partner.user_profile.age}歳"
+                    .panel_address = partner.user_profile.prefecture.name
+                  .panel_day = '2017年4月26日'
+                .panel_body
+                  - if message = Message.where(partnership_id: partnership.id).last
+                    = truncate(message.body, omission: '・・・', length: 50)
+                  - else
+                    p まだメッセージはありません
+            .panel_bottun = link_to 'チャットする', premium_message_path(id: partnership.id, partner_id: partner.id, sender_id: @pre_id), method: :get
+        / = paginate @partnerships
+
+
+      #layout_message
+        .message_container
+          - if @messages
+            - @messages.reverse.each do |m|
+              - if m.sender_id == @pre_id
+                .message_card_right =  m.body
+              - else
+                .message_card_left = m.body
+          .message_form
+          -if @message
+            = form_for @message, url: messages_path(@message), method: :post, remote: true do |f|
+              = f.text_area :body, class: 'message_text'
+              = f.hidden_field :partnership_id, value: @partnerships.first.id
+              = f.hidden_field :sender_id, value: @pre_id
+              = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
+          / = paginate @messages if @messages
+

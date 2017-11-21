@@ -18,7 +18,7 @@
           <td><%= link_to "#{user.id}", "/users/#{user.id}/mypage" %></td>
           <th><%= image_tag user.image1, :size => '50' %></th>
           <td><%= user.user.name %></td>
-          <td><%= link_to "チャット", "/premium/messages/#{user.id}", class: "btn btn-success" %></td>
+          <td><%= link_to "チャット", premium_messages_path(user_id: user.id), class: "btn btn-success" %></td>
           <td><%= link_to "コミュ", "", class: "btn btn-warning" %></td>
           <td></td>
           <td></td>
