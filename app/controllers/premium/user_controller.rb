@@ -3,7 +3,8 @@ class Premium::UserController < Premium
 
   def index
     @users = UserProfile.premium
-
+    @user = UserProfile.premium
+    @partnerships = Partnership.where(user_id: @user).page(params[:page]).per(4)
     # 属性ごとにソートかけたい・・・
   end
   
