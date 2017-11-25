@@ -68,7 +68,7 @@
                 .form-group
                   label
                     | 趣味・好きなこと
-                  = f.select :hobby, UserProfile::HOBBY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
+                  = f.check_box :hobby, UserProfile::HOBBY, {prompt:"選択してください"}, {required: 'true', class: 'form-control'}
               .col-md-12.select
                 .form-group
                   label
