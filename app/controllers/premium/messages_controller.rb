@@ -9,7 +9,7 @@ class Premium::MessagesController < Premium
   end
 
   def show
-    @pre_id = params[:user_id]
+    @pre_id = params[:sender_id]
     @partnership = Partnership.find(params[:id])
     @partner = @partnership.user == current_user ? @partnership.target : @partnership.user
     @messages = Message.where(partnership_id: params[:id]).order("id").reverse_order.page(params[:page]).per(20)
