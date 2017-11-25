@@ -71,7 +71,7 @@
                 td = @user.user_profile.style
               tr
                 th 趣味
-                td = @user.user_profile.hobby
+                td = @user.user_profile.hobby.join
               tr
                 th 目的
                 td = @user.user_profile.purpose
@@ -81,6 +81,9 @@
               tr
                 th タバコ
                 td = @user.user_profile.smoke
+              tr
+                th 性格
+                td = @user.user_profile.personality.join
           .profile_body_title = '学歴・職歴'
           .profile_sub_body
             table
