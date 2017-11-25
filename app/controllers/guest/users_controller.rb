@@ -1,8 +1,11 @@
 class Guest::UsersController < Guest
   before_action :set_user, only: [:show, :edit, :update]
-
   def show
     # ゲージパーセント
+    if request.referer.nil?
+      flash[:error] = "不正な操作です"
+      redirect_to :root
+    end
     @hash = @user.user_profile.attributes.compact
     @filterd_hash = @hash.except(:id, :user_id, :plan, :identification,:identification_image, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
     @percent = @filterd_hash.count / 20 * 100

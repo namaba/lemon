@@ -15,7 +15,7 @@
       <tbody class="text-left">
         <% @users.each do |user| %>
         <tr>
-          <td><%= link_to "#{user.id}", "/users/#{user.id}/mypage" %></td>
+          <td><%= link_to "#{user.id}", "/users/#{user.id}" %></td>
           <th><%= image_tag user.image1, :size => '50' %></th>
           <td><%= user.user.name %></td>
           <td><%= link_to "チャット", premium_messages_path(user_id: user.id), class: "btn btn-success" %></td>
