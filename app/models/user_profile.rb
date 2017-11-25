@@ -80,10 +80,10 @@ class UserProfile < ActiveRecord::Base
 def hobby=(value)
   str = ''
   value.each do |val|
-    str += val.to_s + ','
+    str += val.to_s + ' / '
   end
 
-  rslt = str.empty? ? nil : (',' + str)
+  rslt = str.empty? ? nil : (' / ' + str)
 
   write_attribute(:hobby, rslt)
 end
@@ -95,10 +95,10 @@ end
 def personality=(value)
   str = ''
   value.each do |val|
-    str += val.to_s + ','
+    str += val.to_s + ' / '
   end
 
-  rslt = str.empty? ? nil : (',' + str)
+  rslt = str.empty? ? nil : (' / ' + str)
 
   write_attribute(:personality, rslt)
 end
@@ -110,10 +110,10 @@ end
 def charmpoint=(value)
   str = ''
   value.each do |val|
-    str += val.to_s + ','
+    str += val.to_s + ' / '
   end
 
-  rslt = str.empty? ? nil : (',' + str)
+  rslt = str.empty? ? nil : (' / ' + str)
 
   write_attribute(:charmpoint, rslt)
 end
@@ -125,10 +125,10 @@ end
 def sociability=(value)
   str = ''
   value.each do |val|
-    str += val.to_s + ','
+    str += val.to_s + ' / '
   end
 
-  rslt = str.empty? ? nil : (',' + str)
+  rslt = str.empty? ? nil : (' / ' + str)
 
   write_attribute(:sociability, rslt)
 end
@@ -140,10 +140,10 @@ end
 def condition=(value)
   str = ''
   value.each do |val|
-    str += val.to_s + ','
+    str += val.to_s + ' / '
   end
 
-  rslt = str.empty? ? nil : (',' + str)
+  rslt = str.empty? ? nil : (' / ' + str)
 
   write_attribute(:condition, rslt)
 end
