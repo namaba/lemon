@@ -2,7 +2,7 @@ class Premium::MessagesController < Premium
     before_action :set_user, only: [:profile]
 
   def index
-    @pre_id = params[:user_id]
+    @pre_id = params[:user_id].to_i
     @partnerships = Partnership.where("user_id = ? or target_id = ?", @pre_id, @pre_id)
     @message  = Message.new(partnership_id: @partnerships.first.id) if @partnerships.first
     @messages = Message.where(partnership_id: @partnerships.first).order("id").reverse_order.page(params[:page]).per(20) if @partnerships.first
@@ -17,7 +17,7 @@ class Premium::MessagesController < Premium
   end
 
   def create
-    @pre_id = params[:user_id]
+    @pre_id = params[:user_id].to_i
     @message = Message.new(message_params)
     if @message.save
       redirect_to premium_message_path(@message.partnership_id)
