@@ -61,8 +61,14 @@
                 th 身長
                 td = @user.user_profile.height
               tr
+                th 血液型
+                td = @user.user_profile.blood_type
+              tr
                 th 居住地
                 td = @user.user_profile.prefecture.name
+              tr
+                th 兄弟姉妹
+                td = @user.user_profile.bro_sis
               tr
                 th 同居人
                 td = @user.user_profile.housemate
@@ -91,9 +97,14 @@
                 th 職業
                 td = @user.user_profile.job
               tr
-                th 年齢
+                th 休日
+                td = @user.user_profile.holiday
+              tr
+                th 年収
                 td = @user.user_profile.income
-
+              tr
+                th 学歴
+                td = @user.user_profile.school
 
           .profile_body_title = '学歴・職歴'
           .profile_sub_body
@@ -102,7 +113,11 @@
                 th 結婚歴
                 td = @user.user_profile.marriage
               tr
-                th 年齢
+                th 子供
                 td = @user.user_profile.child
+              tr
+                th 出会うまでの希望
+                td = @user.user_profile.to_meet
+
 
 
