@@ -32,13 +32,13 @@
                 .form-group
                   label
                     | 属性
-                  = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, { autofocus: 'true', class: 'form-control'}
+                  = f.select :sex, UserProfile.sexes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | タチ・ネコ
-                  = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :play_style, UserProfile.play_styles.keys.to_a, {}, class: 'form-control'
 
             .row
               .col-md-12.select
@@ -63,19 +63,19 @@
                 .form-group
                   label
                     | スタイル
-                  = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :style, UserProfile.styles.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 職業
-                  = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :job, UserProfile.jobs.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 年収
-                  = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :income, UserProfile.incomes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -86,37 +86,37 @@
                 .form-group
                   label
                     | 同居人
-                  = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :housemate, UserProfile.housemates.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | お酒
-                  = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :alcohol, UserProfile.alcohols.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | タバコ
-                  = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :smoke, UserProfile.smokes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 目的
-                  = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :purpose, UserProfile.purposes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 結婚歴
-                  = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :marriage, UserProfile.marriages.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 子供
-                  = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :child, UserProfile.children.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -128,30 +128,30 @@
                 .form-group
                   label
                     | 休日
-                  = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :holiday, UserProfile.holidays.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 出会うまでの希望
-                  = f.select :to_meet, UserProfile::TO_MEET, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :to_meet, UserProfile.to_meets.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 血液型
-                  = f.select :blood_type, UserProfile::BLOOD_TYPE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :blood_type, UserProfile.blood_types.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 学歴
-                  = f.select :school, UserProfile::SCHOOL, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :school, UserProfile.schools.keys.to_a, {}, class: 'form-control'
               .col-md-12.select
                 .form-group
                   label
                     | 兄弟姉妹
-                  = f.select :bro_sis, UserProfile::BRO_SIS, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :bro_sis, UserProfile.bro_ses.keys.to_a, {}, class: 'form-control'
               .col-md-12.text-center
                 .form-group
                   label
@@ -178,13 +178,13 @@
                 .form-group
                   label
                     | 属性
-                  = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, {autofocus: 'true', class: 'form-control'}
+                  = f.select :sex, UserProfile.sexes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | タチ・ネコ
-                  = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :play_style, UserProfile.play_styles.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -214,19 +214,19 @@
                 .form-group
                   label
                     | スタイル
-                  = f.select :style, UserProfile::STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :style, UserProfile.styles.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 職業
-                  = f.select :job, UserProfile::JOB, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :job, UserProfile.jobs.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 年収
-                  = f.select :income, UserProfile::INCOME, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :income, UserProfile.incomes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -237,37 +237,37 @@
                 .form-group
                   label
                     | 同居人
-                  = f.select :housemate, UserProfile::HOUSEMATE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :housemate, UserProfile.housemates.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | お酒
-                  = f.select :alcohol, UserProfile::ALCOHOL, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :alcohol, UserProfile.alcohols.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | タバコ
-                  = f.select :smoke, UserProfile::SMOKE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :smoke, UserProfile.smokes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 目的
-                  = f.select :purpose, UserProfile::PURPOSE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :purpose, UserProfile.purposes.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 結婚歴
-                  = f.select :marriage, UserProfile::MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :marriage, UserProfile.marriages.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 子供
-                  = f.select :child, UserProfile::CHILD, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :child, UserProfile.children.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -279,30 +279,30 @@
                 .form-group
                   label
                     | 休日
-                  = f.select :holiday, UserProfile::HOLIDAY, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :holiday, UserProfile.holidays.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 出会うまでの希望
-                  = f.select :to_meet, UserProfile::TO_MEET, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :to_meet, UserProfile.to_meets.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 血液型
-                  = f.select :blood_type, UserProfile::BLOOD_TYPE, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :blood_type, UserProfile.blood_types.keys.to_a, {}, class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
                   label
                     | 学歴
-                  = f.select :school, UserProfile::SCHOOL, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :school, UserProfile.schools.keys.to_a, {}, class: 'form-control'
               .col-md-12.select
                 .form-group
                   label
                     | 兄弟姉妹
-                  = f.select :bro_sis, UserProfile::BRO_SIS, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.select :bro_sis, UserProfile.bro_ses.keys.to_a, {}, class: 'form-control'
               .col-md-12.text-center
                 .form-group
                   label
