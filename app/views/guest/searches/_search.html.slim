@@ -18,39 +18,39 @@
     .col-sm-6
       .form-group
         = f.label :職業
-        = f.select :job_eq, UserProfile::JOB, {prompt:"選択してください"}, {class: 'form-control'}
+        = f.select :job_eq, UserProfile.jobs.keys.to_a, prompt:"選択してください", class: 'form-control'
   .row
     .col-sm-6
       .form-group
         = f.label :年収
-        = f.select :income_gt, UserProfile::INCOME, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :income_gt, UserProfile.incomes.keys.to_a, prompt:"選択してください", class: 'form-control'
     .col-sm-6
       .form-group
         = f.label :スタイル
-        = f.select :style_eq, UserProfile::STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :style_eq, UserProfile.styles.keys.to_a, prompt:"選択してください", class: 'form-control'
   .row
     .col-sm-6
       .form-group
         = f.label :お酒
-        = f.select :alcohol_eq, UserProfile::ALCOHOL, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :alcohol_eq, UserProfile.alcohols.keys.to_a, prompt:"選択してください", class: 'form-control'
     .col-sm-6
       .form-group
         = f.label :タバコ
-        = f.select :smoke_eq, UserProfile::SMOKE, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :smoke_eq, UserProfile.smokes.keys.to_a, prompt:"選択してください", class: 'form-control'
   .row
     .col-sm-6
       .form-group
         = f.label :目的
-        = f.select :purpose_eq, UserProfile::PURPOSE, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :purpose_eq, UserProfile.purposes.keys.to_a, prompt:"選択してください", class: 'form-control'
     .col-sm-6
       .form-group
         = f.label :結婚歴
-        = f.select :marriage_eq, UserProfile::MARRIAGE, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :marriage_eq, UserProfile.marriages.keys.to_a, prompt:"選択してください", class: 'form-control'
   .row
     .col-sm-6
       .form-group
         = f.label :子供
-        = f.select :child_eq, UserProfile::CHILD, {prompt:"選択してください"}, { class: 'form-control'}
+        = f.select :child_eq, UserProfile.children.keys.to_a, prompt:"選択してください", class: 'form-control'
     .col-sm-6
       .form-group
         = f.label :写真
