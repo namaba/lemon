@@ -1,6 +1,6 @@
 class Guest::LikesController < Guest
-  before_action :set_user, only: [:show, :create, :match]
-  before_action :set_target, only: [:create, :match]
+  before_action :set_user, only: [:show, :match]
+  before_action :set_target, only: [:match]
 
 
   def index
@@ -24,19 +24,17 @@ class Guest::LikesController < Guest
   end
 
   def create
-    raise if Like.find_by(user: @user, target: @target, like: 1)
+    # TODO: きれいにしたい
+    @user = User.find(like_params[:user_id])
     if @user.reduce_good
-      if Like.create(user: @user, target: @target, like: 1)
-        redirect_to :back, notice: "イイねしました!"
+      @like = Like.new(like_params.merge({ like: 1}))
+      if @like.save
+        render
       else
-        redirect_to :back, notice: "イイねできませんでした"
+        render json: 'no date'
       end
     end
-  # rescue => _error
-  #   # render template: "guest/error"
-  #   raise "[warning] #{_error}"
   end
-
 
   # 後々リファクタ
   def match
@@ -62,5 +60,9 @@ class Guest::LikesController < Guest
 
   def set_target
     @target = User.find(params[:target])
+  end
+
+  def like_params
+    params.require(:like).permit(:user_id, :target_id)
   end
 end
