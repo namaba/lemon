@@ -76,13 +76,13 @@
                   .form-group
                     label
                       | 属性
-                    = f.select :sex, UserProfile::SEX, {prompt:"選択してください"}, { autofocus: 'true', class: 'form-control'}
+                    = f.select :sex, UserProfile.sexes.keys.to_a, {}, prompt:"選択してください", autofocus: 'true', class: 'form-control'
               .row
                 .col-md-12.select
                   .form-group
                     label
                       | タチ・ネコ
-                    = f.select :play_style, UserProfile::PLAY_STYLE, {prompt:"選択してください"}, { class: 'form-control'}
+                    = f.select :play_style, UserProfile.play_styles.keys.to_a, {}, prompt:"選択してください", class: 'form-control'
 
               .row
                 .col-md-12.select
