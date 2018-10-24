@@ -24,6 +24,7 @@
           .modal-content
             .modal-body
               = render 'search'
+
   - cache @users do
     .card_list
       - @users.each do |user|
@@ -40,9 +41,13 @@
           .card_body
             .card_name = user.name
           .card_footer
-            - if good(user)
-              .card_liked_button イイね済
-            - else
-              .card_like_button = link_to 'イイね', likes_path(id: current_user, target: user), method: :post
+            div[class="card_like_button_#{user.id}"]
+              - if good(user)
+                .card_liked_button イイね済
+              - else
+                = form_for(Like.new(), remote: true) do |f|
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :target_id, value: user.id
+                  = f.submit 'いいね', class: 'btn btn-danger', style: 'width: 100%;'
 
     = paginate @users
