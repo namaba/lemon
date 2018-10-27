@@ -6,10 +6,11 @@
     .sidebar_image
       = image_tag @user.user_profile.image1.cover, class: "img-radius"
       .sidebar_badge
-        = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
+        / TODO: 属性画像復活したらコメントアウト戻す
+        / = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
         / Todo:バッジ画像着たら修正
         - unless @user.user_profile.play_style.blank?
-          = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
+          / = image_tag "sex_badge_#{@user.user_profile.sex}", class: "img-badge"
     / ユーザー情報
     ul.sidebar_user
       li.sidebar_user_name = @user.name if @user.name?
@@ -20,7 +21,8 @@
     .sidebar_sub_image_list
       .sidebar_sub_title
         / TODO namba バッジ画像着たら修正
-        = image_tag 'sex_badge_1', class: 'img-label'
+        / TODO: 属性画像復活したらコメントアウト戻す
+        / = image_tag 'sex_badge_1', class: 'img-label'
         h5 サブ写真追加
       .sidebar_sub_images
         .sidebar_sub_image = link_to image_tag(@user.user_profile.image1, class: "img-radius", size: '80'), "#ImageModal1", data: {toggle: 'modal'}

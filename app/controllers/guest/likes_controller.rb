@@ -24,42 +24,36 @@ class Guest::LikesController < Guest
   end
 
   def create
-    # TODO: きれいにしたい
     @user = User.find(like_params[:user_id])
-    if @user.reduce_good
-      @like = Like.new(like_params.merge({ like: 1}))
-      if @like.save
-        render
-      else
-        render json: 'no date'
-      end
+    @like = Like.new(like_params.merge({ like: 1}))
+    if @like.save
+      render
+    else
+      render json: 'no date'
     end
   end
 
   # 後々リファクタ
   def match
-    ActiveRecord::Base.transaction do
-      if @like = Like.find_by(user: @user, target: @target)
-        @like.be_liked!
-        @like.matched!
-        partnership = Partnership.create(user: @user, target: @target)
-        UserPartnership.create(user_id: @target.id, partnership: partnership)
-        UserPartnership.create(user_id: @user.id, partnership: partnership)
-        redirect_to :back
-      end
+    if @like = Like.find_by(user: @user, target: @target)
+      @like.be_liked!
+      @like.matched!
+      partnership = Partnership.create(user: @user, target: @target)
+      UserPartnership.create(user_id: @target.id, partnership: partnership)
+      UserPartnership.create(user_id: @user.id, partnership: partnership)
+      render
     end
-    rescue => _error
-      render template: "guest/error"
   end
 
 
   private
+  #TODO: params[:id]はlike.idが正しいのであとでなおす
   def set_user
     @user = User.find(params[:id])
   end
 
   def set_target
-    @target = User.find(params[:target])
+    @target = User.find(like_params[:target_id])
   end
 
   def like_params
