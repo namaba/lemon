@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
     resources :likes, only: [:index, :show, :create] do
       member do
-        get 'match',                to: 'likes#match'
+        patch 'match',                to: 'likes#match'
       end
     end
     resources :messages, only: [:index, :show, :create] do
