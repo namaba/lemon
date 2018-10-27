@@ -29,7 +29,6 @@ section.murmur_panel
       - if current_user == topic.writer
         button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal#{topic.id}"]
           |  編集
-        / = link_to '編集', edit_topic_path(id: topic)
         = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
       button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal#{topic.id}"]
         |  コメントする

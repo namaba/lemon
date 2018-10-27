@@ -13,12 +13,11 @@
           = form_for(@topic, url: topics_path ) do |f|
             .row
               .col-md-12.text-center
-                .form-group
-                  = f.label :title
-                  = f.text_field :title, class: 'form-control'
+                / .form-group
+                /   = f.label :title
+                /   = f.text_field :title, class: 'form-control'
 
                 .form-group
-                  = f.label :body
                   = f.text_area :body, class: 'form-control'
 
                 = f.hidden_field :community_id, value: @community.id
