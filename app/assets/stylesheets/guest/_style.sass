@@ -41,12 +41,14 @@ a
       position: fixed
       background: $white
       z-index: 9999
+  &-alert
+    @media (min-width: $screen-max-tablet)
+      margin-top: 130px
   &_content
     // PC
     @media (min-width: $screen-max-tablet)
       // float: left
       width: 100%
-      padding-top: 130px
     // SP
     @media (max-width: $screen-max-tablet)
       width: 100%

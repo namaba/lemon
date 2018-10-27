@@ -25,7 +25,7 @@ html
           = yield :header
       #layout-alert
         - flash.each do |key, value|
-          = content_tag(:div, value, class: "alert_#{key}")
+          = content_tag(:div, value, class: "alert alert-#{key}")
       // content
       #layout_content
         #layout_banner
