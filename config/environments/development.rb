@@ -44,5 +44,18 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # device
+  # send email-auth after signup 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # mail setting
+  # oDo: お名前.comでSMTPサーバの用意ができたら書く！
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtpサーバー名",
+    :port => '587',
+    :user_name => "アカウント名",
+    :password => "パスワード",
+    :authentication => :login,
+    :enable_starttls_auto => true
+  }
 end
