@@ -14,6 +14,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# admin
+gem 'cancancan'
+gem 'rails_admin'
+
 # use slim
 gem 'slim-rails'
 gem 'html2slim'
