@@ -42,9 +42,9 @@ section.murmur_panel
   .murmur_comments.collapse id="#{murmur.id}"
     - murmur.comments.each do |comment|
       - if comment.user == current_user
-        = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle', size: '50'
+        = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'
       - else
-        = link_to image_tag(comment.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(comment.user)
+        = link_to image_tag(comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'), search_path(comment.user)
       = comment.user.name
       br
       = comment.comment
