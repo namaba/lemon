@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927120825) do
+ActiveRecord::Schema.define(version: 20181108124149) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(version: 20170927120825) do
     t.integer  "bro_sis",              limit: 4
     t.integer  "identification",       limit: 4,     default: 1
     t.string   "identification_image", limit: 255
+    t.integer  "answer_rate",          limit: 4,     default: 0
     t.integer  "good_count",           limit: 4,     default: 20
     t.integer  "coins_count",          limit: 4,     default: 20
     t.integer  "mail_status",          limit: 4,     default: 1

@@ -1,3 +1,4 @@
+- answer_rate = current_user.user_profile.answer_rate
 #layout_flex
   / mypage左サイド
   #layout_sidebar
@@ -7,11 +8,11 @@
 
     / TODO: ゲージ作成
     .mypage_gage_panel
-      .mypage_gage_title = "プロフィール入力率"
+      .mypage_gage_title プロフィール入力率
       / .mypage_gage_percent = "#{@percent}%"
       .mypage_gage_bar.w3-border.w3-round-large
-        .progressbar.w3-round-large style="height:18px; width:#{@percent}%"
-      .mypage_gage_percent = "#{@percent}%"
+        .progressbar.w3-round-large style="height:18px; width:#{answer_rate}%"
+      .mypage_gage_percent = "#{answer_rate}%"
 
     .mypage_profile_section
       .mypage_profile_label

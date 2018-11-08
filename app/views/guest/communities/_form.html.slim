@@ -1,7 +1,7 @@
 .panelList_search_button.text-right
-  button.btn.btn-danger[type="button" data-toggle="modal" data-target="#sampleModal"]
+  button.btn.btn-danger[type="button" data-toggle="modal" data-target="#communityModal"]
     |  コミュニティ作成
-  #sampleModal.modal.fade[tabindex="-1"]
+  #communityModal.modal.fade[tabindex="-1"]
     .modal-dialog
       .modal-margin
         .modal-content
@@ -18,11 +18,9 @@
                   .form-group
                     = f.label :コミュニティ名
                     = f.text_field :name, class: "form-control",  placeholder: "コミュニティ名"
-                    / = f.label :category
-                    / = f.select :category, class: "form-control",  placeholder: "コミュニティ名"
-                    = f.label :introduce
+                    = f.label :コミュニティ説明
                     = f.text_area :introduce, class: "form-control",  placeholder: "コミュニティ説明文"
 
-                    = f.label :image
+                    = f.label :アイコン
                     = f.file_field :image, class: "form-control image-field"
                   = f.submit '保存', class: "btn btn-primary"

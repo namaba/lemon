@@ -1,4 +1,4 @@
-#sampleModal.modal.fade[tabindex="-1"]
+#murmurModal.modal.fade[tabindex="-1"]
   .modal-dialog
     .modal-margin
       .modal-content
@@ -13,9 +13,8 @@
             .row
               .col-md-12.text-center
                 .form-group
-                  = f.label :body
                   = f.text_area :body, class: 'form-control', autofocus: true
 
                 = f.hidden_field :user_id, value: current_user.id
 
-                = f.submit '保存', class: "btn btn-info text-center"
+                = f.submit '投稿', class: "btn btn-info text-center"

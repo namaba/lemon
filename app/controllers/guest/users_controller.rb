@@ -6,9 +6,6 @@ class Guest::UsersController < Guest
       flash[:error] = "不正な操作です"
       redirect_to :root
     end
-    @hash = @user.user_profile.attributes.compact
-    @filterd_hash = @hash.except(:id, :user_id, :plan, :identification,:identification_image, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
-    @percent = @filterd_hash.count / 20 * 100
     @murmur = Murmur.new
     @murmurcomment = MurmurComment.new
     gon.tutorial_status = current_user.user_profile.tutorial_status
@@ -19,7 +16,9 @@ class Guest::UsersController < Guest
   end
 
   def update
-    if @user.user_profile.update(profile_params)
+    @user.user_profile.attributes = profile_params
+    fill_answer_rate
+    if @user.user_profile.save
       @user.user_profile.completed! unless @user.user_profile.completed?
       redirect_to :back, notice: "更新できました"
     else
@@ -52,5 +51,13 @@ class Guest::UsersController < Guest
 
   def set_user_profile
     @user_profile = UserProfile.find_by(user_id: params[:id])
+  end
+
+  def fill_answer_rate
+    profile_hash = @user.user_profile.attributes.except(:id, :user_id, :plan, :identification,:identification_image, :answer_rate, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
+    keys_count = profile_hash.keys.count
+    values_count = profile_hash.values.compact.count
+    answer_rate = (values_count.to_f / keys_count.to_f * 100).floor
+    @user.user_profile.attributes = {answer_rate: answer_rate}
   end
 end
