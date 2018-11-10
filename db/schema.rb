@@ -256,6 +256,7 @@ ActiveRecord::Schema.define(version: 20181108124149) do
     t.string   "image",                  limit: 255
     t.string   "name",                   limit: 255
     t.datetime "deleted_at"
+    t.boolean  "admin_flg"
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
