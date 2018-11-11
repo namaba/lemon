@@ -24,7 +24,6 @@ class Guest::MessagesController < Guest
   def profile
     @partnership = params[:partnership_id].to_i
     @partner = params[:partnership].to_i
-    render 'guest/users/preview'
   end
 
   private

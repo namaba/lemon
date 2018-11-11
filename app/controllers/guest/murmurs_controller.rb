@@ -43,7 +43,7 @@ class Guest::MurmursController < Guest
   end
 
   def writer
-    @user = @murmur.user
+    @writer = @murmur.user
   end
 
   private

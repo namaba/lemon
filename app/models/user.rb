@@ -80,11 +80,17 @@ class User < ActiveRecord::Base
   end
 
   def is_partner_of?(user)
-    target_partnerships.pluck(:user_id).include?(user.id)
+    partner_ids = partnerships.pluck(:user_id, :target_id).map{ |u_id, t_id|
+     u_id == self.id ? t_id : u_id
+    }
+    partner_ids.include?(user.id)
+  end
+
+  def like?(user)
+    to_likes.pluck(:target_id).include?(user.id)
   end
 
   def is_liked_from?(user)
-    user.from_likes.pluck(:target_id).include?(self.id)
+    from_likes.pluck(:user_id).include?(user.id)
   end
-
 end

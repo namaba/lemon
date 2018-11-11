@@ -6,44 +6,50 @@
         / TODO: あとでimageとimage1の順番変更
         / 画像の大きさは400☓400になるからそのままでok
         li.item1.sidebar_image
-          = image_tag @user.user_profile.image1, class: "img-radius"
+          = image_tag user.user_profile.image1, class: "img-radius"
         li.item2
-          = image_tag @user.user_profile.image2, class: "img-radius"
+          = image_tag user.user_profile.image2, class: "img-radius"
         li.item3
-          = image_tag @user.user_profile.image3, class: "img-radius"
+          = image_tag user.user_profile.image3, class: "img-radius"
         li.item4
         .item_badge
-          = image_tag "sex_badge_#{@user.user_profile.sex}"
+          = image_tag "sex_badge_#{user.user_profile.sex}"
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
-          = image_tag @user.user_profile.image1.thumb, class: "img-radius"
+          = image_tag user.user_profile.image1.thumb, class: "img-radius"
         li.thumb2
-          = image_tag @user.user_profile.image2.thumb, class: "img-radius"
+          = image_tag user.user_profile.image2.thumb, class: "img-radius"
         li.thumb3
-          = image_tag @user.user_profile.image3.thumb, class: "img-radius"
+          = image_tag user.user_profile.image3.thumb, class: "img-radius"
         li.thumb4
 
-
-    / = render 'button_link'
+    - if current_user.is_partner_of?(user)
+      .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
+    - elsif current_user.like?(user)
+      .liked_button = 'イイね済'
+    -elsif current_user.is_liked_from?(user)
+      .like_button = link_to 'ありがとう', match_like_path(id: user, target: current_user)
+    - else
+      .like_button = link_to 'イイね', likes_path(id: current_user, target: user), method: :post
 
   / mypage右サイド
   #layout_right
     .profile_content
       .userSignature
         .user_info
-          .user_name = @user.name
-          .user_age = "#{@user.user_profile.age}歳"
-          .user_address = @user.user_profile.prefecture.name
+          .user_name = user.name
+          .user_age = "#{user.user_profile.age}歳"
+          .user_address = user.user_profile.prefecture.name
         / .user_badge
-        /   = image_tag "sex_badge_#{@user.user_profile.sex}"
+        /   = image_tag "sex_badge_#{user.user_profile.sex}"
 
 
       .profile_section
         .profile_label
           .profile_label_title = '自己紹介'
         .profile_body
-          = @user.user_profile.introduce
+          = user.user_profile.introduce
       .profile_section
         .profile_label
           .profile_label_title = 'プロフィール'
@@ -53,70 +59,70 @@
             table
               tr
                 th ニックネーム
-                td = @user.name
+                td = user.name
               tr
                 th 年齢
-                td = @user.user_profile.age
+                td = user.user_profile.age
               tr
                 th 身長
-                td = @user.user_profile.height
+                td = user.user_profile.height
               tr
                 th 血液型
-                td = @user.user_profile.blood_type
+                td = user.user_profile.blood_type
               tr
                 th 居住地
-                td = @user.user_profile.prefecture.name
+                td = user.user_profile.prefecture.name
               tr
                 th 兄弟姉妹
-                td = @user.user_profile.bro_sis
+                td = user.user_profile.bro_sis
               tr
                 th 同居人
-                td = @user.user_profile.housemate
+                td = user.user_profile.housemate
               tr
                 th 体型
-                td = @user.user_profile.style
+                td = user.user_profile.style
               tr
                 th 趣味
-                td = @user.user_profile.hobby.join
+                td = user.user_profile.hobby.join
               tr
                 th 目的
-                td = @user.user_profile.purpose
+                td = user.user_profile.purpose
               tr
                 th お酒
-                td = @user.user_profile.alcohol
+                td = user.user_profile.alcohol
               tr
                 th タバコ
-                td = @user.user_profile.smoke
+                td = user.user_profile.smoke
               tr
                 th 性格
-                td = @user.user_profile.personality.join
+                td = user.user_profile.personality.join
           .profile_body_title = '学歴・職歴'
           .profile_sub_body
             table
               tr
                 th 職業
-                td = @user.user_profile.job
+                td = user.user_profile.job
               tr
                 th 休日
-                td = @user.user_profile.holiday
+                td = user.user_profile.holiday
               tr
                 th 年収
-                td = @user.user_profile.income
+                td = user.user_profile.income
               tr
                 th 学歴
-                td = @user.user_profile.school
+                td = user.user_profile.school
 
           .profile_body_title = '学歴・職歴'
           .profile_sub_body
             table
               tr
                 th 結婚歴
-                td = @user.user_profile.marriage
+                td = user.user_profile.marriage
               tr
                 th 子供
-                td = @user.user_profile.child
+                td = user.user_profile.child
               tr
                 th 出会うまでの希望
-                td = @user.user_profile.to_meet
+                td = user.user_profile.to_meet
 
 = render 'guest/module/likelink'

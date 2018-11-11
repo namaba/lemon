@@ -51,7 +51,7 @@ class Guest::CommunitiesController < Guest
   end
 
   def member
-    @user = User.find params[:member_id]
+    @member = User.find params[:member_id]
   end
 
 
