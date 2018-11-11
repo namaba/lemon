@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181110005749) do
+ActiveRecord::Schema.define(version: 20181108124149) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
