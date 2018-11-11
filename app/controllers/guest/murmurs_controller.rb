@@ -1,5 +1,5 @@
 class Guest::MurmursController < Guest
-  before_action :set_murmur, only: [:show, :edit, :update, :destroy]
+  before_action :set_murmur, only: [:show, :edit, :update, :destroy, :writer]
   before_action :murmur_params, only: [:create, :update]
 
   def index
@@ -40,6 +40,10 @@ class Guest::MurmursController < Guest
   def destroy
     @murmur.draft!
     redirect_to :back, notice: '削除しました'
+  end
+
+  def writer
+    @user = @murmur.user
   end
 
   private

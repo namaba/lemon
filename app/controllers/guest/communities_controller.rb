@@ -50,6 +50,10 @@ class Guest::CommunitiesController < Guest
 
   end
 
+  def member
+    @user = User.find params[:member_id]
+  end
+
 
   private
   def set_community

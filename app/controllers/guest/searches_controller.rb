@@ -11,7 +11,7 @@ class Guest::SearchesController < Guest
   end
 
   def show
-    render 'guest/users/preview'
+    @user = User.find params[:id]
   end
 
   # def welcome

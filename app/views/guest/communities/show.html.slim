@@ -13,7 +13,7 @@
     .community_detail_list
       h5 = '参加者一覧'
       - @community_members.limit(5).each do |community_member|
-        = link_to search_path(community_member) do
+        = link_to member_community_path(@community, community_member) do
           .community_content_detail
             .community_image
               = image_tag community_member.user_profile.image1, size: '70', class: 'img-radius'
@@ -30,5 +30,5 @@
 
     - @topics.each do |topic|
       .mypage_profile_body
-        = render 'guest/topics/topic', topic: topic
+        = render 'guest/topics/topic', topic: topic, community: @community
 

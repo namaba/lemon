@@ -19,8 +19,6 @@ class Guest::LikesController < Guest
   end
 
   def show
-    @user = User.find(params[:id])
-    render 'guest/users/preview'
   end
 
   def create
@@ -44,7 +42,6 @@ class Guest::LikesController < Guest
       render
     end
   end
-
 
   private
   #TODO: params[:id]はlike.idが正しいのであとでなおす

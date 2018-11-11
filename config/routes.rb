@@ -38,6 +38,7 @@ Rails.application.routes.draw do
         get 'my_communities',       to: 'communities#my_communities'
         get 'detail',               to: 'communities#detail'
         get 'join',                 to: 'communities#join'
+        get 'member/:member_id',     to: 'communities#member', as: :member
       end
     end
     resources :topics do
@@ -45,7 +46,12 @@ Rails.application.routes.draw do
         post 'chat',                to: 'topics#chat'
       end
     end
-    resources :murmurs
+    resources :murmurs do
+      member do
+        get 'writer',    to: 'murmurs#writer'
+      end
+    end
+
     resources :murmur_comments
     resources :murmur_smiles, only: [:create, :destroy]
     resources :topic_smiles, only: [:create, :destroy]

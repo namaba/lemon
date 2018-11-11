@@ -1,15 +1,21 @@
-- if controller_name == 'searches'
-  - if good(@user)
-    .liked_button = 'イイね済'
-  - else
-    .like_button = link_to 'イイね', likes_path(id: current_user, target: @user), method: :post
-
-- if controller_name == 'likes'
+- if current_user.is_partner_of?(@user)
+  .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
+- elsif good(@user)
+  .liked_button = 'イイね済'
+- elsif current_user.is_lied_from(@user)
   .like_button = link_to 'ありがとう', match_like_path(id: @user, target: current_user)
 
-- if controller_name == 'messages'
-  .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
-  /  = link_to 'イイね', likes_path(id: @user.id, target: current_user), method: :post
-  / - else
-  /  = 'イイね済み'
-  / - end
+
+
+/ - if controller_name == 'searches'
+/   - if good(@user)
+/     .liked_button = 'イイね済'
+/   - else
+/     .like_button = link_to 'イイね', likes_path(id: current_user, target: @user), method: :post
+
+/ - if controller_name == 'likes'
+/   .like_button = link_to 'ありがとう', match_like_path(id: @user, target: current_user)
+
+/ - if controller_name == 'messages'
+/   .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
+

@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_one :status,  class_name: 'UserStatus',  dependent: :destroy, inverse_of: :user, :foreign_key => 'user_id'
 
   # like
-  has_many :to_like_users, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
-  has_many :from_like_users, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
+  has_many :to_likes, :class_name => "Like", :foreign_key => 'user_id' # :class_name, :foreign_keyを指定
+  has_many :from_likes, :class_name => "Like", :foreign_key => 'target_id'  # :class_name, :foreign_keyを指定
   # partnership
   has_many :partnerships, through: :user_partnerships
   has_many :target_partnerships, :class_name => "Partnership", :foreign_key => 'target_id'
@@ -77,6 +77,14 @@ class User < ActiveRecord::Base
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def is_partner_of?(user)
+    target_partnerships.pluck(:user_id).include?(user.id)
+  end
+
+  def is_liked_from?(user)
+    user.from_likes.pluck(:target_id).include?(self.id)
   end
 
 end
