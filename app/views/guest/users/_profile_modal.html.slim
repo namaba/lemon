@@ -13,7 +13,7 @@
               .col-md-12.text-center
                 .form-group
                   = f.text_area :introduce, :size => "60x10", class: 'form-control', autofocus: true
-                = f.submit '保存', class: "btn btn-info text-center"
+                = f.submit 'プロフィールを更新', class: "btn btn-info text-center"
 
 
 / 基本プロフィール編集
@@ -80,65 +80,6 @@
               .col-md-12.select
                 .form-group
                   label
-                    | 趣味・好きなこと
-                  = f.select :hobby, UserProfile::HOBBY, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-              .col-md-12.select
-                .form-group
-                  label
-                    | 同居人
-                  = f.select :housemate, UserProfile.housemates.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | お酒
-                  = f.select :alcohol, UserProfile.alcohols.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | タバコ
-                  = f.select :smoke, UserProfile.smokes.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 目的
-                  = f.select :purpose, UserProfile.purposes.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 結婚歴
-                  = f.select :marriage, UserProfile.marriages.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 子供
-                  = f.select :child, UserProfile.children.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 性格
-                  = f.select :personality, UserProfile::PERSONALITY, {prompt:"選択してください"}, { class: 'form-control', multiple: true}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 休日
-                  = f.select :holiday, UserProfile.holidays.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 出会うまでの希望
-                  = f.select :to_meet, UserProfile.to_meets.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 血液型
                   = f.select :blood_type, UserProfile.blood_types.keys.to_a, {}, class: 'form-control'
             .row
@@ -147,11 +88,6 @@
                   label
                     | 学歴
                   = f.select :school, UserProfile.schools.keys.to_a, {}, class: 'form-control'
-              .col-md-12.select
-                .form-group
-                  label
-                    | 兄弟姉妹
-                  = f.select :bro_sis, UserProfile.bro_ses.keys.to_a, {}, class: 'form-control'
               .col-md-12.text-center
                 .form-group
                   label
@@ -159,7 +95,7 @@
                   = f.file_field :image1, class: "form-control image-field"
                   = f.file_field :image2, class: "form-control image-field"
                   = f.file_field :image3, class: "form-control image-field"
-                = f.submit '保存', class: "btn btn-info text-center"
+                = f.submit 'プロフィールを更新', class: "btn btn-info text-center"
 
 
 / 基本プロフィール編集
@@ -177,62 +113,8 @@
               .col-md-12.select
                 .form-group
                   label
-                    | 属性
-                  = f.select :sex, UserProfile.sexes.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | タチ・ネコ
-                  = f.select :play_style, UserProfile.play_styles.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  / label
-                  /   | 生年月日
-                  / == sprintf( f.date_select(
-                  / - birthday:,
-                  / - use_month_numbers: true,
-                  / - start_year: 1930,
-                  / - end_year:   (Time.now.year - 18),
-                  / - default:    Date.new(1980, 1, 1),
-                  / - date_separator: '%s', datetime_separator: '%s' ), '年', '月') + '日'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 居住地
-                  = f.collection_select :address, JpPrefecture::Prefecture.all, :code, :name, {prompt:"選択してください"} ,{:class => "form-control"}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 身長
-                  = f.select :height, options_for_select((140..200).step(5).map{|s| ["#{s}cm", s]}), {prompt:"選択してください"}, { class: 'form-control'}
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | スタイル
-                  = f.select :style, UserProfile.styles.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 職業
-                  = f.select :job, UserProfile.jobs.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 年収
-                  = f.select :income, UserProfile.incomes.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
                     | 趣味・好きなこと
-                  = f.select :hobby, UserProfile::HOBBY, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.text_area :hobby, :placeholder => "（例）音楽鑑賞, クラシック, ライブ, 楽器, ダンス, 映画, ドラマ, 海外ドラマ, アニメ, マンガ, 読書, お笑い, アイドル, ゲーム, インターネット, スポーツ観戦, 野球, サッカー, ラグビー, ゴルフ, マリンスポーツ, 釣り, スキー, スノボー,アウトドア, 登山, ミリタリー, サイクリング, バイク, ドライブ, 散歩, ジム, スパ, ヨガ, 芸術, 英会話, 旅行, 温泉, ペット, ショッピング, お酒, 料理, ファッション, 麻雀, パチンコ, パチスロ, カジノ, 占い", class: 'form-control'
               .col-md-12.select
                 .form-group
                   label
@@ -273,7 +155,7 @@
                 .form-group
                   label
                     | 性格
-                  = f.select :personality, UserProfile::PERSONALITY, {prompt:"選択してください"}, { class: 'form-control'}
+                  = f.text_area :personality, :placeholder => "（例）明るい, クール, 優しい, 素直, 天邪鬼, 奔放, 親しみやすい, 見た目とのギャップが有る, インドア, アウトドア, 楽観的, 誠実, 几帳面, いつも笑顔, 落ち着いてる, 子供っぽい, 思いやりがある, 寂しがりや, 社交的, 甘えんぼう, 照れ屋, 好奇心旺盛, 家庭的, 仕事好き, 話し上手, 聞き上手, さわやか, ワイルド, 天然, 負けず嫌い, おっとりしてる, 気が利く, マメ, 大胆, 気前がいい, マイペース, 奥手, 気分屋",  class: 'form-control'
             .row
               .col-md-12.select
                 .form-group
@@ -286,30 +168,12 @@
                   label
                     | 出会うまでの希望
                   = f.select :to_meet, UserProfile.to_meets.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 血液型
-                  = f.select :blood_type, UserProfile.blood_types.keys.to_a, {}, class: 'form-control'
-            .row
-              .col-md-12.select
-                .form-group
-                  label
-                    | 学歴
-                  = f.select :school, UserProfile.schools.keys.to_a, {}, class: 'form-control'
               .col-md-12.select
                 .form-group
                   label
                     | 兄弟姉妹
                   = f.select :bro_sis, UserProfile.bro_ses.keys.to_a, {}, class: 'form-control'
-              .col-md-12.text-center
-                .form-group
-                  label
-                    | 写真
-                  = f.file_field :image1, class: "form-control image-field"
-                  = f.file_field :image2, class: "form-control image-field"
-                  = f.file_field :image3, class: "form-control image-field"
+
                 = f.submit "プロフィールを更新", :class => "btn btn-info"
 
 
@@ -332,7 +196,7 @@
                   = f.file_field :image1, class: "form-control image-field"
                   = f.file_field :image2, class: "form-control image-field"
                   = f.file_field :image3, class: "form-control image-field"
-                = f.submit '保存', class: "btn btn-info text-center"
+                = f.submit 'プロフィールを更新', class: "btn btn-info text-center"
 
 #CoinCharge.modal.fade[tabindex="-1"]
   .modal-dialog
