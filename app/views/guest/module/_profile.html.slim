@@ -12,8 +12,10 @@
         li.item3
           = image_tag user.user_profile.image3, class: "img-radius"
         li.item4
-        .item_badge
-          = image_tag "sex_badge_#{user.user_profile.sex}"
+        /TODO:  バッジ画像がないとエラーになり、いいねが複数回呼ばれるため一旦コメントアウトする
+        / .item_badge
+        /   = image_tag "sex_badge_#{user.user_profile.sex}"
+
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1
@@ -24,14 +26,21 @@
           = image_tag user.user_profile.image3.thumb, class: "img-radius"
         li.thumb4
 
-    - if current_user.is_partner_of?(user)
-      .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
-    - elsif current_user.like?(user)
-      .liked_button = 'イイね済'
-    -elsif current_user.is_liked_from?(user)
-      .like_button = link_to 'ありがとう', match_like_path(id: user, target: current_user)
-    - else
-      .like_button = link_to 'イイね', likes_path(id: current_user, target: user), method: :post
+    div[class="card_like_button_#{user.id}"]
+      - if current_user.is_partner_of?(user)
+        .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
+      - elsif current_user.like?(user)
+        .liked_button = 'イイね済'
+      -elsif current_user.is_liked_from?(user)
+        - _like = current_user.from_likes.find_by(user_id: user.id)
+        = form_for(_like, url: match_like_path(user.id), remote: true) do |f|
+            = f.hidden_field :target_id, value: current_user.id
+            = f.submit 'ありがとう', class: 'like_button', style: 'width: 100%;'
+      - else
+        = form_for(Like.new(), remote: true) do |f|
+          = f.hidden_field :user_id, value: current_user.id
+          = f.hidden_field :target_id, value: user.id
+          = f.submit 'いいね', class: 'btn btn-danger', style: 'width: 100%;'
 
   / mypage右サイド
   #layout_right

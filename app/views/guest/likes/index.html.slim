@@ -19,7 +19,7 @@
             = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
           .panel_body_sp
             = truncate(user.user_profile.introduce, omission: '・・・', length: 20)
-      div[class="panel_bottun thanks_like_button_#{user.id}"]
+      div[class="panel_bottun card_like_button_#{user.id}"]
         - _like = current_user.from_likes.find_by(user_id: user.id)
         - if _like.matched?
           = link_to 'マッチ済み', messages_path, class: 'btn btn-default text-dark'
