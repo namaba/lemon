@@ -62,4 +62,15 @@
       .mypage_profile_body
         = render @user.murmurs
 
+javascript:
+  // // チュートリアル
+  window.addEventListener('DOMContentLoaded', function() {
+    if(gon.tutorial_status == 'pending'){
+      $('.registration-tutorial-bg').fadeIn(3000);
+      $('.registration-tutorial-box').fadeIn(3000);
+      $('.mypage_profile_registrate_box').fadeIn(3000);
+      $('.tutorial_active').fadeIn(3000);
+    }
+  });
+
 
