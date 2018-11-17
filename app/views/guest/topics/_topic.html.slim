@@ -43,10 +43,10 @@ section.murmur_panel
     .text-right
       button.btn.btn-default data-target="##{topic.id}" data-toggle="collapse" type="button" = "コメント#{topic.chats.size}件"
 
-.collapse id="#{topic.id}"
-  - topic.chats.each do |chat|
-    = link_to image_tag(chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(chat.user)
-    = chat.user.name
-    br
-    = chat.body
-    hr
+  .collapse id="#{topic.id}"
+    - topic.chats.each do |chat|
+      = link_to image_tag(chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(chat.user)
+      = chat.user.name
+      br
+      = chat.body
+      hr
