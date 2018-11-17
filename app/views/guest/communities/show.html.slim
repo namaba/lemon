@@ -23,10 +23,10 @@
     .mypage_profile_section
     .mypage_profile_label
       .edit_title = 'みんなの投稿'
-      button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#communityMurmurModal"]
+      button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#createTopicModal"]
         |  投稿
 
-      = render 'guest/topics/form_modal'
+      = render 'create_topic_modal'
 
     - @topics.each do |topic|
       .mypage_profile_body
