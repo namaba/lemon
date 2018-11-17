@@ -28,7 +28,6 @@
 
       = render 'create_topic_modal'
 
-    - @topics.each do |topic|
-      .mypage_profile_body
-        = render 'guest/topics/topic', topic: topic, community: @community
+    .mypage_profile_body
+      = render @topics, community: @community
 

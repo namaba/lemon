@@ -36,7 +36,7 @@ section.murmur_panel
 
       button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal#{topic.id}"]
         |  コメントする
-      = render 'guest/topics/modal', topic: topic
+      = render 'guest/topics/create_chat_modal', topic: topic
 
   / TODO: 数はリファクタ
   - if topic.chats.size >= 1
