@@ -24,14 +24,15 @@ class Guest::LikesController < Guest
 
   # 後々リファクタ
   def match
-    if @like = Like.find_by(user: @user, target: @target)
-      @like.be_liked!
-      @like.matched!
-      partnership = Partnership.create(user: @user, target: @target)
-      UserPartnership.create(user_id: @target.id, partnership: partnership)
-      UserPartnership.create(user_id: @user.id, partnership: partnership)
-      render
-    end
+    @like = Like.find_by(user: @user, target: @target)
+    redirect_to likes_path and return if @like.matched?
+
+    @like.be_liked!
+    @like.matched!
+    partnership = Partnership.create(user: @user, target: @target)
+    UserPartnership.create(user_id: @target.id, partnership: partnership)
+    UserPartnership.create(user_id: @user.id, partnership: partnership)
+    render
   end
 
   private
