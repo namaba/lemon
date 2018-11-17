@@ -6,16 +6,10 @@
 
 
 .panelList_section
-  .panelList_search_button
-    .text-right
-      button.btn.btn-danger[type="button" data-toggle="modal" data-target="#searchModal"]
-        |  条件検索
-    #searchModal.modal.fade[tabindex="-1"]
-      .modal-dialog
-        .modal-margin
-          .modal-content
-            .modal-body
-              = render 'search'
+  .panelList_search_modal.text-right
+    button.btn.btn-danger[type="button" data-toggle="modal" data-target="#searchModal"]
+      |  条件検索
+    = render 'search_modal'
 
   - cache @users do
     .card_list

@@ -15,8 +15,11 @@ section.murmur_panel
         .user_address = topic.writer.user_profile.prefecture.name
     .murmur_datetime
       = topic.created_at.strftime('%Y年%m月%d日')
+
   .murmur_panel_body
     = topic.body
+
+
   .murmur_panel_footer
     .murmur_smile
       - if TopicSmile.find_by(user: current_user, topic: topic)
@@ -30,18 +33,20 @@ section.murmur_panel
         button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal#{topic.id}"]
           |  編集
         = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
+
       button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal#{topic.id}"]
         |  コメントする
-      = render 'guest/topics/modal', topic: topic
+      = render 'guest/topics/create_chat_modal', topic: topic
+
   / TODO: 数はリファクタ
   - if topic.chats.size >= 1
     .text-right
       button.btn.btn-default data-target="##{topic.id}" data-toggle="collapse" type="button" = "コメント#{topic.chats.size}件"
 
-.collapse id="#{topic.id}"
-  - topic.chats.each do |chat|
-    = link_to image_tag(chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(chat.user)
-    = chat.user.name
-    br
-    = chat.body
-    hr
+  .collapse id="#{topic.id}"
+    - topic.chats.each do |chat|
+      = link_to image_tag(chat.user.user_profile.image1.thumb, class: 'img-circle', size: '50'), search_path(chat.user)
+      = chat.user.name
+      br
+      = chat.body
+      hr

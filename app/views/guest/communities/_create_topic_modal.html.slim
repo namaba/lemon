@@ -1,4 +1,5 @@
-.modal id="ChatModal#{topic.id}"
+/ topic作成モーダル
+#createTopicModal.modal.fade[tabindex="-1"]
   .modal-dialog
     .modal-margin
       .modal-content
@@ -7,12 +8,13 @@
             span
               | ×
         .modal-body
-          = form_for(@topic_chat, url: chat_topic_path(topic) ) do |f|
+          = form_for(@topic, url: topics_path ) do |f|
             .row
               .col-md-12.text-center
                 .form-group
-                  = f.label :コメント
                   = f.text_area :body, class: 'form-control'
+
                 = f.hidden_field :community_id, value: @community.id
                 = f.hidden_field :user_id, value: current_user.id
-                = f.submit '保存', class: "btn btn-info text-center"
+
+                = f.submit '投稿', class: "btn btn-primary text-center"

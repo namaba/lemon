@@ -1,5 +1,8 @@
 .panelList_like_section
-  = render 'form'
+  .panelList_search_modal.text-right
+    button.btn.btn-danger[type="button" data-toggle="modal" data-target="#communityModal"]
+      |  コミュニティ作成
+    = render 'create_community_modal'
   .tab_header
     .tab_select_button コミュニティ検索
     = link_to 'マイコミュニティ', my_communities_community_path(current_user), class: 'tab_bottun'
