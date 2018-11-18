@@ -22,7 +22,8 @@ class Guest::CommunitiesController < Guest
   def create
     @community = current_user.communities.build(community_params)
     if @community.save!
-      redirect_to :back, success: "コミュニティが作成されました！"
+      @community.user_communities.create(user_id: current_user.id)
+      redirect_to @community, success: "コミュニティが作成されました！"
     else
       redirect_to :back, warning: "コミュニティが作成できませんでした"
     end
