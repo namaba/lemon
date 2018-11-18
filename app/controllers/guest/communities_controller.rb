@@ -22,7 +22,8 @@ class Guest::CommunitiesController < Guest
   def create
     @community = current_user.communities.build(community_params)
     if @community.save!
-      redirect_to :back, success: "コミュニティが作成されました！"
+      @community.user_communities.create(user_id: current_user.id)
+      redirect_to @community, success: "コミュニティが作成されました！"
     else
       redirect_to :back, warning: "コミュニティが作成できませんでした"
     end
@@ -35,10 +36,11 @@ class Guest::CommunitiesController < Guest
 
   def detail
     @community_members = @community.community_members
+    @orner = @community.user_communities.is_orner.first.user
   end
 
   def join
-    user_community = current_user.join_communities.new(community_id: @community.id)
+    user_community = current_user.join_communities.new(community_id: @community.id, is_orner: true)
     if user_community.save
       redirect_to @community, notice: "参加しました"
     else
@@ -53,7 +55,6 @@ class Guest::CommunitiesController < Guest
   def member
     @member = User.find params[:member_id]
   end
-
 
   private
   def set_community

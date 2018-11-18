@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181114103507) do
+ActiveRecord::Schema.define(version: 20181118031143) do
 
   create_table "announcements", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -164,8 +164,10 @@ ActiveRecord::Schema.define(version: 20181114103507) do
   create_table "user_communities", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
     t.integer  "community_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "is_orner",               default: false
+    t.boolean  "is_banned",              default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.datetime "deleted_at"
   end
 

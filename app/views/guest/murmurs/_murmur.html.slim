@@ -18,6 +18,8 @@ section.murmur_panel
       / TODO namba 画像サイズ決定後width:100%に修正
       .murmur_image
         = image_tag murmur.image
+
+
   .murmur_panel_footer
     .murmur_smile
       - if MurmurSmile.find_by(user: current_user, murmur: murmur)
@@ -26,10 +28,13 @@ section.murmur_panel
       - else
         = link_to image_tag('smile'), murmur_smiles_path(user: current_user, murmur: murmur), method: :post
       = murmur.smiles.size
+
     .murmur_items
       - if murmur.user == current_user
-          button.btn.btn-default[type="button" data-toggle="modal" data-target="#EditModal#{murmur.id}"]
-            |  編集する
+          button.btn.btn-default[type="button" data-toggle="modal" data-target="murmurEditModal"]
+            |  編集
+          = render 'edit_modal', murmur: murmur
+
           = link_to '削除', murmur_path(id: murmur), method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
       button.btn.btn-default[type="button" data-toggle="modal" data-target="#CommentModal#{murmur.id}"]
         |  コメント
