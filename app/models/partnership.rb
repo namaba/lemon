@@ -16,6 +16,8 @@ class Partnership < ActiveRecord::Base
   scope :like_me, -> (user){ where(id: Like.select('user_id').where(target_id: user, status: 0))}
 
 
+  validates_uniqueness_of :user_id, scope: [:target_id]
+
   #----------------------------------------
   #  ** InstanceMethod **
   #----------------------------------------
