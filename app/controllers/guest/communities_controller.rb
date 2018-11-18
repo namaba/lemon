@@ -36,10 +36,11 @@ class Guest::CommunitiesController < Guest
 
   def detail
     @community_members = @community.community_members
+    @orner = @community.user_communities.is_orner.first.user
   end
 
   def join
-    user_community = current_user.join_communities.new(community_id: @community.id)
+    user_community = current_user.join_communities.new(community_id: @community.id, is_orner: true)
     if user_community.save
       redirect_to @community, notice: "参加しました"
     else
@@ -54,7 +55,6 @@ class Guest::CommunitiesController < Guest
   def member
     @member = User.find params[:member_id]
   end
-
 
   private
   def set_community

@@ -13,6 +13,15 @@
         .community_detail_explain
           = @community.introduce
 
+        / TODO:　デザイン来てからコメントアウト外す
+        / h5 = '管理人'
+        / .community_detail_content
+        /     = link_to search_path(@orner) do
+        /       .community_image
+        /         = image_tag @orner.user_profile.image1, class: 'img-radius'
+        /       .community_body
+        /         .community_name = @orner.name
+        /       .community_footer
         .community_detail_list
           h5 = '参加者一覧'
           - @community_members.limit(5).each do |community_member|
