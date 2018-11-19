@@ -2,6 +2,10 @@
   .modal-dialog
     .modal-margin
       .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
         .modal-body
           = form_for(@murmurcomment, url: murmur_comments_path) do |f|
             .row
