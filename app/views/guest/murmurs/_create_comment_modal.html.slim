@@ -1,4 +1,4 @@
-.modal id="murmurEditModal"
+.modal id="createCommentModal#{murmur.id}"
   .modal-dialog
     .modal-margin
       .modal-content
@@ -7,14 +7,13 @@
             span
               | ×
         .modal-body
-          = form_for(murmur) do |f|
+          = form_for(@murmurcomment, url: murmur_comments_path) do |f|
             .row
               .col-md-12.text-center
                 .form-group
-                  = f.text_area :body, class: 'form-control'
-              .col-md-12.text-center
-                .form-group
-                  = f.file_field :image, class: "form-control image-field"
+                  = f.label :コメント
+                  = f.text_area :comment, class: 'form-control'
 
                   = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :murmur_id, value: murmur.id
                 = f.submit '保存', class: "btn btn-info"

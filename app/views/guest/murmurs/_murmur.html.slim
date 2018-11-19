@@ -31,21 +31,22 @@ section.murmur_panel
 
     .murmur_items
       - if murmur.user == current_user
-          button.btn.btn-default[type="button" data-toggle="modal" data-target="murmurEditModal"]
+          button.btn.btn-default[type="button" data-toggle="modal" data-target="#editMurmurModal#{murmur.id}"]
             |  編集
-          = render 'edit_modal', murmur: murmur
+          = render 'guest/murmurs/edit_murmur_modal', murmur: murmur
 
           = link_to '削除', murmur_path(id: murmur), method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
-      button.btn.btn-default[type="button" data-toggle="modal" data-target="#CommentModal#{murmur.id}"]
+
+      button.btn.btn-default[type="button" data-toggle="modal" data-target="#createCommentModal#{murmur.id}"]
         |  コメント
-      = render 'modal', murmur: murmur
+      = render 'guest/murmurs/create_comment_modal', murmur: murmur
 
   - if murmur.comments.size >= 1
 
     p.text-right
-      button.btn.btn-default data-target="#murmur_#{murmur.id}" data-toggle="collapse" type="button" = "コメント#{murmur.comments.size}件"
+      button.btn.btn-default data-target="#murmur_#{murmur.id}_comments" data-toggle="collapse" type="button" = "コメント#{murmur.comments.size}件"
 
-    .murmur_comments.collapse id="murmur_#{murmur.id}"
+    .murmur_comments.collapse id="murmur_#{murmur.id}_comments"
       - murmur.comments.each do |comment|
         - if comment.user == current_user
           = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'

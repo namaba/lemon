@@ -1,0 +1,20 @@
+.modal.fade id="editMurmurModal#{murmur.id}"
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(murmur) do |f|
+            .row
+              .col-md-12.text-center
+                .form-group
+                  = f.text_area :body, class: 'form-control'
+              .col-md-12.text-center
+                .form-group
+                  = f.file_field :image, class: "form-control image-field"
+
+                  = f.hidden_field :user_id, value: current_user.id
+                = f.submit '保存', class: "btn btn-info"

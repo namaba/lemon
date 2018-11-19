@@ -17,7 +17,7 @@ section.murmur_panel
       = topic.created_at.strftime('%Y年%m月%d日')
 
   .murmur_panel_body
-    = topic.body
+    = topic.title
 
 
   .murmur_panel_footer
@@ -30,11 +30,12 @@ section.murmur_panel
       = topic.smiles.size
     .murmur_items
       - if current_user == topic.writer
-        button.edit_button.btn.btn-danger[type="button" data-toggle="modal" data-target="#EditModal#{topic.id}"]
+        button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#editTopicModal#{topic.id}"]
           |  編集
-        = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-danger', data: { confirm: 'Are you sure?' }
+        = render 'guest/topics/edit_topic_modal', topic: topic
+        = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-default', data: { confirm: 'Are you sure?' }
 
-      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#ChatModal#{topic.id}"]
+      button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#createChatModal#{topic.id}"]
         |  コメントする
       = render 'guest/topics/create_chat_modal', topic: topic
 
