@@ -40,18 +40,19 @@ section.murmur_panel
         |  コメント
       = render 'modal', murmur: murmur
 
-      - if murmur.comments.size >= 1
-        .text-right
-          button.btn.btn-default data-target="##{murmur.id}" data-toggle="collapse" type="button" = "コメント#{murmur.comments.size}件"
+  - if murmur.comments.size >= 1
 
-  .murmur_comments.collapse id="#{murmur.id}"
-    - murmur.comments.each do |comment|
-      - if comment.user == current_user
-        = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'
-      - else
-        = link_to image_tag(comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'), search_path(comment.user)
-      = comment.user.name
-      br
-      = comment.comment
-      hr
-hr
+    p.text-right
+      button.btn.btn-default data-target="#murmur_#{murmur.id}" data-toggle="collapse" type="button" = "コメント#{murmur.comments.size}件"
+
+    .murmur_comments.collapse id="murmur_#{murmur.id}"
+      - murmur.comments.each do |comment|
+        - if comment.user == current_user
+          = image_tag comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'
+        - else
+          = link_to image_tag(comment.user.user_profile.image1.thumb, class: 'img-circle mr-3', size: '50'), search_path(comment.user)
+        = comment.user.name
+        br
+        = comment.comment
+        hr
+    hr
