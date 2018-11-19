@@ -10,7 +10,7 @@ class Guest::CommunitiesController < Guest
 
   def show
     @community_members = @community.community_members
-    @topics = @community.topics.published
+    @topics = @community.topics.published.order('updated_at DESC')
     @topic = Topic.new
     @topic_chat = TopicChat.new
   end

@@ -1,4 +1,4 @@
-.modal id="EditModal#{topic.id}"
+.modal id="editTopicModal#{topic.id}"
   .modal-dialog
     .modal-margin
       .modal-content
@@ -7,12 +7,12 @@
             span
               | ×
         .modal-body
-          = form_for(@topic, url: topic_path(topic), method: :patch) do |f|
+          = form_for(topic, url: topic_path(topic), method: :patch) do |f|
             .row
               .col-md-12.text-center
                 .form-group
                   = f.label :トピック編集
-                  = f.text_area :body, class: 'form-control'
+                  = f.text_area :title, class: 'form-control', autofocus: true
 
                 = f.hidden_field :community_id, value: @community.id
                 = f.hidden_field :user_id, value: current_user.id
