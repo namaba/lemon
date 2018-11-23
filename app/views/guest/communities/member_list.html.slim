@@ -1,0 +1,35 @@
+scss:
+  .community_title {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 30px;
+  }
+.panelList_section
+  h4.community_title メンバー管理
+  - cache @users do
+    .card_list
+      - @users.each do |user|
+        .card_content
+          .card_image
+
+            / 画像サイズきめた後、size:100%に変更。
+            = link_to image_tag(user.user_profile.image1.cover, class: 'img-radius'), search_path(user)
+
+            .card_info
+              .card_age = "#{user.user_profile.age}歳"
+              .card_address = user.user_profile.prefecture.name
+              / TODO: 属性の画像が復活したらコメントアウト戻す
+              / .card_sex = image_tag "sex_badge_#{user.user_profile.sex}"
+          .card_body
+            .card_name = user.name
+          .card_footer
+            - if user.is_banned?(@community)
+              = form_for @community.user_communities.build, url: releace_member_community_path do |f|
+                = f.hidden_field :user_id, value: user.id
+                = f.submit '追放解除', class: 'btn btn-default', data: { 'confirm': '本当に追放解除しますか？' }, style: 'width: 100%;'
+            - else
+              = form_for @community.user_communities.build, url: ban_member_community_path do |f|
+                = f.hidden_field :user_id, value: user.id
+                = f.submit '追放', class: 'btn btn-danger', data: { 'confirm': '本当に追放しますか？' }, style: 'width: 100%;'
+
+    = paginate @users

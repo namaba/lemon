@@ -38,7 +38,10 @@ Rails.application.routes.draw do
         get 'my_communities',       to: 'communities#my_communities'
         get 'detail',               to: 'communities#detail'
         get 'join',                 to: 'communities#join'
-        get 'member/:member_id',     to: 'communities#member', as: :member
+        get 'member/:member_id',    to: 'communities#member', as: :member
+        get 'member_list',          to: 'communities#member_list'
+        post 'ban_member',          to: 'communities#ban_member'
+        post 'releace_member',          to: 'communities#releace_member'
       end
     end
     resources :topics do
