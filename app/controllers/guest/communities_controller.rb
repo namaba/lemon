@@ -66,7 +66,8 @@ class Guest::CommunitiesController < Guest
       :name,
       :user_id,
       :introduce,
-      :image
+      :image,
+      :invitational,
       )
   end
 

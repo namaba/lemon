@@ -1,3 +1,12 @@
+scss:
+  .form-check {
+    margin-bottom: 10px;
+  }
+  input[type="checkbox"]{
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
 #communityModal.modal.fade[tabindex="-1"]
   .modal-dialog
     .modal-margin
@@ -19,4 +28,8 @@
                 .form-group
                   = f.label :アイコン
                   = f.file_field :image, class: "form-control image-field"
+                .form-check
+                  label
+                    = f.check_box :invitational, as: :boolean, class: 'invitational_checkbox'
+                    | 招待制
                 = f.submit '保存', class: "btn btn-primary"
