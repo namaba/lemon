@@ -1,3 +1,7 @@
+/ scss:
+/   .community_edit_link {
+/     margin: 10px;
+/   }
 #layout_flex
   #layout_sidebar
     .community_detail
@@ -9,9 +13,18 @@
         .community_detail_explain
           = @community.introduce
 
+    .row
+      .col-md-4
+        button.btn.btn-default[type="button" data-toggle="modal" data-target="#editCommunityModal"]
+            |  コミュニティ編集
+        = render 'edit_community_modal'
+      .col-md-4
+        .community_edit_link= link_to 'メンバー管理', edit_community_path(@community), class: 'btn btn-default'
+
+
     hr
     .community_detail_list
-      h5 = '参加者一覧'
+      h5 参加者一覧
       - @community_members.limit(5).each do |community_member|
         = link_to member_community_path(@community, community_member) do
           .community_content_detail

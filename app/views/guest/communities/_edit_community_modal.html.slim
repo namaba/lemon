@@ -1,0 +1,35 @@
+scss:
+  .form-check {
+    margin-bottom: 10px;
+  }
+  input[type="checkbox"]{
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+#editCommunityModal.modal.fade.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body
+          = form_for(@community) do |f|
+            .form-group
+              = f.label 'コミュニティ名'
+              = f.text_field :name, class: 'form-control'
+            .form-group
+              = f.label 'コミュニティ説明'
+              = f.text_area :introduce, class: "form-control"
+            .form-check
+              label
+                = f.check_box :invitational, as: :boolean, class: 'invitational_checkbox'
+                | 招待制
+            .form-group
+              = f.label 'アイコン'
+              = f.file_field :image, class: 'image-field'
+
+            = f.submit '更新', class: 'btn btn-primary'
+

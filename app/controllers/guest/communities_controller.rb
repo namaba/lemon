@@ -1,5 +1,5 @@
 class Guest::CommunitiesController < Guest
-  before_action :set_community, only: [:show, :join, :detail]
+  before_action :set_community, only: [:show, :edit, :update, :join, :detail]
 
   def index
     @communities = Community.all.page(params[:page]).per(10)
@@ -23,6 +23,17 @@ class Guest::CommunitiesController < Guest
     @community = current_user.communities.build(community_params)
     if @community.save!
       @community.user_communities.create(user_id: current_user.id)
+      redirect_to @community, success: "コミュニティが作成されました！"
+    else
+      redirect_to :back, warning: "コミュニティが作成できませんでした"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @community.update(community_params)
       redirect_to @community, success: "コミュニティが作成されました！"
     else
       redirect_to :back, warning: "コミュニティが作成できませんでした"
