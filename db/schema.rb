@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 20181120122525) do
     t.string   "category",     limit: 255
     t.text     "introduce",    limit: 65535
     t.string   "image",        limit: 255
+    t.integer  "status",       limit: 4,     default: 1
+    t.boolean  "invitational",               default: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.datetime "deleted_at"
-    t.integer  "status",       limit: 4,     default: 1
-    t.boolean  "invitational",               default: false
   end
 
   add_index "communities", ["deleted_at"], name: "index_communities_on_deleted_at", using: :btree
