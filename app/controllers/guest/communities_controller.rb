@@ -1,5 +1,5 @@
 class Guest::CommunitiesController < Guest
-  before_action :set_community, only: [:show, :edit, :update, :join, :detail, :member_list, :ban_member, :releace_member]
+  before_action :set_community, except: [:index, :new, :create, :my_communities, :member]
 
   def index
     @communities = Community.all.page(params[:page]).per(10)
@@ -48,7 +48,7 @@ class Guest::CommunitiesController < Guest
 
   def detail
     @community_members = @community.community_members
-    @orner = @community.user_communities.is_orner.first.user
+    @orner = @community.user_communities.orner.first.user
   end
 
   def join
@@ -58,10 +58,6 @@ class Guest::CommunitiesController < Guest
     else
       redirect_to :back, warning: "参加できませんでした"
     end
-  end
-
-  def comment_new
-
   end
 
   def member
@@ -87,6 +83,19 @@ class Guest::CommunitiesController < Guest
       redirect_to member_list_community_path(@community), success: '追放解除しました'
     else
       redirect_to member_list_community_path(@community), warning: '追放解除できませんでした'
+    end
+  end
+
+  def waiting_members
+    @users = @community.waiting_members.page(params[:page]).per(16)
+  end
+
+  def approve_member
+    @user_community = @community.user_communities.find_by(user_id: user_community_params[:user_id])
+    if @user_community.approved!
+      redirect_to waiting_members_community_path(@community), success: '承認しました'
+    else
+      redirect_to waiting_members_community_path(@community), warning: '承認できませんでした'
     end
   end
 

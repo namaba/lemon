@@ -40,8 +40,10 @@ Rails.application.routes.draw do
         get 'join',                 to: 'communities#join'
         get 'member/:member_id',    to: 'communities#member', as: :member
         get 'member_list',          to: 'communities#member_list'
+        get 'waiting_members',          to: 'communities#waiting_members'
         post 'ban_member',          to: 'communities#ban_member'
         post 'releace_member',          to: 'communities#releace_member'
+        post 'approve_member',          to: 'communities#approve_member'
       end
     end
     resources :topics do
