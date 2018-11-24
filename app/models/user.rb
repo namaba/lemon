@@ -97,4 +97,8 @@ class User < ActiveRecord::Base
   def is_banned?(community)
     join_communities.find_by(community_id: community.id).is_banned?
   end
+
+  def is_community_orner?(community)
+    join_communities.find_by(community_id: community.id).orner?
+  end
 end
