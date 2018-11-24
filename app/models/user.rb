@@ -93,4 +93,8 @@ class User < ActiveRecord::Base
   def is_liked_from?(user)
     from_likes.pluck(:user_id).include?(user.id)
   end
+
+  def is_banned?(community)
+    join_communities.find_by(community_id: community.id).is_banned?
+  end
 end

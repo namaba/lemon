@@ -1,11 +1,12 @@
 class Guest::CommunitiesController < Guest
-  before_action :set_community, only: [:show, :edit, :update, :join, :detail]
+  before_action :set_community, only: [:show, :edit, :update, :join, :detail, :member_list, :ban_member, :releace_member]
 
   def index
     @communities = Community.all.page(params[:page]).per(10)
     @community = Community.new
     @pickup_communities = Community.where(status: 2).limit(5)
-    @my_community_ids = current_user.my_community.ids
+    banned_communy_ids = current_user.join_communities.is_banned.pluck(:community_id)
+    @my_community_ids = current_user.my_community.ids - banned_communy_ids
   end
 
   def show
@@ -53,9 +54,9 @@ class Guest::CommunitiesController < Guest
   def join
     user_community = current_user.join_communities.new(community_id: @community.id, is_orner: true)
     if user_community.save
-      redirect_to @community, notice: "参加しました"
+      redirect_to @community, success: "参加しました"
     else
-      redirect_to :back, alert: "参加できませんでした"
+      redirect_to :back, warning: "参加できませんでした"
     end
   end
 
@@ -65,6 +66,28 @@ class Guest::CommunitiesController < Guest
 
   def member
     @member = User.find params[:member_id]
+  end
+
+  def member_list
+    @users = @community.community_members.page(params[:page]).per(16)
+  end
+
+  def ban_member
+    @user_community = @community.user_communities.find_by(user_id: user_community_params[:user_id])
+    if @user_community.is_banned!
+      redirect_to member_list_community_path(@community), success: '追放しました'
+    else
+      redirect_to member_list_community_path(@community), warning: '追放できませんでした'
+    end
+  end
+
+  def releace_member
+    @user_community = @community.user_communities.find_by(user_id: user_community_params[:user_id])
+    if @user_community.not_ban!
+      redirect_to member_list_community_path(@community), success: '追放解除しました'
+    else
+      redirect_to member_list_community_path(@community), warning: '追放解除できませんでした'
+    end
   end
 
   private
@@ -79,6 +102,12 @@ class Guest::CommunitiesController < Guest
       :introduce,
       :image,
       :invitational,
+      )
+  end
+
+  def user_community_params
+    params.require(:user_community).permit(
+      :user_id,
       )
   end
 
