@@ -23,7 +23,7 @@ class Guest::CommunitiesController < Guest
   def create
     @community = current_user.communities.build(community_params)
     if @community.save!
-      @community.user_communities.create(user_id: current_user.id)
+      @community.user_communities.create(user_id: current_user.id, is_orner: true, is_approved: true)
       redirect_to @community, success: "コミュニティが作成されました！"
     else
       redirect_to :back, warning: "コミュニティが作成できませんでした"
@@ -62,6 +62,7 @@ class Guest::CommunitiesController < Guest
 
   def member
     @member = User.find params[:member_id]
+    @partnership = current_user.partnership_with(@member) if current_user.is_partner_of?(@member)
   end
 
   def member_list

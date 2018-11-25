@@ -15,15 +15,14 @@ class Guest::MessagesController < Guest
   end
 
   def create
-    @message = Message.new(message_params)
-    if @message.save
-      redirect_to message_path(@message.partnership_id)
+    message = Message.new(message_params)
+    if message.save
+      redirect_to partnership_path(message.partnership_id)
     end
   end
 
   def profile
     @partnership = params[:partnership_id].to_i
-    @partner = params[:partnership].to_i
   end
 
   private
