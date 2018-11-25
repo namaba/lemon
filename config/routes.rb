@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
     resources :partnerships, only: [:index, :show, :create] do
       member do
-        get 'partner_profile',              to: 'partnerships#partner_profile'
+        get 'partner',              to: 'partnerships#partner'
       end
     end
 

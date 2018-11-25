@@ -10,7 +10,7 @@
         - @partnerships.each do |partnership|
           - partner = partnership.user == current_user ? partnership.target : partnership.user
           .message_panel
-            = link_to profile_message_path(partner, partnership_id: partnership.id) do
+            = link_to partner_partnership_path(partnership) do
               .panel_container
                 .panel_header
                   .panel_image  = image_tag partner.user_profile.image1.thumb, class: 'img-circle', size: '100'

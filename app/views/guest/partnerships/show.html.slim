@@ -1,11 +1,11 @@
 .panelList_like_section
   .tab_header
     = link_to 'お相手からのイイね', likes_path, class: 'tab_bottun'
-    = link_to 'マッチング一覧', messages_path, class: 'tab_select_button'
+    = link_to 'マッチング一覧', partnerships_path, class: 'tab_bottun'
   #layout_flex
     #layout_message
       .message_panel
-        = link_to search_path(@partner) do
+        = link_to partner_partnership_path(@partnership) do
           .panel_container
             .panel_header
               .panel_image  = image_tag @partner.user_profile.image1.thumb, class: 'img-circle', size: '100'
