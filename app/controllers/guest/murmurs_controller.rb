@@ -44,6 +44,7 @@ class Guest::MurmursController < Guest
 
   def writer
     @writer = @murmur.user
+    @partnership = current_user.partnership_with(@writer)
   end
 
   private

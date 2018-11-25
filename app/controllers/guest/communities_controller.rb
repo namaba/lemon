@@ -62,7 +62,7 @@ class Guest::CommunitiesController < Guest
 
   def member
     @member = User.find params[:member_id]
-    @partnership = current_user.partnership_with(@member) if current_user.is_partner_of?(@member)
+    @partnership = current_user.partnership_with(@member)
   end
 
   def member_list
