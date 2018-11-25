@@ -35,11 +35,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :messages, only: [:index, :show, :create] do
-      member do
-        get 'profile',              to: 'messages#profile'
-      end
-    end
+    resources :messages, only: [:create]
 
     resources :communities do
       member do
