@@ -17,10 +17,10 @@ class Guest::MurmursController < Guest
     @murmur = Murmur.new(murmur_params)
     if @murmur.save
       # 遷移先未定
-      # redirect_to murmurs_path, notice: 'つぶやきました'
+      # redirect_to murmurs_path, success: 'つぶやきました'
       redirect_to :back
     else
-      render :new, notice: 'つぶやけませんでした'
+      render :new, warning: 'つぶやけませんでした'
     end
   end
 
@@ -31,15 +31,15 @@ class Guest::MurmursController < Guest
   def update
     if @murmur.update(murmur_params)
       # 遷移先未定
-      redirect_to :back, notice: '編集しました'
+      redirect_to :back, success: '編集しました'
     else
-      render :edit, notice: '編集できませんでした'
+      render :edit, warning: '編集できませんでした'
     end
   end
 
   def destroy
     @murmur.draft!
-    redirect_to :back, notice: '削除しました'
+    redirect_to :back, success: '削除しました'
   end
 
   def writer
