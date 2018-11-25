@@ -26,7 +26,7 @@
           h5 = '参加者一覧'
           - @community_members.limit(5).each do |community_member|
             .community_detail_content
-              = link_to search_path(community_member) do
+              = link_to member_community_path(@community, community_member) do
                 .community_image
                   = image_tag community_member.user_profile.image1, class: 'img-radius'
                 .community_body

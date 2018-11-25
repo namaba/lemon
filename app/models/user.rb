@@ -101,4 +101,9 @@ class User < ActiveRecord::Base
   def is_community_orner?(community)
     join_communities.find_by(community_id: community.id).orner?
   end
+
+  def partnership_with(target)
+    partnerships.find_by(target_id: target.id) ||
+    target_partnerships.find_by(user_id: target.id)
+  end
 end

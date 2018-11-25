@@ -28,11 +28,15 @@ Rails.application.routes.draw do
         patch 'match',                to: 'likes#match'
       end
     end
-    resources :messages, only: [:index, :show, :create] do
+
+    resources :partnerships, only: [:index, :show, :create] do
       member do
-        get 'profile',              to: 'messages#profile'
+        get 'partner',              to: 'partnerships#partner'
       end
     end
+
+    resources :messages, only: [:create]
+
     resources :communities do
       member do
         get 'my_communities',       to: 'communities#my_communities'

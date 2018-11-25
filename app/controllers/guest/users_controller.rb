@@ -20,9 +20,9 @@ class Guest::UsersController < Guest
     fill_answer_rate
     if @user.user_profile.save
       @user.user_profile.completed! unless @user.user_profile.completed?
-      redirect_to :back, notice: "更新できました"
+      redirect_to :back, success: "更新できました"
     else
-      redirect_to :back, notice: "更新できませんでした"
+      redirect_to :back, warning: "更新できませんでした"
     end
     # @user = @user_profile(profile_params)
   end

@@ -1,11 +1,11 @@
 .panelList_like_section
   .tab_header
     = link_to 'お相手からのイイね', likes_path, class: 'tab_bottun'
-    = link_to 'マッチング一覧', messages_path, class: 'tab_select_button'
+    = link_to 'マッチング一覧', partnerships_path, class: 'tab_bottun'
   #layout_flex
     #layout_message
       .message_panel
-        = link_to search_path(@partner) do
+        = link_to partner_partnership_path(@partnership) do
           .panel_container
             .panel_header
               .panel_image  = image_tag @partner.user_profile.image1.thumb, class: 'img-circle', size: '100'
@@ -13,10 +13,9 @@
                 .panel_name = @partner.name
                 .panel_age = "#{@partner.user_profile.age}歳"
                 .panel_address = @partner.user_profile.prefecture.name
-              .panel_day = '2017年4月26日'
+              / .panel_day = '2017年4月26日'
             .panel_body
               = truncate(@partner.user_profile.introduce, omission: '・・・', length: 50)
-      / .pagenate  = paginate @partners
 
 
     #layout_message
