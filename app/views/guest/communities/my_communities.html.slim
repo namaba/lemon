@@ -12,7 +12,7 @@
     .panelList_section
       .community_list
         h5 = link_to 'マイコミュニティ', new_community_path
-        - @my_communities.limit(5).each do |community|
+        - @my_communities.each do |community|
           .community_content
             = link_to community_path(community) do
               .community_image

@@ -30,7 +30,7 @@ scss:
     hr
     .community_detail_list
       h5 参加者一覧
-      - @community_members.limit(5).each do |community_member|
+      - @community_members.each do |community_member|
         = link_to member_community_path(@community, community_member) do
           .community_content_detail
             .community_image
