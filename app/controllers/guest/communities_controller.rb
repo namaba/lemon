@@ -10,7 +10,9 @@ class Guest::CommunitiesController < Guest
   end
 
   def show
-    @community_members = @community.community_members
+    redirect_to detail_community_path(@community) and return unless current_user.is_member?(@community)
+
+    @community_members = @community.community_members.limit(5)
     @topics = @community.topics.published.order('updated_at DESC')
     @topic = Topic.new
     @topic_chat = TopicChat.new
@@ -47,14 +49,15 @@ class Guest::CommunitiesController < Guest
   end
 
   def detail
-    @community_members = @community.community_members
     @orner = @community.user_communities.orner.first.user
   end
 
   def join
-    user_community = current_user.join_communities.new(community_id: @community.id, is_orner: true)
+    user_community = current_user.join_communities.build(community_id: @community.id)
+    user_community.attributes = { is_approved: true } unless @community.invitational?
     if user_community.save
-      redirect_to @community, success: "参加しました"
+      message = user_community.approved? ? '参加しました' : '参加登録しました。承認をお待ち下さい'
+      redirect_to @community, success: message
     else
       redirect_to :back, warning: "参加できませんでした"
     end
@@ -102,7 +105,7 @@ class Guest::CommunitiesController < Guest
 
   private
   def set_community
-    @community = Community.find(params[:id])
+    @community = Community.includes(:community_members).find(params[:id])
   end
 
   def community_params
