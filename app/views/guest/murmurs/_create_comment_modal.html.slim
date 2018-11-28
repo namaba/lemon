@@ -11,9 +11,8 @@
             .row
               .col-md-12.text-center
                 .form-group
-                  = f.label :コメント
                   = f.text_area :comment, class: 'form-control'
 
                   = f.hidden_field :user_id, value: current_user.id
                   = f.hidden_field :murmur_id, value: murmur.id
-                = f.submit '保存', class: "btn btn-info"
+                = f.submit 'コメント', class: "btn btn-primary"

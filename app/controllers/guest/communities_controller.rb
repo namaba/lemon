@@ -74,6 +74,8 @@ class Guest::CommunitiesController < Guest
 
   def ban_member
     @user_community = @community.user_communities.find_by(user_id: user_community_params[:user_id])
+    flash_msg = @user_community.is_banned! ? {success: '追放しました'} : {warning: '追放できませんでした'}
+    redirect_to member_list_community_path(@community), flash_msg
     if @user_community.is_banned!
       redirect_to member_list_community_path(@community), success: '追放しました'
     else
@@ -95,12 +97,14 @@ class Guest::CommunitiesController < Guest
   end
 
   def approve_member
-    @user_community = @community.user_communities.find_by(user_id: user_community_params[:user_id])
-    if @user_community.approved!
-      redirect_to waiting_members_community_path(@community), success: '承認しました'
-    else
-      redirect_to waiting_members_community_path(@community), warning: '承認できませんでした'
-    end
+    @user_community = @community.waiting_user_communities.find_by(user_id: user_community_params[:user_id])
+    flash_msg = @user_community.approved! ? {success: '承認しました'} : {warning: '承認できませんでした'}
+    redirect_to waiting_members_community_path(@community), flash_msg
+    # if @user_community.approved!
+    #   redirect_to waiting_members_community_path(@community), success: '承認しました'
+    # else
+    #   redirect_to waiting_members_community_path(@community), warning: '承認できませんでした'
+    # end
   end
 
   private
