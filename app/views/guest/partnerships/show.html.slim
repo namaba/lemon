@@ -33,3 +33,24 @@
             = f.hidden_field :sender_id, value: current_user.id
             = f.submit "送信", :class => "btn btn-danger pull-right", data: { disable_with: "送信中..." }
       = paginate @messages
+
+#matchModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close data-dismiss="modal" type="button"
+            span ×
+        .modal-body
+          p マッチングおめでとうございます！
+          p 早速メッセージを送ってみましょう
+
+javascript:
+  window.addEventListener('DOMContentLoaded', function() {
+    if(gon.first_time == true){
+      $('#matchModal').modal();
+    }
+  });
+
+
+
