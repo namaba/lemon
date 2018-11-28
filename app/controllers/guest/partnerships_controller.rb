@@ -11,6 +11,7 @@ class Guest::PartnershipsController < Guest
   def show
     @messages = Message.where(partnership_id: params[:id]).order("id").reverse_order.page(params[:page]).per(20)
     @message = Message.new
+    gon.first_time = params[:first_time] ? true : false
   end
 
   def partner

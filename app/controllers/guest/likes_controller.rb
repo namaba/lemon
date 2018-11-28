@@ -32,7 +32,7 @@ class Guest::LikesController < Guest
     partnership = Partnership.create(user: @user, target: @target)
     UserPartnership.create(user_id: @target.id, partnership: partnership)
     UserPartnership.create(user_id: @user.id, partnership: partnership)
-    render
+    redirect_to partnership_path(partnership, first_time: true)
   end
 
   private
