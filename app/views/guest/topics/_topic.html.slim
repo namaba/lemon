@@ -33,7 +33,7 @@ section.murmur_panel
         button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#editTopicModal#{topic.id}"]
           |  編集
         = render 'guest/topics/edit_topic_modal', topic: topic
-        = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+        = link_to '削除', topic_path(id: topic), method: :delete,class: 'btn btn-default', data: { confirm: '本当に削除しますか？' }
 
       button.edit_button.btn.btn-default[type="button" data-toggle="modal" data-target="#createChatModal#{topic.id}"]
         |  コメントする

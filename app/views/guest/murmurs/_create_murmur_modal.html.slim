@@ -4,16 +4,16 @@
     .modal-margin
       .modal-content
         .modal-header
-          button.close[type="button" data-dismiss="modal"]
-            span
-              | ×
+          button.close data-dismiss="modal" type="button"
+            span ×
         .modal-body
           = form_for(@murmur) do |f|
             .row
               .col-md-12.text-center
                 .form-group
                   = f.text_area :body, class: 'form-control', autofocus: true
+                .form-group
+                  = f.file_field :image, class: "image-field"
 
                 = f.hidden_field :user_id, value: current_user.id
-
-                = f.submit '投稿', class: "btn btn-info text-center"
+                = f.submit '投稿', class: "btn btn-primary"
