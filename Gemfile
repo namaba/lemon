@@ -52,6 +52,8 @@ gem 'whenever', :require => false
 # javasqriptとの連携
 gem 'gon'
 
+gem 'seed-fu'
+
 # Capistrano
 group :production, :staging do
   gem 'unicorn'
