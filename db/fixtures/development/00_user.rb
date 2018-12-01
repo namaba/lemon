@@ -16,7 +16,7 @@
     up.introduce = 'はじめまして、よろしくおねがいします'
     up.height = [*140..190].sample
     up.style = [*1..9].sample
-    up.job = [*1..40].sample
+    up.job = [*1..39].sample
     up.income = [*1..9].sample
     up.hobby = '読書、映画、ドライブ'
     up.housemate = [*1..3].sample
