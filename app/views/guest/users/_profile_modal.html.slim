@@ -177,7 +177,7 @@
                 = f.submit "プロフィールを更新", :class => "btn btn-primary"
 
 
-/ 基本プロフィール編集
+/ 写真追加
 #ImageModal1.modal.fade[tabindex="-1"]
   .modal-dialog
     .modal-margin
@@ -193,10 +193,10 @@
                 .form-group
                   label
                     | 写真
-                  = f.file_field :image1, class: "form-control image-field"
+                  = f.file_field :image1, class: "form-control image-field", required: true
                   = f.file_field :image2, class: "form-control image-field"
                   = f.file_field :image3, class: "form-control image-field"
-                = f.submit 'プロフィールを更新', class: "btn btn-info text-center"
+                = f.submit '写真追加', class: "btn btn-info text-center"
 
 #CoinCharge.modal.fade[tabindex="-1"]
   .modal-dialog
