@@ -1,7 +1,10 @@
-/ scss:
-/   .community_edit_link {
-/     margin: 10px;
-/   }
+scss:
+  .community_edit_btns_container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+  }
+
 #layout_flex
   #layout_sidebar
     .community_detail
@@ -13,19 +16,21 @@
         .community_detail_explain
           = @community.introduce
 
-    .row
-      .col-md-4
-        button.btn.btn-default[type="button" data-toggle="modal" data-target="#editCommunityModal"]
+    .community_edit_btns_container
+      - if current_user.is_community_orner?(@community)
+        button.btn.btn-default.community_btn[type="button" data-toggle="modal" data-target="#editCommunityModal"]
             |  コミュニティ編集
         = render 'edit_community_modal'
-      .col-md-4
-        .community_edit_link= link_to 'メンバー管理', member_list_community_path(@community), class: 'btn btn-default'
 
+        .community_btn= link_to 'メンバー管理', member_list_community_path(@community), class: 'btn btn-default'
+        .community_btn= link_to '承認待ちメンバー', waiting_members_community_path(@community), class: 'btn btn-default'
+      - else
+        = link_to '承認待ちメンバー一覧', waiting_members_community_path(@community), class: 'btn btn-danger', style: "width: 100%;"
 
     hr
     .community_detail_list
       h5 参加者一覧
-      - @community_members.limit(5).each do |community_member|
+      - @community_members.each do |community_member|
         = link_to member_community_path(@community, community_member) do
           .community_content_detail
             .community_image

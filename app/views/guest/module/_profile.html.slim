@@ -28,14 +28,14 @@
 
     div[class="card_like_button_#{user.id}"]
       - if current_user.is_partner_of?(user)
-        .like_button = link_to 'メッセージを送る', message_path(id: @partnership, partner_id: @partner), method: :get
+        = link_to 'メッセージを送る', partnership_path(id: @partnership), method: :get, class: 'btn btn-danger', style: 'width: 100%'
       - elsif current_user.like?(user)
         .liked_button = 'イイね済'
       -elsif current_user.is_liked_from?(user)
         - _like = current_user.from_likes.find_by(user_id: user.id)
         = form_for(_like, url: match_like_path(user.id), remote: true) do |f|
             = f.hidden_field :target_id, value: current_user.id
-            = f.submit 'ありがとう', class: 'like_button', style: 'width: 100%;'
+            = f.submit 'ありがとう', class: 'btn btn-danger', style: 'width: 100%;'
       - else
         = form_for(Like.new(), remote: true) do |f|
           = f.hidden_field :user_id, value: current_user.id

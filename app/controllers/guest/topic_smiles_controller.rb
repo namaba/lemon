@@ -5,17 +5,17 @@ class Guest::TopicSmilesController < ApplicationController
     @smile = TopicSmile.new(user_id: params[:user].to_i, topic_id: params[:topic].to_i)
     if @smile.save
       # 遷移先未定
-      # redirect_to murmurs_path, notice: 'つぶやきました'
+      # redirect_to murmurs_path, success: 'つぶやきました'
       redirect_to :back
     else
-      render :new, notice: 'つぶやけませんでした'
+      render :new, warning: 'つぶやけませんでした'
     end
 
   end
 
   def destroy
     @smile.destroy
-    redirect_to :back, notice: '削除しました'
+    redirect_to :back, success: '削除しました'
   end
 
   private

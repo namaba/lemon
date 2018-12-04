@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20181204064519) do
     t.integer  "community_id", limit: 4
     t.boolean  "is_orner",               default: false
     t.boolean  "is_banned",              default: false
+    t.boolean  "is_approved",            default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.datetime "deleted_at"
@@ -207,7 +208,7 @@ ActiveRecord::Schema.define(version: 20181204064519) do
     t.integer  "user_id",              limit: 4
     t.integer  "sex",                  limit: 4,     default: 0
     t.integer  "play_style",           limit: 4
-    t.date     "birthday",                           default: '1900-01-01'
+    t.date     "birthday"
     t.integer  "address",              limit: 4,     default: 13
     t.integer  "plan",                 limit: 4
     t.text     "introduce",            limit: 65535
@@ -238,8 +239,8 @@ ActiveRecord::Schema.define(version: 20181204064519) do
     t.integer  "coins_count",          limit: 4,     default: 20
     t.integer  "mail_status",          limit: 4,     default: 1
     t.integer  "tutorial_status",      limit: 4,     default: 1
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree

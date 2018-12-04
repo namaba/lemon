@@ -1,3 +1,8 @@
+scss:
+  .fa-heart {
+    color: white;
+  }
+
 .navbar style="margin-bottom:0"
   .navbar-main
     .navbar-body
@@ -21,7 +26,11 @@
   #menu_pc
     ul
       li = link_to "さがす", searches_path, class: "#{ 'active' if controller.controller_name == 'searches'}"
-      li = link_to "いいね", likes_path, class: "#{ 'active' if controller.controller_name == 'likes'}"
+      li
+        = link_to likes_path, class: "#{ 'active' if controller.controller_name == 'likes'}" do
+          = fa_icon("heart") if current_user.from_likes.no_match.present?
+          | いいね
+        end
       li = link_to "コミュニティ", communities_path, class: "#{ 'active' if controller.controller_name == 'communities'}"
       li = link_to "つぶやき", murmurs_path, class: "#{ 'active' if controller.controller_name == 'murmurs'}"
       li = link_to "マイページ", user_path(current_user), class: "#{ 'active' if controller.controller_name == 'users'}"

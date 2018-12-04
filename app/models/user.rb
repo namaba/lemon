@@ -104,5 +104,22 @@ class User < ActiveRecord::Base
   # 通報
   def was_reports?(user)
     done_report.pluck(:target_id).include?(user.id)
+  def is_community_orner?(community)
+    join_communities.find_by(community_id: community.id).orner?
+  end
+
+  def is_member?(community)
+    join_community = join_communities.find_by(community_id: community.id)
+    join_community&.approved? ? true : false
+  end
+
+  def is_waiting_member?(community)
+    join_community = join_communities.find_by(community_id: community.id)
+    join_community&.waiting? ? true : false
+  end
+
+  def partnership_with(target)
+    partnerships.find_by(target_id: target.id) ||
+    target_partnerships.find_by(user_id: target.id)
   end
 end

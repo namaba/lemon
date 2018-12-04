@@ -1,31 +1,34 @@
 .panelList_like_section
   .tab_header
     .tab_select_button お相手からのイイね
-    = link_to 'マッチングメール', messages_path, class: 'tab_bottun'
-  - @like_users.each do |user|
-    .like_panel
-      = link_to like_path(user) do
-        .panel_container
-          .panel_header
-            .panel_image
-              = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
-            .panel_info
-              .panel_name = user.name
-              .panel_age = "#{user.user_profile.age}歳"
-              .panel_address = user.user_profile.prefecture.name
-            /  TODO: なにやりたいのかわすれた
-            .panel_day = '2017年4月26日'
-          .panel_body_pc
-            = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
-          .panel_body_sp
-            = truncate(user.user_profile.introduce, omission: '・・・', length: 20)
-      div[class="panel_bottun card_like_button_#{user.id}"]
-        - _like = current_user.from_likes.find_by(user_id: user.id)
-        - if _like.matched?
-          = link_to 'マッチ済み', messages_path, class: 'btn btn-default text-dark'
-        - else
-          = form_for(_like, url: match_like_path(user.id), remote: true) do |f|
-            = f.hidden_field :target_id, value: current_user.id
-            = f.submit 'ありがとう', class: 'btn btn-danger', style: 'width: 100%;'
+    = link_to 'マッチングメール', partnerships_path, class: 'tab_bottun'
+  - if @like_users.blank?
+    p 現在お相手からのイイねはありません。
+  - else
+    - @like_users.each do |user|
+      .like_panel
+        = link_to like_path(user) do
+          .panel_container
+            .panel_header
+              .panel_image
+                = image_tag user.user_profile.image1.thumb, class: 'img-circle', size: '100'
+              .panel_info
+                .panel_name = user.name
+                .panel_age = "#{user.user_profile.age}歳"
+                .panel_address = user.user_profile.prefecture.name
+              /  TODO: なにやりたいのかわすれた
+              .panel_day = '2017年4月26日'
+            .panel_body_pc
+              = truncate(user.user_profile.introduce, omission: '・・・', length: 50)
+            .panel_body_sp
+              = truncate(user.user_profile.introduce, omission: '・・・', length: 20)
+        div[class="panel_bottun card_like_button_#{user.id}"]
+          - _like = current_user.from_likes.find_by(user_id: user.id)
+          - if _like.matched?
+            = link_to 'マッチ済み', messages_path, class: 'btn btn-default text-dark'
+          - else
+            = form_for(_like, url: match_like_path(user.id)) do |f|
+              = f.hidden_field :target_id, value: current_user.id
+              = f.submit 'ありがとう', class: 'btn btn-danger', style: 'width: 100%;'
 
-  .pagenate  = paginate @like_users
+    .pagenate  = paginate @like_users

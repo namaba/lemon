@@ -30,10 +30,14 @@ Rails.application.routes.draw do
     end
     resources :reports, only: [:create, :destroy]
     resources :messages, only: [:index, :show, :create] do
+    resources :partnerships, only: [:index, :show, :create] do
       member do
-        get 'profile',              to: 'messages#profile'
+        get 'partner',              to: 'partnerships#partner'
       end
     end
+
+    resources :messages, only: [:create]
+
     resources :communities do
       member do
         get 'my_communities',       to: 'communities#my_communities'
@@ -41,8 +45,10 @@ Rails.application.routes.draw do
         get 'join',                 to: 'communities#join'
         get 'member/:member_id',    to: 'communities#member', as: :member
         get 'member_list',          to: 'communities#member_list'
+        get 'waiting_members',          to: 'communities#waiting_members'
         post 'ban_member',          to: 'communities#ban_member'
         post 'releace_member',          to: 'communities#releace_member'
+        post 'approve_member',          to: 'communities#approve_member'
       end
     end
     resources :topics do

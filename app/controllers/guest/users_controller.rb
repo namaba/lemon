@@ -20,9 +20,9 @@ class Guest::UsersController < Guest
     fill_answer_rate
     if @user.user_profile.save
       @user.user_profile.completed! unless @user.user_profile.completed?
-      redirect_to :back, notice: "更新できました"
+      redirect_to :back, success: "更新できました"
     else
-      redirect_to :back, notice: "更新できませんでした"
+      redirect_to :back, warning: "更新できませんでした"
     end
     # @user = @user_profile(profile_params)
   end
@@ -54,7 +54,7 @@ class Guest::UsersController < Guest
   end
 
   def fill_answer_rate
-    profile_hash = @user.user_profile.attributes.except(:id, :user_id, :plan, :identification,:identification_image, :answer_rate, :good_count, :coins_count, :mail_status, :created_at, :updated_at)
+    profile_hash = @user.user_profile.attributes.with_indifferent_access.except(:id, :user_id, :plan, :identification,:identification_image, :answer_rate, :good_count, :coins_count, :mail_status, :identification_image, :created_at, :updated_at)
     keys_count = profile_hash.keys.count
     values_count = profile_hash.values.compact.count
     answer_rate = (values_count.to_f / keys_count.to_f * 100).floor

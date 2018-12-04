@@ -12,6 +12,7 @@ class Guest::SearchesController < Guest
 
   def show
     @user = User.find params[:id]
+    @partnership = current_user.partnership_with(@user)
   end
 
   # def welcome

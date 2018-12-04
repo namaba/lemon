@@ -7,6 +7,7 @@
     .community_detail
       .community_detail_image
         = image_tag @community.image, class: 'img-radius'
+        = @community.invitational ? '招待制' : '誰でも参加可能'
       .community_detail_body
         .community_detail_name
           = @community.name
@@ -24,9 +25,9 @@
         /       .community_footer
         .community_detail_list
           h5 = '参加者一覧'
-          - @community_members.limit(5).each do |community_member|
+          - @community.community_members.limit(5).each do |community_member|
             .community_detail_content
-              = link_to search_path(community_member) do
+              = link_to member_community_path(@community, community_member) do
                 .community_image
                   = image_tag community_member.user_profile.image1, class: 'img-radius'
                 .community_body
@@ -34,7 +35,9 @@
                 .community_footer
 
     .community_futter
-      - if current_user.my_community.include?(@community)
+      - if current_user.is_member?(@community)
         .community_join_button = link_to '参加済み', community_path(@community),class: 'community_join_button'
+      - elsif current_user.is_waiting_member?(@community)
+        .btn.btn-default.center-block[style="width: 50%;"] 承認待ち
       - else
         .community_join_button = link_to '参加する', join_community_path(id: @community)

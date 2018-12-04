@@ -11,9 +11,9 @@
           = image_tag @user.user_profile.image2, class: "img-radius"
         li.item3
           = image_tag @user.user_profile.image3, class: "img-radius"
-        li.item4
-        .item_badge
-          = image_tag "sex_badge_#{@user.user_profile.sex}"
+        / li.item4
+        / .item_badge
+        /   = image_tag "sex_badge_#{@user.user_profile.sex}"
       / サブ画像も大きさ統一するからそのままでok
       ul.thumb
         li.thumb1

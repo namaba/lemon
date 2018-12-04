@@ -11,31 +11,30 @@
       |  条件検索
     = render 'search_modal'
 
-  - cache @users do
-    .card_list
-      - @users.each do |user|
-        .card_content
-          .card_image
+  .card_list
+    - @users.each do |user|
+      .card_content
+        .card_image
 
-            / 画像サイズきめた後、size:100%に変更。
-            = link_to image_tag(user.user_profile.image1.cover, class: 'img-radius'), search_path(user)
+          / 画像サイズきめた後、size:100%に変更。
+          = link_to image_tag(user.user_profile.image1.cover, class: 'img-radius'), search_path(user)
 
-            .card_info
-              .card_age = "#{user.user_profile.age}歳"
-              .card_address = user.user_profile.prefecture.name
-              / TODO: 属性の画像が復活したらコメントアウト戻す
-              / .card_sex = image_tag "sex_badge_#{user.user_profile.sex}"
-          .card_body
-            .card_name = user.name
-          .card_footer
-            div[class="card_like_button_#{user.id}"]
-              - if good(user)
-                .card_liked_button イイね済
-              - else
-                = form_for(Like.new(), remote: true) do |f|
-                  = f.hidden_field :user_id, value: current_user.id
-                  = f.hidden_field :target_id, value: user.id
-                  = f.submit 'いいね', class: 'btn btn-danger', style: 'width: 100%;'
+          .card_info
+            .card_age = "#{user.user_profile.age}歳"
+            .card_address = user.user_profile.prefecture.name
+            / TODO: 属性の画像が復活したらコメントアウト戻す
+            / .card_sex = image_tag "sex_badge_#{user.user_profile.sex}"
+        .card_body
+          .card_name = user.name
+        .card_footer
+          div[class="card_like_button_#{user.id}"]
+            - if good(user)
+              .card_liked_button イイね済
+            - else
+              = form_for(Like.new(), remote: true) do |f|
+                = f.hidden_field :user_id, value: current_user.id
+                = f.hidden_field :target_id, value: user.id
+                = f.submit 'いいね', class: 'btn btn-danger', style: 'width: 100%;'
 
     = paginate @users
 
