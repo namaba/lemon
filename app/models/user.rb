@@ -33,6 +33,9 @@ class User < ActiveRecord::Base
 
   has_many :murmur_smiles
   has_many :topic_smiles
+  # report
+  has_many :reports, :class_name => "Report", dependent: :destroy
+  has_many :done_report, :class_name => "Report", :foreign_key => 'user_id'
 
   delegate :pay_coin, :free_coin,:good_count, to: :status
   #----------------------------------------
@@ -96,5 +99,10 @@ class User < ActiveRecord::Base
 
   def is_banned?(community)
     join_communities.find_by(community_id: community.id).is_banned?
+  end
+
+  # 通報
+  def was_reports?(user)
+    done_report.pluck(:target_id).include?(user.id)
   end
 end

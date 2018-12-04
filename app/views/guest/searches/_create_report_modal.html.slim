@@ -1,0 +1,29 @@
+scss:
+  .form-check {
+    margin-bottom: 10px;
+  }
+  input[type="checkbox"]{
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+#reportModal.modal.fade[tabindex="-1"]
+  .modal-dialog
+    .modal-margin
+      .modal-content
+        .modal-header
+          button.close[type="button" data-dismiss="modal"]
+            span
+              | ×
+        .modal-body.text-left
+          = form_for(Report.new()) do |f|
+            .row
+              .col-md-12
+                .form-group
+                  = f.label :通報理由
+                  = f.text_field :body, class: "form-control",  placeholder: "不適切なメッセージ・不適切な画像の使用など、詳細を記載してください。"
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :user_name, value: current_user.name
+                  = f.hidden_field :target_id, value: @user.id
+                  = f.hidden_field :target_name, value: @user.name
+                = f.submit '送信する', class: "btn btn-primary", "data-disable-with" => "送信中..."

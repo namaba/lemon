@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         patch 'match',                to: 'likes#match'
       end
     end
+    resources :reports, only: [:create, :destroy]
     resources :messages, only: [:index, :show, :create] do
       member do
         get 'profile',              to: 'messages#profile'
