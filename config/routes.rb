@@ -28,7 +28,8 @@ Rails.application.routes.draw do
         patch 'match',                to: 'likes#match'
       end
     end
-
+    resources :reports, only: [:create, :destroy]
+    resources :messages, only: [:index, :show, :create] do
     resources :partnerships, only: [:index, :show, :create] do
       member do
         get 'partner',              to: 'partnerships#partner'

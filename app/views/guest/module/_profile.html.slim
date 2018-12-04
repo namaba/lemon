@@ -41,6 +41,15 @@
           = f.hidden_field :user_id, value: current_user.id
           = f.hidden_field :target_id, value: user.id
           = f.submit 'いいね', class: 'btn btn-danger', style: 'width: 100%;'
+    br
+    div[class="card_like_button_#{user.id}"]
+      - if !current_user.was_reports?(user)
+        button.btn.btn-danger[type="button" data-toggle="modal" data-target="#reportModal"]
+          |  通報する
+        = render 'create_report_modal'
+      - else
+        button.btn.btn-danger disabled="disabled"
+          |  通報済
 
   / mypage右サイド
   #layout_right
