@@ -8,7 +8,10 @@ html
     link[rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"]
     = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'
     = favicon_link_tag 'favicon-32x32.png'
+    = favicon_link_tag 'favicon-32x32.png',{:rel => 'apple-touch-icon', :sizes => '180x180', :type => 'image/png'}
     = csrf_meta_tags
+    meta content="Lemon" name="apple-mobile-web-app-title"
+    link href='favicon-32x32.png' rel='apple-touch-icon' sizes='192x192'
   body
     header
       - if yield(:header).empty?
