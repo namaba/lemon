@@ -104,6 +104,7 @@ class User < ActiveRecord::Base
   # 通報
   def was_reports?(user)
     done_report.pluck(:target_id).include?(user.id)
+  end
   def is_community_orner?(community)
     join_communities.find_by(community_id: community.id).orner?
   end
