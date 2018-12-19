@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   root :to => 'guest/pages#index'
 
   scope '/', module: 'guest' do
-    get 'pages/welcome'
+    get 'pages/law'
+    get 'pages/terms_of_service'
+    get 'pages/privacy_policy'
+    get 'pages/guide'
 
     resources :users, only: [:show, :create, :edit, :update, :destroy] do
       get 'preview',                to: 'users#preview'
