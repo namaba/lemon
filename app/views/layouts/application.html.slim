@@ -24,6 +24,7 @@ html
     - unless flash.empty?
       script[type="text/javascript"]
         |  <ruby code=" flash.each do |f| "> <ruby code=" type = f[0].to_s.gsub('alert','error').gsub('notice','info')"></ruby> toastr['<ruby code="= type"></ruby>']('<ruby code="= f[1]"></ruby>'); </ruby>
+    = render 'layouts/footer'
 favicon-32x32.png
 
   = include_gon
