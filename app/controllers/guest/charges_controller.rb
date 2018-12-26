@@ -12,6 +12,7 @@ class Guest::ChargesController < Guest
 
   # プラン変更
   def create
+    raise params.inspect
     raise NothingCharge if @plan.nil? && @coin.nil?
 
     customer = Stripe::Customer.create(
